@@ -1,0 +1,648 @@
+﻿<!--
+    
+ @Name：不落阁整站模板源码
+ @Author：Absolutely
+ @Site：http://www.lyblogs.cn
+
+ -->
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <title>链向财经-区块链信息服务平台</title>
+    <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
+    <!--Layui-->
+    <link href="../plug/layui/css/layui.css" rel="stylesheet" />
+    <!--font-awesome-->
+    <link href="../plug/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!--全局样式表-->
+    <link href="../css/global.css" rel="stylesheet" />
+    <!--本页样式表-->
+    <link href="../css/article.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../slider2/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../slider2/css/index.css">
+</head>
+<body>
+<!-- 导航 -->
+<nav class="blog-nav layui-header">
+    <div class="blog-container">
+        <!-- QQ互联登陆 -->
+        <a href="javascript:;" class="blog-user">
+            <i class="fa fa-qq"></i>
+        </a>
+        <a href="javascript:;" class="blog-user layui-hide">
+            <img src="../images/Absolutely.jpg" alt="Absolutely" title="Absolutely"/>
+        </a>
+        <!-- 不落阁 -->
+        <a class="blog-logo" href="home.html">
+            <img src="../images/logo.svg">
+        </a>
+        <!-- 导航菜单 -->
+        <ul class="layui-nav" lay-filter="nav">
+            <li class="layui-nav-item layui-this">
+                <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
+                <!--</li>-->
+                <!--<li class="layui-nav-item">-->
+                <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
+                <!--</li>-->
+            <li class="layui-nav-item">
+                <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;作家专栏</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
+            </li>
+        </ul>
+        <!-- 手机和平板的导航开关 -->
+        <a class="blog-navicon" href="javascript:;">
+            <i class="fa fa-navicon"></i>
+        </a>
+    </div>
+</nav>
+<style type="text/css">
+    .demolist{font-size: 0; *word-spacing: -1px;}
+    .demolist li{display: inline-block; font-size:14px; border:1px solid #eee; padding:10px; margin-right:10px; *display:inline; *zoom:1; word-spacing: normal; letter-spacing: normal; vertical-align: top;}
+    .active{background:#eee;}
+    .hidden{display: none;}
+    .menu{width:100%; background:#ECECEC; position:fixed; _position:absolute; top:0; left:0; z-index:3;}
+    .menu ul{width:600px; margin:0 auto;}
+    .menu ul li{float:left; margin-right:10px; padding:2px 6px;}
+    .menu ul li.active{background: #fff;}
+    .menu ul li a{line-height:32px; padding:0 4px;}
+    .code{padding:10px 0;}
+    .code h3 span{border:1px solid #ddd; margin-left:-1px; padding:10px;display:inline-block; cursor:pointer;}
+    pre{background:#eee; padding:10px;}
+    .slider{height:174px; margin:20px auto; overflow:hidden; position:relative;}
+    .sliderbox{position:relative;}/*必须加这句css,否则向左右，上下滚动时会没有效果*/
+    .slidernav{position:absolute; right:0; bottom:0; width:100%; background: rgba(0,0,0,0.5); color:#fff; font-size:0; *word-spacing: -1px;}
+    .slidernav li{display: inline-block; *display: inline; *zoom:1; vertical-align: top; font-size:14px; margin-left: 10px; letter-spacing: normal; word-spacing: normal;}
+    .slidernav li a{width:16px; padding:2px 4px; height:12px; background:#fff; color:#000; text-align:center;}
+    .slidernav li.current a{background:#3B8DD1; color:#fff;}
+    @media screen and (-webkit-min-device-antio:0){
+        .slidernav{letter-spacing: -5px;}
+    }
+    .slider .prev, .slider .next{position: absolute; top:50%; margin-top:-30px; cursor: pointer; width:61px; height:61px; left:0; background: url(../power/images/ft_icons.png) 0 0 no-repeat; text-indent:-9999px;}
+    .slider .next{right:0; left:auto; background-position: 0 -61px;}
+    .sliderbox li{
+        width:250px;
+    }
+    .sliderbox li a img{
+        height: 140px;
+    }
+</style>
+<div class="content">
+    <div class="slider" id="img">
+        <ul class="sliderbox">
+            <li class="first">
+
+                <a href=""><img src="../power/images/ban1.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban2.gif" alt="css代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban3.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li class="first">
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li><li class="first">
+
+            <a href=""><img src="../power/images/ban1.gif" alt="HTML代码"/>
+                <div>标题标题标题标题标题标题标题</div>
+            </a>
+        </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban2.gif" alt="css代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban3.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li class="first">
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li><li class="first">
+
+            <a href=""><img src="../power/images/ban1.gif" alt="HTML代码"/>
+                <div>标题标题标题标题标题标题标题</div>
+            </a>
+        </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban2.gif" alt="css代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban3.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li class="first">
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li><li class="first">
+
+            <a href=""><img src="../power/images/ban1.gif" alt="HTML代码"/>
+                <div>标题标题标题标题标题标题标题</div>
+            </a>
+        </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban2.gif" alt="css代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban3.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li class="first">
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li><li class="first">
+
+            <a href=""><img src="../power/images/ban1.gif" alt="HTML代码"/>
+                <div>标题标题标题标题标题标题标题</div>
+            </a>
+        </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban2.gif" alt="css代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban3.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li class="first">
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+            <li>
+
+                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
+                    <div>标题标题标题标题标题标题标题</div>
+                </a>
+            </li>
+        </ul>
+
+        <div class="prev">&lt;</div>
+        <div class="next">&gt;</div>
+    </div>
+</div>
+
+<!-- 主体（一般只改变这里的内容） -->
+<div class="blog-body">
+    <!-- 这个一般才是真正的主体内容 -->
+    <div class="blog-container">
+        <div class="blog-main">
+            <!--左边文章列表-->
+            <div class="blog-main-left">
+                <div id="articles"></div>
+                <div class="admin-table-page">
+                    <div id="paged" class="page">
+                    </div>
+                </div>
+            </div>
+            <!--右边小栏目-->
+            <div class="blog-main-right">
+                <div class="blog-module shadow">
+                    <div class="blog-module-title">热文排行</div>
+                    <ul class="fa-ul blog-module-ul">
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">Web安全之跨站请求伪造CSRF</a></li>
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">ASP.NET MVC 防范跨站请求伪造（CSRF）</a>
+                        </li>
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">常用正则表达式</a></li>
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">EF CodeFirst数据迁移常用指令</a></li>
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">浅谈.NET Framework基元类型</a></li>
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">C#基础知识回顾-扩展方法</a></li>
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（一）（HTML篇）</a></li>
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（二）（CSS篇）</a></li>
+                    </ul>
+                </div>
+                <div class="blog-module shadow">
+                    <div class="blog-module-title">最近分享</div>
+                    <ul class="fa-ul blog-module-ul">
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="http://pan.baidu.com/s/1c1BJ6Qc"
+                                                                       target="_blank">Canvas</a></li>
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="http://pan.baidu.com/s/1kVK8UhT"
+                                                                       target="_blank">pagesize.js</a></li>
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="https://pan.baidu.com/s/1mit2aiW"
+                                                                       target="_blank">时光轴</a></li>
+                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="https://pan.baidu.com/s/1nuAKF81"
+                                                                       target="_blank">图片轮播</a></li>
+                    </ul>
+                </div>
+                <div class="blog-module shadow">
+                    <div class="blog-module-title">一路走来</div>
+                    <dl class="footprint">
+                        <dt>2017年03月12日</dt>
+                        <dd>新增留言回复功能！人人都可参与回复！</dd>
+                        <dt>2017年03月10日</dt>
+                        <dd>不落阁2.0基本功能完成，正式上线！</dd>
+                        <dt>2017年03月09日</dt>
+                        <dd>新增文章搜索功能！</dd>
+                        <dt>2017年02月25日</dt>
+                        <dd>QQ互联接入网站，可QQ登陆发表评论与留言！</dd>
+                    </dl>
+                </div>
+                <div class="blog-module shadow">
+                    <div class="blog-module-title">后台记录</div>
+                    <dl class="footprint">
+                        <dt>2017年03月16日</dt>
+                        <dd>分页新增页容量控制</dd>
+                        <dt>2017年03月12日</dt>
+                        <dd>新增管家提醒功能</dd>
+                        <dt>2017年03月10日</dt>
+                        <dd>新增Win10快捷菜单</dd>
+                    </dl>
+                </div>
+                <div class="blog-module shadow">
+                    <div class="blog-module-title">友情链接</div>
+                    <ul class="blogroll">
+                        <li><a target="_blank" href="http://www.layui.com/" title="Layui">Layui</a></li>
+                        <li><a target="_blank" href="http://www.pagemark.cn/" title="页签">页签</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!-- 底部 -->
+<footer class="blog-footer">
+    <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="">Lins</a><span>Design By Mr.Lin</span></p>
+    <p><a href="" target="_blank">蜀ICP备160299x4e5号-1</a></p>
+</footer>
+<!--侧边导航-->
+<ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
+    <li class="layui-nav-item layui-this">
+        <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="timeline.html"><i class="fa fa-road fa-fw"></i>&nbsp;点点滴滴</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+    </li>
+</ul>
+<!--分享窗体-->
+<div class="blog-share layui-hide">
+    <div class="blog-share-body">
+        <div style="width: 200px;height:100%;">
+            <div class="bdsharebuttonbox">
+                <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                <a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--遮罩-->
+<div class="blog-mask animated layui-hide"></div>
+<script src="../slider/js/jquery-1.10.1.min.js"></script>
+<script src="../slider/js/idangerous.swiper2.7.6.min.js"></script>
+<script src="../slider/js/swiper.animate1.0.2.min.js"></script>
+<!-- layui.js -->
+<script src="../plug/layui/layui.js"></script>
+<!-- 全局脚本 -->
+<script src="../js/global.js"></script>
+<!-- 本页脚本 -->
+<script src="../js/home.js"></script>
+
+<script id="tpl" type="text/html">
+    <ul>
+        {{# layui.each(d.result, function(index, item){ }}
+        <div class="article shadow">
+            <div class="article-left">
+                <img src="{{ item.cover }}" alt="{{ item.title }}"/>
+            </div>
+            <div class="article-right">
+                <div class="article-title">
+                    <a href="{{ '/detail/' + item.id }}">{{ item.title }}</a>
+                </div>
+                <div class="article-abstract">
+                    {{ item.remark }}
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="article-footer">
+                <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ item.crtTime }}</span>
+                <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ item.crtName}}</span>
+                <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">{{ item.tag }}</a></span>
+                <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;{{ item.pageView }}</span>
+                <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;{{ item.commentCount}}</span>
+            </div>
+        </div>
+        {{# }); }}
+
+        {{# if(d.result.length === 0){ }}
+        无数据
+        {{# } }}
+    </ul>
+</script>
+<script>
+    layui.config({
+        base: 'js/'
+    });
+
+    layui.use(['paging'], function () {
+        var $ = layui.jquery,
+            paging = layui.paging(),
+            layerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
+            layer = layui.layer;//获取当前窗口的layer对象
+
+        paging.init({
+            openWait: true,
+            url: base.url + '/blog/api/project/page', //地址
+            elem: '#articles', //内容容器
+            params: { //发送到服务端的参数
+            },
+            type: 'GET',
+            tempElem: '#tpl', //模块容器
+            pageConfig: { //分页参数配置
+                elem: '#paged', //分页容器
+                pageSize: 10 //分页大小
+            },
+            success: function () { //渲染成功的回调
+                //alert('渲染成功');
+            },
+            fail: function (msg) { //获取数据失败的回调
+                //alert('获取数据失败')
+            },
+            complate: function () { //完成的回调
+
+            },
+        });
+
+    });
+</script>
+<link rel="stylesheet" href="../power/css/reset.css"/>
+<script type="text/javascript" src="../power/images/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../power/js/power-slider.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#img").powerSlider({handle:"hide",sliderNum:5,speed:1});
+        //$("#text").powerSlider();
+        //$("#img").powerSlider({picNum:4,handle:"hide"});
+        $(".code h3 span").each(function(i){
+            $(this).click(function(){
+                $(this).addClass("active").siblings().removeClass("active");
+                $(".code pre").eq(i).show().siblings("pre").hide();
+            })
+        })
+    });
+</script>
+</body>
+</html>

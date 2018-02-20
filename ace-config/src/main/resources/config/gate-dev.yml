@@ -1,0 +1,10 @@
+gate:
+  ignore:
+    startWith: /static,/auth/jwt
+    contain: .
+  oauth:
+    prefix: /jwt
+  jwt:
+    secret: Xe*g@1jda
+    expiration: 7200
+    header: access-token

@@ -1,0 +1,696 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>AG-BLOG</title>
+    <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
+    <!--Layui-->
+    <link href="../plug/layui/css/layui.css" rel="stylesheet" />
+    <!--font-awesome-->
+    <link href="../plug/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!--全局样式表-->
+    <link href="../css/global.css" rel="stylesheet" />
+    <!--本页样式表-->
+    <link href="../css/article.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../slider2/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../slider2/css/index.css">
+</head>
+<body>
+    <!-- 导航 -->
+    <nav class="blog-nav layui-header">
+        <div class="blog-container">
+            <!-- QQ互联登陆 -->
+            <a href="javascript:;" class="blog-user">
+                <i class="fa fa-qq"></i>
+            </a>
+            <a href="javascript:;" class="blog-user layui-hide">
+                <img src="../images/Absolutely.jpg" alt="Absolutely" title="Absolutely" />
+            </a>
+            <!-- 不落阁 -->
+            <a class="blog-logo" href="home.html"><img src="../images/logo.svg"></a>
+            <!-- 导航菜单 -->
+            <ul class="layui-nav" lay-filter="nav">
+                <li class="layui-nav-item layui-this">
+                    <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
+                    <!--</li>-->
+                    <!--<li class="layui-nav-item">-->
+                    <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
+                    <!--</li>-->
+                <li class="layui-nav-item">
+                    <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;作家专栏</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
+                </li>
+            </ul>
+            <!-- 手机和平板的导航开关 -->
+            <a class="blog-navicon" href="javascript:;">
+                <i class="fa fa-navicon"></i>
+            </a>
+        </div>
+    </nav>
+    <center>
+        <section id="rt-showcase-surround">
+            <div id="rt-showcase" class="slider-container rt-overlay-dark">
+                <div class="rt-container slider-container">
+                    <div class="rt-grid-12 rt-alpha rt-omega">
+
+                        <link rel="stylesheet" href="../slider2/css/style.css">
+                        <!--[if IE]><link rel="stylesheet" href="css/ie.css"><![endif]-->
+                        <!--[if lte IE 9]><script type="text/javascript" src="js/ie.js"></script><![endif]-->
+
+                        <div class="csslider1 autoplay">
+                            <input name="cs_anchor1" autocomplete="off" id="cs_slide1_0" type="radio" class="cs_anchor slide" >
+                            <input name="cs_anchor1" autocomplete="off" id="cs_slide1_1" type="radio" class="cs_anchor slide" >
+                            <input name="cs_anchor1" autocomplete="off" id="cs_slide1_2" type="radio" class="cs_anchor slide" >
+                            <input name="cs_anchor1" autocomplete="off" id="cs_play1" type="radio" class="cs_anchor" checked>
+                            <input name="cs_anchor1" autocomplete="off" id="cs_pause1" type="radio" class="cs_anchor" >
+                            <ul>
+                                <div style="width: 100%; visibility: hidden;height:400px; font-size: 0px; line-height: 0;">
+                                    <img src="../slider2/images/1.jpg" style="width: 100%;">
+                                </div>
+                                <li class="num0 img">
+                                    <img src="../slider2/images/1.jpg" alt="Clouds" title="Clouds" />
+                                </li>
+                                <li class="num1 img">
+                                    <img src="../slider2/images/2.jpg" alt="Typewriter" title="Typewriter" />
+                                </li>
+                                <li class="num2 img">
+                                    <img src="../slider2/images/3.jpg" alt="Bicycle" title="Bicycle" />
+                                </li>
+
+                            </ul>
+                            <div class="cs_description">
+                                <label class="num0">
+                                    <span class="cs_title"><span class="cs_wrapper">Clouds</span></span>
+
+                                </label>
+                                <label class="num1">
+                                    <span class="cs_title"><span class="cs_wrapper">Typewriter</span></span>
+
+                                </label>
+                                <label class="num2">
+                                    <span class="cs_title"><span class="cs_wrapper">Bicycle</span></span>
+
+                                </label>
+                            </div>
+
+                            <div class="cs_arrowprev">
+                                <label class="num0" for="cs_slide1_0"></label>
+                                <label class="num1" for="cs_slide1_1"></label>
+                                <label class="num2" for="cs_slide1_2"></label>
+                            </div>
+                            <div class="cs_arrownext">
+                                <label class="num0" for="cs_slide1_0"></label>
+                                <label class="num1" for="cs_slide1_1"></label>
+                                <label class="num2" for="cs_slide1_2"></label>
+                            </div>
+
+                            <div class="cs_bullets">
+                                <label class="num0" for="cs_slide1_0">
+                                    <span class="cs_point"></span>
+                                    <span class="cs_thumb"><img src="../slider2/images/small/1.jpg" alt="Clouds" title="Clouds" /></span>
+                                </label>
+                                <label class="num1" for="cs_slide1_1">
+                                    <span class="cs_point"></span>
+                                    <span class="cs_thumb"><img src="../slider2/images/small/2.jpg" alt="Typewriter" title="Typewriter" /></span>
+                                </label>
+                                <label class="num2" for="cs_slide1_2">
+                                    <span class="cs_point"></span>
+                                    <span class="cs_thumb"><img src="../slider2/images/small/3.jpg" alt="Bicycle" title="Bicycle" /></span>
+                                </label>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </section>        <!-- /slider -->
+    </center>
+
+
+    <div class="content">
+        <!-- 瀑布流样式开始 -->
+        <div class="waterfull clearfloat" id="waterfull">
+            <ul>
+                <li class="item">
+                    <a href="http://www.datouwang.com/" class="a-img">
+                        <img src="../slider2/images/t2.jpg" alt="">
+
+                    </a>
+                    <h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+                    <p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+                    <div class="qianm clearfloat">
+                        <span class="sp1"><b>688</b>浏览</span>
+                        <span class="sp2">站长素材</span>
+                        <span class="sp3">2小时前&nbsp;By</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <a href="http://www.datouwang.com/" class="a-img">
+                        <img src="../slider2/images/t2.jpg" alt="">
+
+                    </a>
+                    <h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+                    <p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+                    <div class="qianm clearfloat">
+                        <span class="sp1"><b>688</b>浏览</span>
+                        <span class="sp2">站长素材</span>
+                        <span class="sp3">2小时前&nbsp;By</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <a href="http://www.datouwang.com/" class="a-img">
+                        <img src="../slider2/images/t2.jpg" alt="">
+
+                    </a>
+                    <h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+                    <p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+                    <div class="qianm clearfloat">
+                        <span class="sp1"><b>688</b>浏览</span>
+                        <span class="sp2">站长素材</span>
+                        <span class="sp3">2小时前&nbsp;By</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <a href="http://www.datouwang.com/" class="a-img">
+                        <img src="../slider2/images/t2.jpg" alt="">
+
+                    </a>
+                    <h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+                    <p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+                    <div class="qianm clearfloat">
+                        <span class="sp1"><b>688</b>浏览</span>
+                        <span class="sp2">站长素材</span>
+                        <span class="sp3">2小时前&nbsp;By</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <a href="http://www.datouwang.com/" class="a-img">
+                        <img src="../slider2/images/t2.jpg" alt="">
+
+                    </a>
+                    <h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+                    <p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+                    <div class="qianm clearfloat">
+                        <span class="sp1"><b>688</b>浏览</span>
+                        <span class="sp2">站长素材</span>
+                        <span class="sp3">2小时前&nbsp;By</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <a href="http://www.datouwang.com/" class="a-img">
+                        <img src="../slider2/images/t2.jpg" alt="">
+
+                    </a>
+                    <h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+                    <p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+                    <div class="qianm clearfloat">
+                        <span class="sp1"><b>688</b>浏览</span>
+                        <span class="sp2">站长素材</span>
+                        <span class="sp3">2小时前&nbsp;By</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <a href="http://www.datouwang.com/" class="a-img">
+                        <img src="../slider2/images/t2.jpg" alt="">
+
+                    </a>
+                    <h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+                    <p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+                    <div class="qianm clearfloat">
+                        <span class="sp1"><b>688</b>浏览</span>
+                        <span class="sp2">站长素材</span>
+                        <span class="sp3">2小时前&nbsp;By</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <a href="http://www.datouwang.com/" class="a-img">
+                        <img src="../slider2/images/t2.jpg" alt="">
+
+                    </a>
+                    <h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+                    <p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+                    <div class="qianm clearfloat">
+                        <span class="sp1"><b>688</b>浏览</span>
+                        <span class="sp2">站长素材</span>
+                        <span class="sp3">2小时前&nbsp;By</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <a href="http://www.datouwang.com/" class="a-img">
+                        <img src="../slider2/images/t2.jpg" alt="">
+
+                    </a>
+                    <h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+                    <p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+                    <div class="qianm clearfloat">
+                        <span class="sp1"><b>688</b>浏览</span>
+                        <span class="sp2">站长素材</span>
+                        <span class="sp3">2小时前&nbsp;By</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <a href="http://www.datouwang.com/" class="a-img">
+                        <img src="../slider2/images/t2.jpg" alt="">
+
+                    </a>
+                    <h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+                    <p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+                    <div class="qianm clearfloat">
+                        <span class="sp1"><b>688</b>浏览</span>
+                        <span class="sp2">站长素材</span>
+                        <span class="sp3">2小时前&nbsp;By</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <a href="http://www.datouwang.com/" class="a-img">
+                        <img src="../slider2/images/t2.jpg" alt="">
+
+                    </a>
+                    <h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+                    <p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+                    <div class="qianm clearfloat">
+                        <span class="sp1"><b>688</b>浏览</span>
+                        <span class="sp2">站长素材</span>
+                        <span class="sp3">2小时前&nbsp;By</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <a href="http://www.datouwang.com/" class="a-img">
+                        <img src="../slider2/images/t2.jpg" alt="">
+
+                    </a>
+                    <h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+                    <p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+                    <div class="qianm clearfloat">
+                        <span class="sp1"><b>688</b>浏览</span>
+                        <span class="sp2">站长素材</span>
+                        <span class="sp3">2小时前&nbsp;By</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <a href="http://www.datouwang.com/" class="a-img">
+                        <img src="../slider2/images/t2.jpg" alt="">
+
+                    </a>
+                    <h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+                    <p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+                    <div class="qianm clearfloat">
+                        <span class="sp1"><b>688</b>浏览</span>
+                        <span class="sp2">站长素材</span>
+                        <span class="sp3">2小时前&nbsp;By</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <a href="http://www.datouwang.com/" class="a-img">
+                        <img src="../slider2/images/t2.jpg" alt="">
+
+                    </a>
+                    <h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+                    <p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+                    <div class="qianm clearfloat">
+                        <span class="sp1"><b>688</b>浏览</span>
+                        <span class="sp2">站长素材</span>
+                        <span class="sp3">2小时前&nbsp;By</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- loading按钮自己通过样式调整 -->
+        <div id="imloading" style="width:150px;height:30px;line-height:30px;font-size:16px;text-align:center;border-radius:3px;opacity:0.7;background:#000;margin:10px auto 30px;color:#fff;display:none">
+            站长素材加载中.....
+        </div>
+    </div>
+    <!-- 主体（一般只改变这里的内容） -->
+    <div class="blog-body">
+        <div class="blog-container">
+            <blockquote class="layui-elem-quote sitemap layui-breadcrumb shadow">
+                <a href="home.html" title="网站首页">网站首页</a>
+                <a><cite>文章专栏</cite></a>
+            </blockquote>
+            <div class="blog-main">
+                <div class="blog-main-left">
+                    <div class="shadow" style="text-align:center;font-size:16px;padding:40px 15px;background:#fff;margin-bottom:15px;">
+                        未搜索到与【<span style="color: #FF5722;">keywords</span>】有关的文章，随便看看吧！
+                    </div>
+                    <div class="article shadow">
+                        <div class="article-left">
+                            <img src="../images/cover/201703181909057125.jpg" alt="基于laypage的layui扩展模块（pagesize.js）！" />
+                        </div>
+                        <div class="article-right">
+                            <div class="article-title">
+                                <a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a>
+                            </div>
+                            <div class="article-abstract">
+                                该模块主要是针对当前版本laypage没有页容量控制功能而制作，使用该模块后即可实现每页显示多少条数据的控制！本人原创，但是可能有可能只对本人的分页写法有用！
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="article-footer">
+                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2017-03-18</span>
+                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Absolutely</span>
+                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
+                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
+                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
+                        </div>
+                    </div>
+                    <div class="article shadow">
+                        <div class="article-left">
+                            <img src="../images/cover/201703181909057125.jpg" alt="基于laypage的layui扩展模块（pagesize.js）！" />
+                        </div>
+                        <div class="article-right">
+                            <div class="article-title">
+                                <a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a>
+                            </div>
+                            <div class="article-abstract">
+                                该模块主要是针对当前版本laypage没有页容量控制功能而制作，使用该模块后即可实现每页显示多少条数据的控制！本人原创，但是可能有可能只对本人的分页写法有用！
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="article-footer">
+                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2017-03-18</span>
+                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Absolutely</span>
+                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
+                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
+                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
+                        </div>
+                    </div>
+                    <div class="article shadow">
+                        <div class="article-left">
+                            <img src="../images/cover/201703181909057125.jpg" alt="基于laypage的layui扩展模块（pagesize.js）！" />
+                        </div>
+                        <div class="article-right">
+                            <div class="article-title">
+                                <a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a>
+                            </div>
+                            <div class="article-abstract">
+                                该模块主要是针对当前版本laypage没有页容量控制功能而制作，使用该模块后即可实现每页显示多少条数据的控制！本人原创，但是可能有可能只对本人的分页写法有用！
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="article-footer">
+                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2017-03-18</span>
+                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Absolutely</span>
+                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
+                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
+                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
+                        </div>
+                    </div>
+                    <div class="article shadow">
+                        <div class="article-left">
+                            <img src="../images/cover/201703181909057125.jpg" alt="基于laypage的layui扩展模块（pagesize.js）！" />
+                        </div>
+                        <div class="article-right">
+                            <div class="article-title">
+                                <a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a>
+                            </div>
+                            <div class="article-abstract">
+                                该模块主要是针对当前版本laypage没有页容量控制功能而制作，使用该模块后即可实现每页显示多少条数据的控制！本人原创，但是可能有可能只对本人的分页写法有用！
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="article-footer">
+                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2017-03-18</span>
+                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Absolutely</span>
+                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
+                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
+                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
+                        </div>
+                    </div>
+                    <div class="article shadow">
+                        <div class="article-left">
+                            <img src="../images/cover/201703181909057125.jpg" alt="基于laypage的layui扩展模块（pagesize.js）！" />
+                        </div>
+                        <div class="article-right">
+                            <div class="article-title">
+                                <a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a>
+                            </div>
+                            <div class="article-abstract">
+                                该模块主要是针对当前版本laypage没有页容量控制功能而制作，使用该模块后即可实现每页显示多少条数据的控制！本人原创，但是可能有可能只对本人的分页写法有用！
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="article-footer">
+                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2017-03-18</span>
+                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Absolutely</span>
+                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
+                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
+                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
+                        </div>
+                    </div>
+                    <div class="article shadow">
+                        <div class="article-left">
+                            <img src="../images/cover/201703181909057125.jpg" alt="基于laypage的layui扩展模块（pagesize.js）！" />
+                        </div>
+                        <div class="article-right">
+                            <div class="article-title">
+                                <a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a>
+                            </div>
+                            <div class="article-abstract">
+                                该模块主要是针对当前版本laypage没有页容量控制功能而制作，使用该模块后即可实现每页显示多少条数据的控制！本人原创，但是可能有可能只对本人的分页写法有用！
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="article-footer">
+                            <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;2017-03-18</span>
+                            <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;Absolutely</span>
+                            <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">Web前端</a></span>
+                            <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;0</span>
+                            <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;4</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-main-right">
+                    <div class="blog-search">
+                        <form class="layui-form" action="">
+                            <div class="layui-form-item">
+                                <div class="search-keywords  shadow">
+                                    <input type="text" name="keywords" lay-verify="required" placeholder="输入关键词搜索" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="search-submit  shadow">
+                                    <a class="search-btn" lay-submit="formSearch" lay-filter="formSearch"><i class="fa fa-search"></i></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="article-category shadow">
+                        <div class="article-category-title">分类导航</div>
+                        <a href="javascript:layer.msg(&#39;切换到相应分类&#39;)">ASP.NET MVC</a>
+                        <a href="javascript:layer.msg(&#39;切换到相应分类&#39;)">SQL Server</a>
+                        <a href="javascript:layer.msg(&#39;切换到相应分类&#39;)">Entity Framework</a>
+                        <a href="javascript:layer.msg(&#39;切换到相应分类&#39;)">Web前端</a>
+                        <a href="javascript:layer.msg(&#39;切换到相应分类&#39;)">C#基础</a>
+                        <a href="javascript:layer.msg(&#39;切换到相应分类&#39;)">杂文随笔</a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="blog-module shadow">
+                        <div class="blog-module-title">作者推荐</div>
+                        <ul class="fa-ul blog-module-ul">
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">Web安全之跨站请求伪造CSRF</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">ASP.NET MVC 防范跨站请求伪造（CSRF）</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">C#基础知识回顾-扩展方法</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（一）（HTML篇）</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（二）（CSS篇）</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（三）（JS篇）</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">写了个Win10风格快捷菜单！</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">ASP.NET MVC自定义错误页</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">ASP.NET MVC制作404跳转（非302和200）</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a></li>
+                        </ul>
+                    </div>
+                    <div class="blog-module shadow">
+                        <div class="blog-module-title">随便看看</div>
+                        <ul class="fa-ul blog-module-ul">
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（一）（HTML篇）</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">ASP.NET MVC制作404跳转（非302和200）</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">ASP.NET MVC 防范跨站请求伪造（CSRF）</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（三）（JS篇）</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">基于laypage的layui扩展模块（pagesize.js）！</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（二）（CSS篇）</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">写了个Win10风格快捷菜单！</a></li>
+                            <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">常用正则表达式</a></li>
+                        </ul>
+                    </div>
+                    <!--右边悬浮 平板或手机设备显示-->
+                    <div class="category-toggle"><i class="fa fa-chevron-left"></i></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <!-- 底部 -->
+    <footer class="blog-footer">
+        <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="http://www.lyblogs.cn">不落阁</a><span>Design By LY</span></p>
+        <p><a href="http://www.miibeian.gov.cn/" target="_blank">蜀ICP备16029915号-1</a></p>
+    </footer>
+    <!--侧边导航-->
+    <ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
+        <li class="layui-nav-item">
+            <a href="home.html"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+        </li>
+        <li class="layui-nav-item layui-this">
+            <a href="article.html"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="resource.html"><i class="fa fa-tags fa-fw"></i>&nbsp;资源分享</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="timeline.html"><i class="fa fa-road fa-fw"></i>&nbsp;点点滴滴</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+        </li>
+    </ul>
+    <!--分享窗体-->
+    <div class="blog-share layui-hide">
+        <div class="blog-share-body">
+            <div style="width: 200px;height:100%;">
+                <div class="bdsharebuttonbox">
+                    <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                    <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--遮罩-->
+    <div class="blog-mask animated layui-hide"></div>
+    <!-- layui.js -->
+    <script src="../plug/layui/layui.js"></script>
+    <!-- 全局脚本 -->
+    <script src="../js/global.js"></script>
+
+    <script type="text/javascript" src="../slider2/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../slider2/js/jQueryColor.js"></script>
+    <!--这个插件是瀑布流主插件函数必须-->
+    <script type="text/javascript" src="../slider2/js/jquery.masonry.min.js"></script>
+    <!--这个插件只是为了扩展jquery的animate函数动态效果可有可无-->
+    <script type="text/javascript" src="../slider2/js/jQeasing.js"></script>
+    <script type="text/javascript">
+        /*
+         抛开瀑布流布局各种乱七八糟的算法，基于masonry的瀑布流，很是简单的，而且通过扩展animate,能实现瀑布流布局的晃动、弹球等效果。
+         masonry还有很多参数我这里注解了常用的参数
+         */
+        $(function(){
+            /*瀑布流开始*/
+            var container = $('.waterfull ul');
+            var loading=$('#imloading');
+            // 初始化loading状态
+            loading.data("on",true);
+            /*判断瀑布流最大布局宽度，最大为1280*/
+            function tores(){
+                var tmpWid=$(window).width();
+                if(tmpWid>1280){
+                    tmpWid=1280;
+                }else{
+                    var column=Math.floor(tmpWid/320);
+                    tmpWid=column*320;
+                }
+                $('.waterfull').width(tmpWid);
+            }
+            tores();
+            $(window).resize(function(){
+                tores();
+            });
+            container.imagesLoaded(function(){
+                container.masonry({
+                    columnWidth: 320,
+                    itemSelector : '.item',
+                    isFitWidth: true,//是否根据浏览器窗口大小自动适应默认false
+                    isAnimated: true,//是否采用jquery动画进行重拍版
+                    isRTL:false,//设置布局的排列方式，即：定位砖块时，是从左向右排列还是从右向左排列。默认值为false，即从左向右
+                    isResizable: true,//是否自动布局默认true
+                    animationOptions: {
+                        duration: 800,
+                        easing: 'easeInOutBack',//如果你引用了jQeasing这里就可以添加对应的动态动画效果，如果没引用删除这行，默认是匀速变化
+                        queue: false//是否队列，从一点填充瀑布流
+                    }
+                });
+            });
+            /*模拟从后台获取到的数据*/
+            var sqlJson=[{'title':'瀑布流其实就是几个函数的事！','intro':'爆料，苏亚雷斯又咬人啦，C罗哪有内马尔帅，梅西今年要不夺冠，你就去泰国吧，老子买了阿根廷赢得彩票，输了就去不成了。','src':'../slider2/images/t3.jpg','writer':'站长素材','date':'2小时前','looked':321},{'title':'瀑布流其实就是几个函数的事！','intro':'爆料了，苏亚雷斯又咬人啦，C罗哪有内马尔帅，梅西今年要不夺冠，你就去泰国吧，老子买了阿根廷赢得彩票，输了就去不成了。','src':'../slider2/images/t2.jpg','writer':'站长素材','date':'2小时前','looked':321},{'title':'瀑布流其实就是几个函数的事！','intro':'爆料了，苏亚雷斯又咬人啦，C罗哪有内马尔帅，梅西今年要不夺冠，你就去泰国吧，老子买了阿根廷赢得彩票，输了就去不成了。','src':'../slider2/images/t1.jpg','writer':'站长素材','date':'2小时前','looked':321},{'title':'瀑布流其实就是几个函数的事！','intro':'爆料了，苏亚雷斯又咬人啦，C罗哪有内马尔帅，梅西今年要不夺冠，你就去泰国吧，老子买了阿根廷赢得彩票，输了就去不成了。','src':'../slider2/images/p1.jpg','writer':'站长素材','date':'2小时前','looked':321}];
+            /*本应该通过ajax从后台请求过来类似sqljson的数据然后，便利，进行填充，这里我们用sqlJson来模拟一下数据*/
+            $(window).scroll(function(){
+                if(!loading.data("on")) return;
+                // 计算所有瀑布流块中距离顶部最大，进而在滚动条滚动时，来进行ajax请求，方法很多这里只列举最简单一种，最易理解一种
+                var itemNum=$('#waterfull').find('.item').length;
+                var itemArr=[];
+                itemArr[0]=$('#waterfull').find('.item').eq(itemNum-1).offset().top+$('#waterfull').find('.item').eq(itemNum-1)[0].offsetHeight;
+                itemArr[1]=$('#waterfull').find('.item').eq(itemNum-2).offset().top+$('#waterfull').find('.item').eq(itemNum-1)[0].offsetHeight;
+                itemArr[2]=$('#waterfull').find('.item').eq(itemNum-3).offset().top+$('#waterfull').find('.item').eq(itemNum-1)[0].offsetHeight;
+                var maxTop=Math.max.apply(null,itemArr);
+                if(maxTop<$(window).height()+$(document).scrollTop()){
+                    //加载更多数据
+                    loading.data("on",false).fadeIn(800);
+                    (function(sqlJson){
+                        /*这里会根据后台返回的数据来判断是否你进行分页或者数据加载完毕这里假设大于30就不在加载数据*/
+                        if(itemNum>30){
+                            loading.text('就有这么多了！');
+                        }else{
+                            var html="";
+                            for(var i in sqlJson){
+                                html+="<li class='item'><a href='http://www.datouwang.com/' class='a-img'><img src='"+sqlJson[i].src+"'></a>";
+                                html+="<h2 class='li-title'>"+sqlJson[i].title+"</h2>";
+                                html+="<p class='description'>"+sqlJson[i].intro+"</p><div class='qianm clearfloat'>";
+                                html+="<span class='sp1'><b>"+sqlJson[i].looked+"</b>浏览</span>";
+                                html+="<span class='sp2'>"+sqlJson[i].writer+"</span><span class='sp3'>"+sqlJson[i].date+"&nbsp;By</span></div></li>";
+                            }
+                            /*模拟ajax请求数据时延时800毫秒*/
+                            var time=setTimeout(function(){
+                                $(html).find('img').each(function(index){
+                                    loadImage($(this).attr('src'));
+                                })
+                                var $newElems = $(html).css({ opacity: 0}).appendTo(container);
+                                $newElems.imagesLoaded(function(){
+                                    $newElems.animate({ opacity: 1},800);
+                                    container.masonry( 'appended', $newElems,true);
+                                    loading.data("on",true).fadeOut();
+                                    clearTimeout(time);
+                                });
+                            },800)
+                        }
+                    })(sqlJson);
+                }
+            });
+            function loadImage(url) {
+                var img = new Image();
+                //创建一个Image对象，实现图片的预下载
+                img.src = url;
+                if (img.complete) {
+                    return img.src;
+                }
+                img.onload = function () {
+                    return img.src;
+                };
+            };
+            loadImage('../slider2/images/t2.jpg');
+            /*item hover效果*/
+            var rbgB=['#71D3F5','#F0C179','#F28386','#8BD38B'];
+            $('#waterfull').on('mouseover','.item',function(){
+                var random=Math.floor(Math.random() * 4);
+                $(this).stop(true).animate({'backgroundColor':rbgB[random]},1000);
+            });
+            $('#waterfull').on('mouseout','.item',function(){
+                $(this).stop(true).animate({'backgroundColor':'#fff'},1000);
+            });
+        })
+    </script>
+
+</body>
+</html>
