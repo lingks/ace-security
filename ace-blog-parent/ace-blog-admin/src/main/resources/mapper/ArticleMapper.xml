@@ -13,6 +13,9 @@
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="tag" jdbcType="VARCHAR" property="tag" />
     <result column="page_view" jdbcType="INTEGER" property="pageView" />
+    <result column="commentCount" jdbcType="INTEGER" property="commentCount" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="hotValue" jdbcType="INTEGER" property="hotValue" />
     <result column="crt_time" jdbcType="TIMESTAMP" property="crtTime" />
     <result column="crt_user" jdbcType="VARCHAR" property="crtUser" />
     <result column="crt_name" jdbcType="VARCHAR" property="crtName" />

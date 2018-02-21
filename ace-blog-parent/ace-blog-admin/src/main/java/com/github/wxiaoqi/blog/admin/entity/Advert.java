@@ -14,12 +14,20 @@ public class Advert {
     @Id
     private Integer id;
 
-
+    private String remark;
     private String logo;
 
     private String url;
 
     private Integer sort;
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
     public String getUrl() {
         return url;

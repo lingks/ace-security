@@ -24,10 +24,13 @@ public class ArticleController extends BaseController<ArticleBiz,Article> {
 
     @RequestMapping(value = "/page",method = RequestMethod.GET)
     @ResponseBody
-    public TableResultResponse<Article> page(int limit, int offset, String title){
+    public TableResultResponse<Article> page(int limit, int offset, String title,Integer type){
         Example example = new Example(Article.class);
         if(StringUtils.isNotBlank(title))
             example.createCriteria().andLike("title", "%" + title + "%");
+        if(type != null){
+            example.createCriteria().andEqualTo("type", type);
+        }
         int count = baseBiz.selectCountByExample(example);
         PageHelper.startPage(offset, limit);
         return new TableResultResponse<Article>(count,baseBiz.selectByExample(example));

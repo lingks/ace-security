@@ -51,7 +51,10 @@ public class Article {
 
     @Column(name = "upd_host")
     private String updHost;
-
+    @Column(name = "comment_count")
+    private Integer commentCount;
+    @Column(name = "hot_value")
+    private Integer hotValue;
     private String attr1;
 
     private String attr2;
@@ -67,6 +70,32 @@ public class Article {
     private String attr7;
 
     private String attr8;
+
+    private Integer type;
+
+    public Integer getHotValue() {
+        return hotValue;
+    }
+
+    public void setHotValue(Integer hotValue) {
+        this.hotValue = hotValue;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public Integer getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
+    }
 
     public String getTitleImg() {
         return titleImg;

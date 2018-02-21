@@ -44,4 +44,12 @@ public class BlogController {
     public String partnerEdit(){
         return "blog/partner/edit";
     }
+    @RequestMapping("advert")
+    public String advert(){
+        return "blog/advert/list";
+    }
+    @RequestMapping("advert/edit")
+    public String advertEdit(){
+        return "blog/advert/edit";
+    }
 }

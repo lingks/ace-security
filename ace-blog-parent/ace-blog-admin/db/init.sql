@@ -21,7 +21,7 @@ SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
---  Table structure for `blog_article`
+--  Table structure for `blog_article` alter table blog_article add column hot_value int(11) default '0'
 -- ----------------------------
 DROP TABLE IF EXISTS `blog_article`;
 CREATE TABLE `blog_article` (
@@ -32,6 +32,9 @@ CREATE TABLE `blog_article` (
   `tag` varchar(255) DEFAULT NULL,
   `is_del` char(1) DEFAULT NULL,
   `page_view` int(11) DEFAULT '1',
+  `comment_count` int(11) DEFAULT '0',
+  `type` int(11) DEFAULT '0',
+  `hot_value` int(11) DEFAULT '0',
   `cover` varchar(255) DEFAULT NULL,
   `crt_time` datetime DEFAULT NULL,
   `crt_user` varchar(255) DEFAULT NULL,
@@ -67,6 +70,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE `strategic_partner` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(200) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `logo` varchar(200),
   `sort` int(11) DEFAULT 0,
@@ -76,6 +80,7 @@ CREATE TABLE `strategic_partner` (
 
 CREATE TABLE `advert` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `remarkt` varchar(255) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   `logo` varchar(200),
   `sort` int(11) DEFAULT 0,
