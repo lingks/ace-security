@@ -37,6 +37,28 @@ public class UserRest {
         return new ObjectRestResponse<User>().rel(true);
     }
 
+    @RequestMapping(value = "register",method = RequestMethod.POST)
+    @ResponseBody
+    public ObjectRestResponse<Comment> register(User entity,String callback){
+
+
+
+        Example example = new Example(User.class);
+        example.createCriteria().andEqualTo("username", entity.getUsername());
+        List<User> users = articleBiz.selectByExample(example);
+        if(users != null && users.size() > 0){
+            return new ObjectRestResponse<Comment>().rel(false);
+        }
+        articleBiz.insertSelective(entity);
+
+        example.createCriteria().andEqualTo("password", entity.getPassword());
+        users = articleBiz.selectByExample(example);
+
+        return new ObjectRestResponse<Comment>().rel(true).result(users);
+
+    }
+
+
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     @ResponseBody
     public JSONPObject login(String username, String password,String callback) {

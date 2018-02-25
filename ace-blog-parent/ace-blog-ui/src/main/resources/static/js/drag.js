@@ -65,7 +65,7 @@
             $(document).unbind('mousemove');
             $(document).unbind('mouseup');
 
-            $(".btnSubmit").on('click',function(){
+            $("#btnSubmit").on('click',function(){
 
                 layui.use('layer', function(){
 
@@ -95,7 +95,8 @@
                                 if(data.result.length > 0){
                                     console.log(data.result[0])
                                     localStorage.setItem("user",JSON.stringify(data.result[0]));
-                                    window.location.href="/center";
+                                    console.log(JSON.stringify(data.result[0]))
+                                    //window.location.href="/center";
 
                                 }else{
                                     layer.msg("账号或者密码不对")
@@ -108,6 +109,59 @@
                             console.log(error)
                         }
                     });
+                })
+
+            })
+
+
+
+            $("#btnSubmit2").on('click',function(){
+
+                layui.use('layer', function(){
+
+                    var $ = layui.jquery, layer = layui.layer;
+                    if($("#username").val() == ""){
+                        layer.msg('账号不能为空！');
+                        return;
+                    }
+
+                    if($("#password").val() == ""){
+                        layer.msg('密码不能为空！');
+                        return;
+                    }
+
+                    if($("#password2").val() == ""){
+                        layer.msg('确认密码不能为空！');
+                        return;
+                    }else if($("#password2").val() != $("#password").val()){
+                        layer.msg("密码不一致")
+                    }
+                    $.ajax({
+                        url: base.url + '/blog/api/user/register',
+                        type: 'POST',
+
+
+                        dataType: 'json',
+                        data:{
+                            "username":$("#username").val(),
+                            "password":$("#password").val()
+                        },
+                        success: function (data, status, xhr) {
+                            if(data.rel == false){
+                                layer.msg("用户名已经存在，请重新注册");
+                                return;
+                            }
+                            layer.msg("注册成功,等待跳转。。。", { icon: 1 });
+
+
+                            console.log(JSON.stringify(data.result[0]))
+                            localStorage.setItem("user",JSON.stringify(data.result[0]));
+                            setTimeout(function(){
+                                window.location.href="/center";
+                            },3000);
+                        }
+                    })
+
                 })
 
             })

@@ -61,12 +61,17 @@ public class HomeController {
         return "udetail";
     }
     @RequestMapping("/center")
-    public String cente(){
+    public String center(){
         return "center";
     }
     @RequestMapping("/login")
     public String login(){
         return "login";
+    }
+
+    @RequestMapping("/register")
+    public String register(){
+        return "register";
     }
 
     @RequestMapping("/writting")
