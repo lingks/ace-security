@@ -95,7 +95,7 @@
                                 if(data.result.length > 0){
                                     console.log(data.result[0])
                                     localStorage.setItem("user",JSON.stringify(data.result[0]));
-                                    layer.msg("登录成功")
+                                    window.location.href="/center";
 
                                 }else{
                                     layer.msg("账号或者密码不对")
