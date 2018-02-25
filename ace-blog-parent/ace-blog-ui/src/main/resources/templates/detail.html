@@ -295,29 +295,6 @@
     var articleDetail = document.getElementById("articleDetail");
     var getTpl = detail.innerHTML;
 
-    $(function(){
-        console.log(authorId)
-        //添加阅读文章
-        if(authorId !=undefined && authorId!=null &&　authorId!='' && authorId!='null'){
-            console.log(authorId)
-            $.ajax({
-                url: base.url +'/blog/api/collection',
-                type: 'POST',
-                dataType: 'json',
-                data:{
-                    'articleId':$("#articleId").text(),
-                    'userId':authorId,
-                    'title':$("#title-view").text()
-                },
-                success: function (data, status, xhr) {
-                    console.log(data);
-                },
-                error:function(){
-                    console.log("sdafdsafdsaf")
-                }
-            })
-        }
-    })
     hljs.initHighlightingOnLoad();
     marked.setOptions({
         highlight: function (code) {
@@ -337,7 +314,7 @@
                console.log("保存浏览量成功")
             }
         })
-
+        //--------------------
         $.ajax({
             type: "GET",
             url: base.url+"/blog/api/article"+articleId,
@@ -351,6 +328,29 @@
                     data.result.content = marked(content);
                     laytpl(getTpl).render(data.result, function (html) {
                         articleDetail.innerHTML = html;
+
+
+                        console.log(authorId)
+                        //添加阅读文章
+                        if(authorId !=undefined && authorId!=null &&　authorId!='' && authorId!='null'){
+                            console.log($("#title-view").text())
+                            $.ajax({
+                                url: base.url +'/blog/api/collection',
+                                type: 'POST',
+                                dataType: 'json',
+                                data:{
+                                    'articleId':$("#articleId").val(),
+                                    'userId':authorId,
+                                    'title':$("#title-view").text()
+                                },
+                                success: function (data, status, xhr) {
+                                    console.log(data);
+                                },
+                                error:function(){
+                                    console.log("sdafdsafdsaf")
+                                }
+                            })
+                        }
                     });
                 }
             },

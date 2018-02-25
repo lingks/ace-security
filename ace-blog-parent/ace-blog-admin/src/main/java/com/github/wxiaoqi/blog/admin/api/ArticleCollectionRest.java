@@ -10,8 +10,12 @@ import com.github.wxiaoqi.blog.admin.entity.ArticleCollection;
 import com.github.wxiaoqi.blog.admin.entity.Comment;
 import com.github.wxiaoqi.security.common.msg.ListRestResponse;
 import com.github.wxiaoqi.security.common.msg.ObjectRestResponse;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tk.mybatis.mapper.entity.Example;
+
+import java.util.List;
 
 /**
  * Created by ace on 2017/7/16.
@@ -26,7 +30,12 @@ public class ArticleCollectionRest {
     @RequestMapping(value = "",method = RequestMethod.POST)
     @ResponseBody
     public ObjectRestResponse<ArticleCollection> add(ArticleCollection entity){
-        articleBiz.insertSelective(entity);
+        Example example = new Example(ArticleCollection.class);
+        example.createCriteria().andEqualTo("userId", entity.getUserId()).andEqualTo("articleId", entity.getArticleId());
+        List<ArticleCollection> list =  articleBiz.selectByExample(example);
+        if(list.size() == 0){
+            articleBiz.insertSelective(entity);
+        }
         return new ObjectRestResponse<ArticleCollection>().rel(true);
     }
 

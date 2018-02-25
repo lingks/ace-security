@@ -175,8 +175,8 @@ body {
     .blog-nav .layui-nav {
         position: absolute;
         top: 0;
-        left: 35%;
-        width: 50%;
+        left: 500px;
+        width: 550px;
         background: none;
         display: none;
         text-align: center;
@@ -259,7 +259,7 @@ body {
 
     .blog-nav .blog-logo {
         position: absolute;
-        left: 10%;
+        left: 30px;
         width: auto;
     }
 
