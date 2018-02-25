@@ -21,10 +21,10 @@ public class Comment {
     @Column(name = "crt_time")
     private Date crtTime;
 
-    @Column(name = "crt_user")
+    @Column(name = "crtUser")
     private String crtUser;
 
-    @Column(name = "crt_name")
+    @Column(name = "crtName")
     private String crtName;
 
     private Integer pid;

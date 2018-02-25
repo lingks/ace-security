@@ -45,6 +45,199 @@
         #advert-view div{
             overflow: hidden;
         }
+
+        #first_pj_index_view{
+            width: 100%;
+            min-width: 1200px;
+        }
+        #first_pj_index_view li{
+            width: 85%;
+            height:220px;
+            margin: 0 auto;
+            background: white;
+        }
+        #first_pj_index_view li a img{
+            width:100%;
+            height: 160px;
+        }
+
+        #second_pj_index_view{
+            width: 100%;
+            min-width: 1200px;
+        }
+        #second_pj_index_view li{
+            width: 85%;
+            height:220px;
+            margin: 0 auto;
+            background: white;
+        }
+        #second_pj_index_view li a img{
+            width:100%;
+            height: 160px;
+        }
+        .ui_li_div{
+            float: left;
+            width: 20%;
+        }
+        .li_div{
+            width: 100%;
+        }
+
+        .carousel-title{
+            font-size: 24px;
+            color: rgba(255, 255, 255, .5);
+            line-height: 24px;
+            text-align: center;
+            margin-bottom: 23px;
+            padding-top: 20px;
+            font: 16px PingFangSC-Regular, Microsoft YaHei;
+        }
+
+
+        #ui_li_span{
+            position: relative;
+            display: block;
+            font-size: 13px;
+            width: 80px;
+            line-height: 13px;
+            text-align: center;
+            color: rgba(255, 255, 255, .7);
+            margin: 0 auto;
+        }
+        #ui_li_span:before{
+            position: absolute;
+            content: " ";
+            top: 0;
+            left: 0;
+            width: 9px;
+            height: 13px;
+            background: url("../images/pro-banner-timer-lf.svg") no-repeat center;
+        }
+        #ui_li_span:after{
+            position: absolute;
+            content: " ";
+            top: 0;
+            right: 0;
+            width: 9px;
+            height: 13px;
+            background: url("../images/pro-banner-timer-rt.svg") no-repeat center;
+        }
+
+
+        .search-btn{
+            width: 80%;
+            margin: 0 auto;
+            height: 40px;
+            position: relative;
+            background: #5e6db5;
+            bottom: 0px;
+            text-align: center;
+            color: white;
+            line-height: 40px;
+            font-size: 14px;
+        }
+
+        .pro-good-data-text {
+            font-size: 12px;
+            color: #666666;
+            text-align: justify;
+            overflow: hidden;
+        }
+
+        #pj_carousel .layui-carousel-ind{
+            display: none;
+        }
+
+
+        #uinfo-view {
+            position: absolute;
+            right: 0;
+            width: 65px;
+            margin-right: 50px;
+        }
+        .m-t-pro-more p{
+            height: 20px;
+            padding-top: 150px;
+            transition: all .3s ease;
+            background: url(../images/index-pro-more.svg) no-repeat center;
+        }
+        .m-t-pro-more:hover p{
+            color: #1E9FFF;
+            background: url(../images/index-pro-more-h.svg) no-repeat center;
+        }
+
+        .m-t-pro-more a:hover{
+            color: #1E9FFF;
+        }
+        .m-t-pro-more a span{
+            position: relative;
+            top:-65px;
+            color: #2F4056;
+        }
+        .m-t-pro-more a span:hover{
+            color: #1E9FFF;
+        }
+        .blog-main{
+            margin-top: 0px;
+            min-width: 1150px;
+        }
+        .layui-btn2 {
+            display: inline-block;
+            height: 28px;
+            border-radius: 15px;
+            /* text-align: left; */
+            line-height: 28px;
+            padding: 0px 20px 0px 10px;
+            background-color: #393D49;
+            color: #fff;
+            white-space: nowrap;
+            text-align: left;
+            font-size: 12px;
+            border: none;
+            /*border: 1px #4c4949 solid;*/
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        #login-tag{
+            font-size: 12px;
+            margin-left: 20px;
+        }
+        .layui-btn2 .layui-icon {
+            /* margin-right: 3px; */
+            /* font-size: 18px; */
+            vertical-align: bottom;
+            vertical-align: middle\9;
+
+        }
+
+        #h-writing button:hover{
+            color: #6c9894;
+            cursor: pointer;
+        }
+        #login-tag a{
+            cursor: pointer;
+        }
+
+        #uinfo-viewuinfo-view {
+            position: absolute;
+            right: 0;
+            width: 65px;
+            margin-right: 50px;
+        }
+        #xiewenzhangn{
+            float: right;
+            width: 100px;
+            padding-top: 14px;
+        }
+
+
+        #login-tag a{
+            cursor: pointer;
+        }
+        #login-tag a span{
+            color: #fff;font-size: 12px;
+        }
     </style>
 </head>
 <body>
@@ -52,9 +245,29 @@
 <nav class="blog-nav layui-header">
     <div class="blog-container">
         <!-- QQ互联登陆 -->
-        <a href="javascript:;" class="blog-user">
-            <i class="fa fa-qq"></i>
-        </a>
+        <div id="uinfo-view">
+
+        </div>
+        <div id="login-tag" style="position: absolute;right: 80px;float:left;line-height: 65px;color: #fff;font-size: 14px;">
+            <a><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a><span>注&nbsp;&nbsp;册</span></a>
+        </div>
+        <div id="xiewenzhangn">
+            <div class="h-writing" style="width: 100px;height: 48px;">
+                <li style="width: 78px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 24px;
+    border-radius: 15px;
+    background: #393D49">
+                    <button class="layui-btn2" style="
+    /* height: 30px; */
+"><i class="layui-icon"></i>写文章</button>
+                </li>
+            </div>
+        </div>
+
         <a href="javascript:;" class="blog-user layui-hide">
             <img src="../images/Absolutely.jpg" alt="Absolutely" title="Absolutely"/>
         </a>
@@ -67,20 +280,20 @@
             <li class="layui-nav-item layui-this">
                 <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
             </li>
-            <li class="layui-nav-item">
-                <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>
-            </li>
+            <!--<li class="layui-nav-item">-->
+                <!--<a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>-->
+            <!--</li>-->
             <li class="layui-nav-item">
                 <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
             </li>
             <li class="layui-nav-item">
-                <a href="project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
+                <a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
             <!--</li>-->
             <!--<li class="layui-nav-item">-->
                 <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
             <!--</li>-->
             <li class="layui-nav-item">
-                <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;作家专栏</a>
+                <a href="/author"><i class="fa fa-thumbs-up fa-fw"></i>&nbsp;作家</a>
             </li>
             <li class="layui-nav-item">
                 <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
@@ -97,214 +310,41 @@
 
     <div class="layui-carousel" id="test2" style="margin-top: 15px;height:372px;width:98%;">
         <div carousel-item="">
-            <div style="text-align: center;line-height: 32px;font-size: 18px;font-weight: bold;width:100%;float:left;padding-left:2%;padding-right:2%;background-image: url(../images/head-bg.jpg);">
-                <div style="width:30%;margin-left:1%;height:372px;float:left;background-color: white;">
-                    <img src="../images/face/1.jpg" style="width: 100%;height: 242px;">
-                    <span>美国数字货币监管考量及对我国的启示</span>
-                    <div style="font-size: 14px;font-weight: normal;width: 88%;margin: 0 auto;">
-                        <span style="float: left;">
-                            <img src="../images/head-bg.jpg" style="width: 30px;height:30px;border-radius: 50%"></img>
-                            链向作家
-                        </span>
-                        <span style="float: right;">
-                            浏览量100
-                        </span>
-                    </div>
-                </div>
-                <div style="width:30%;margin-left:2%;height:372px;float:left;background-color: white;">
-                    <img src="../images/face/2.jpg" style="width: 100%;height: 242px;">
-                    <span>美国数字货币监管考量及对我国的启示</span>
-                    <div style="font-size: 14px;font-weight: normal;width: 88%;margin: 0 auto;">
-                        <span style="float: left;">
-                           <img src="../images/head-bg.jpg" style="width: 30px;height:30px;border-radius: 50%"></img>
-                            链向作家
-                        </span>
-                        <span style="float: right;">
-                            浏览量100
-                        </span>
-                    </div>
-                </div>
-                <div style="width:30%;margin-left:2%;height:372px;float:left;background-color: white;">
-                    <img src="../images/face/3.jpg" style="width: 100%;height: 242px;">
-                    <span>美国数字货币监管考量及对我国的启示</span>
-                    <div style="font-size: 14px;font-weight: normal;width: 88%;margin: 0 auto;">
-                        <span style="float: left;">
-                            <img src="../images/head-bg.jpg" style="width: 30px;height:30px;border-radius: 50%"></img>
-                            链向作家
-                        </span>
-                        <span style="float: right;">
-                            浏览量100
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align: center;line-height: 32px;font-size: 18px;font-weight: bold;width:100%;float:left;padding-left:2%;padding-right:2%;background-image: url(../images/head-bg.jpg);">
-                <div style="width:30%;margin-left:1%;height:372px;float:left;background-color: white;">
-                    <img src="../images/face/6.jpg" style="width: 100%;height: 242px;">
-                    <span>美国数字货币监管考量及对我国的启示</span>
-                    <div style="font-size: 14px;font-weight: normal;width: 88%;margin: 0 auto;">
-                        <span style="float: left;">
-                            <img src="../images/head-bg.jpg" style="width: 30px;height:30px;border-radius: 50%"></img>
-                            链向作家
-                        </span>
-                        <span style="float: right;">
-                            浏览量100
-                        </span>
-                    </div>
-                </div>
-                <div style="width:30%;margin-left:2%;height:372px;float:left;background-color: white;">
-                    <img src="../images/face/5.jpg" style="width: 100%;height: 242px;">
-                    <span>美国数字货币监管考量及对我国的启示</span>
-                    <div style="font-size: 14px;font-weight: normal;width: 88%;margin: 0 auto;">
-                        <span style="float: left;">
-                           <img src="../images/head-bg.jpg" style="width: 30px;height:30px;border-radius: 50%"></img>
-                             链向作家
-                        </span>
-                        <span style="float: right;">
-                            浏览量100
-                        </span>
-                    </div>
-                </div>
-                <div style="width:30%;margin-left:2%;height:372px;float:left;background-color: white;">
-                    <img src="../images/face/4.jpg" style="width: 100%;height: 242px;">
-                    <span>美国数字货币监管考量及对我国的启示</span>
-                    <div style="font-size: 14px;font-weight: normal;width: 88%;margin: 0 auto;">
-                        <span style="float: left;">
-                            <img src="../images/head-bg.jpg" style="width: 30px;height:30px;border-radius: 50%"></img>
-                            链向作家
-                        </span>
-                        <span style="float: right;">
-                            浏览量100
-                        </span>
-                    </div>
-                </div>
-            </div>
+            <div id="test2-view-1" style="text-align: center;line-height: 32px;font-size: 18px;font-weight: bold;width:100%;float:left;padding-left:2%;padding-right:2%;background-image: url(../images/head-bg.jpg);">
 
+            </div>
+            <div id="test2-view-2" style="text-align: center;line-height: 32px;font-size: 18px;font-weight: bold;width:100%;float:left;padding-left:2%;padding-right:2%;background-image: url(../images/head-bg.jpg);">
+
+            </div>
+            <div id="test2-view-3" style="text-align: center;line-height: 32px;font-size: 18px;font-weight: bold;width:100%;float:left;padding-left:2%;padding-right:2%;background-image: url(../images/head-bg.jpg);">
+
+            </div>
         </div>
     </div>
 </div>
 
+<!--项目库-->
 
-<div class="friend">
-    <div class="mr_frbox">
-        <img class="mr_frBtnL prev" src="images/index-pro-lf-h.svg" />
-        <div class="mr_frUl">
-            <ul id="mr_fu" style="padding-left:20px;">
-                <li><a href="http://www.17sucai.com/">
-                    <img src="images/i.jpg" />
-                </a>
-                    <div class="mr_zhe">
-                        <div class="mr_zhe_i">
-                            <h1>
-                                I</h1>
-                            <div class="mr_zhe_p">
-                                <h3>
-                                    <span>家居软装设计概念</span>Introduction soft home design</h3>
-                            </div>
-                        </div>
-                        <div class="mr_zhe_hover">
-                            <h1>
-                                <img src="images/plus.gif"></h1>
-                            <div class="mr_zhe_p">
-                                <h3>
-                                    <span>家居软装设计概念</span>Introduction soft home design</h3>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li><a href="http://www.17sucai.com/">
-                    <img src="images/i2.jpg" />
-                </a>
-                    <div class="mr_zhe">
-                        <div class="mr_zhe_i">
-                            <h1>
-                                E</h1>
-                            <div class="mr_zhe_p">
-                                <h3>
-                                    <span>家居软装设计概念</span>Introduction soft home design</h3>
-                            </div>
-                        </div>
-                        <div class="mr_zhe_hover">
-                            <h1>
-                                <img src="images/plus.gif"></h1>
-                            <div class="mr_zhe_p">
-                                <h3>
-                                    <span>家居软装设计概念</span>Introduction soft home design</h3>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li><a href="http://www.17sucai.com/">
-                    <img src="images/i3.jpg" />
-                </a>
-                    <div class="mr_zhe">
-                        <div class="mr_zhe_i">
-                            <h1>
-                                S</h1>
-                            <div class="mr_zhe_p">
-                                <h3>
-                                    <span>家居软装设计概念</span>Introduction soft home design</h3>
-                            </div>
-                        </div>
-                        <div class="mr_zhe_hover">
-                            <h1>
-                                <img src="images/plus.gif"></h1>
-                            <div class="mr_zhe_p">
-                                <h3>
-                                    <span>家居软装设计概念</span>Introduction soft home design</h3>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li><a href="http://www.17sucai.com/">
-                    <img src="images/i4.jpg" />
-                </a>
-                    <div class="mr_zhe">
-                        <div class="mr_zhe_i">
-                            <h1>
-                                A</h1>
-                            <div class="mr_zhe_p">
-                                <h3>
-                                    <span>家居软装设计概念</span>Introduction soft home design</h3>
-                            </div>
-                        </div>
-                        <div class="mr_zhe_hover">
-                            <h1>
-                                <img src="images/plus.gif"></h1>
-                            <div class="mr_zhe_p">
-                                <h3>
-                                    <span>家居软装设计概念</span>Introduction soft home design</h3>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li><a href="http://www.17sucai.com/">
-                    <img src="images/i4.jpg" />
-                </a>
-                    <div class="mr_zhe">
-                        <div class="mr_zhe_i">
-                            <h1>
-                                A</h1>
-                            <div class="mr_zhe_p">
-                                <h3>
-                                    <span>家居软装设计概念</span>Introduction soft home design</h3>
-                            </div>
-                        </div>
-                        <div class="mr_zhe_hover">
-                            <h1>
-                                <img src="images/plus.gif"></h1>
-                            <div class="mr_zhe_p">
-                                <h3>
-                                    <span>家居软装设计概念</span>Introduction soft home design</h3>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <img class="mr_frBtnR next" src="images/index-pro-rt-h.svg" />
+
+<div class="layui-carousel" id="pj_carousel" style="width:1225px;height:250px;position: relative;margin: auto;top:30px;min-width: 1150px">
+<div carousel-item="" >
+
+    <div style="background: #eeeeee">
+        <ul id="first_pj_index_view">
+
+        </ul>
     </div>
+
+    <div style="background: #eeeeee">
+        <ul id="second_pj_index_view">
+
+        </ul>
+    </div>
+
 </div>
+</div>
+
+
 
 <!-- 主体（一般只改变这里的内容） -->
 <div class="blog-body">
@@ -338,7 +378,7 @@
     color: #3e6d43;">加载更多...</div>
             </div>
             <!--右边小栏目-->
-            <div class="blog-main-right">
+            <div class="blog-main-right" style="margin-top: 20px;">
 
                 <div></div><!--占位-->
                 <div id="advert-view"></div>
@@ -413,10 +453,27 @@
 <!-- layui.js -->
 <script src="../plug/layui/layui.js"></script>
 <!-- 全局脚本 -->
-<script src="../js/global.js"></script>
+
 <!-- 本页脚本 -->
 <script src="../js/home.js"></script>
 
+<script id="test2ViewTpl" type="text/html">
+    {{# layui.each(d.result, function(index, item){ }}
+    <div style="width:30%;margin-left:1%;height:372px;float:left;background-color: white;">
+        <img src="{{item.cover}}" style="width: 100%;height: 242px;">
+        <div style="text-align: left;text-indent: 1.5em;">{{item.title}}</div>
+        <div style="font-size: 14px;font-weight: normal;width: 88%;margin: 0 auto;">
+                        <span style="float: left;">
+                            <img src="../images/head-bg.jpg" style="width: 30px;height:30px;border-radius: 50%"></img>
+                            {{ item.crtName}}
+                        </span>
+            <span style="float: right;">
+                            浏览量{{item.pageView}}
+                        </span>
+        </div>
+    </div>
+    {{# }); }}
+</script>
 <script id="tpl" type="text/html">
 
         {{# layui.each(d.result, function(index, item){ }}
@@ -444,6 +501,76 @@
         {{# }); }}
 
 </script>
+
+<script id="scroll_view" type="text/html">
+    {{# layui.each(d.result, function(index, item){ }}
+    <div class="ui_li_div" onmouseover="mout(this)" onmouseleave="mlive(this)">
+        <li >
+            <div class="first_child">
+                <div class="li_div">
+                    <a href="">
+                        <img src="{{item.cover}}" alt=""/>
+                    </a>
+                </div>
+                <span>{{item.title}}</span>
+            </div>
+            <div class="second_child"  style="background: #fff;height:100%;display: none">
+                <div class="li_div" style="height: 150px;">
+                    <div style="height: 100%;padding:30px 20px;">
+                        <div>{{item.title}}</div>
+                        <div class="pro-good-data-text">{{item.remark}}</div>
+
+                    </div>
+                </div>
+
+                <a><div class="search-btn">项目主页</div></a>
+            </div>
+        </li>
+    </div>
+    {{# }); }}
+</script>
+
+
+<script id="second_scroll_view" type="text/html">
+    {{# layui.each(d.result, function(index, item){ }}
+    <div class="ui_li_div" onmouseover="mout(this)" onmouseleave="mlive(this)">
+        <li >
+            <div class="first_child">
+                <div class="li_div">
+                    <a href="">
+                        <img src="{{item.cover}}" alt=""/>
+                    </a>
+                </div>
+                <span>{{item.title}}</span>
+            </div>
+            <div class="second_child"  style="background: #fff;height:100%;display: none">
+                <div class="li_div" style="height: 150px;">
+                    <div style="height: 100%;padding:30px 20px;">
+                        <div>{{item.title}}</div>
+                        <div class="pro-good-data-text">{{item.remark}}</div>
+
+                    </div>
+                </div>
+
+                <a><div class="search-btn">项目主页</div></a>
+            </div>
+        </li>
+    </div>
+    {{# }); }}
+
+
+    <div class="ui_li_div" style="text-align: center">
+        <li class="m-t-pro-more" style="background: #fff;text-align: center">
+            <a href="">
+
+                <p></p>
+                <span>查看更多</span>
+            </a>
+
+        </li>
+    </div>
+</script>
+
 <script>
     layui.config({
         base: 'js/'
@@ -475,6 +602,93 @@
                 }
                 laytpl(getTpl).render(data, function (html) {
                     view.innerHTML = html;
+                });
+            }
+        })
+
+
+        //顶部轮播-1
+
+
+        var test2ViewTemplate = test2ViewTpl.innerHTML
+            , test2View01 = document.getElementById('test2-view-1')
+            , test2View02 = document.getElementById('test2-view-2')
+            , test2View03 = document.getElementById('test2-view-3');
+
+        $.ajax({
+            url: base.url + '/blog/api/article/page?pageIndex=1&pageSize=3',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+
+                laytpl(test2ViewTemplate).render(data, function (html) {
+                    test2View01.innerHTML = html;
+                });
+            }
+        })
+        $.ajax({
+            url: base.url + '/blog/api/article/page?pageIndex=2&pageSize=3',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+
+                laytpl(test2ViewTemplate).render(data, function (html) {
+                    test2View02.innerHTML = html;
+                });
+            }
+        })
+        $.ajax({
+            url: base.url + '/blog/api/article/page?pageIndex=3&pageSize=3',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+
+                laytpl(test2ViewTemplate).render(data, function (html) {
+                    test2View03.innerHTML = html;
+                });
+            }
+        })
+        //轮播第一页
+
+        var first_pj_index_viewTpl = scroll_view.innerHTML
+            , scrollView = document.getElementById('first_pj_index_view');
+
+        $.ajax({
+            url: base.url + '/blog/api/project/page?pageIndex=1&pageSize=5',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+
+                laytpl(first_pj_index_viewTpl).render(data, function (html) {
+                    scrollView.innerHTML = html;
+                });
+            }
+        })
+
+
+        //轮播第2页
+
+        var second_pj_index_viewTpl = second_scroll_view.innerHTML
+            , secondView = document.getElementById('second_pj_index_view');
+
+        $.ajax({
+            url: base.url + '/blog/api/project/page?pageIndex=2&pageSize=4',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+
+                laytpl(second_pj_index_viewTpl).render(data, function (html) {
+                    secondView.innerHTML = html;
                 });
             }
         })
@@ -520,22 +734,45 @@
             dataType: 'jsonp',
             jsonp: 'callback',
             success: function (data, status, xhr) {
-//                currentPage ++;
-//                if(currentPage > totalPage){
-//                    $("#paging").html("没有更多数据了");
-//                }
-                layui.use('laytpl', function() {
-                    var laytpl = layui.laytpl;
-                    var getTpl = tpl.innerHTML;
-                    laytpl(getTpl).render(data, function (html) {
-                        //view.innerHTML = html;
-                        $("#articles").html(html);
+
+                if(data.result.length == 0){
+                    $("#paging").html("没有找到数据");
+                    $("#articles").html("");
+                }else{
+                    layui.use('laytpl', function() {
+                        var laytpl = layui.laytpl;
+                        var getTpl = tpl.innerHTML;
+                        laytpl(getTpl).render(data, function (html) {
+                            //view.innerHTML = html;
+                            $("#articles").html(html);
+                        });
                     });
-                });
+                }
 
             }
         })
     };
+
+
+    function mout(o){
+
+        $(o).find('.first_child').hide();
+        $(o).find('.second_child').show();
+
+    }
+
+    function mlive(o){
+
+        $(o).find('.first_child').show();
+        $(o).find('.second_child').hide();
+
+    }
+
+
+
+
+
+
 </script>
 
 
@@ -579,6 +816,24 @@
     </li>
     {{#  }); }}
 </script>
+<script id="uInfoTpl" type="text/html">
+
+    {{# layui.each(d.result,function(index,item){}}
+    <div onmouseover="userLogoin();" onmouseleave="setTimeout('userLogoout()', 3000);" id="ufo" style="margin-top: 15px;width: 35px;height: 35px;float: left;border-radius: 50%;overflow:hidden;">
+        <img src="{{item.logo}}" style="width: 100%;">
+    </div>
+    <li class="layui-nav-item" lay-unselect="">
+        <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
+            <dd><a href="/center">个人中心</a></dd>
+            <dd><a href="/center/article">我的文章</a></dd>
+            <dd><a href="/center/message;">消息中心</a></dd>
+            <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
+        </dl>
+    </li>
+
+    {{#  }); }}
+</script>
+<script src="../js/global.js"></script>
 <script>
 
     layui.use('laytpl', function() {
@@ -663,6 +918,14 @@
             ,width: '100%'
         });
 
+        //改变下时间间隔、动画类型、高度
+        carousel.render({
+            elem: '#pj_carousel'
+            , interval: 1800
+            , anim: 'fade'
+            , height: '250px'
+            , width: '100%'
+        });
 
         var $ = layui.$, active = {
             set: function(othis){
@@ -686,38 +949,6 @@
     });
 </script>
 
-
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        /* 图片滚动效果 */
-        $(".mr_frbox").slide({
-            titCell: "",
-            mainCell: ".mr_frUl ul",
-            autoPage: true,
-            effect: "leftLoop",
-            autoPlay: true,
-            vis: 5
-        });
-
-        /* 鼠标悬停图片效果 */
-        $(".mr_zhe_hover").css("top", $('.mr_zhe').eq(0).height());
-        $("li").mouseout(function (e) {
-            if ((e.pageX < $(this).offset().left || e.pageX > ($(this).offset().left + $(this).width())) || (e.pageY < $(this).offset().top || e.pageY > ($(this).offset().top + $(this).height()))) {
-                $(this).find('.mr_zhe_i').show();
-                $(this).find('.mr_zhe_hover').hide().stop().animate({ top: '80px' }, { queue: false, duration: 80 });
-                return false;
-            }
-
-        });
-        $('.mr_zhe').mouseover(function (event) {
-            $(this).find('.mr_zhe_i').hide();
-            $(this).find('.mr_zhe_hover').show().stop().animate({ top: '80px' }, { queue: false, duration: 80 });
-            return false;
-        });
-
-    });
-</script>
 
 </body>
 </html>

@@ -5,6 +5,7 @@ import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -72,4 +73,29 @@ public class SwaggerConfiguration extends WebMvcConfigurerAdapter implements Env
 		this.serviceName = propertyResolver.getProperty("swagger.service.name");
 		this.description = propertyResolver.getProperty("swagger.service.description");
 	}
+
+	    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+
+        System.out.println("=============================Access-Control-Allow-Origin=================================");
+        registry.addMapping("/**")
+                .allowedOrigins("*")
+                .allowedMethods(
+                        "GET",
+                        "POST",
+                        "HEAD",
+                        "OPTIONS",
+                        "PUT",
+                        "DELETE")
+                .allowedHeaders(
+                        "Content-Type",
+                        "X-Requested-With",
+                        "accept",
+                        "Origin",
+                        "Access-Control-Request-Method",
+                        "Access-Control-Request-Headers",
+                        "Authorization").allowCredentials(true);
+        System.out.println("============================Access-Control-Allow-Origin==================================");
+    }
+
 }

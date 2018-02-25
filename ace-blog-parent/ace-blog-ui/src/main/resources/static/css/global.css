@@ -175,8 +175,8 @@ body {
     .blog-nav .layui-nav {
         position: absolute;
         top: 0;
-        left: 15%;
-        width: 85%;
+        left: 35%;
+        width: 50%;
         background: none;
         display: none;
         text-align: center;
@@ -1116,4 +1116,42 @@ body {
     to {
         opacity: 0;
     }
+}
+
+
+.layui-nav-child {
+    /* display: none; */
+    position: absolute;
+    left: -40px;
+    top: 64px;
+    /* margin-right: 200px; */
+    min-width: 100%;
+    width: 120px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 36px;
+    padding: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,.12);
+    border: 1px solid #d2d2d2;
+    background-color: #fff;
+    z-index: 100;
+    border-radius: 2px;
+    white-space: nowrap;
+}
+
+.layui-nav-child dd {
+    position: relative;
+    border-bottom: 1px #f1efef solid;
+    color: #333;
+    font-weight: 150;
+}
+
+
+.layui-nav-child dd:hover{
+    color: #323b50;
+    background: #f1efef;
+}
+
+#login-tag{
+    display: none;
 }

@@ -13,8 +13,8 @@
     <result column="tag" jdbcType="VARCHAR" property="tag" />
     <result column="page_view" jdbcType="INTEGER" property="pageView" />
     <result column="crt_time" jdbcType="TIMESTAMP" property="crtTime" />
-    <result column="crt_user" jdbcType="VARCHAR" property="crtUser" />
-    <result column="crt_name" jdbcType="VARCHAR" property="crtName" />
+    <result column="crtUser" jdbcType="VARCHAR" property="crtUser" />
+    <result column="crtName" jdbcType="VARCHAR" property="crtName" />
     <result column="crt_host" jdbcType="VARCHAR" property="crtHost" />
     <result column="upd_time" jdbcType="TIMESTAMP" property="updTime" />
     <result column="upd_user" jdbcType="VARCHAR" property="updUser" />

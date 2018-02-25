@@ -31,11 +31,14 @@ public class Article {
     @Column(name = "crt_time")
     private Date crtTime;
 
-    @Column(name = "crt_user")
+    @Column(name = "crtUser")
     private String crtUser;
 
-    @Column(name = "crt_name")
+    @Column(name = "crtName")
     private String crtName;
+
+    private Integer pid;
+    private String pname;
 
     @Column(name = "crt_host")
     private String crtHost;
@@ -55,6 +58,9 @@ public class Article {
     private Integer commentCount;
     @Column(name = "hot_value")
     private Integer hotValue;
+
+    private Integer status;
+
     private String attr1;
 
     private String attr2;
@@ -72,6 +78,14 @@ public class Article {
     private String attr8;
 
     private Integer type;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
     public Integer getHotValue() {
         return hotValue;
@@ -103,6 +117,22 @@ public class Article {
 
     public void setTitleImg(String titleImg) {
         this.titleImg = titleImg;
+    }
+
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
+    }
+
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
     }
 
     /**
@@ -232,7 +262,7 @@ public class Article {
     }
 
     /**
-     * @return crt_user
+     * @return crtUser
      */
     public String getCrtUser() {
         return crtUser;
@@ -246,7 +276,7 @@ public class Article {
     }
 
     /**
-     * @return crt_name
+     * @return crtName
      */
     public String getCrtName() {
         return crtName;
@@ -439,5 +469,40 @@ public class Article {
      */
     public void setAttr8(String attr8) {
         this.attr8 = attr8;
+    }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", titleImg='" + titleImg + '\'' +
+                ", content='" + content + '\'' +
+                ", remark='" + remark + '\'' +
+                ", tag='" + tag + '\'' +
+                ", isDel='" + isDel + '\'' +
+                ", pageView=" + pageView +
+                ", cover='" + cover + '\'' +
+                ", crtTime=" + crtTime +
+                ", crtUser='" + crtUser + '\'' +
+                ", crtName='" + crtName + '\'' +
+                ", crtHost='" + crtHost + '\'' +
+                ", updTime=" + updTime +
+                ", updUser='" + updUser + '\'' +
+                ", updName='" + updName + '\'' +
+                ", updHost='" + updHost + '\'' +
+                ", commentCount=" + commentCount +
+                ", hotValue=" + hotValue +
+                ", status=" + status +
+                ", attr1='" + attr1 + '\'' +
+                ", attr2='" + attr2 + '\'' +
+                ", attr3='" + attr3 + '\'' +
+                ", attr4='" + attr4 + '\'' +
+                ", attr5='" + attr5 + '\'' +
+                ", attr6='" + attr6 + '\'' +
+                ", attr7='" + attr7 + '\'' +
+                ", attr8='" + attr8 + '\'' +
+                ", type=" + type +
+                '}';
     }
 }

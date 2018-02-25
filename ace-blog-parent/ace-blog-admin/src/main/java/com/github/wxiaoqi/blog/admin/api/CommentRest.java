@@ -13,19 +13,26 @@ import com.github.wxiaoqi.security.common.msg.ListRestResponse;
 import com.github.wxiaoqi.security.common.msg.ObjectRestResponse;
 import com.github.wxiaoqi.security.common.rest.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by ace on 2017/7/16.
  */
 @RestController
 @RequestMapping("api/comment")
-public class CommentRest extends BaseController<CommentBiz,Comment> {
+public class CommentRest  {
+
     @Autowired
     private CommentBiz articleBiz;
+
+    @RequestMapping(value = "",method = RequestMethod.POST)
+    @ResponseBody
+    public ObjectRestResponse<Comment> add(Comment entity){
+        articleBiz.insertSelective(entity);
+        return new ObjectRestResponse<Comment>().rel(true);
+    }
+
+
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public JSONPObject get(@PathVariable int id, String callback){
         return new JSONPObject(callback,new ObjectRestResponse<Comment>().rel(true).result(articleBiz.selectById(id)));

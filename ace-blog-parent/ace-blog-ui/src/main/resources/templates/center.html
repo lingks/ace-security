@@ -1,0 +1,785 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <title>链向财经-个人中心</title>
+    <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
+    <!--Layui-->
+    <link href="../plug/layui/css/layui.css" rel="stylesheet" />
+    <!--font-awesome-->
+    <link href="../plug/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!--全局样式表-->
+    <link href="../css/global.css" rel="stylesheet" />
+    <!--本页样式表-->
+    <link href="../css/article.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../slider2/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../slider2/css/index.css">
+    <style>
+        .blog-body{
+            margin-top: 64px;
+            min-width: 1150px;
+        }
+        .blog-title{
+            text-align: left;
+            font-size: 18px;
+            height: 60px;
+            line-height: 70px;
+            background: white;
+            margin-bottom: 5px;
+        }
+        .blog-main-left ul li {
+            list-style: none;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 14px;
+            border-bottom: 1px #e6e2e2 solid;
+        }
+        .blog-main-left ul li:hover{
+            color: #5670BF;
+        }
+
+        .blog-main-left-li-active{
+            border-left:2px blue solid;
+            color: #5670BF;
+        }
+        .layui-form-item {
+            margin-bottom: 0px;
+            clear: both;
+        }
+        .layui-form-item .layui-inline {
+            margin-bottom: 5px;
+
+            width: 500px;
+            margin-right: 10px;
+        }
+        .btnSubmit{
+            width: 390px;
+            background: #6396f3;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            margin-top: 10px;
+            line-height: 30px;
+        }
+        #uinfo-view {
+            position: absolute;
+            right: 0;
+            width: 65px;
+            margin-right: 50px;
+        }
+        #xiewenzhangn{
+            float: right;
+            width: 100px;
+            padding-top: 14px;
+        }
+
+
+        #login-tag a{
+            cursor: pointer;
+        }
+        #login-tag a span{
+            color: #fff;font-size: 12px;
+        }
+
+        .tb-main{
+            margin: 0 auto;
+            margin-left: 10px;
+            margin-top: 50px;
+        }
+        .tb-main2{
+            margin: 0 auto;
+            width: 100%;
+        }
+        .tb-main2 ul li{
+            float: left;
+            height: 35px;font-size: 13px;
+            line-height: 35px;
+        }
+        .tb-main ul li{
+            float: left;
+            height: 35px;font-size: 13px;
+            line-height: 35px;
+        }
+
+        .layui-btn2 {
+            display: inline-block;
+            height: 28px;
+            border-radius: 15px;
+            /* text-align: left; */
+            line-height: 28px;
+            padding: 0px 20px 0px 10px;
+            background-color: #393D49;
+            color: #fff;
+            white-space: nowrap;
+            text-align: left;
+            font-size: 12px;
+            border: none;
+            /*border: 1px #4c4949 solid;*/
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        #login-tag{
+            font-size: 12px;
+            margin-left: 20px;
+        }
+        .layui-btn2 .layui-icon {
+            /* margin-right: 3px; */
+            /* font-size: 18px; */
+            vertical-align: bottom;
+            vertical-align: middle\9;
+
+        }
+
+        #h-writing button:hover{
+            color: #6c9894;
+            cursor: pointer;
+        }
+        #login-tag a{
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<!-- 导航 -->
+<nav class="blog-nav layui-header">
+    <div class="blog-container">
+        <!-- QQ互联登陆 -->
+       <div id="uinfo-view">
+
+       </div>
+        <div id="login-tag" style="position: absolute;right: 80px;float:left;line-height: 65px;color: #fff;font-size: 14px;">
+            <a><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a><span>注&nbsp;&nbsp;册</span></a>
+        </div>
+        <div id="xiewenzhangn">
+            <div class="h-writing" style="width: 100px;height: 48px;">
+                <li style="width: 78px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 24px;
+    border-radius: 15px;
+    background: #393D49">
+                    <button class="layui-btn2" style="
+    /* height: 30px; */
+"><i class="layui-icon"></i>写文章</button>
+                </li>
+            </div>
+        </div>
+        <a href="javascript:;" class="blog-user layui-hide">
+            <img src="../images/Absolutely.jpg" alt="Absolutely" title="Absolutely"/>
+        </a>
+        <!-- 不落阁 -->
+        <a class="blog-logo" href="home.html">
+            <img src="../images/logo.svg">
+        </a>
+        <!-- 导航菜单 -->
+        <ul class="layui-nav" lay-filter="nav">
+            <li class="layui-nav-item ">
+                <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
+            </li>
+            <!--<li class="layui-nav-item">-->
+                <!--<a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>-->
+            <!--</li>-->
+            <li class="layui-nav-item">
+                <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
+                <!--</li>-->
+                <!--<li class="layui-nav-item">-->
+                <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
+                <!--</li>-->
+            <li class="layui-nav-item">
+                <a href="/article"><i class="fa fa-thumbs-up fa-fw"></i>&nbsp;作家</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
+            </li>
+        </ul>
+        <!-- 手机和平板的导航开关 -->
+        <a class="blog-navicon" href="javascript:;">
+            <i class="fa fa-navicon"></i>
+        </a>
+    </div>
+</nav>
+
+<!-- 主体（一般只改变这里的内容） -->
+<div class="blog-body">
+    <!-- 这个一般才是真正的主体内容 -->
+    <div class="blog-container">
+        <div class="blog-main">
+            <!--左边文章列表-->
+
+            <div style="height:550px;    background: white;
+    margin: 20px;border: 1px #e6e2e2 solid;
+    margin-top: 80px;">
+                <div class="blog-main-left" style="    width: 20%;
+    float: left;border: 1px #e6e2e2 solid;
+    height: 100%;">
+                    <ul>
+                        <li class="blog-main-left-li-active" id="uinfo">
+                            个人资料
+                        </li>
+                        <li id="uarticle">
+                            我的文章
+                        </li>
+                        <li id="umessage">
+                            消息中心
+                        </li>
+                    </ul>
+                </div>
+                <!--右边小栏目-->
+                <div style="float: left;width: 79%;" id="rightMainView">
+
+                    <div class="layui-upload" style="padding-right: 20px;padding-top:20px;">
+
+                        <div class="layui-upload-list">
+                            <img class="layui-upload-img" id="demo2" style="    width: 150px;
+    height: 150px;
+    float: right;
+    margin-right: 150px;">
+                            <p id="demoText"></p>
+                        </div>
+                        <button type="button" class="layui-btn" id="test1" style="float: right;
+    /* margin-top: 160px; */
+    margin-right: -120px;
+    margin-top: 160px;">上传头像</button>
+                    </div>
+                </div>
+                <div style="float: left;
+    width: 79%;
+    margin-left: 50px;
+    margin-top: 50px;
+    margin: 0 auto;" id="articleMainView">
+
+                    <div class="tb-main">
+                        <ul>
+                            <li style="background: #eee;
+                            color: #666;width:15%;text-align: center;">封面</li>
+                            <li style="background: #eee;
+                            color: #666;width:30%;">标题</li>
+                            <li style="background: #eee;
+    color: #666;width:20%;text-align: center;">更新时间</li>
+                            <li style="background: #eee;
+    color: #666;width:5%;text-align: center;">浏览量</li>
+                            <li style="background: #eee;
+    color: #666;width:5%;text-align: center;">评论</li>
+                            <li style="background: #eee;
+    color: #666;width:10%;text-align: center;">状态</li>
+                            <li style="background: #eee;
+    color: #666;width:15%;text-align: center;">操作</li>
+                        </ul>
+                        <div class="tb-main2"></div>
+                    </div>
+                </div>
+
+                <div id="demo1" style="padding-left: 45%;"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!-- 底部 -->
+<footer class="blog-footer">
+    <p id="partner-view" style="text-align: left;padding:0 10px">
+
+    </p>
+
+    <p id="partner-url" style="text-align: left;padding:0 20px">
+        友情链接： 比特时代
+    </p>
+    <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="">Lins</a><span>Design By Mr.Lin</span></p>
+    <p><a href="" target="_blank">蜀ICP备160299x4e5号-1</a></p>
+</footer>
+<!--侧边导航-->
+<ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
+    <li class="layui-nav-item layui-this">
+        <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="timeline.html"><i class="fa fa-road fa-fw"></i>&nbsp;点点滴滴</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+    </li>
+</ul>
+<!--分享窗体-->
+<div class="blog-share layui-hide">
+    <div class="blog-share-body">
+        <div style="width: 200px;height:100%;">
+            <div class="bdsharebuttonbox">
+                <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                <a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--遮罩-->
+<div class="blog-mask animated layui-hide"></div>
+<script src="../slider/js/jquery-1.10.1.min.js"></script>
+<script src="../slider/js/idangerous.swiper2.7.6.min.js"></script>
+<script src="../slider/js/swiper.animate1.0.2.min.js"></script>
+<script id="partner" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <a href="{{item.url}}"> <img src="{{item.logo}}" style="width:100px;height:40px;margin-left:5px;"></a>
+    {{#  }); }}
+</script>
+
+<!-- layui.js -->
+<script src="../plug/layui/layui.js"></script>
+<!-- 全局脚本 -->
+<script src="../js/global.js"></script>
+<!-- 本页脚本 -->
+<script src="../js/home.js"></script>
+<script id="uInfoTpl" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+        <div onmouseover="userLogoin();" onmouseleave="setTimeout('userLogoout()', 3000);" id="ufo" style="margin-top: 15px;width: 35px;height: 35px;float: left;border-radius: 50%;overflow:hidden;">
+            <img src="{{item.logo}}" style="width: 100%;" id="user-logo">
+        </div>
+
+    <li class="layui-nav-item" lay-unselect="">
+        <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
+            <dd><a href="/center">个人中心</a></dd>
+            <dd><a href="/center/article">我的文章</a></dd>
+            <dd><a href="/center/message;">消息中心</a></dd>
+            <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
+        </dl>
+    </li>
+    {{#  }); }}
+</script>
+<script id="userInfoTpl" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <form class="layui-form form-view" action="" id="userInfo-form" style="float: left;">
+        <div class="layui-form-item">
+            <div class="layui-input-block title-view" style="    margin-left: 50px;
+    min-height: 36px;
+    border-bottom: 1px #ccc solid;
+    line-height: 35px;">
+                个人资料
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">用户ID</label>
+                <div class="layui-input-block" style="line-height: 35px;">
+                    {{item.username == undefined?'':item.username}}
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">昵称</label>
+                <div class="layui-input-block">
+                    <input type="text" id="nick"  name="nick" lay-verify="nick" autocomplete="off" value="{{item.nick==undefined?'':item.nick}}" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-input-block">
+                    <input type="text" id="username"  name="username" lay-verify="username" autocomplete="off" value="{{item.username==undefined?'':item.username}}" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">性别</label>
+
+                <div class="layui-input-block">
+
+                    <input type="radio" name="sex" value="男" title="男" {{# if(item.sex == '男'){ }}checked="" {{# } }} style="margin-top: 12px;
+                    width: 25px;
+                    float: left;
+                    display: block;"><span style="    float: left;
+    line-height: 35px;width: 30px;">男</span>
+                    <input type="radio" name="sex" value="女" title="女" {{# if(item.sex == '女'){ }}checked="" {{# } }} style="margin-top: 12px;
+                    width: 25px;
+                    float: left;
+                    display: block;"><span style="    float: left;
+    line-height: 35px;">女</span>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">生日</label>
+                <div class="layui-input-block">
+                    <input type="date" id="birthyStr"  name="tirthyStr" lay-verify="tirthyStr" autocomplete="off" value="{{item.tirthyStr==undefined?'':item.tirthyStr}}" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">所在行业</label>
+                <div class="layui-input-block">
+                    <input type="text" id="work"  name="work" lay-verify="work" autocomplete="off" value="{{item.work==undefined?'':item.work}}" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">国家</label>
+                <div class="layui-input-block">
+                    <input type="text" id="country"  name="country" lay-verify="country" autocomplete="off" value="{{item.country==undefined?'':item.country}}" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">居住地</label>
+                <div class="layui-input-block">
+                    <input type="text" id="address"  name="address" lay-verify="password" autocomplete="off" value="{{item.address==undefined?'':item.address}}" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">个人简介</label>
+                <div class="layui-input-block">
+                                    <textarea rows="3" type="text" id="remark"  name="remark" lay-verify="remark" autocomplete="off"  class="layui-input">
+                                    </textarea>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <a>
+                    <div class="btnSubmit" onclick="btnSubmitFun();">保&nbsp;&nbsp;存</div>
+                </a>
+            </div>
+        </div>
+        <input type="hidden" name="id"  value="{{item.id}}" >
+        <input type="hidden" id="logo" name="logo"  value="{{item.logo==undefined?'':item.logo}}" >
+        <input type="hidden" name="pageView"  value="{{item.pageView==undefined?0:item.pageView}}" >
+        <input type="hidden" name="articleCount"  value="{{item.articleCount==undefined?0:item.articleCount}}" >
+    </form>
+
+    {{#  }); }}
+
+
+</script>
+
+<script id="articleInfoTpl" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <ul>
+        <li style="line-height: 80px;text-align:center;border-bottom: 1px #eee solid;width:15%;height: 80px;">
+            <img style="width:80px;" src="{{item.cover}}">
+        </li>
+        <li style="height: 80px;width:30%;border-bottom: 1px #eee solid;">
+            {{item.title}}
+        </li>
+        <li  style="height: 80px;width:15%;border-bottom: 1px #eee solid;text-align: center;">{{item.updTime==undefined?item.crtTime:item.updTime}}</li>
+        <li  style="height: 80px;width:5%;border-bottom: 1px #eee solid;text-align: center;">{{item.pageView}}</li>
+        <li  style="height: 80px;width:5%;border-bottom: 1px #eee solid;text-align: center;">{{item.commentCount}}</li>
+        <li  style="height: 80px;width:10%;border-bottom: 1px #eee solid;text-align: center;">{{item.status}}</li>
+        <li  style="height: 80px;width:15%;border-bottom: 1px #eee solid;text-align: center;">操作</li>
+    </ul>
+
+    {{#  }); }}
+</script>
+<script>
+    layui.config({
+        base: 'js/'
+    });
+
+    layui.use('upload', function() {
+            var $ = layui.jquery
+                ,upload = layui.upload;
+
+            //普通图片上传
+            var uploadInst = upload.render({
+                elem: '#test1'
+                ,url: '/file/upload'
+                ,before: function(obj){
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function(index, file, result){
+                        $('#demo2').attr('src', result); //图片链接（base64）
+                    });
+                }
+                ,done: function(res){
+                    console.log(res)
+                    //如果上传失败
+                    if(res.code > 0){
+                        return layer.msg('上传失败');
+                    }
+                    if($("#logo"))
+                    {
+                        console.log(res)
+
+                        if(res.code == 0){
+                            $("#logo").val(res.src)
+                        }
+                    }
+                    //上传成功
+                }
+                ,error: function(){
+                    console.log("errot")
+                    //演示失败状态，并实现重传
+                    var demoText = $('#demoText');
+                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                    demoText.find('.demo-reload').on('click', function(){
+                        uploadInst.upload();
+                    });
+                }
+            });
+
+
+
+        //拖拽上传
+//        upload.render({
+//            elem: '#test10'
+//            ,url: '/file/upload'
+//            ,done: function(res){
+//                console.log(res)
+//            }
+//        });
+    });
+
+    $.fn.serializeObject = function()
+    {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name] !== undefined) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+
+    function btnSubmitFun(){
+
+        var user = $('#userInfo-form').serializeObject();
+        $.ajax({
+            url: base.url + '/blog/api/user/update',
+            type: 'POST',
+            dataType: 'json',
+
+            data:$("#userInfo-form").serialize(),
+            success: function (data, status, xhr) {
+                layer.msg("保存成功", { icon: 1 });localStorage.setItem("user",JSON.stringify(user));
+                console.log(user);
+                $("#user-logo").attr("src",user.logo);
+            }
+        })
+
+        /*layui.use('layer', function() {
+
+            var $ = layui.jquery, layer = layui.layer;
+
+            $.ajax({
+                url: base.url + '/blog/api/user/'+user.id,
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'jsonp',
+                jsonp: 'callback',
+                async:true,
+                data:$("#userInfo-form").serialize(),
+                success:function(data, status, xhr) {
+                    localStorage.setItem("user",JSON.stringify(data.result[0]));
+                }
+            });
+            layer.msg("保存成功...")
+        });*/
+
+    }
+
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        var getTpl = partner.innerHTML
+            , view = document.getElementById('partner-view');
+
+        $.ajax({
+            url: base.url + '/blog/api/partner/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(getTpl).render(data, function (html) {
+                    view.innerHTML = html;
+                });
+            }
+        })
+    });
+
+
+
+    $(function(){
+        var localUser = localStorage.getItem("user");
+        if(localUser != undefined && localUser != null && localUser != ""&&localUser != 'null'){
+            var user = JSON.parse(localUser);
+
+            layui.use('laytpl', function() {
+                var laytpl = layui.laytpl;
+                var userTpl = userInfoTpl.innerHTML,
+                    uInfotemplate = uInfoTpl.innerHTML
+                    ,userInfoview = document.getElementById('rightMainView')
+                    ,uview =  document.getElementById('uinfo-view')
+                    ;
+
+                $(".tb-main").hide();
+                $("#demo1").hide();
+                $.ajax({
+                    url: base.url + '/blog/api/user/'+user.id,
+                    type: 'GET',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'jsonp',
+                    jsonp: 'callback',
+                    async:true,
+                    success: function (data, status, xhr) {
+                        var user = data.result[0];
+                        console.log(user.log)
+                        $("#demo2").attr('src',user.logo);
+                        laytpl(userTpl).render(data, function (html) {
+                            $("#rightMainView").append(html);
+                        });
+
+                        laytpl(uInfotemplate).render(data, function (html) {
+                            uview.innerHTML = html;
+                        });
+
+                        document.getElementById("remark").value=user.remark;
+
+                    }
+
+                })
+            });
+
+        }else{
+            alert("未登录，进入登录页面");
+        }
+
+
+        $(".blog-main-left").find("li").on('click',function(){
+
+            console.log($(this)[0].className)
+            if($(this)[0].className == 'blog-main-left-li-active')return;
+            if($(this)[0].id == "uinfo"){
+                layui.use('laytpl', function() {
+                    var laytpl = layui.laytpl;
+                    var userTpl = userInfoTpl.innerHTML,
+                        uInfotemplate = uInfoTpl.innerHTML
+                        ,userInfoview = document.getElementById('rightMainView')
+                        ,uview =  document.getElementById('uinfo-view');
+
+                    if(localUser != undefined && localUser != null && localUser != ""&&localUser != 'null'){
+                        var user = JSON.parse(localUser);
+                        console.log("......")
+                        var users = [user];
+                        console.log(users)
+                        laytpl(userTpl).render(users, function (html) {
+                            $("#rightMainView").append(html);
+                            $("#demo1").hide();
+                            $(".tb-main").hide();
+                            $(".tb-main2").html("");
+                            $("#articleMainView").hide();
+                            $("#rightMainView").show();
+                        });
+
+                        laytpl(uInfotemplate).render(users, function (html) {
+                            uview.innerHTML = html;
+                        });
+                    }else{
+                        alert("未登录，进入登录页面")
+                    }
+                });
+            }
+            var click = 1;
+            if($(this)[0].id == "uarticle"){
+
+                layui.use(['laypage', 'layer','laytpl'], function() {
+                    var laypage = layui.laypage;
+                    var laytpl = layui.laytpl;
+                    var articleInfoTemplate = articleInfoTpl.innerHTML;
+
+                    $.ajax({
+                        url: base.url + '/blog/api/article/page?pageIndex=1&pageSize=5',
+
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'jsonp',
+                        jsonp: 'callback',
+                        success: function (data, status, xhr) {
+                            console.log(data)
+                            laytpl(articleInfoTemplate).render(data, function (html) {
+                                $(".tb-main").show();
+                                $("#demo1").show();
+                                $(".tb-main2").append(html) ;
+                                $("#articleMainView").show();
+                                $("#rightMainView").hide();
+                            });
+
+                            //总页数大于页码总数
+                            laypage.render({
+                                elem: 'demo1'
+                                , count: data.count //数据总数
+                                , jump: function (obj) {
+                                    console.log("click:" + click)
+                                    if(click != 1){
+                                    $.ajax({
+                                        url: base.url + '/blog/api/article/page?pageIndex='+obj.curr+'&pageSize=5',
+
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: 'jsonp',
+                                        jsonp: 'callback',
+                                        success: function (data, status, xhr) {
+                                            laytpl(articleInfoTemplate).render(data, function (html) {
+                                                $(".tb-main2").html(html) ;
+                                            });
+                                        }
+                                    });
+                                    }
+                                    click ++;
+                                }
+                            });
+                        }
+                    })
+
+                });
+            }
+            if($(this)[0].id == "umessage"){
+
+            }
+            $(".blog-main-left-li-active").removeClass("blog-main-left-li-active")
+            $(this).addClass("blog-main-left-li-active")
+        })
+
+
+    })
+
+
+    $(".layui-btn2").on('click',function(){
+        if(localStorage.getItem("user") != undefined && localStorage.getItem("user") != null && localStorage.getItem("user") != ''&& localStorage.getItem("user") != 'null'){
+            var user = JSON.parse(localStorage.getItem("user"));
+            if(user.id != null){
+                window.location.href="http://localhost:9700/writting"
+            }
+        }else{
+            window.location.href="http://localhost:9700/login"
+        }
+
+    })
+</script>
+
+</body>
+</html>

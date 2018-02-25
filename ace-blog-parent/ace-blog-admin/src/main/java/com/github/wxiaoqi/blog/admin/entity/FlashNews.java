@@ -20,7 +20,10 @@ public class FlashNews {
     private String remark;
 
     private String tag;
-
+    @Column(name = "comment_count")
+    private Integer commentCount;
+    @Column(name = "hot_value")
+    private Integer hotValue;
     @Column(name = "is_del")
     private String isDel;
 
@@ -32,10 +35,10 @@ public class FlashNews {
     @Column(name = "crt_time")
     private Date crtTime;
 
-    @Column(name = "crt_user")
+    @Column(name = "crtUser")
     private String crtUser;
 
-    @Column(name = "crt_name")
+    @Column(name = "crtName")
     private String crtName;
 
     @Column(name = "crt_host")
@@ -52,6 +55,22 @@ public class FlashNews {
 
     @Column(name = "upd_host")
     private String updHost;
+
+    public Integer getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    public Integer getHotValue() {
+        return hotValue;
+    }
+
+    public void setHotValue(Integer hotValue) {
+        this.hotValue = hotValue;
+    }
 
     private String attr1;
 
@@ -204,7 +223,7 @@ public class FlashNews {
     }
 
     /**
-     * @return crt_user
+     * @return crtUser
      */
     public String getCrtUser() {
         return crtUser;
@@ -218,7 +237,7 @@ public class FlashNews {
     }
 
     /**
-     * @return crt_name
+     * @return crtName
      */
     public String getCrtName() {
         return crtName;

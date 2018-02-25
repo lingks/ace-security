@@ -139,8 +139,78 @@ layui.use(['element', 'layer', 'util', 'form'], function () {
         $('.article-category').addClass('categoryOut');
     }
 
+
+    $(".layui-btn2").on('click',function(){
+        if(localStorage.getItem("user") != undefined && localStorage.getItem("user") != null && localStorage.getItem("user") != ''&& localStorage.getItem("user") != 'null'){
+            var user = JSON.parse(localStorage.getItem("user"));
+            if(user.id != null){
+                window.location.href="http://localhost:9700/writting"
+            }
+        }else{
+            window.location.href="http://localhost:9700/login"
+        }
+
+    })
+
+
+    layui.use('laytpl', function() {
+
+        var laytpl = layui.laytpl;
+        var
+            uInfotemplate = uInfoTpl.innerHTML
+
+            ,uview =  document.getElementById('uinfo-view');
+
+        var localUser = localStorage.getItem("user");
+
+        if(localUser != undefined && localUser != null && localUser != ""&&localUser != 'null'){
+            var user = JSON.parse(localUser);
+            var data = {
+                result:[user]
+            };
+
+            laytpl(uInfotemplate).render(data, function (html) {
+
+                uview.innerHTML = html;
+                $("#login-tag").hide();
+            });
+        }else{
+            $("#login-tag").show();
+        }
+    });
+
+
+
 });
 
+var isOverMenu = 0;
+
+
+function userLogoin() {
+
+    $("#menu-view").show();
+}
+
+function userLogoout(){
+    if(isOverMenu == 0){
+        $("#menu-view").hide();
+    }
+};
+
+function logout(){
+    localStorage.setItem("user",null);
+    window.location.href="/home"
+}
+
+function userLogoin2() {
+    isOverMenu = 1
+    $("#menu-view").show();
+}
+
+function userLogoout2(){
+    isOverMenu = 0;
+    $("#menu-view").hide();
+};
 var base = {};
 base.url = "http://localhost:8765";
 //百度分享插件
@@ -152,5 +222,22 @@ window._bd_share_config = {
         "bdSize": "32"
     },
     "share": {}
+};
+
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
 };
 with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];

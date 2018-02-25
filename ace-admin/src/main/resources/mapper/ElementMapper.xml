@@ -16,8 +16,8 @@
         <result column="method" jdbcType="VARCHAR" property="method"/>
         <result column="description" jdbcType="VARCHAR" property="description"/>
         <result column="crt_time" jdbcType="DATE" property="crtTime"/>
-        <result column="crt_user" jdbcType="VARCHAR" property="crtUser"/>
-        <result column="crt_name" jdbcType="VARCHAR" property="crtName"/>
+        <result column="crtUser" jdbcType="VARCHAR" property="crtUser"/>
+        <result column="crtName" jdbcType="VARCHAR" property="crtName"/>
         <result column="crt_host" jdbcType="VARCHAR" property="crtHost"/>
         <result column="attr1" jdbcType="VARCHAR" property="attr1"/>
         <result column="attr2" jdbcType="VARCHAR" property="attr2"/>

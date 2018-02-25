@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.wxiaoqi.blog.admin.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.github.wxiaoqi.blog.admin.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="tuijian" jdbcType="INTEGER" property="tuijian" />
+    <id column="pageView" jdbcType="INTEGER" property="pageView" />
+    <id column="articleCount" jdbcType="INTEGER" property="articleCount" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="nick" jdbcType="VARCHAR" property="nick" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="work" jdbcType="VARCHAR" property="work" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="birthy" jdbcType="TIMESTAMP" property="birthy" />
+  </resultMap>
+</mapper>

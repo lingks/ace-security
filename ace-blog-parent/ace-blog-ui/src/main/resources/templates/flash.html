@@ -25,15 +25,105 @@
     <link href="../css/article.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../slider2/css/base.css">
     <link rel="stylesheet" type="text/css" href="../slider2/css/index.css">
+    <style>
+        .blog-body{
+            margin-top: 64px;
+            min-width: 1150px;
+        }
+        .blog-title{
+            text-align: left;
+            font-size: 18px;
+            height: 60px;
+            line-height: 70px;
+            background: white;
+            margin-bottom: 5px;
+        }
+        .layui-btn2 {
+            display: inline-block;
+            height: 28px;
+            border-radius: 15px;
+            /* text-align: left; */
+            line-height: 28px;
+            padding: 0px 20px 0px 10px;
+            background-color: #393D49;
+            color: #fff;
+            white-space: nowrap;
+            text-align: left;
+            font-size: 12px;
+            border: none;
+            /*border: 1px #4c4949 solid;*/
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        #login-tag{
+            font-size: 12px;
+            margin-left: 20px;
+        }
+        .layui-btn2 .layui-icon {
+            /* margin-right: 3px; */
+            /* font-size: 18px; */
+            vertical-align: bottom;
+            vertical-align: middle\9;
+
+        }
+
+        #h-writing button:hover{
+            color: #6c9894;
+            cursor: pointer;
+        }
+        #login-tag a{
+            cursor: pointer;
+        }
+
+        #uinfo-view {
+            position: absolute;
+            right: 0;
+            width: 65px;
+            margin-right: 50px;
+        }
+        #xiewenzhangn{
+            float: right;
+            width: 100px;
+            padding-top: 14px;
+        }
+
+
+        #login-tag a{
+            cursor: pointer;
+        }
+        #login-tag a span{
+            color: #fff;font-size: 12px;
+        }
+    </style>
 </head>
 <body>
 <!-- 导航 -->
 <nav class="blog-nav layui-header">
     <div class="blog-container">
         <!-- QQ互联登陆 -->
-        <a href="javascript:;" class="blog-user">
-            <i class="fa fa-qq"></i>
-        </a>
+        <div id="uinfo-view">
+
+        </div>
+        <div id="login-tag" style="position: absolute;right: 80px;float:left;line-height: 65px;color: #fff;font-size: 14px;">
+            <a><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a><span>注&nbsp;&nbsp;册</span></a>
+        </div>
+        <div id="xiewenzhangn">
+            <div class="h-writing" style="width: 100px;height: 48px;">
+                <li style="width: 78px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 24px;
+    border-radius: 15px;
+    background: #393D49">
+                    <button class="layui-btn2" style="
+    /* height: 30px; */
+"><i class="layui-icon"></i>写文章</button>
+                </li>
+            </div>
+        </div>
         <a href="javascript:;" class="blog-user layui-hide">
             <img src="../images/Absolutely.jpg" alt="Absolutely" title="Absolutely"/>
         </a>
@@ -43,23 +133,23 @@
         </a>
         <!-- 导航菜单 -->
         <ul class="layui-nav" lay-filter="nav">
-            <li class="layui-nav-item layui-this">
+            <li class="layui-nav-item ">
                 <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
             </li>
-            <li class="layui-nav-item">
-                <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>
-            </li>
-            <li class="layui-nav-item">
+            <!--<li class="layui-nav-item">-->
+                <!--<a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>-->
+            <!--</li>-->
+            <li class="layui-nav-item layui-this">
                 <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
             </li>
             <li class="layui-nav-item">
-                <a href="project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
+                <a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
                 <!--</li>-->
                 <!--<li class="layui-nav-item">-->
                 <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
                 <!--</li>-->
             <li class="layui-nav-item">
-                <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;作家专栏</a>
+                <a href="/author"><i class="fa fa-thumbs-up fa-fw"></i>&nbsp;作家</a>
             </li>
             <li class="layui-nav-item">
                 <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
@@ -78,12 +168,25 @@
     <div class="blog-container">
         <div class="blog-main">
             <!--左边文章列表-->
+
             <div class="blog-main-left">
-                <div id="articles"></div>
+               <div id="articles" style="border: 1px #e2e2e2 solid;">
+
+                   <div class="blog-title">&nbsp;&nbsp;&nbsp;&nbsp;<img src="../images/kuaixun.svg">7x24h快讯</div>
+
+               </div>
                 <div class="admin-table-page">
                     <div id="paged" class="page">
                     </div>
                 </div>
+                <div id="paging" style="width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    color: #3e6d43;">加载更多...</div>
             </div>
             <!--右边小栏目-->
             <div class="blog-main-right">
@@ -152,6 +255,13 @@
 </div>
 <!-- 底部 -->
 <footer class="blog-footer">
+    <p id="partner-view" style="text-align: left;padding:0 10px">
+
+    </p>
+
+    <p id="partner-url" style="text-align: left;padding:0 20px">
+        友情链接： 比特时代
+    </p>
     <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="">Lins</a><span>Design By Mr.Lin</span></p>
     <p><a href="" target="_blank">蜀ICP备160299x4e5号-1</a></p>
 </footer>
@@ -188,6 +298,28 @@
 <script src="../slider/js/jquery-1.10.1.min.js"></script>
 <script src="../slider/js/idangerous.swiper2.7.6.min.js"></script>
 <script src="../slider/js/swiper.animate1.0.2.min.js"></script>
+<script id="partner" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <a href="{{item.url}}"> <img src="{{item.logo}}" style="width:100px;height:40px;margin-left:5px;"></a>
+    {{#  }); }}
+</script>
+<script id="uInfoTpl" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <div onmouseover="userLogoin();" onmouseleave="setTimeout('userLogoout()', 3000);" id="ufo" style="margin-top: 15px;width: 35px;height: 35px;float: left;border-radius: 50%;overflow:hidden;">
+        <img src="{{item.logo}}" style="width: 100%;">
+    </div>
+
+    <li class="layui-nav-item" lay-unselect="">
+        <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
+            <dd><a href="/center">个人中心</a></dd>
+            <dd><a href="/center/article">我的文章</a></dd>
+            <dd><a href="/center/message;">消息中心</a></dd>
+            <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
+        </dl>
+    </li>
+
+    {{#  }); }}
+</script>
 <script>
     var mySwiper = new Swiper('.swiper-container', {
         pagination: '.pagination',
@@ -224,6 +356,8 @@
             e.addClass("active")
         });
     })
+
+
 </script>
 <!-- layui.js -->
 <script src="../plug/layui/layui.js"></script>
@@ -267,35 +401,83 @@
     layui.config({
         base: 'js/'
     });
+    var currentPage = 2;
+    var count = 0;
+    var totalPage = 1;
+    var type = 0;
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        var getTpl = tpl.innerHTML
+            , view = document.getElementById('articles');
 
-    layui.use(['paging'], function () {
-        var $ = layui.jquery,
-            paging = layui.paging(),
-            layerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
-            layer = layui.layer;//获取当前窗口的layer对象
+        $.ajax({
+            url: base.url + '/blog/api/flash/page?pageIndex=1&pageSize=10&type=' + type,
 
-        paging.init({
-            openWait: true,
-            url: base.url + '/blog/api/flash/page', //地址
-            elem: '#articles', //内容容器
-            params: { //发送到服务端的参数
-            },
-            type: 'GET',
-            tempElem: '#tpl', //模块容器
-            pageConfig: { //分页参数配置
-                elem: '#paged', //分页容器
-                pageSize: 10 //分页大小
-            },
-            success: function () { //渲染成功的回调
-                //alert('渲染成功');
-            },
-            fail: function (msg) { //获取数据失败的回调
-                //alert('获取数据失败')
-            },
-            complate: function () { //完成的回调
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                count = data.count;
+                if(count%10 > 0){
+                    totalPage = Math.floor(count/10) + 1;
+                }else{
+                    totalPage = count/10;
+                }
+                if((currentPage - totalPage) == 1){
+                    $("#paging").html("没有更多数据了");
+                }
+                laytpl(getTpl).render(data, function (html) {
+                    $("#articles").append(html);
+                });
+            }
+        })
 
-            },
-        });
+    });
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        var getTpl = partner.innerHTML
+            , view = document.getElementById('partner-view');
+
+        $.ajax({
+            url: base.url + '/blog/api/partner/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(getTpl).render(data, function (html) {
+                    view.innerHTML = html;
+                });
+            }
+        })
+    });
+
+    $("#paging").on('click',function(){
+
+        if(currentPage <= totalPage){
+            $.ajax({
+                url: base.url + '/blog/api/flash/page?pageIndex='+currentPage+'&pageSize=10&type=' + type,
+
+                contentType: "application/json; charset=utf-8",
+                dataType: 'jsonp',
+                jsonp: 'callback',
+                success: function (data, status, xhr) {
+                    currentPage ++;
+                    if(currentPage > totalPage){
+                        $("#paging").html("没有更多数据了");
+                    }
+                    layui.use('laytpl', function() {
+                        var laytpl = layui.laytpl;
+                        var getTpl = tpl.innerHTML;
+                        laytpl(getTpl).render(data, function (html) {
+                            //view.innerHTML = html;
+                            $("#articles").append(html);
+                        });
+                    });
+
+                }
+            })
+        }
 
     });
 </script>

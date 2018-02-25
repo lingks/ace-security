@@ -5,6 +5,8 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.wxiaoqi.blog.admin.biz.ArticleBiz;
 import com.github.wxiaoqi.blog.admin.entity.Article;
+import com.github.wxiaoqi.blog.admin.mapper.AdvertMapper;
+import com.github.wxiaoqi.blog.admin.mapper.ArticleMapper;
 import com.github.wxiaoqi.security.common.msg.ListRestResponse;
 import com.github.wxiaoqi.security.common.msg.ObjectRestResponse;
 import com.github.wxiaoqi.security.common.msg.TableResultResponse;
@@ -19,6 +21,9 @@ import tk.mybatis.mapper.entity.Example;
 @RestController
 @RequestMapping("api/article")
 public class ArticleRest {
+
+    @Autowired
+    private ArticleMapper mapper;
     @Autowired
     private ArticleBiz articleBiz;
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
@@ -33,19 +38,63 @@ public class ArticleRest {
 //    }
 
     @RequestMapping(value = "/page",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public JSONPObject get(int pageIndex, int pageSize, String title,Integer type,String callback){
+    public JSONPObject get(int pageIndex, int pageSize,String authorId,String title,Integer type,String orderField,String orderBy,String callback){
         Example example = new Example(Article.class);
-        if(StringUtils.isNotBlank(title))
+        if(StringUtils.isNotBlank(title)) {
             example.createCriteria().andLike("title", "%" + title + "%");
+        }
         if(type != null){
             example.createCriteria().andEqualTo("type", type);
         }
 
-        //example.setOrderByClause("hot_value desc");
+        if(StringUtils.isNotBlank(authorId)){
+            example.createCriteria().andEqualTo("crtUser", authorId);
+        }
+
+        if(StringUtils.isNotBlank(orderField)){
+            example.setOrderByClause(orderField + " " + orderBy==null?"asc":"desc");
+        }
+
         int count = articleBiz.selectCountByExample(example);
         PageHelper.startPage(pageIndex, pageSize);
         return new JSONPObject(callback, new ListRestResponse<Article>().rel(true).count(count).result(articleBiz.selectByExample(example)));
 
+    }
+
+
+    @RequestMapping(value = "/list",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public JSONPObject findList(int page, int limit,String authorId,String title,Integer type,String orderField,String orderBy,String callback){
+        Example example = new Example(Article.class);
+        if(StringUtils.isNotBlank(title)) {
+            example.createCriteria().andLike("title", "%" + title + "%");
+        }
+        if(type != null){
+            example.createCriteria().andEqualTo("type", type);
+        }
+
+        if(StringUtils.isNotBlank(authorId)){
+            example.createCriteria().andEqualTo("crtUser", authorId);
+        }
+
+        if(StringUtils.isNotBlank(orderField)){
+            example.setOrderByClause(orderField + " " + orderBy==null?"asc":"desc");
+        }
+
+        int count = articleBiz.selectCountByExample(example);
+        PageHelper.startPage(page, limit);
+        return new JSONPObject(callback, new ListRestResponse<Article>().rel(true).count(count).result(articleBiz.selectByExample(example)));
+
+    }
+
+
+    @RequestMapping(value = "",method = RequestMethod.POST)
+    @ResponseBody
+    public ObjectRestResponse<Article> add(Article entity){
+        System.out.println(entity);
+
+        mapper.insertSelective(entity);
+        System.out.println(entity);
+        return new ObjectRestResponse<Article>().rel(true);
     }
 }
 

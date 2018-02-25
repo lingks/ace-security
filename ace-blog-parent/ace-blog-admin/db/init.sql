@@ -21,7 +21,7 @@ SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
---  Table structure for `blog_article` alter table blog_article add column hot_value int(11) default '0'
+--  Table structure for `blog_article` alter table blog_article add column status int(11) default '0';
 -- ----------------------------
 DROP TABLE IF EXISTS `blog_article`;
 CREATE TABLE `blog_article` (
@@ -36,9 +36,11 @@ CREATE TABLE `blog_article` (
   `type` int(11) DEFAULT '0',
   `hot_value` int(11) DEFAULT '0',
   `cover` varchar(255) DEFAULT NULL,
+  `pid` int(11) DEFAULT '0',
+  `pname` varchar(255) DEFAULT NULL,
   `crt_time` datetime DEFAULT NULL,
-  `crt_user` varchar(255) DEFAULT NULL,
-  `crt_name` varchar(255) DEFAULT NULL,
+  `crtUser` varchar(255) DEFAULT NULL,
+  `crtName` varchar(255) DEFAULT NULL,
   `crt_host` varchar(255) DEFAULT NULL,
   `upd_time` datetime DEFAULT NULL,
   `upd_user` varchar(255) DEFAULT NULL,
@@ -55,6 +57,39 @@ CREATE TABLE `blog_article` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4;
 
+
+DROP TABLE IF EXISTS `flash_news`;
+CREATE TABLE `flash_news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `content` longtext,
+  `remark` varchar(1000) DEFAULT NULL,
+  `tag` varchar(255) DEFAULT NULL,
+  `is_del` char(1) DEFAULT NULL,
+  `page_view` int(11) DEFAULT '1',
+  `comment_count` int(11) DEFAULT '0',
+  `hot_value` int(11) DEFAULT '0',
+  `type` int(11) DEFAULT '0',
+  `status` int(11) DEFAULT '0',
+  `cover` varchar(255) DEFAULT NULL,
+  `crt_time` datetime DEFAULT NULL,
+  `crtUser` varchar(255) DEFAULT NULL,
+  `crtName` varchar(255) DEFAULT NULL,
+  `crt_host` varchar(255) DEFAULT NULL,
+  `upd_time` datetime DEFAULT NULL,
+  `upd_user` varchar(255) DEFAULT NULL,
+  `upd_name` varchar(255) DEFAULT NULL,
+  `upd_host` varchar(255) DEFAULT NULL,
+  `attr1` varchar(255) DEFAULT NULL,
+  `attr2` varchar(255) DEFAULT NULL,
+  `attr3` varchar(255) DEFAULT NULL,
+  `attr4` varchar(255) DEFAULT NULL,
+  `attr5` varchar(255) DEFAULT NULL,
+  `attr6` varchar(255) DEFAULT NULL,
+  `attr7` varchar(255) DEFAULT NULL,
+  `attr8` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4;
 -- ----------------------------
 --  Records of `blog_article`
 -- ----------------------------
@@ -84,5 +119,28 @@ CREATE TABLE `advert` (
   `url` varchar(255) DEFAULT NULL,
   `logo` varchar(200),
   `sort` int(11) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4;
+
+
+
+
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(500) DEFAULT NULL,
+  `password` varchar(200) DEFAULT NULL,
+  `email` varchar(200),
+  `nick`  varchar(10),
+  `sex`  varchar(200) DEFAULT '男',
+  `work` varchar(200),
+  `country` varchar(200),
+  `address` varchar(200),
+  `remark` varchar(200),
+  `logo` varchar(200),
+  `birthy` varchar(200),
+  `tuijian` int(11) DEFAULT '0',
+  `page_view` int(11) DEFAULT '0',
+  `article_count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4;

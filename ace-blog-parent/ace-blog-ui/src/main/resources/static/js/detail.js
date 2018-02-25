@@ -8,7 +8,7 @@
 
 prettyPrint();
 layui.use(['form', 'layedit'], function () {
-    var form = layui.form();
+    var form = layui.form;
     var $ = layui.jquery;
     var layedit = layui.layedit;
 
@@ -18,7 +18,7 @@ layui.use(['form', 'layedit'], function () {
         tool: ['face', '|', 'left', 'center', 'right', '|', 'link'],
     });
     //评论和留言的编辑器的验证
-    layui.form().verify({
+    layui.form.verify({
         content: function (value) {
             value = $.trim(layedit.getText(editIndex));
             if (value == "") return "自少得有一个字吧";
@@ -33,6 +33,23 @@ layui.use(['form', 'layedit'], function () {
         setTimeout(function () {
             layer.close(index);
             var content = data.field.editorContent;
+
+            $.post({
+                url: 'http://localhost:8765/blog/api/comment',
+                type: 'POST',
+
+
+                dataType: 'json',
+                data:{
+                    'content':content,
+                    'pid':64
+                },
+                success: function (data, status, xhr) {
+                    console.log(data);
+                }
+            })
+
+
             var html = '<li><div class="comment-parent"><img src="../images/Absolutely.jpg"alt="absolutely"/><div class="info"><span class="username">Absolutely</span><span class="time">2017-03-18 18:46:06</span></div><div class="content">' + content + '</div></div></li>';
             $('.blog-comment').append(html);
             $('#remarkEditor').val('');

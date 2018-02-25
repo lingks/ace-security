@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>专栏认证-个人主页</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="1.16907189e-15 27.8502075 1.16907189e-15 0.0624385027 27.9371355 0.0624385027 27.9371355 27.8502075"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="个人主页-copy" transform="translate(-1433.000000, -251.000000)">
+            <g id="专栏认证-个人主页" transform="translate(1433.000000, 251.000000)">
+                <g id="Group-3" transform="translate(0.000000, 0.087294)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M13.9685978,27.8502075 C6.26618925,27.8502075 -9.03225806e-05,21.6175872 -9.03225806e-05,13.9563679 C-9.03225806e-05,6.29514866 6.26618925,0.0623786096 13.9685978,0.0623786096 C21.6710065,0.0623786096 27.9371355,6.29514866 27.9371355,13.9563679 C27.9371355,21.6175872 21.6710065,27.8502075 13.9685978,27.8502075" id="Fill-1" fill="#EAB000" mask="url(#mask-2)"></path>
+                </g>
+                <path d="M22.2553591,4.47362638 L12.7332701,18.0396638 L8.97280938,10.9476024 L4.85319785,13.2142008 L5.65159777,15.5967348 L7.36323399,14.6572566 L11.553757,22.4840527 L13.0413187,22.4840527 L23.9398652,6.21508782 C23.4321449,5.58529472 22.8684418,5.00190443 22.2553591,4.47362638" id="Fill-4" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

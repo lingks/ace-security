@@ -10,8 +10,8 @@
     <result column="option" property="option" jdbcType="VARCHAR" />
     <result column="uri" property="uri" jdbcType="VARCHAR" />
     <result column="crt_time" property="crtTime" jdbcType="DATE" />
-    <result column="crt_user" property="crtUser" jdbcType="VARCHAR" />
-    <result column="crt_name" property="crtName" jdbcType="VARCHAR" />
+    <result column="crtUser" property="crtUser" jdbcType="VARCHAR" />
+    <result column="crtName" property="crtName" jdbcType="VARCHAR" />
     <result column="crt_host" property="crtHost" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

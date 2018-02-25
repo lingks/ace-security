@@ -1,0 +1,640 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <title>链向财经-个人中心</title>
+    <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
+    <!--Layui-->
+    <link href="../plug/layui/css/layui.css" rel="stylesheet" />
+    <!--font-awesome-->
+    <link href="../plug/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!--全局样式表-->
+    <link href="../css/global.css" rel="stylesheet" />
+    <!--本页样式表-->
+    <link href="../css/article.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../slider2/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../slider2/css/index.css">
+    <style>
+        .blog-body{
+            margin-top: 64px;
+            min-width: 1150px;
+        }
+        .blog-title{
+            text-align: left;
+            font-size: 18px;
+            height: 60px;
+            line-height: 70px;
+            background: white;
+            margin-bottom: 5px;
+        }
+        .blog-main-left ul li {
+            list-style: none;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 14px;
+            border-bottom: 1px #e6e2e2 solid;
+        }
+        .blog-main-left ul li:hover{
+            color: #5670BF;
+        }
+
+        .blog-main-left-li-active{
+            border-left:2px blue solid;
+            color: #5670BF;
+        }
+        .layui-form-item {
+            margin-bottom: 0px;
+            clear: both;
+        }
+        .layui-form-item .layui-inline {
+            margin-bottom: 5px;
+
+            width: 500px;
+            margin-right: 10px;
+        }
+        .btnSubmit{
+            width: 390px;
+            background: #6396f3;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            margin-top: 10px;
+            line-height: 30px;
+        }
+        #uinfo-view {
+            position: absolute;
+            right: 0;
+            width: 65px;
+            margin-right: 50px;
+        }
+
+
+        #login-tag a{
+            cursor: pointer;
+        }
+        #login-tag a span{
+            color: #fff;font-size: 12px;
+        }
+
+        .tb-main{
+            margin: 0 auto;
+            margin-left: 10px;
+            margin-top: 50px;
+        }
+        .tb-main2{
+            margin: 0 auto;
+            width: 100%;
+        }
+        .tb-main2 ul li{
+            float: left;
+            height: 35px;font-size: 13px;
+            line-height: 35px;
+        }
+        .tb-main ul li{
+            float: left;
+            height: 35px;font-size: 13px;
+            line-height: 35px;
+        }
+        .layui-btn2 {
+            display: inline-block;
+            height: 28px;
+            border-radius: 15px;
+            /* text-align: left; */
+            line-height: 28px;
+            padding: 0px 20px 0px 10px;
+            background-color: #393D49;
+            color: #fff;
+            white-space: nowrap;
+            text-align: left;
+            font-size: 12px;
+            border: none;
+            /*border: 1px #4c4949 solid;*/
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        #login-tag{
+            font-size: 12px;
+            margin-left: 20px;
+        }
+        .layui-btn2 .layui-icon {
+            /* margin-right: 3px; */
+            /* font-size: 18px; */
+            vertical-align: bottom;
+            vertical-align: middle\9;
+
+        }
+
+        #h-writing button:hover{
+            color: #6c9894;
+            cursor: pointer;
+        }
+        #login-tag a{
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<!-- 导航 -->
+<nav class="blog-nav layui-header">
+    <div class="blog-container">
+        <!-- QQ互联登陆 -->
+        <div id="uinfo-view">
+
+        </div>
+        <div id="login-tag" style="position: absolute;right: 80px;float:left;line-height: 65px;color: #fff;font-size: 14px;">
+            <a><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a><span>注&nbsp;&nbsp;册</span></a>
+        </div>
+
+
+        <a href="javascript:;" class="blog-user layui-hide">
+            <img src="../images/Absolutely.jpg" alt="Absolutely" title="Absolutely"/>
+        </a>
+        <!-- 不落阁 -->
+        <a class="blog-logo" href="home.html">
+            <img src="../images/logo.svg">
+        </a>
+        <!-- 导航菜单 -->
+        <ul class="layui-nav" lay-filter="nav">
+            <li class="layui-nav-item ">
+                <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
+            </li>
+            <!--<li class="layui-nav-item">-->
+                <!--<a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>-->
+            <!--</li>-->
+            <li class="layui-nav-item">
+                <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
+                <!--</li>-->
+                <!--<li class="layui-nav-item">-->
+                <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
+                <!--</li>-->
+            <li class="layui-nav-item">
+                <a href="/article"><i class="fa fa-thumbs-up fa-fw"></i>&nbsp;作家</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
+            </li>
+        </ul>
+        <!-- 手机和平板的导航开关 -->
+        <a class="blog-navicon" href="javascript:;">
+            <i class="fa fa-navicon"></i>
+        </a>
+    </div>
+</nav>
+
+<!-- 主体（一般只改变这里的内容） -->
+<div class="blog-body">
+    <!-- 这个一般才是真正的主体内容 -->
+    <div class="blog-container">
+        <div class="blog-main">
+            <!--左边文章列表-->
+
+            <div style="height:880px;    background: white;
+    margin: 20px;border: 1px #e6e2e2 solid;
+    margin-top: 80px;">
+
+                <!--右边小栏目-->
+                <div style="width: 100%;" id="rightMainView">
+
+                    <form class="layui-form form-view" action="" id="userInfo-form" style="padding: 30px;    width: 60%;
+    margin: 0 auto;">
+
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <div class="layui-input-block">
+                                    <input type="text" id="title"  name="title" lay-verify="title" autocomplete="off" value="" placeholder="请输入标题" class="layui-input" style="font-size: 24px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    width: 585px;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">内容</label>
+                            <div class="layui-input-block">
+                                <textarea class="layui-textarea layui-hide" name="content"   lay-verify="content" id="content"></textarea>
+                            </div>
+                        </div>
+
+                    <div class="layui-form-item" style="margin-top:10px;">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">封面图</label>
+                            <div class="layui-input-block">
+                                <button type="button" class="layui-btn" id="test1" style="background: #bdbdbd;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 25px;">更换</button>
+                            </div>
+                            <div class="layui-upload-list" style="margin-left: 110px;">
+                                <img class="layui-upload-img" id="demo2" style="    width: 120px;
+    height: 80px;">
+                                <p id="demoText"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">文章类型</label>
+                                <div class="layui-input-block">
+                                    <select name="type" lay-filter="aihao" id="type" lay-verify="type">
+                                        <option value=""></option>
+                                        <option value="1">项目报告</option>
+                                        <option value="2">精英视点</option>
+                                        <option value="3">行业政策</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">关键词</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="tag" class="layui-input"  lay-verify="tag" placeholder="多个关键词请用;隔开">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">文章摘要</label>
+                                <div class="layui-input-block">
+                                    <textarea rows="5" maxlength="80" class="layui-input"  lay-verify="remark" id="remark" name="remark" placeholder="摘要最多可输入80个字"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="crtUser" name="crtUser">
+                        <input type="hidden" id="crtName" name="crtName">
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <a>
+                                    <div class="layui-btn" lay-submit="" class="btnSubmit" onclick="btnSubmitFun();"  lay-filter="demo1">保&nbsp;&nbsp;存</div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div id="demo1" style="padding-left: 45%;"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!-- 底部 -->
+<footer class="blog-footer">
+    <p id="partner-view" style="text-align: left;padding:0 10px">
+
+    </p>
+
+    <p id="partner-url" style="text-align: left;padding:0 20px">
+        友情链接： 比特时代
+    </p>
+    <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="">Lins</a><span>Design By Mr.Lin</span></p>
+    <p><a href="" target="_blank">蜀ICP备160299x4e5号-1</a></p>
+</footer>
+<!--侧边导航-->
+<ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
+    <li class="layui-nav-item layui-this">
+        <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="timeline.html"><i class="fa fa-road fa-fw"></i>&nbsp;点点滴滴</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+    </li>
+</ul>
+<!--分享窗体-->
+<div class="blog-share layui-hide">
+    <div class="blog-share-body">
+        <div style="width: 200px;height:100%;">
+            <div class="bdsharebuttonbox">
+                <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                <a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--遮罩-->
+<div class="blog-mask animated layui-hide"></div>
+<script src="../slider/js/jquery-1.10.1.min.js"></script>
+<script src="../slider/js/idangerous.swiper2.7.6.min.js"></script>
+<script src="../slider/js/swiper.animate1.0.2.min.js"></script>
+<script id="partner" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <a href="{{item.url}}"> <img src="{{item.logo}}" style="width:100px;height:40px;margin-left:5px;"></a>
+    {{#  }); }}
+</script>
+
+<!-- layui.js -->
+<script src="../plug/layui/layui.js"></script>
+<!-- 全局脚本 -->
+<script src="../js/global.js"></script>
+<!-- 本页脚本 -->
+<script src="../js/home.js"></script>
+<script id="uInfoTpl" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+        <div onmouseover="userLogoin();" onmouseleave="setTimeout('userLogoout()', 3000);" id="ufo" style="margin-top: 15px;width: 35px;height: 35px;float: left;border-radius: 50%;overflow:hidden;">
+            <img src="{{item.logo}}" style="width: 100%;" id="user-logo">
+
+            <li class="layui-nav-item" lay-unselect="">
+                <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
+                    <dd><a href="/center">个人中心</a></dd>
+                    <dd><a href="/center/article">我的文章</a></dd>
+                    <dd><a href="/center/message;">消息中心</a></dd>
+                    <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
+                </dl>
+            </li>
+        </div>
+
+    {{#  }); }}
+</script>
+
+<script id="articleInfoTpl" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <ul>
+        <li style="line-height: 80px;text-align:center;border-bottom: 1px #eee solid;width:15%;height: 80px;">
+            <img style="width:80px;" src="{{item.cover}}">
+        </li>
+        <li style="height: 80px;width:30%;border-bottom: 1px #eee solid;">
+            {{item.title}}
+        </li>
+        <li  style="height: 80px;width:15%;border-bottom: 1px #eee solid;text-align: center;">{{item.updTime==undefined?item.crtTime:item.updTime}}</li>
+        <li  style="height: 80px;width:5%;border-bottom: 1px #eee solid;text-align: center;">{{item.pageView}}</li>
+        <li  style="height: 80px;width:5%;border-bottom: 1px #eee solid;text-align: center;">{{item.commentCount}}</li>
+        <li  style="height: 80px;width:10%;border-bottom: 1px #eee solid;text-align: center;">{{item.status}}</li>
+        <li  style="height: 80px;width:15%;border-bottom: 1px #eee solid;text-align: center;">操作</li>
+    </ul>
+
+    {{#  }); }}
+</script>
+<script>
+    layui.config({
+        base: 'js/'
+    });
+
+
+
+    layui.use(['form', 'layedit', 'laydate'], function() {
+
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+
+        layedit.set({
+            uploadImage: {
+                url: '/file/uploadImg' //接口url
+                ,type: 'post' //默认post
+            }
+        });
+        //注意：layedit.set 一定要放在 build 前面，否则配置全局接口将无效。
+        var editIndex =  layedit.build('content'); //建立编辑器
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 1){
+                    return '请输入标题';
+                }
+            },
+            type: function(value){
+                if(value.length < 1){
+                    return "请选择文章类型";
+                }
+            },
+            tag: function(value){
+                if(value.length < 1){
+                    return '关键词不能为空';
+                }
+            },
+            remark: function(value){
+                if(value.length < 1){
+                    return '摘要不能为空';
+                }
+            }
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function(data){
+            console.log($("#crtUser").val())
+            console.log($("#type"))
+            $.ajax({
+                url: 'http://localhost:8765/blog/api/article',
+                type: 'POST',
+
+
+                dataType: 'json',
+                data:{
+                    'title':$("#title").val(),
+                    'remark':$("#remark").val(),
+                    'tag':$("#tag").val(),
+                    'content':$("#content").text(),
+                    'cover':$("#logo").val(),
+                    'type':$("#type").val(),
+                    'crtUser':$("#crtUser").val(),
+                    'crtName':$("#crtName").val(),
+                    'pid':$("#crtUser").val(),
+                    'pname':$("#crtName").val()
+                },
+                success: function (data, status, xhr) {
+                    console.log(data);
+                }
+            })
+            layui.use('layer', function() {
+
+                var $ = layui.jquery, layer = layui.layer;
+
+                layer.msg("保存成功...")
+            });
+        });
+
+    });
+    layui.use('upload', function() {
+            var $ = layui.jquery
+                ,upload = layui.upload;
+
+            //普通图片上传
+            var uploadInst = upload.render({
+                elem: '#test1'
+                ,url: '/file/upload'
+                ,before: function(obj){
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function(index, file, result){
+                        $('#demo2').attr('src', result); //图片链接（base64）
+                    });
+                }
+                ,done: function(res){
+                    console.log(res)
+                    //如果上传失败
+                    if(res.code > 0){
+                        return layer.msg('上传失败');
+                    }
+                    if($("#logo"))
+                    {
+                        console.log(res)
+
+                        if(res.code == 0){
+                            $("#logo").val(res.src)
+                        }
+                    }
+                    //上传成功
+                }
+                ,error: function(){
+                    console.log("errot")
+                    //演示失败状态，并实现重传
+                    var demoText = $('#demoText');
+                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                    demoText.find('.demo-reload').on('click', function(){
+                        uploadInst.upload();
+                    });
+                }
+            });
+
+
+
+        //拖拽上传
+//        upload.render({
+//            elem: '#test10'
+//            ,url: '/file/upload'
+//            ,done: function(res){
+//                console.log(res)
+//            }
+//        });
+    });
+
+
+
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        var getTpl = partner.innerHTML
+            , view = document.getElementById('partner-view');
+
+        $.ajax({
+            url: base.url + '/blog/api/partner/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(getTpl).render(data, function (html) {
+                    view.innerHTML = html;
+                });
+            }
+        })
+    });
+
+
+
+    $(function(){
+        var user = JSON.parse(localStorage.getItem("user"));
+        if(user != undefined && user != null && user != ""){
+
+
+            layui.use('laytpl', function() {
+                var laytpl = layui.laytpl;
+
+                    uInfotemplate = uInfoTpl.innerHTML
+
+                    ,uview =  document.getElementById('uinfo-view')
+                    ;
+
+                $(".tb-main").hide();
+                $("#demo1").hide();
+                $.ajax({
+                    url: base.url + '/blog/api/user/'+user.id,
+                    type: 'GET',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'jsonp',
+                    jsonp: 'callback',
+                    async:true,
+                    data:$("#userInfo-form").serialize(),
+                    success: function (data, status, xhr) {
+                        var user = data.result[0];
+                        console.log(user.id)
+                        $("#crtUser").val(user.id);
+                        $("#crtName").val(user.username);
+                        laytpl(uInfotemplate).render(data, function (html) {
+                            uview.innerHTML = html;
+                        });
+
+                    }
+
+                })
+            });
+
+        }else{
+            alert("未登录，进入登录页面");
+        }
+
+
+        $(".blog-main-left").find("li").on('click',function(){
+
+            console.log($(this)[0].className)
+            if($(this)[0].className == 'blog-main-left-li-active')return;
+            if($(this)[0].id == "uinfo"){
+                layui.use('laytpl', function() {
+                    var laytpl = layui.laytpl;
+                    var userTpl = userInfoTpl.innerHTML,
+                        uInfotemplate = uInfoTpl.innerHTML
+                        ,userInfoview = document.getElementById('rightMainView')
+                        ,uview =  document.getElementById('uinfo-view');
+
+                    var user = JSON.parse(localStorage.getItem("user"));
+                    if(user != undefined && user != null && user != ""){
+                        console.log("......")
+                        var users = [user];
+                        laytpl(userTpl).render(users, function (html) {
+                            $("#rightMainView").html(html);
+                            $("#demo1").hide();
+                            $(".tb-main").hide();
+                            $(".tb-main2").html("");
+                            $("#articleMainView").hide();
+                            $("#rightMainView").show();
+                        });
+
+                        laytpl(uInfotemplate).render(users, function (html) {
+                            uview.innerHTML = html;
+                        });
+                    }else{
+                        alert("未登录，进入登录页面")
+                    }
+                });
+            }
+
+        })
+
+
+    })
+
+</script>
+
+</body>
+</html>

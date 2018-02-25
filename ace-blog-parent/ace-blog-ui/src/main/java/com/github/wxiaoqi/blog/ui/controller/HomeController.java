@@ -1,9 +1,12 @@
 package com.github.wxiaoqi.blog.ui.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
@@ -47,4 +50,27 @@ public class HomeController {
         return "project";
     }
 
+    @RequestMapping("/author")
+    public String author(){
+        return "author";
+    }
+    @RequestMapping("/udetail/{authorId}")
+    public String udetail(@PathVariable Integer authorId, Model model,HttpServletRequest request, HttpServletResponse response){
+        model.addAttribute("authorId",authorId);
+        request.setAttribute("authorId",authorId);
+        return "udetail";
+    }
+    @RequestMapping("/center")
+    public String cente(){
+        return "center";
+    }
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @RequestMapping("/writting")
+    public String writting(){
+        return "writting";
+    }
 }

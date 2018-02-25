@@ -32,10 +32,10 @@ public class Project {
     @Column(name = "crt_time")
     private Date crtTime;
 
-    @Column(name = "crt_user")
+    @Column(name = "crtUser")
     private String crtUser;
 
-    @Column(name = "crt_name")
+    @Column(name = "crtName")
     private String crtName;
 
     @Column(name = "crt_host")
@@ -204,7 +204,7 @@ public class Project {
     }
 
     /**
-     * @return crt_user
+     * @return crtUser
      */
     public String getCrtUser() {
         return crtUser;
@@ -218,7 +218,7 @@ public class Project {
     }
 
     /**
-     * @return crt_name
+     * @return crtName
      */
     public String getCrtName() {
         return crtName;

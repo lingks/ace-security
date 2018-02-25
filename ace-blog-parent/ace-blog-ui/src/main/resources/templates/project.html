@@ -1,10 +1,4 @@
-﻿<!--
-    
- @Name：不落阁整站模板源码
- @Author：Absolutely
- @Site：http://www.lyblogs.cn
-
- -->
+﻿
 
 <!DOCTYPE html>
 
@@ -13,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
     <meta http-equiv="Content-Language" content="zh-CN">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-    <title>链向财经-区块链信息服务平台</title>
+    <title>链向财经-项目库</title>
     <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
     <!--Layui-->
     <link href="../plug/layui/css/layui.css" rel="stylesheet" />
@@ -25,15 +19,236 @@
     <link href="../css/article.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../slider2/css/base.css">
     <link rel="stylesheet" type="text/css" href="../slider2/css/index.css">
+
+
+    <style type="text/css">
+        body{
+            background: #f5f5f5;
+        }
+        #first_pj_index_view{
+            width: 100%;
+            min-width: 1200px;
+        }
+        #first_pj_index_view li{
+            width: 80%;
+            height:280px;
+            margin: 0 auto;
+            background: white;
+        }
+        #first_pj_index_view li a img{
+            width:100%;
+            height: 208px;
+        }
+
+        #second_pj_index_view{
+            width: 100%;
+            min-width: 1200px;
+        }
+        #second_pj_index_view li{
+            width: 80%;
+            height:280px;
+            margin: 0 auto;
+            background: white;
+        }
+        #second_pj_index_view li a img{
+            width:100%;
+            height: 208px;
+        }
+        .ui_li_div{
+            float: left;
+            width: 20%;
+        }
+        .li_div{
+            width: 100%;
+        }
+        .layui-carousel .layui-this{
+            background-image: url("../images/head-bg.jpg");
+        }
+        .carousel-title{
+            font-size: 24px;
+            color: rgba(255, 255, 255, .5);
+            line-height: 24px;
+            text-align: center;
+            margin-bottom: 23px;
+            padding-top: 20px;
+            font: 16px PingFangSC-Regular, Microsoft YaHei;
+        }
+
+
+        #ui_li_span{
+            position: relative;
+            display: block;
+            font-size: 13px;
+            width: 80px;
+            line-height: 13px;
+            text-align: center;
+            color: rgba(255, 255, 255, .7);
+            margin: 0 auto;
+        }
+        #ui_li_span:before{
+            position: absolute;
+            content: " ";
+            top: 0;
+            left: 0;
+            width: 9px;
+            height: 13px;
+            background: url("../images/pro-banner-timer-lf.svg") no-repeat center;
+        }
+        #ui_li_span:after{
+            position: absolute;
+            content: " ";
+            top: 0;
+            right: 0;
+            width: 9px;
+            height: 13px;
+            background: url("../images/pro-banner-timer-rt.svg") no-repeat center;
+        }
+
+        .article {
+            padding: 0px;
+            width: 49%;
+            float: left;
+            margin-bottom: 20px;
+            background: #fff;
+            margin-right: 1%;
+            border: none;
+            -moz-transition: all 0.3s linear;
+            -o-transition: all 0.3s linear;
+            -webkit-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+        }
+
+        .article:hover {
+            border-left: 0px solid #009688;
+            -moz-transition: all 0.3s linear;
+            -o-transition: all 0.3s linear;
+            -webkit-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+        }
+
+        .article_right{
+            text-align: left;
+            font-size: 14px;
+            display: block;
+            margin-top: 10px;
+
+        }
+        .article-right{
+            text-indent: 1.5em;
+        }
+        /* 大屏幕（大桌面显示器，大于等于 1200px） */
+        @media (min-width: 1200px) {
+            .blog-container {
+                width: 1180px;
+            }
+        }
+        .search-btn{
+            width: 80%;
+            margin: 0 auto;
+            height: 40px;
+            position: relative;
+            background: #5e6db5;
+            bottom: 0px;
+            text-align: center;
+            color: white;
+            line-height: 40px;
+            font-size: 14px;
+        }
+
+        .pro-good-data-text {
+            font-size: 12px;
+            color: #666666;
+            text-align: justify;
+            overflow: hidden;
+        }
+
+        .layui-btn2 {
+            display: inline-block;
+            height: 28px;
+            border-radius: 15px;
+            /* text-align: left; */
+            line-height: 28px;
+            padding: 0px 20px 0px 10px;
+            background-color: #393D49;
+            color: #fff;
+            white-space: nowrap;
+            text-align: left;
+            font-size: 12px;
+            border: none;
+            /*border: 1px #4c4949 solid;*/
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        #login-tag{
+            font-size: 12px;
+            margin-left: 20px;
+        }
+        .layui-btn2 .layui-icon {
+            /* margin-right: 3px; */
+            /* font-size: 18px; */
+            vertical-align: bottom;
+            vertical-align: middle\9;
+
+        }
+
+        #h-writing button:hover{
+            color: #6c9894;
+            cursor: pointer;
+        }
+        #login-tag a{
+            cursor: pointer;
+        }
+
+        #uinfo-view {
+            position: absolute;
+            right: 0;
+            width: 65px;
+            margin-right: 50px;
+        }
+        #xiewenzhangn{
+            float: right;
+            width: 100px;
+            padding-top: 14px;
+        }
+
+
+        #login-tag a{
+            cursor: pointer;
+        }
+        #login-tag a span{
+            color: #fff;font-size: 12px;
+        }
+    </style>
+
 </head>
 <body>
 <!-- 导航 -->
 <nav class="blog-nav layui-header">
     <div class="blog-container">
         <!-- QQ互联登陆 -->
-        <a href="javascript:;" class="blog-user">
-            <i class="fa fa-qq"></i>
-        </a>
+        <div id="uinfo-view">
+
+        </div>
+        <div id="login-tag" style="position: absolute;right: 80px;float:left;line-height: 65px;color: #fff;font-size: 14px;">
+            <a><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a><span>注&nbsp;&nbsp;册</span></a>
+        </div>
+        <div id="xiewenzhangn">
+            <div class="h-writing" style="width: 100px;height: 48px;">
+                <li style="width: 78px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 24px;
+    border-radius: 15px;
+    background: #393D49">
+                    <button class="layui-btn2" style="
+    /* height: 30px; */
+"><i class="layui-icon"></i>写文章</button>
+                </li>
+            </div>
+        </div>
         <a href="javascript:;" class="blog-user layui-hide">
             <img src="../images/Absolutely.jpg" alt="Absolutely" title="Absolutely"/>
         </a>
@@ -43,23 +258,23 @@
         </a>
         <!-- 导航菜单 -->
         <ul class="layui-nav" lay-filter="nav">
-            <li class="layui-nav-item layui-this">
+            <li class="layui-nav-item">
                 <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
             </li>
-            <li class="layui-nav-item">
-                <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>
-            </li>
+            <!--<li class="layui-nav-item">-->
+                <!--<a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>-->
+            <!--</li>-->
             <li class="layui-nav-item">
                 <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
             </li>
-            <li class="layui-nav-item">
-                <a href="project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
+            <li class="layui-nav-item layui-this">
+                <a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
                 <!--</li>-->
                 <!--<li class="layui-nav-item">-->
                 <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
                 <!--</li>-->
             <li class="layui-nav-item">
-                <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;作家专栏</a>
+                <a href="/author"><i class="fa fa-thumbs-up fa-fw"></i>&nbsp;作家</a>
             </li>
             <li class="layui-nav-item">
                 <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
@@ -71,453 +286,65 @@
         </a>
     </div>
 </nav>
-<style type="text/css">
-    .demolist{font-size: 0; *word-spacing: -1px;}
-    .demolist li{display: inline-block; font-size:14px; border:1px solid #eee; padding:10px; margin-right:10px; *display:inline; *zoom:1; word-spacing: normal; letter-spacing: normal; vertical-align: top;}
-    .active{background:#eee;}
-    .hidden{display: none;}
-    .menu{width:100%; background:#ECECEC; position:fixed; _position:absolute; top:0; left:0; z-index:3;}
-    .menu ul{width:600px; margin:0 auto;}
-    .menu ul li{float:left; margin-right:10px; padding:2px 6px;}
-    .menu ul li.active{background: #fff;}
-    .menu ul li a{line-height:32px; padding:0 4px;}
-    .code{padding:10px 0;}
-    .code h3 span{border:1px solid #ddd; margin-left:-1px; padding:10px;display:inline-block; cursor:pointer;}
-    pre{background:#eee; padding:10px;}
-    .slider{height:174px; margin:20px auto; overflow:hidden; position:relative;}
-    .sliderbox{position:relative;}/*必须加这句css,否则向左右，上下滚动时会没有效果*/
-    .slidernav{position:absolute; right:0; bottom:0; width:100%; background: rgba(0,0,0,0.5); color:#fff; font-size:0; *word-spacing: -1px;}
-    .slidernav li{display: inline-block; *display: inline; *zoom:1; vertical-align: top; font-size:14px; margin-left: 10px; letter-spacing: normal; word-spacing: normal;}
-    .slidernav li a{width:16px; padding:2px 4px; height:12px; background:#fff; color:#000; text-align:center;}
-    .slidernav li.current a{background:#3B8DD1; color:#fff;}
-    @media screen and (-webkit-min-device-antio:0){
-        .slidernav{letter-spacing: -5px;}
-    }
-    .slider .prev, .slider .next{position: absolute; top:50%; margin-top:-30px; cursor: pointer; width:61px; height:61px; left:0; background: url(../power/images/ft_icons.png) 0 0 no-repeat; text-indent:-9999px;}
-    .slider .next{right:0; left:auto; background-position: 0 -61px;}
-    .sliderbox li{
-        width:250px;
-    }
-    .sliderbox li a img{
-        height: 140px;
-    }
-</style>
-<div class="content">
-    <div class="slider" id="img">
-        <ul class="sliderbox">
-            <li class="first">
+<div class="layui-carousel" id="test2" style="margin-top: 60px;background: url("../images/pro-banner-timer-lf.svg") no-repeat center;">
+    <div carousel-item="" style="background-image: url(../images/head-bg.jpg);">
 
-                <a href=""><img src="../power/images/ban1.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
+        <div style="background-image: url(../images/head-bg.jpg);">
+            <div class="carousel-title">-- 优质项目展示 --</div>
+            <ul id="first_pj_index_view">
 
-                <a href=""><img src="../power/images/ban2.gif" alt="css代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
+            </ul>
+        </div>
 
-                <a href=""><img src="../power/images/ban3.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
+        <div style="background-image: url(../images/head-bg.jpg);">
+            <div class="carousel-title">-- 优质项目展示 --</div>
+            <ul id="second_pj_index_view">
 
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li class="first">
+            </ul>
+        </div>
 
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li><li class="first">
-
-            <a href=""><img src="../power/images/ban1.gif" alt="HTML代码"/>
-                <div>标题标题标题标题标题标题标题</div>
-            </a>
-        </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban2.gif" alt="css代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban3.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li class="first">
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li><li class="first">
-
-            <a href=""><img src="../power/images/ban1.gif" alt="HTML代码"/>
-                <div>标题标题标题标题标题标题标题</div>
-            </a>
-        </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban2.gif" alt="css代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban3.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li class="first">
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li><li class="first">
-
-            <a href=""><img src="../power/images/ban1.gif" alt="HTML代码"/>
-                <div>标题标题标题标题标题标题标题</div>
-            </a>
-        </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban2.gif" alt="css代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban3.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li class="first">
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li><li class="first">
-
-            <a href=""><img src="../power/images/ban1.gif" alt="HTML代码"/>
-                <div>标题标题标题标题标题标题标题</div>
-            </a>
-        </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban2.gif" alt="css代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban3.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li class="first">
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban5.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-            <li>
-
-                <a href=""><img src="../power/images/ban4.gif" alt="HTML代码"/>
-                    <div>标题标题标题标题标题标题标题</div>
-                </a>
-            </li>
-        </ul>
-
-        <div class="prev">&lt;</div>
-        <div class="next">&gt;</div>
     </div>
 </div>
+
+
 
 <!-- 主体（一般只改变这里的内容） -->
 <div class="blog-body">
     <!-- 这个一般才是真正的主体内容 -->
     <div class="blog-container">
         <div class="blog-main">
-            <!--左边文章列表-->
-            <div class="blog-main-left">
-                <div id="articles"></div>
-                <div class="admin-table-page">
-                    <div id="paged" class="page">
-                    </div>
-                </div>
+            <div>
+                <ul id="article-view">
+
+                </ul>
             </div>
-            <!--右边小栏目-->
-            <div class="blog-main-right">
-                <div class="blog-module shadow">
-                    <div class="blog-module-title">热文排行</div>
-                    <ul class="fa-ul blog-module-ul">
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">Web安全之跨站请求伪造CSRF</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">ASP.NET MVC 防范跨站请求伪造（CSRF）</a>
-                        </li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">常用正则表达式</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">EF CodeFirst数据迁移常用指令</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">浅谈.NET Framework基元类型</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">C#基础知识回顾-扩展方法</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（一）（HTML篇）</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（二）（CSS篇）</a></li>
-                    </ul>
-                </div>
-                <div class="blog-module shadow">
-                    <div class="blog-module-title">最近分享</div>
-                    <ul class="fa-ul blog-module-ul">
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="http://pan.baidu.com/s/1c1BJ6Qc"
-                                                                       target="_blank">Canvas</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="http://pan.baidu.com/s/1kVK8UhT"
-                                                                       target="_blank">pagesize.js</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="https://pan.baidu.com/s/1mit2aiW"
-                                                                       target="_blank">时光轴</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="https://pan.baidu.com/s/1nuAKF81"
-                                                                       target="_blank">图片轮播</a></li>
-                    </ul>
-                </div>
-                <div class="blog-module shadow">
-                    <div class="blog-module-title">一路走来</div>
-                    <dl class="footprint">
-                        <dt>2017年03月12日</dt>
-                        <dd>新增留言回复功能！人人都可参与回复！</dd>
-                        <dt>2017年03月10日</dt>
-                        <dd>不落阁2.0基本功能完成，正式上线！</dd>
-                        <dt>2017年03月09日</dt>
-                        <dd>新增文章搜索功能！</dd>
-                        <dt>2017年02月25日</dt>
-                        <dd>QQ互联接入网站，可QQ登陆发表评论与留言！</dd>
-                    </dl>
-                </div>
-                <div class="blog-module shadow">
-                    <div class="blog-module-title">后台记录</div>
-                    <dl class="footprint">
-                        <dt>2017年03月16日</dt>
-                        <dd>分页新增页容量控制</dd>
-                        <dt>2017年03月12日</dt>
-                        <dd>新增管家提醒功能</dd>
-                        <dt>2017年03月10日</dt>
-                        <dd>新增Win10快捷菜单</dd>
-                    </dl>
-                </div>
-                <div class="blog-module shadow">
-                    <div class="blog-module-title">友情链接</div>
-                    <ul class="blogroll">
-                        <li><a target="_blank" href="http://www.layui.com/" title="Layui">Layui</a></li>
-                        <li><a target="_blank" href="http://www.pagemark.cn/" title="页签">页签</a></li>
-                    </ul>
-                </div>
-            </div>
+
             <div class="clear"></div>
         </div>
     </div>
 </div>
+<div id="paging" style="width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    margin-top:10px;
+    color: #3e6d43;">加载更多...</div>
+</div>
 <!-- 底部 -->
 <footer class="blog-footer">
+    <!--<p id="partner-about" style="text-align: left;padding:0 20px">-->
+    <!--友情链接： 比特时代-->
+    <!--</p>-->
+    <p id="partner-view" style="text-align: left;padding:0 10px">
+
+    </p>
+
+    <p id="partner-url" style="text-align: left;padding:0 20px">
+        友情链接： 比特时代
+    </p>
     <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="">Lins</a><span>Design By Mr.Lin</span></p>
     <p><a href="" target="_blank">蜀ICP备160299x4e5号-1</a></p>
 </footer>
@@ -560,75 +387,252 @@
 <script src="../js/global.js"></script>
 <!-- 本页脚本 -->
 <script src="../js/home.js"></script>
+<script id="scroll_view" type="text/html">
+    {{# layui.each(d.result, function(index, item){ }}
+    <div class="ui_li_div" onmouseover="mout(this)" onmouseleave="mlive(this)">
+        <li >
+            <div class="first_child">
+                <div class="li_div">
+                    <a href="">
+                        <img src="{{item.cover}}" alt=""/>
+                    </a>
+                </div>
+                <span>{{item.title}}</span>
+            </div>
+            <div class="second_child"  style="background: #fff;height:100%;display: none">
+                <div class="li_div" style="height: 208px;">
+                    <div style="height: 100%;padding:30px 20px;">
+                        <div>{{item.title}}</div>
+                        <div class="pro-good-data-text">{{item.remark}}</div>
 
+                    </div>
+                </div>
+
+                <a><div class="search-btn">项目主页</div></a>
+            </div>
+        </li>
+    </div>
+    {{# }); }}
+</script>
 <script id="tpl" type="text/html">
     <ul>
         {{# layui.each(d.result, function(index, item){ }}
         <div class="article shadow">
             <div class="article-left">
-                <img src="{{ item.cover }}" alt="{{ item.title }}"/>
+                <img src="{{item.cover}}"/>
             </div>
+
             <div class="article-right">
-                <div class="article-title">
-                    <a href="{{ '/detail/' + item.id }}">{{ item.title }}</a>
+                <div class="article-title" style="text-align: left;">
+                    <a href="">{{item.title}}</a>
                 </div>
-                <div class="article-abstract">
-                    {{ item.remark }}
+                <div style="margin: 0 auto;width: 91%;height: 1px;background-color: #ccc;"></div>
+                <div class="article_right">
+                    {{item.remark}}
                 </div>
             </div>
             <div class="clear"></div>
-            <div class="article-footer">
-                <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ item.crtTime }}</span>
-                <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ item.crtName}}</span>
-                <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">{{ item.tag }}</a></span>
-                <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;{{ item.pageView }}</span>
-                <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;{{ item.commentCount}}</span>
-            </div>
+
         </div>
         {{# }); }}
 
         {{# if(d.result.length === 0){ }}
         无数据
         {{# } }}
+
+
     </ul>
 </script>
+
+<script id="uInfoTpl" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <div onmouseover="userLogoin();" onmouseleave="setTimeout('userLogoout()', 3000);" id="ufo" style="margin-top: 15px;width: 35px;height: 35px;float: left;border-radius: 50%;overflow:hidden;">
+        <img src="{{item.logo}}" style="width: 100%;">
+    </div>
+
+    <li class="layui-nav-item" lay-unselect="">
+        <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
+            <dd><a href="/center">个人中心</a></dd>
+            <dd><a href="/center/article">我的文章</a></dd>
+            <dd><a href="/center/message;">消息中心</a></dd>
+            <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
+        </dl>
+    </li>
+
+    {{#  }); }}
+</script>
+<script id="partner" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <a href="{{item.url}}"> <img src="{{item.logo}}" style="width:100px;height:40px;margin-left:5px;"></a>
+    {{#  }); }}
+</script>
+<script id="pjtpl" type="text/html">
+    {{# layui.each(d.result, function(index, item){ }}
+    <li>
+
+        <a href=""><img src="{{item.cover}}" alt=""/>
+            <div>{{item.title}}</div>
+        </a>
+    </li>
+    {{# }); }}
+</script>
 <script>
+    layui.use(['carousel', 'form'], function() {
+        var carousel = layui.carousel
+            , form = layui.form;
+
+
+        //改变下时间间隔、动画类型、高度
+        carousel.render({
+            elem: '#test2'
+            , interval: 1800
+            , anim: 'fade'
+            , height: '370px'
+            , width: '100%',
+            background:"url(../images/head-bg.jpg)"
+        });
+    });
     layui.config({
         base: 'js/'
     });
 
-    layui.use(['paging'], function () {
-        var $ = layui.jquery,
-            paging = layui.paging(),
-            layerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
-            layer = layui.layer;//获取当前窗口的layer对象
+    var currentPage = 2;
+    var count = 0;
+    var totalPage = 1;
+    var type = 0;
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        var getTpl = tpl.innerHTML
+            , view = document.getElementById('article-view');
 
-        paging.init({
-            openWait: true,
-            url: base.url + '/blog/api/project/page', //地址
-            elem: '#articles', //内容容器
-            params: { //发送到服务端的参数
-            },
-            type: 'GET',
-            tempElem: '#tpl', //模块容器
-            pageConfig: { //分页参数配置
-                elem: '#paged', //分页容器
-                pageSize: 10 //分页大小
-            },
-            success: function () { //渲染成功的回调
-                //alert('渲染成功');
-            },
-            fail: function (msg) { //获取数据失败的回调
-                //alert('获取数据失败')
-            },
-            complate: function () { //完成的回调
+        $.ajax({
+            url: base.url + '/blog/api/project/page?pageIndex=1&pageSize=10&type=' + type,
 
-            },
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                count = data.count;
+                if(count%10 > 0){
+                    totalPage = Math.floor(count/10) + 1;
+                }else{
+                    totalPage = count/10;
+                }
+                if((currentPage - totalPage) == 1){
+                    $("#paging").html("没有更多数据了");
+                }
+                laytpl(getTpl).render(data, function (html) {
+                    view.innerHTML = html;
+                });
+            }
         });
 
+
+        var parterTpl = partner.innerHTML
+            , parterView = document.getElementById('partner-view');
+
+        $.ajax({
+            url: base.url + '/blog/api/partner/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(parterTpl).render(data, function (html) {
+                    parterView.innerHTML = html;
+                });
+            }
+        })
+
+
+
+        //轮播第一页
+
+        var first_pj_index_viewTpl = scroll_view.innerHTML
+            , scrollView = document.getElementById('first_pj_index_view');
+
+        $.ajax({
+            url: base.url + '/blog/api/project/page?pageIndex=1&pageSize=5',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+
+                laytpl(first_pj_index_viewTpl).render(data, function (html) {
+                    scrollView.innerHTML = html;
+                });
+            }
+        })
+
+
+        //轮播第2页
+
+        var second_pj_index_viewTpl = scroll_view.innerHTML
+            , secondView = document.getElementById('second_pj_index_view');
+
+        $.ajax({
+            url: base.url + '/blog/api/project/page?pageIndex=2&pageSize=5',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+
+                laytpl(second_pj_index_viewTpl).render(data, function (html) {
+                    secondView.innerHTML = html;
+                });
+            }
+        })
     });
+
+
+
+    $("#paging").on('click',function(){
+
+        if(currentPage <= totalPage){
+            $.ajax({
+                url: base.url + '/blog/api/project/page?pageIndex='+currentPage+'&pageSize=10&type=' + type,
+
+                contentType: "application/json; charset=utf-8",
+                dataType: 'jsonp',
+                jsonp: 'callback',
+                success: function (data, status, xhr) {
+                    currentPage ++;
+                    if(currentPage > totalPage){
+                        $("#paging").html("没有更多数据了");
+                    }
+                    layui.use('laytpl', function() {
+                        var laytpl = layui.laytpl;
+                        var getTpl = tpl.innerHTML;
+                        laytpl(getTpl).render(data, function (html) {
+                            //view.innerHTML = html;
+                            $("#article-view").append(html);
+                        });
+                    });
+
+                }
+            })
+        }
+
+    });
+
+
+    function mout(o){
+
+        $(o).find('.first_child').hide();
+        $(o).find('.second_child').show();
+
+    }
+
+    function mlive(o){
+
+        $(o).find('.first_child').show();
+        $(o).find('.second_child').hide();
+
+    }
 </script>
-<link rel="stylesheet" href="../power/css/reset.css"/>
+
 <script type="text/javascript" src="../power/images/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="../power/js/power-slider.js"></script>
 <script type="text/javascript">
