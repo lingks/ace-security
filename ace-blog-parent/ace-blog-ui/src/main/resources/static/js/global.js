@@ -185,7 +185,12 @@ layui.use(['element', 'layer', 'util', 'form'], function () {
 
 var isOverMenu = 0;
 
-
+var localUser = localStorage.getItem("user");
+var authorId;
+if(localUser != undefined && localUser != null && localUser != ""&&localUser != 'null') {
+    var user = JSON.parse(localUser);
+    authorId = user.id;
+}
 function userLogoin() {
 
     $("#menu-view").show();

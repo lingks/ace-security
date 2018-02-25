@@ -52,4 +52,13 @@ public class BlogController {
     public String advertEdit(){
         return "blog/advert/edit";
     }
+
+    @RequestMapping("ship/edit")
+    public String ship(){
+        return "blog/ship/list";
+    }
+    @RequestMapping("ship/edit")
+    public String shipEdit(){
+        return "blog/ship/edit";
+    }
 }

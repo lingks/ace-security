@@ -1,0 +1,740 @@
+﻿
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <title>链向财经-项目库</title>
+    <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
+    <!--Layui-->
+    <link href="../plug/layui/css/layui.css" rel="stylesheet" />
+    <!--font-awesome-->
+    <link href="../plug/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!--全局样式表-->
+    <link href="../css/global.css" rel="stylesheet" />
+    <!--本页样式表-->
+    <link href="../css/article.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../slider2/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../slider2/css/index.css">
+
+    <style type="text/css">
+        body{
+            background: #f5f5f5;
+        }
+        #first_pj_index_view{
+            width: 100%;
+            min-width: 1200px;
+        }
+        #first_pj_index_view li{
+            width: 80%;
+            height:280px;
+            margin: 0 auto;
+            background: white;
+        }
+        #first_pj_index_view li a img{
+            width:100%;
+            height: 208px;
+        }
+
+        #second_pj_index_view{
+            width: 100%;
+            min-width: 1200px;
+        }
+        #second_pj_index_view li{
+            width: 80%;
+            height:280px;
+            margin: 0 auto;
+            background: white;
+        }
+        #second_pj_index_view li a img{
+            width:100%;
+            height: 208px;
+        }
+        .ui_li_div{
+            float: left;
+            width: 20%;
+        }
+        .li_div{
+            width: 100%;
+        }
+        .layui-carousel .layui-this{
+            background-image: url("../images/head-bg.jpg");
+        }
+        .carousel-title{
+            font-size: 24px;
+            color: rgba(255, 255, 255, .5);
+            line-height: 24px;
+            text-align: center;
+            margin-bottom: 23px;
+            padding-top: 20px;
+            font: 16px PingFangSC-Regular, Microsoft YaHei;
+        }
+
+
+        #ui_li_span{
+            position: relative;
+            display: block;
+            font-size: 13px;
+            width: 80px;
+            line-height: 13px;
+            text-align: center;
+            color: rgba(255, 255, 255, .7);
+            margin: 0 auto;
+        }
+        #ui_li_span:before{
+            position: absolute;
+            content: " ";
+            top: 0;
+            left: 0;
+            width: 9px;
+            height: 13px;
+            background: url("../images/pro-banner-timer-lf.svg") no-repeat center;
+        }
+        #ui_li_span:after{
+            position: absolute;
+            content: " ";
+            top: 0;
+            right: 0;
+            width: 9px;
+            height: 13px;
+            background: url("../images/pro-banner-timer-rt.svg") no-repeat center;
+        }
+        @media (min-width: 992px) {
+            .blog-main > .blog-main-left {
+                width: 68%;
+            }
+        }
+        .article {
+            padding: 0px;
+            width: 48.5%;
+            float: left;
+            padding-bottom: 0px;
+            height: 140px;
+            margin-bottom: 10px;
+            background: #fff;
+            margin-right: 1.5%;
+            border: none;
+            -moz-transition: all 0.3s linear;
+            -o-transition: all 0.3s linear;
+            -webkit-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+        }
+
+        .article:hover {
+            border-left: 0px solid #009688;
+            -moz-transition: all 0.3s linear;
+            -o-transition: all 0.3s linear;
+            -webkit-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+        }
+
+        .article_right{
+            text-align: left;
+            font-size: 14px;
+            display: block;
+            margin-top: 10px;
+
+        }
+        .article-right{
+            text-indent: 0em;
+        }
+        .article-left {
+            width: 25%;
+            float: left;
+            padding-top: 30px;
+            padding-left: 2%;
+        }
+        .blog-main {
+            width: 100%;
+            position: relative;
+            min-height: 100vh;
+        }
+        .article-right {
+            width: 43%;
+            float: left;
+            padding-left: 0px;
+            padding-top: 28px;
+        }
+        .article-header{
+            width: 29%;
+            height: 140px;
+            float: right;
+            text-align: center;
+            padding-left: 0px;
+            /* padding-top: 30px; */
+            font-size: 12px;
+            line-height: 25px;
+            color: #afafaf;
+            border-left: 1px solid #ebebeb
+        }
+        /* 大屏幕（大桌面显示器，大于等于 1200px） */
+        @media (min-width: 1200px) {
+            .blog-container {
+                width: 1180px;
+            }
+        }
+        .search-btn{
+            width: 80%;
+            margin: 0 auto;
+            height: 40px;
+            position: relative;
+            background: #5e6db5;
+            bottom: 0px;
+            text-align: center;
+            color: white;
+            line-height: 40px;
+            font-size: 14px;
+        }
+
+        .pro-good-data-text {
+            font-size: 12px;
+            color: #666666;
+            text-align: justify;
+            overflow: hidden;
+        }
+        .blog-module2 {
+            margin-bottom: 0px;
+            /* padding: 15px; */
+            background: #fff;
+            height: 100%;
+            text-align: center;
+        }
+        .blog-body{
+            margin-top: 65px;
+            min-width: 1150px;
+        }
+        .article-title-csss{
+            color:#3758bd;
+        }
+        .article-title-csss:hover{
+            color:#3758bd;
+        }
+        .article-left p img:hover{
+            transform: scale(1.2);
+        }
+        .blog-module > .blog-module-title {
+            border-bottom: 0px solid #009688;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 0;
+            margin-bottom: 0px;
+        }
+        .blog-module {
+            margin-bottom: 0px;
+            padding: 15px;
+            background: #fff;
+            height: 100%;
+        }
+        @media (min-width: 768px){
+            .blog-main > .blog-main-right > .blog-module {
+
+                margin-bottom: 0px;
+            }
+        }
+        .article-height{
+            height:140px;
+        }
+        .article-div-view{
+            height: 140px;
+        }
+        .article-div-view:hover{
+            box-sizing: border-box;
+            border: 1px solid #ebebeb;
+            transition: box-shadow .3s ease;
+        }
+        .article-header a div:hover{
+            border-color:#5670BF;
+            background:#5670BF;
+            color: #fff;
+        }
+
+
+        .layui-btn2 {
+            display: inline-block;
+            height: 28px;
+            border-radius: 15px;
+            /* text-align: left; */
+            line-height: 28px;
+            padding: 0px 20px 0px 10px;
+            background-color: #393D49;
+            color: #fff;
+            white-space: nowrap;
+            text-align: left;
+            font-size: 12px;
+            border: none;
+            /*border: 1px #4c4949 solid;*/
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        #login-tag{
+            font-size: 12px;
+            margin-left: 20px;
+        }
+        .layui-btn2 .layui-icon {
+            /* margin-right: 3px; */
+            /* font-size: 18px; */
+            vertical-align: bottom;
+            vertical-align: middle\9;
+
+        }
+
+        #h-writing button:hover{
+            color: #6c9894;
+            cursor: pointer;
+        }
+        #login-tag a{
+            cursor: pointer;
+        }
+
+        #uinfo-view {
+            position: absolute;
+            right: 0;
+            width: 65px;
+            margin-right: 50px;
+        }
+        #xiewenzhangn{
+            float: right;
+            width: 100px;
+            padding-top: 14px;
+        }
+
+
+        #login-tag a{
+            cursor: pointer;
+        }
+        #login-tag a span{
+            color: #fff;font-size: 12px;
+        }
+    </style>
+
+</head>
+<body>
+<!-- 导航 -->
+<nav class="blog-nav layui-header">
+    <div class="blog-container">
+        <!-- QQ互联登陆 -->
+        <div id="uinfo-view">
+
+        </div>
+        <div id="login-tag" style="position: absolute;right: 80px;float:left;line-height: 65px;color: #fff;font-size: 14px;">
+            <a><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a><span>注&nbsp;&nbsp;册</span></a>
+        </div>
+        <div id="xiewenzhangn">
+            <div class="h-writing" style="width: 100px;height: 48px;">
+                <li style="width: 78px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 24px;
+    border-radius: 15px;
+    background: #393D49">
+                    <button class="layui-btn2" style="
+    /* height: 30px; */
+"><i class="layui-icon"></i>写文章</button>
+                </li>
+            </div>
+        </div>
+        <a href="javascript:;" class="blog-user layui-hide">
+            <img src="../images/Absolutely.jpg" alt="Absolutely" title="Absolutely"/>
+        </a>
+        <!-- 不落阁 -->
+        <a class="blog-logo" href="home.html">
+            <img src="../images/logo.svg">
+        </a>
+        <!-- 导航菜单 -->
+        <ul class="layui-nav" lay-filter="nav">
+            <li class="layui-nav-item">
+                <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
+            </li>
+            <!--<li class="layui-nav-item">-->
+                <!--<a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>-->
+            <!--</li>-->
+            <li class="layui-nav-item">
+                <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
+                <!--</li>-->
+                <!--<li class="layui-nav-item">-->
+                <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
+                <!--</li>-->
+            <li class="layui-nav-item layui-this">
+                <a href="author"><i class="fa fa-thumbs-up fa-fw"></i>&nbsp;作家</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
+            </li>
+        </ul>
+        <!-- 手机和平板的导航开关 -->
+        <a class="blog-navicon" href="javascript:;">
+            <i class="fa fa-navicon"></i>
+        </a>
+    </div>
+</nav>
+
+
+
+
+<!-- 主体（一般只改变这里的内容） -->
+<div class="blog-body">
+    <!-- 这个一般才是真正的主体内容 -->
+    <div class="blog-container">
+        <div class="blog-main">
+            <div class="blog-main-left">
+
+                <div style="    height: 50px;
+                width: 98.5%;
+    line-height: 50px;
+    background: white;
+    text-indent: 1.5em;
+                ">
+                    <span style="float: left">
+                        <img src="../images/writing.svg">
+                    全部链向作家
+                    </span>
+                    <span>
+
+                    </span>
+                </div>
+                <div id="article-view" style="margin-top: 10px;">
+
+                </div>
+                <div class="clear"></div>
+                <div id="paging" style="width: 98.5%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    color: #3e6d43;">加载更多...</div>
+                <div class="clear"></div>
+            </div>
+            <!--右边小栏目-->
+            <div class="blog-main-right">
+
+                <div></div><!--占位-->
+                <div id="advert-view"></div>
+                <div class="blog-module shadow">
+                    <div class="blog-module-title"><img src="../images/columnist-hot.svg">推荐作家</div>
+                </div>
+
+                <div id="writerView"></div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 底部 -->
+<footer class="blog-footer">
+    <!--<p id="partner-about" style="text-align: left;padding:0 20px">-->
+    <!--友情链接： 比特时代-->
+    <!--</p>-->
+    <p id="partner-view" style="text-align: left;padding:0 10px">
+
+    </p>
+
+    <p id="partner-url" style="text-align: left;padding:0 20px">
+        友情链接： 比特时代
+    </p>
+    <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="">Lins</a><span>Design By Mr.Lin</span></p>
+    <p><a href="" target="_blank">蜀ICP备160299x4e5号-1</a></p>
+</footer>
+<!--侧边导航-->
+<ul class="layui-nav" lay-filter="nav">
+    <li class="layui-nav-item ">
+        <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
+        <!--</li>-->
+        <!--<li class="layui-nav-item">-->
+        <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
+        <!--</li>-->
+    <li class="layui-nav-item layui-this">
+        <a href="/author"><i class="fa fa-info fa-fw"></i>&nbsp;作家</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
+    </li>
+</ul>
+<!--分享窗体-->
+<div class="blog-share layui-hide">
+    <div class="blog-share-body">
+        <div style="width: 200px;height:100%;">
+            <div class="bdsharebuttonbox">
+                <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                <a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--遮罩-->
+<div class="blog-mask animated layui-hide"></div>
+<script src="../slider/js/jquery-1.10.1.min.js"></script>
+<script src="../slider/js/idangerous.swiper2.7.6.min.js"></script>
+<script src="../slider/js/swiper.animate1.0.2.min.js"></script>
+<!-- layui.js -->
+<script src="../plug/layui/layui.js"></script>
+<!-- 全局脚本 -->
+<script src="../js/global.js"></script>
+<!-- 本页脚本 -->
+<script src="../js/home.js"></script>
+
+<script id="tpl" type="text/html">
+    <ul>
+        {{# layui.each(d.result, function(index, item){ }}
+        <div class="article shadow ">
+            <div class="article-div-view">
+                <div class="article-left">
+                    <p style="width: 78px;height: 78px;border-radius: 50%;overflow: hidden;">
+                        <img src="{{item.logo}}" style="width:100%"/>
+                    </p>
+                </div>
+
+                <div class="article-right">
+                    <div class="article-title" style="text-align: left;font-size: 18px;">
+                        <a href="" class="article-title-csss">{{item.username}}</a>
+                    </div>
+
+                    <div class="article_right" style="display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+overflow: hidden;color:#807d7d;font-size: 13px;font:13px PingFangSC-Regular, Microsoft YaHei">
+                        {{item.remark}}
+                    </div>
+                </div>
+                <div class="article-header">
+                    <div style="color: #4a4949;
+    font-size: 18px;margin-top: 30px;">{{item.pageView}}</div>
+                    <p>文章总浏览量</p>
+                    <a href="www.baidu.com"><div style="border: 1px #c2c2c2 solid;
+    width: 40%;
+    margin: auto;
+    line-height: 18px;
+    text-align: center;cursor: pointer;color:#c2c2c2;">查看</div></a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        {{# }); }}
+
+        {{# if(d.result.length === 0){ }}
+        无数据
+        {{# } }}
+    </ul>
+</script>
+<script id="uInfoTpl" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <div onmouseover="userLogoin();" onmouseleave="setTimeout('userLogoout()', 3000);" id="ufo" style="margin-top: 15px;width: 35px;height: 35px;float: left;border-radius: 50%;overflow:hidden;">
+        <img src="{{item.logo}}" style="width: 100%;">
+    </div>
+    <li class="layui-nav-item" lay-unselect="">
+        <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
+            <dd><a href="/center">个人中心</a></dd>
+            <dd><a href="/center/article">我的文章</a></dd>
+            <dd><a href="/center/message;">消息中心</a></dd>
+            <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
+        </dl>
+    </li>
+
+
+    {{#  }); }}
+</script>
+<script id="writerTpl" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <div class="blog-module2 shadow" style="margin-bottom:10px;height: 200px;">
+        <div>
+            <div style="width:20%;height: 100%;border-right:1px solid #ebebeb;line-height: 200px;float: left;
+            font-family: Arial;font-weight: bold;font-size: 30px;
+            {{#  if(index === 0){ }} color: #e94444{{#  } }}
+            {{#  if(index === 1){ }} color: #ffa128{{#  } }}
+            {{#  if(index === 2){ }} color: #f1c33f{{#  } }}
+            {{#  if(index === 3){ }} color: #e94444{{#  } }}
+            {{#  if(index > 3){ }} color: #dedede{{#  } }}
+">
+                {{#  if(index < 9){ }}
+                0{{index + 1}}
+                {{#  } }}
+                {{#  if(index >= 9){ }}
+                {{index + 1}}
+                {{#  } }}
+            </div>
+            <div style="padding-left: 27%;padding-top: 20px;">
+                <div><div style="width: 49px;height: 49px;border-radius: 50%;overflow: hidden;float: left;">
+                    <img src="{{item.logo}}" style="width: 100%;"></div>
+                    <div style="height: 49px;
+    line-height: 49px;
+    text-align: left;
+    padding-left: 24%;
+    font-size: 18px;
+    color: #6e73cc;">{{item.username}}</div></div>
+                <div style="
+    text-align: left;
+    padding-top: 10px;color: #797a7b;font-size: 13px;display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+overflow: hidden;">{{item.remark}}</div>
+            </div>
+            <div style="
+    text-align: left;
+    padding-top: 10px;"><i style="display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    opacity: .48;
+    margin-right: 6px;
+    background: #8d8d8d;margin-left: 7%;;color:#8e9092"></i>文章总浏览量:&nbsp;&nbsp;&nbsp;&nbsp;<span>{{item.pageView}}</span></div>
+            <div style="
+            text-align: left;
+            padding-top: 10px;"><i style="display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    opacity: .48;
+    margin-right: 6px;
+    background: #8d8d8d;margin-left: 7%;;color: #8e9092"></i>发表文章总数:&nbsp;&nbsp;&nbsp;&nbsp;<span>{{item.articleCount}}</span></div>
+        </div>
+    </div>
+    {{#  }); }}
+</script>
+<script id="partner" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <a href="{{item.url}}"> <img src="{{item.logo}}" style="width:100px;height:40px;margin-left:5px;"></a>
+    {{#  }); }}
+</script>
+<script id="pjtpl" type="text/html">
+    {{# layui.each(d.result, function(index, item){ }}
+    <li>
+
+        <a href=""><img src="{{item.cover}}" alt=""/>
+            <div>{{item.title}}</div>
+        </a>
+    </li>
+    {{# }); }}
+</script>
+<script>
+
+    layui.config({
+        base: 'js/'
+    });
+
+    var currentPage = 2;
+    var count = 0;
+    var totalPage = 1;
+    var type = 0;
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        var getTpl = tpl.innerHTML
+            , view = document.getElementById('article-view');
+
+        $.ajax({
+            url: base.url + '/blog/api/user/page?pageIndex=1&pageSize=20',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                count = data.count;
+                if(count%10 > 0){
+                    totalPage = Math.floor(count/10) + 1;
+                }else{
+                    totalPage = count/10;
+                }
+                if((currentPage - totalPage) == 1){
+                    $("#paging").html("没有更多数据了");
+                }
+                laytpl(getTpl).render(data, function (html) {
+                    view.innerHTML = html;
+                });
+            }
+        });
+
+
+        var parterTpl = partner.innerHTML
+            , parterView = document.getElementById('partner-view');
+
+        $.ajax({
+            url: base.url + '/blog/api/partner/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(parterTpl).render(data, function (html) {
+                    parterView.innerHTML = html;
+                });
+            }
+        })
+
+        var writerTemplate = writerTpl.innerHTML
+            , writerView = document.getElementById('writerView');
+
+        $.ajax({
+            url: base.url + '/blog/api/user/page?pageIndex=1&pageSize=10&tuijian=1',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(writerTemplate).render(data, function (html) {
+                    writerView.innerHTML = html;
+                });
+            }
+        })
+    });
+
+
+
+    $("#paging").on('click',function(){
+
+        if(currentPage <= totalPage){
+            $.ajax({
+                url: base.url + '/blog/api/user/page?pageIndex='+currentPage+'&pageSize=20',
+
+                contentType: "application/json; charset=utf-8",
+                dataType: 'jsonp',
+                jsonp: 'callback',
+                success: function (data, status, xhr) {
+                    currentPage ++;
+                    if(currentPage > totalPage){
+                        $("#paging").html("没有更多数据了");
+                    }
+                    layui.use('laytpl', function() {
+                        var laytpl = layui.laytpl;
+                        var getTpl = tpl.innerHTML;
+                        laytpl(getTpl).render(data, function (html) {
+                            //view.innerHTML = html;
+                            $("#article-view").append(html);
+                        });
+                    });
+
+                }
+            })
+        }
+
+    });
+
+
+</script>
+
+<script type="text/javascript" src="../power/images/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../power/js/power-slider.js"></script>
+</body>
+</html>

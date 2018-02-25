@@ -1,0 +1,799 @@
+﻿
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <title>链向财经-区块链信息服务平台 </title>
+    <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
+    <!--Layui-->
+    <link href="../plug/layui/css/layui.css" rel="stylesheet" />
+    <!--font-awesome-->
+    <link href="../plug/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!--全局样式表-->
+    <link href="../css/global.css" rel="stylesheet" />
+    <!--本页样式表-->
+    <link href="../css/article.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../slider2/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../slider2/css/index.css">
+    <style>
+        .blog-body{
+            margin-top: 64px;
+            min-width: 1150px;
+        }
+        .blog-title {
+            text-align: left;
+            font-size: 18px;
+            padding: 15px 20px;
+            background: white;
+            margin-bottom: 5px;
+        }
+        #authorView{
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .author-phone {
+            position: relative;
+            width: 148px;
+            height: 148px;
+            border-radius: 50%;
+            margin: 0 auto;
+            box-sizing: border-box;
+            border: 6px solid #ECECEC;
+        }
+        .author-phone p {
+            width: 130px;
+            height: 130px;
+            margin: 3px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .author-phone img {
+            width: 100%;
+        }
+        .author-icon {
+            position: absolute;
+            bottom: -1px;
+            right: 13px;
+            width: 28px;
+            height: 28px;
+            background: url(../images/columnist-icon-home.svg) no-repeat center;
+        }
+        .author-name {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333333;
+            text-align: center;
+            line-height: 20px;
+            width: 250px;
+            margin: 18px auto 7px;
+            word-break: keep-all;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #articles img{
+            cursor: pointer;
+            transition: all 0.6s;
+        }
+        #articles img:hover{
+            transform: scale(1.4);
+        }
+        .author-profile {
+            position: relative;
+            /* width: 250px; */
+            color: #666666;
+            font-size: 13px;
+            /* margin-left: 29px; */
+            padding: 0 20px;
+            text-align: center;
+            word-break: break-all;
+        }
+        .author-record {
+            /* width: 270px; */
+            text-align: left;
+            padding: 5px 20px;
+            margin: 18px auto 0;
+            border-top: 1px solid #EBEBEB;
+        }
+        .author-record p {
+            margin-top: 9px;
+            font-size: 14px;
+            color: #333333;
+            line-height: 20px;
+        }
+        .author-record p img {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .blog-main{
+            margin-top: 75px;
+        }
+
+        .m-hot {
+            background: #fff;
+            padding: 0 19px;
+            border: 1px solid #EBEBEB;
+            border-bottom: none;
+            height: 300px;
+            margin-top: 10px;
+        }
+        .m-hot2 {
+            background: #fff;
+            padding: 0 19px;
+            border-top: none;
+        }
+        .m-hot-tt {
+            font-size: 18px;
+            line-height: 20px;
+            color: #333;
+            padding: 24px 0 15px;
+        }
+        ul, ol, dl, dd, dt {
+            list-style: none;
+        }
+
+        .posImgY {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        .m-hot li {
+            position: relative;
+            padding-bottom: 20px;
+            height: 42px;
+            list-style: none;
+        }
+
+        .m-hot-tt i {
+            padding: 0 10px;
+            margin-right: 6px;
+            background: url(../images/wenzhang.svg) no-repeat center;
+        }
+
+        .m-hot-f .m-hot-pic {
+            width: 100%;
+
+            overflow: hidden;
+        }
+        .m-hot-pic img{
+            cursor: pointer;
+            transition: all 0.6s;
+        }
+        .m-hot-pic img:hover{
+            transform: scale(1.4);
+        }
+        .m-hot-f span {
+            display: none;
+        }
+
+        .m-hot-num {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 14px;
+            height: 14px;
+            font-size: 12px;
+            line-height: 14px;
+            text-align: center;
+            color: #fff;
+            z-index: 10;
+        }
+
+        .m-hot-f .m-hot-text a {
+            font-size: 16px;
+            width: 100%;
+            height: auto;
+            color: #fff;
+            padding: 8px 15px;
+            background: rgba(0, 0, 0, .5);
+            box-sizing: border-box;
+            position: relative;
+            bottom:40px;
+        }
+
+
+        .m-hot-text a {
+            width: 191px;
+            position: relative;
+            bottom: 50px;
+        }
+
+        .m-hot-text a {
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+            width: 211px;
+            height: 42px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .m-hot-f-after {
+            left: 10px;
+        }
+
+        .m-hot-f-after {
+            content: ' ';
+            position: absolute;
+            top: 1px;
+            left: 10px;
+            width: 36px;
+
+            height: 30px;
+            background: url(../images/no.1.svg) no-repeat center;
+        }
+        #hotNewList-ul-id{
+            position: relative;
+            padding-bottom: 180px;
+        }
+
+        .m-hot2-remark {
+            float: right;
+            width: 69%;
+            text-align: left;
+            padding-left: 2%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            font-size: 13px;
+            padding-top: 10px;
+            padding-right: 2%;
+        }
+        .m-hot2 li{
+            height: 70px;
+        }
+
+        .m-about {
+            padding: 0 19px 14px;
+            background: #fff;
+            border: 1px solid #EBEBEB;
+        }
+        .m-about-tt {
+            font-size: 18x;
+            line-height: 20px;
+            color: #000;
+            padding: 24px 0 5px;
+        }
+
+        .m-about-tt i {
+            padding: 0 10px;
+            margin-right: 6px;
+            background: url(../images/about.svg) no-repeat center;
+        }
+        .m-about li p a {
+            position: relative;
+            display: block;
+            font-size: 14px;
+            color: #666;
+            line-height: 24px;
+            padding: 14px 0 13px 20px;
+            transition: all .3s ease;
+        }
+        .m-about li {
+            border-bottom: 1px solid #EBEBEB;
+        }
+        .m-about li p a:before {
+            content: ' ';
+            position: absolute;
+            top: 50%;
+            left: 2px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            transform: translatey(-50%);
+            background: #5670BF;
+        }
+
+        .layui-btn2 {
+            display: inline-block;
+            height: 28px;
+            border-radius: 15px;
+            /* text-align: left; */
+            line-height: 28px;
+            padding: 0px 20px 0px 10px;
+            background-color: #393D49;
+            color: #fff;
+            white-space: nowrap;
+            text-align: left;
+            font-size: 12px;
+            border: none;
+            /*border: 1px #4c4949 solid;*/
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        #login-tag{
+            font-size: 12px;
+            margin-left: 20px;
+        }
+        .layui-btn2 .layui-icon {
+            /* margin-right: 3px; */
+            /* font-size: 18px; */
+            vertical-align: bottom;
+            vertical-align: middle\9;
+
+        }
+
+        #h-writing button:hover{
+            color: #6c9894;
+            cursor: pointer;
+        }
+        #login-tag a{
+            cursor: pointer;
+        }
+
+        #uinfo-view {
+            position: absolute;
+            right: 0;
+            width: 65px;
+            margin-right: 50px;
+        }
+        #xiewenzhangn{
+            float: right;
+            width: 100px;
+            padding-top: 14px;
+        }
+
+
+        #login-tag a{
+            cursor: pointer;
+        }
+        #login-tag a span{
+            color: #fff;font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<!-- 导航 -->
+<nav class="blog-nav layui-header">
+    <div class="blog-container">
+        <!-- QQ互联登陆 -->
+        <div id="uinfo-view">
+
+        </div>
+        <div id="login-tag" style="position: absolute;right: 80px;float:left;line-height: 65px;color: #fff;font-size: 14px;">
+            <a><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a><span>注&nbsp;&nbsp;册</span></a>
+        </div>
+        <div id="xiewenzhangn">
+            <div class="h-writing" style="width: 100px;height: 48px;">
+                <li style="width: 78px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 24px;
+    border-radius: 15px;
+    background: #393D49">
+                    <button class="layui-btn2" style="
+    /* height: 30px; */
+"><i class="layui-icon"></i>写文章</button>
+                </li>
+            </div>
+        </div>
+        <a href="javascript:;" class="blog-user layui-hide">
+            <img src="../images/Absolutely.jpg" alt="Absolutely" title="Absolutely"/>
+        </a>
+        <!-- 不落阁 -->
+        <a class="blog-logo" href="home.html">
+            <img src="../images/logo.svg">
+        </a>
+        <!-- 导航菜单 -->
+        <ul class="layui-nav" lay-filter="nav">
+            <li class="layui-nav-item ">
+                <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
+            </li>
+            <!--<li class="layui-nav-item">-->
+                <!--<a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>-->
+            <!--</li>-->
+            <li class="layui-nav-item">
+                <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
+                <!--</li>-->
+                <!--<li class="layui-nav-item">-->
+                <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
+                <!--</li>-->
+            <li class="layui-nav-item"  layui-this>
+                <a href="/author"><i class="fa fa-thumbs-up fa-fw"></i>&nbsp;作家</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
+            </li>
+        </ul>
+        <!-- 手机和平板的导航开关 -->
+        <a class="blog-navicon" href="javascript:;">
+            <i class="fa fa-navicon"></i>
+        </a>
+    </div>
+</nav>
+
+<!-- 主体（一般只改变这里的内容） -->
+<div class="blog-body">
+    <!-- 这个一般才是真正的主体内容 -->
+    <div class="blog-container">
+        <div class="blog-main">
+            <!--左边文章列表-->
+
+            <div class="blog-main-left">
+               <div id="articles" style="border: 1px #e2e2e2 solid;">
+
+                   <div class="blog-title">&nbsp;&nbsp;&nbsp;&nbsp;<img style="float: left;" src="../images/writing.svg"><span id="author-title-view"></span></div>
+
+               </div>
+                <div class="admin-table-page">
+                    <div id="paged" class="page">
+                    </div>
+                </div>
+                <div id="paging" style="width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    color: #3e6d43;">加载更多...</div>
+            </div>
+            <!--右边小栏目-->
+            <div class="blog-main-right">
+                <div class="blog-module shadow" id="authorView">
+
+                    <!--作家-->
+                </div>
+                <!--热门文章-->
+                <div id="hotNewsView"></div>
+
+                <div class="m-about">
+                    <div class="m-about-tt"><i></i>TA看过的文章</div>
+                    <ul>
+                        <li>
+                            <p><a href="http://www.chainfor.com/news/show/913.html">创造者公开承认比特币铂金是骗局</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!-- 底部 -->
+<footer class="blog-footer">
+    <p id="partner-view" style="text-align: left;padding:0 10px">
+
+    </p>
+
+    <p id="partner-url" style="text-align: left;padding:0 20px">
+        友情链接： 比特时代
+    </p>
+    <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="">Lins</a><span>Design By Mr.Lin</span></p>
+    <p><a href="" target="_blank">蜀ICP备160299x4e5号-1</a></p>
+</footer>
+<!--侧边导航-->
+<ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
+    <li class="layui-nav-item layui-this">
+        <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="timeline.html"><i class="fa fa-road fa-fw"></i>&nbsp;点点滴滴</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+    </li>
+</ul>
+<!--分享窗体-->
+<div class="blog-share layui-hide">
+    <div class="blog-share-body">
+        <div style="width: 200px;height:100%;">
+            <div class="bdsharebuttonbox">
+                <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                <a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--遮罩-->
+<div class="blog-mask animated layui-hide"></div>
+<script src="../slider/js/jquery-1.10.1.min.js"></script>
+<script src="../slider/js/idangerous.swiper2.7.6.min.js"></script>
+<script src="../slider/js/swiper.animate1.0.2.min.js"></script>
+<script id="partner" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <a href="{{item.url}}"> <img src="{{item.logo}}" style="width:100px;height:40px;margin-left:5px;"></a>
+    {{#  }); }}
+</script>
+<!-- layui.js -->
+<script src="../plug/layui/layui.js"></script>
+<!-- 全局脚本 -->
+<script src="../js/global.js"></script>
+<!-- 本页脚本 -->
+<script src="../js/home.js"></script>
+
+<script id="tpl" type="text/html">
+    <ul>
+        {{# layui.each(d.result, function(index, item){ }}
+        <div class="article shadow">
+            <div class="article-left" style="width: 188px;height: 80px;overflow: hidden;">
+                <img src="{{ item.cover }}" alt="{{ item.title }}"/>
+            </div>
+            <div class="article-right">
+                <div class="article-title">
+                    <a href="{{ '/detail/' + item.id }}">{{ item.title }}</a>
+                </div>
+                <div class="article-abstract">
+                    {{ item.remark }}
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="article-footer">
+                <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ item.crtTime }}</span>
+                <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ item.crtName}}</span>
+                <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">{{ item.tag }}</a></span>
+                <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;{{ item.pageView }}</span>
+                <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;{{ item.commentCount}}</span>
+            </div>
+        </div>
+        {{# }); }}
+
+    </ul>
+</script>
+<script id="uInfoTpl" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <div onmouseover="userLogoin();" onmouseleave="setTimeout('userLogoout()', 3000);" id="ufo" style="margin-top: 15px;width: 35px;height: 35px;float: left;border-radius: 50%;overflow:hidden;">
+        <img src="{{item.logo}}" style="width: 100%;">
+    </div>
+
+    <li class="layui-nav-item" lay-unselect="">
+        <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
+            <dd><a href="/center">个人中心</a></dd>
+            <dd><a href="/center/article">我的文章</a></dd>
+            <dd><a href="/center/message;">消息中心</a></dd>
+            <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
+        </dl>
+    </li>
+
+    {{#  }); }}
+</script>
+<script id="authorTplView" type="text/html">
+
+    {{# layui.each(d.result, function(index, item){ }}
+    <div class="author-phone">
+        <p>
+            <img src="http://lianxiangfiles.oss-cn-beijing.aliyuncs.com/touxiang/38.jpg" alt="">
+        </p>
+        <span class="author-icon"></span>
+    </div>
+    <p class="author-name">{{item.username}}</p>
+    <p class="author-profile">{{item.remark}}</p>
+    <div class="author-record">
+        <p class="newCount">
+            <img src="../images/article-num.svg" alt="">
+            发表文章总数 <span class="rt">{{item.articleCount}}</span>
+        </p>
+        <p class="browsingNewCount">
+            <img src="../images/article-look.svg" alt="">
+            文章总浏览量 <span class="rt">{{item.pageView}}</span>
+        </p>
+    </div>
+    {{# }); }}
+</script>
+<script id="authorTitleTpl" type="text/html">
+    {{# layui.each(d.result, function(index, item){ }}
+    <span style="float: left">{{item.username}}的文章</span>
+    <a href="/author" style="    float: right;
+    font-size: 13px;
+    color: #5670BF;
+    border: 1px solid #5670BF;
+    border-radius: 15px;
+    padding: 2px 15px;
+    box-sizing: border-box;
+    margin-top: -3px;">全部作家</a>
+    {{# }); }}
+</script>
+<script id="hotNewsTpl" type="text/html">
+    {{# if(d.result.length === 0){ }}
+        <div class="m-hot" style="border-bottom: none">
+            <div class="m-hot-tt"><i></i>TA的热门文章</div>
+            <ul id="hotNewList-ul-id">
+                <div class="clear"></div>
+            </ul>
+        </div>
+    {{# } }}
+
+    {{# layui.each(d.result, function(index, item){ }}
+
+        {{# if(index === 0){ }}
+            <div class="m-hot" style="border-bottom: none">
+                <div class="m-hot-tt"><i></i>TA的热门文章</div>
+                <ul id="hotNewList-ul-id">
+                    <li class="m-hot-f">
+                        <p class="m-hot-pic">
+                            <img src="{{item.cover}}" alt="" class="posImgY"></p>
+                        <p class="m-hot-text"><a href="/article/{{item.id}}" target="_blank">{{item.title}}</a></p>
+                        <span class="m-hot-num m-hot-num1">1</span>
+                    </li>
+                    <i class="m-hot-f-after"></i>
+                </ul>
+            </div>
+        {{# } }}
+        {{# if(index > 0){ }}
+            <div  class="m-hot2">
+                <ul>
+                    <li>
+                        <div style="height: 70px;">
+                                        <span style="width:25%;float: left;height:80%;">
+                                            <img src="{{item.cover}}" alt="" class="posImgY">
+                                        </span>
+                            <span class="m-hot2-remark"><a href="/article/{{item.id}}" target="_blank">{{item.title}}</a></span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        {{# } }}
+
+
+
+    {{# }); }}
+</script>
+<script>
+    var query = window.location.href;
+    var authorId = query.split("/").pop();
+
+
+    layui.config({
+        base: 'js/'
+    });
+
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        var hostNesTemplate = hotNewsTpl.innerHTML
+            , hotNewsView = document.getElementById('hotNewsView');
+        $.ajax({
+            url: base.url + '/blog/api/article/page?authorId='+authorId+'&pageIndex='+currentPage+'&pageSize=20',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+
+                laytpl(hostNesTemplate).render(data, function (html) {
+                    hotNewsView.innerHTML = html;
+                });
+
+            }
+        });
+    });
+
+    var currentPage = 2;
+    var count = 0;
+    var totalPage = 1;
+    var type = 0;
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        var getTpl = tpl.innerHTML
+            , view = document.getElementById('articles');
+
+        $.ajax({
+            url: base.url + '/blog/api/article/page?authorId='+authorId+'&pageIndex='+currentPage+'&pageSize=20',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                count = data.count;
+                if(count%10 > 0){
+                    totalPage = Math.floor(count/10) + 1;
+                }else{
+                    totalPage = count/10;
+                }
+
+                if((currentPage - totalPage) <= 1 || totalPage == 0){
+                    $("#paging").html("没有更多数据了");
+                }
+                laytpl(getTpl).render(data, function (html) {
+                    $("#articles").append(html);
+                });
+            }
+        })
+
+    });
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        var getTpl = partner.innerHTML
+            , view = document.getElementById('partner-view');
+
+        $.ajax({
+            url: base.url + '/blog/api/partner/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(getTpl).render(data, function (html) {
+                    view.innerHTML = html;
+                });
+            }
+        })
+
+
+
+
+    });
+
+
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        //作家
+        var userTpl = authorTplView.innerHTML
+            , authorviewtpl = document.getElementById('authorView')
+            , titleTpl = authorTitleTpl.innerHTML
+            , authorTitleView = document.getElementById('author-title-view');
+
+
+        $.ajax({
+            url: base.url + '/blog/api/user/' + authorId,
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+
+                laytpl(userTpl).render(data, function (html) {
+                    authorviewtpl.innerHTML = html;
+                });
+                laytpl(titleTpl).render(data, function (html) {
+                    authorTitleView.innerHTML = html;
+                });
+            }
+        })
+    });
+    $("#paging").on('click',function(){
+
+        if(currentPage <= totalPage){
+            $.ajax({
+                url: base.url + '/blog/api/article/page/'+authorId,
+                data:{
+                    pageIndex:currentPage,
+                    pageSize:20
+                },
+                contentType: "application/json; charset=utf-8",
+                dataType: 'jsonp',
+                jsonp: 'callback',
+                success: function (data, status, xhr) {
+                    currentPage ++;
+                    if(currentPage > totalPage){
+                        $("#paging").html("没有更多数据了");
+                    }
+                    layui.use('laytpl', function() {
+                        var laytpl = layui.laytpl;
+                        var getTpl = tpl.innerHTML;
+                        laytpl(getTpl).render(data, function (html) {
+                            //view.innerHTML = html;
+                            $("#articles").append(html);
+                        });
+                    });
+
+                }
+            })
+        }
+
+    });
+</script>
+
+</body>
+</html>

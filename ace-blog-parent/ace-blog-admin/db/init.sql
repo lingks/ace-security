@@ -100,8 +100,22 @@ COMMIT;
 SET FOREIGN_KEY_CHECKS = 1;
 
 
+CREATE TABLE `friendship` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(200) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `remark` varchar(200),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4;
 
-
+CREATE TABLE `article_collection` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(200) DEFAULT NULL,
+  `article_id` varchar(255) DEFAULT NULL,
+  `title` varchar(200),
+  `crt_time` datetime  DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `strategic_partner` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

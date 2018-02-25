@@ -10,7 +10,6 @@ public class Article {
 
     private String title;
 
-
     @Column(name = "title_img")
     private String titleImg;
 

@@ -706,6 +706,8 @@
                 });
             }
             var click = 1;
+
+
             if($(this)[0].id == "uarticle"){
 
                 layui.use(['laypage', 'layer','laytpl'], function() {
@@ -714,8 +716,12 @@
                     var articleInfoTemplate = articleInfoTpl.innerHTML;
 
                     $.ajax({
-                        url: base.url + '/blog/api/article/page?pageIndex=1&pageSize=5',
-
+                        url: base.url + '/blog/api/article/page',
+                        data:{
+                            authorId:authorId,
+                            pageIndex:1,
+                            pageSize:5
+                        },
                         contentType: "application/json; charset=utf-8",
                         dataType: 'jsonp',
                         jsonp: 'callback',
@@ -737,8 +743,12 @@
                                     console.log("click:" + click)
                                     if(click != 1){
                                     $.ajax({
-                                        url: base.url + '/blog/api/article/page?pageIndex='+obj.curr+'&pageSize=5',
-
+                                        url: base.url + '/blog/api/article/page',
+                                        data:{
+                                            authorId:authorId,
+                                            pageIndex:obj.curr,
+                                            pageSize:5
+                                        },
                                         contentType: "application/json; charset=utf-8",
                                         dataType: 'jsonp',
                                         jsonp: 'callback',

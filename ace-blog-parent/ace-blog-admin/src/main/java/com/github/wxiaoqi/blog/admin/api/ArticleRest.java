@@ -5,6 +5,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.wxiaoqi.blog.admin.biz.ArticleBiz;
 import com.github.wxiaoqi.blog.admin.entity.Article;
+import com.github.wxiaoqi.blog.admin.entity.Comment;
 import com.github.wxiaoqi.blog.admin.mapper.AdvertMapper;
 import com.github.wxiaoqi.blog.admin.mapper.ArticleMapper;
 import com.github.wxiaoqi.security.common.msg.ListRestResponse;
@@ -30,12 +31,16 @@ public class ArticleRest {
     public JSONPObject get(@PathVariable int id, String callback){
         return new JSONPObject(callback,new ObjectRestResponse<Article>().rel(true).result(articleBiz.selectById(id)));
     }
-//    @RequestMapping(value = "/page",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-//    public JSONPObject get(int pageIndex, int pageSize, String callback,int type){
-//        Page<Article> objects = PageHelper.startPage(pageIndex, pageSize);
-//        articleBiz.selectListAll();
-//        return new JSONPObject(callback, new ListRestResponse<Article>().rel(true).count(objects.getTotal()).result(objects.getResult()));
-//    }
+
+    @RequestMapping(value = "/update/{id}",method = RequestMethod.POST)
+    @ResponseBody
+    public ObjectRestResponse<Article> update(@PathVariable Integer id){
+        Article entity = articleBiz.selectById(id);
+        entity.setPageView(entity.getPageView() + 1);
+        articleBiz.updateSelectiveById(entity);
+        return new ObjectRestResponse<Article>().rel(true);
+    }
+
 
     @RequestMapping(value = "/page",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public JSONPObject get(int pageIndex, int pageSize,String authorId,String title,Integer type,String orderField,String orderBy,String callback){
