@@ -1,9 +1,7 @@
 package com.github.wxiaoqi.blog.admin.rest;
 
 import com.github.pagehelper.PageHelper;
-import com.github.wxiaoqi.blog.admin.biz.AdvertBiz;
 import com.github.wxiaoqi.blog.admin.biz.CommentBiz;
-import com.github.wxiaoqi.blog.admin.entity.Advert;
 import com.github.wxiaoqi.blog.admin.entity.Comment;
 import com.github.wxiaoqi.security.common.msg.TableResultResponse;
 import com.github.wxiaoqi.security.common.rest.BaseController;
