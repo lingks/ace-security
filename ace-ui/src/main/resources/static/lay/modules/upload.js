@@ -13,7 +13,7 @@
             console.log("-----------------------")
             console.log(t.url)
             console.log("-----------------------")
-            var u = '<form target="' + n + '" method="' + (t.method || "post") + '" key="set-mine" enctype="multipart/form-data" action="/upload/article/upload"></form>',
+            var u = '<form target="' + n + '" method="' + (t.method || "post") + '" key="set-mine" enctype="multipart/form-data" action="/file/upload"></form>',
                 l = s.attr("lay-type") || t.type;
             t.unwrap || (u = '<div class="layui-box layui-upload-button">' + u + '<span class="layui-upload-icon"><i class="layui-icon">&#xe608;</i>' + (s.attr("lay-title") || t.title || "上传" + (o[l] || "图片")) + "</span></div>"), u = a(u), t.unwrap || u.on("dragover", function (e) {
                 e.preventDefault(), a(this).addClass(i)
