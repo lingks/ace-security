@@ -36,6 +36,19 @@ $(function(){
                     delParent = $(this).parent();
                 });
 
+
+                $.ajaxFileUpload({
+                    url : 'http://localhost:8765/file/upload',
+                    type : 'POST',
+                    fileElementId : 'file',  //这里对应html中上传file的id
+                    contentType:"application/json;charset=UTF-8",
+                    success: function(data){
+
+                    },
+                    error: function(){
+                        alert("请链接网络");
+                    }
+                })
                 $("#titleImg").val(imgArr[i])
                 $img0.attr("src","img/a7.png").appendTo($section);
                 var $img = $("<img class='up-img up-opcity'>");

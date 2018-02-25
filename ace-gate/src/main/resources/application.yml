@@ -67,3 +67,5 @@ security:
 #    secret: Xe*g@1jda
 #    expiration: 7200
 #    header: access-token
+upload:
+    path: http://localhost:8188/

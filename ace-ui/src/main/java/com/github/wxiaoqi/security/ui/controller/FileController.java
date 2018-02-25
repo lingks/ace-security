@@ -1,6 +1,6 @@
-package com.github.wxiaoqi.security.gate.controller;
+package com.github.wxiaoqi.security.ui.controller;
 
-import com.github.wxiaoqi.security.gate.utils.Base64Util;
+import com.github.wxiaoqi.security.ui.util.Base64Util;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.Date;
@@ -54,16 +53,15 @@ public class FileController {
 
             System.out.println("写入文件");
             String fileName = new Date().getTime() + "." + Base64Util.getType(file.getContentType());
-            String filePath = "/usr/local/upload/" + fileName;
+            String filePath = "/user/local/upload/" + fileName;
             // 生成地址
             OutputStream out = new FileOutputStream(new File(filePath));
             out.write(b);
             out.flush();
             out.close();
-            return filePath;
+            return uploadPath+fileName;
         } catch (Exception e) {
-            e.printStackTrace();
+            return null;
         }
-        return "";
     }
 }

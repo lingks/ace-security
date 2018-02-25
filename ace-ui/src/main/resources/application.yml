@@ -36,3 +36,5 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 5000
+upload:
+    path: http://localhost:8188/

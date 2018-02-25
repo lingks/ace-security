@@ -53,12 +53,23 @@ public class BlogController {
         return "blog/advert/edit";
     }
 
-    @RequestMapping("ship/edit")
+    @RequestMapping("ship")
     public String ship(){
         return "blog/ship/list";
     }
     @RequestMapping("ship/edit")
     public String shipEdit(){
         return "blog/ship/edit";
+    }
+
+
+
+    @RequestMapping("about")
+    public String about(){
+        return "blog/about/list";
+    }
+    @RequestMapping("about/edit")
+    public String aboutEdit(){
+        return "blog/about/edit";
     }
 }
