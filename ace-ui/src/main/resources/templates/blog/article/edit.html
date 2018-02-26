@@ -33,6 +33,31 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="layui-form-item layui-form-text">
+			<label class="layui-form-label">封面</label>
+			<div class="img-box full">
+				<section class=" img-section">
+					<div class="z_photo upimg-div clear" >
+						<!--<section class="up-section fl">
+                             <span class="up-span"></span>
+                             <img src="img/buyerCenter/a7.png" class="close-upimg">
+                             <img src="img/buyerCenter/3c.png" class="type-upimg" alt="添加标签">
+                             <img src="img/test2.jpg" class="up-img">
+                             <p class="img-namep"></p>
+                             <input id="taglocation" name="taglocation" value="" type="hidden">
+                             <input id="tags" name="tags" value="" type="hidden">
+                         </section>-->
+						<section class="z_file fl">
+							<img src="/admin/upload/img/a11.png" class="add-img">
+							<input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple />
+						</section>
+					</div>
+				</section>
+			</div>
+				</div>
+		</div>
+
 		<div class="layui-form-item layui-form-text">
 			<label class="layui-form-label">内容</label>
 			<div class="layui-input-block">
@@ -74,25 +99,7 @@
 
 </head>
 
-<div class="img-box full">
-	<section class=" img-section">
-		<div class="z_photo upimg-div clear" >
-			<!--<section class="up-section fl">
-                 <span class="up-span"></span>
-                 <img src="img/buyerCenter/a7.png" class="close-upimg">
-                 <img src="img/buyerCenter/3c.png" class="type-upimg" alt="添加标签">
-                 <img src="img/test2.jpg" class="up-img">
-                 <p class="img-namep"></p>
-                 <input id="taglocation" name="taglocation" value="" type="hidden">
-                 <input id="tags" name="tags" value="" type="hidden">
-             </section>-->
-			<section class="z_file fl">
-				<img src="/admin/upload/img/a11.png" class="add-img">
-				<input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple />
-			</section>
-		</div>
-	</section>
-</div>
+
 <aside class="mask works-mask">
 	<div class="mask-content">
 		<p class="del-p ">您确定要删除作品图片吗？</p>
@@ -112,6 +119,8 @@
         layui.use('upload', function() {
             var $ = layui.jquery
                 , upload = layui.upload;
+
+
 
             //普通图片上传
             var uploadInst = upload.render({

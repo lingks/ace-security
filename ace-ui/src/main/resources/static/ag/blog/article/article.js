@@ -120,7 +120,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                 btn: ['保存', '取消'],
                 shade: false,
                 offset: ['20px', '20%'],
-                area: ['700px', '500px'],
+                area: ['750px', '500px'],
                 maxmin: true,
                 yes: function (index) {
                     layedit.sync(editIndex);
@@ -181,7 +181,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                         btn: ['保存', '取消'],
                         shade: false,
                         offset: ['20px', '20%'],
-                        area: ['600px', '400px'],
+                        area: ['750px', '500px'],
                         maxmin: true,
                         yes: function (index) {
                             //触发表单的提交事件
