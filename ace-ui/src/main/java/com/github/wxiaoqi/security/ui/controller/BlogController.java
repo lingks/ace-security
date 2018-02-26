@@ -62,8 +62,30 @@ public class BlogController {
         return "blog/ship/edit";
     }
 
-
-
+    @RequestMapping("author")
+    public String author(){
+        return "blog/author/list";
+    }
+    @RequestMapping("author/edit")
+    public String authorEdit(){
+        return "blog/author/edit";
+    }
+    @RequestMapping("comment")
+    public String comment(){
+        return "blog/comment/list";
+    }
+    @RequestMapping("comment/edit")
+    public String commentEdit(){
+        return "blog/message/edit";
+    }
+    @RequestMapping("message")
+    public String message(){
+        return "blog/message/list";
+    }
+    @RequestMapping("message/edit")
+    public String messageEdit(){
+        return "blog/message/edit";
+    }
     @RequestMapping("about")
     public String about(){
         return "blog/about/list";

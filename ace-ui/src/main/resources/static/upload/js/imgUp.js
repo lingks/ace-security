@@ -49,7 +49,15 @@ $(function(){
                         alert("请链接网络");
                     }
                 })
-                $("#titleImg").val(imgArr[i])
+                if($("#titleImg")){
+                    $("#titleImg").val(imgArr[i])
+                }
+                if($("#logo")){
+                    $("#logo").val(imgArr[i])
+                }
+                if( $("#cover")){
+                    $("#cover").val(imgArr[i])
+                }
                 $img0.attr("src","img/a7.png").appendTo($section);
                 var $img = $("<img class='up-img up-opcity'>");
                 $img.attr("src",imgArr[i]);

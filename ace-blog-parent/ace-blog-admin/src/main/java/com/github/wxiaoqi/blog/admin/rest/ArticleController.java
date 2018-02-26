@@ -3,9 +3,13 @@ package com.github.wxiaoqi.blog.admin.rest;
 import com.github.pagehelper.PageHelper;
 import com.github.wxiaoqi.blog.admin.biz.ArticleBiz;
 import com.github.wxiaoqi.blog.admin.entity.Article;
+import com.github.wxiaoqi.blog.admin.mapper.ArticleMapper;
+import com.github.wxiaoqi.security.common.msg.ObjectRestResponse;
 import com.github.wxiaoqi.security.common.msg.TableResultResponse;
 import com.github.wxiaoqi.security.common.rest.BaseController;
+import com.github.wxiaoqi.security.common.util.EntityUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +25,21 @@ import tk.mybatis.mapper.entity.Example;
 @Controller
 @RequestMapping("article")
 public class ArticleController extends BaseController<ArticleBiz,Article> {
+    @Autowired
+    private ArticleMapper mapper;
+
+    @RequestMapping(value = "",method = RequestMethod.POST)
+    @ResponseBody
+    public ObjectRestResponse<Article> add(Article entity){
+
+        System.out.println(entity);
+        Integer integer = mapper.selectMaxSort();
+        entity.setSort(integer);
+        EntityUtils.setCreatAndUpdatInfo(entity);
+        mapper.insertSelective(entity);
+        System.out.println(entity);
+        return new ObjectRestResponse<Article>().rel(true);
+    }
 
     @RequestMapping(value = "/page",method = RequestMethod.GET)
     @ResponseBody
@@ -31,6 +50,7 @@ public class ArticleController extends BaseController<ArticleBiz,Article> {
         if(type != null){
             example.createCriteria().andEqualTo("type", type);
         }
+        example.setOrderByClause("crt_time desc");
         int count = baseBiz.selectCountByExample(example);
         PageHelper.startPage(offset, limit);
         return new TableResultResponse<Article>(count,baseBiz.selectByExample(example));

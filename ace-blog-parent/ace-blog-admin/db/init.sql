@@ -37,6 +37,7 @@ CREATE TABLE `blog_article` (
   `hot_value` int(11) DEFAULT '0',
   `cover` varchar(255) DEFAULT NULL,
   `pid` int(11) DEFAULT '0',
+  `sort` int(11) DEFAULT '0',
   `pname` varchar(255) DEFAULT NULL,
   `crt_time` datetime DEFAULT NULL,
   `crtUser` varchar(255) DEFAULT NULL,

@@ -8,10 +8,12 @@ import com.github.wxiaoqi.blog.admin.biz.UserBiz;
 import com.github.wxiaoqi.blog.admin.entity.Article;
 import com.github.wxiaoqi.blog.admin.entity.Comment;
 import com.github.wxiaoqi.blog.admin.entity.User;
+import com.github.wxiaoqi.security.common.constant.UserConstant;
 import com.github.wxiaoqi.security.common.msg.ListRestResponse;
 import com.github.wxiaoqi.security.common.msg.ObjectRestResponse;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Example;
 
@@ -33,6 +35,9 @@ public class UserRest {
     @RequestMapping(value = "",method = RequestMethod.POST)
     @ResponseBody
     public ObjectRestResponse<User> add(User entity){
+
+        String password = new BCryptPasswordEncoder(UserConstant.PW_ENCORDER_SALT).encode(entity.getPassword());
+        entity.setPassword(password);
         articleBiz.insertSelective(entity);
         return new ObjectRestResponse<User>().rel(true);
     }

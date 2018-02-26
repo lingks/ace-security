@@ -20,6 +20,7 @@
     <result column="crt_time" jdbcType="TIMESTAMP" property="crtTime" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
     <result column="crtUser" jdbcType="VARCHAR" property="crtUser" />
     <result column="crtName" jdbcType="VARCHAR" property="crtName" />
     <result column="crt_host" jdbcType="VARCHAR" property="crtHost" />
@@ -36,4 +37,8 @@
     <result column="attr7" jdbcType="VARCHAR" property="attr7" />
     <result column="attr8" jdbcType="VARCHAR" property="attr8" />
   </resultMap>
+  <select id="selectMaxSort" resultType="java.lang.Integer">
+    select
+    max(sort) + 1 from blog_article
+  </select>
 </mapper>

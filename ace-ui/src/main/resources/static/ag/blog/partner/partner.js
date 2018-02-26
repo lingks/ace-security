@@ -1,13 +1,13 @@
-var article = {
+var partner = {
     baseUrl: "/blog/partner",
-    entity: "article",
-    tableId: "articleTable",
+    entity: "partner",
+    tableId: "partnerTable",
     toolbarId: "toolbar",
     unique: "id",
     order: "asc",
     currentItem: {}
 };
-article.columns = function () {
+partner.columns = function () {
     return [{
         checkbox: true
     }, {
@@ -24,7 +24,7 @@ article.columns = function () {
         }
     }];
 };
-article.queryParams = function (params) {
+partner.queryParams = function (params) {
     if (!params)
         return {
             title: $("#name").val()
@@ -37,18 +37,18 @@ article.queryParams = function (params) {
     return temp;
 };
 
-article.init = function () {
+partner.init = function () {
 
-    article.table = $('#' + article.tableId).bootstrapTable({
-        url: article.baseUrl + '/page', //请求后台的URL（*）
+    partner.table = $('#' + partner.tableId).bootstrapTable({
+        url: partner.baseUrl + '/page', //请求后台的URL（*）
         method: 'get', //请求方式（*）
-        toolbar: '#' + article.toolbarId, //工具按钮用哪个容器
+        toolbar: '#' + partner.toolbarId, //工具按钮用哪个容器
         striped: true, //是否显示行间隔色
         cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
         pagination: true, //是否显示分页（*）
         sortable: false, //是否启用排序
-        sortOrder: article.order, //排序方式
-        queryParams: article.queryParams,//传递参数（*）
+        sortOrder: partner.order, //排序方式
+        queryParams: partner.queryParams,//传递参数（*）
         sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1, //初始化加载第一页，默认第一页
         pageSize: 10, //每页的记录行数（*）
@@ -59,17 +59,17 @@ article.init = function () {
         showRefresh: true, //是否显示刷新按钮
         minimumCountColumns: 2, //最少允许的列数
         clickToSelect: true, //是否启用点击选中行
-        uniqueId: article.unique, //每一行的唯一标识，一般为主键列
+        uniqueId: partner.unique, //每一行的唯一标识，一般为主键列
         showToggle: true, //是否显示详细视图和列表视图的切换按钮
         cardView: false, //是否显示详细视图
         detailView: false, //是否显示父子表
-        columns: article.columns()
+        columns: partner.columns()
     });
 };
-article.select = function (layerTips) {
-    var rows = article.table.bootstrapTable('getSelections');
+partner.select = function (layerTips) {
+    var rows = partner.table.bootstrapTable('getSelections');
     if (rows.length == 1) {
-        article.currentItem = rows[0];
+        partner.currentItem = rows[0];
         return true;
     } else {
         layerTips.msg("请选中一行");
@@ -78,7 +78,7 @@ article.select = function (layerTips) {
 };
 
 layui.use(['form', 'layedit', 'laydate'], function () {
-    article.init();
+    partner.init();
     var editIndex;
     var layerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
         layer = layui.layer, //获取当前窗口的layer对象
@@ -88,14 +88,14 @@ layui.use(['form', 'layedit', 'laydate'], function () {
     var addBoxIndex = -1;
     //初始化页面上面的按钮事件
     $('#btn_query').on('click', function () {
-        article.table.bootstrapTable('refresh', article.queryParams());
+        partner.table.bootstrapTable('refresh', partner.queryParams());
     });
 
     $('#btn_add').on('click', function () {
         if (addBoxIndex !== -1)
             return;
         //本表单通过ajax加载 --以模板的形式，当然你也可以直接写在页面上读取
-        $.get(article.entity + '/edit', null, function (form) {
+        $.get(partner.entity + '/edit', null, function (form) {
             addBoxIndex = layer.open({
                 type: 1,
                 title: '添加合作战略伙伴',
@@ -129,7 +129,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                     form.on('submit(edit)', function (data) {
                         data.field.content =  layedit.getContent(editIndex);
                         $.ajax({
-                            url: article.baseUrl,
+                            url: partner.baseUrl,
                             type: 'post',
                             data: data.field,
                             dataType: "json",
@@ -152,11 +152,11 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         });
     });
     $('#btn_edit').on('click', function () {
-        if (article.select(layerTips)) {
-            var id = article.currentItem.id;
-            $.get(article.baseUrl + '/' + id, null, function (data) {
+        if (partner.select(layerTips)) {
+            var id = partner.currentItem.id;
+            $.get(partner.baseUrl + '/' + id, null, function (data) {
                 var result = data.result;
-                $.get(article.entity+'/edit', null, function (form) {
+                $.get(partner.entity+'/edit', null, function (form) {
                     layer.open({
                         type: 1,
                         title: '编辑战略伙伴',
@@ -191,7 +191,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                             form.on('submit(edit)', function (data) {
                                 data.field.content =  layedit.getContent(editIndex);
                                 $.ajax({
-                                    url: article.baseUrl + "/" + result.id,
+                                    url: partner.baseUrl + "/" + result.id,
                                     type: 'put',
                                     data: data.field,
                                     dataType: "json",
@@ -212,11 +212,11 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         }
     });
     $('#btn_del').on('click', function () {
-        if (article.select(layerTips)) {
-            var id = article.currentItem.id;
+        if (partner.select(layerTips)) {
+            var id = partner.currentItem.id;
             layer.confirm('确定删除数据吗？', null, function (index) {
                 $.ajax({
-                    url: article.baseUrl + "/" + id,
+                    url: partner.baseUrl + "/" + id,
                     type: "DELETE",
                     success: function (data) {
                         if (data.rel == true) {

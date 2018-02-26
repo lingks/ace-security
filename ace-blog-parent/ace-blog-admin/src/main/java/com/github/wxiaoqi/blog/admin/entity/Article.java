@@ -78,6 +78,16 @@ public class Article {
 
     private Integer type;
 
+    private Integer sort;
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
     public Integer getStatus() {
         return status;
     }

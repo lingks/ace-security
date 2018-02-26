@@ -23,24 +23,30 @@ import org.springframework.web.bind.annotation.*;
 public class CommentRest  {
 
     @Autowired
-    private CommentBiz articleBiz;
+    private CommentBiz commentBiz;
 
+    @Autowired
+    private ArticleBiz articleBiz;
     @RequestMapping(value = "",method = RequestMethod.POST)
     @ResponseBody
     public ObjectRestResponse<Comment> add(Comment entity){
-        articleBiz.insertSelective(entity);
+
+        Article article = articleBiz.selectById(entity.getPid());
+        article.setCommentCount(article.getCommentCount() + 1);
+        articleBiz.updateSelectiveById(article);
+        commentBiz.insertSelective(entity);
         return new ObjectRestResponse<Comment>().rel(true);
     }
 
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public JSONPObject get(@PathVariable int id, String callback){
-        return new JSONPObject(callback,new ObjectRestResponse<Comment>().rel(true).result(articleBiz.selectById(id)));
+        return new JSONPObject(callback,new ObjectRestResponse<Comment>().rel(true).result(commentBiz.selectById(id)));
     }
     @RequestMapping(value = "/page",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public JSONPObject get(int pageIndex, int pageSize, String callback){
         Page<Comment> objects = PageHelper.startPage(pageIndex, pageSize);
-        articleBiz.selectListAll();
+        commentBiz.selectListAll();
         return new JSONPObject(callback, new ListRestResponse<Comment>().rel(true).count(objects.getTotal()).result(objects.getResult()));
     }
 

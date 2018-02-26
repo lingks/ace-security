@@ -480,8 +480,20 @@
         <li style="line-height: 80px;text-align:center;border-bottom: 1px #eee solid;width:15%;height: 80px;">
             <img style="width:80px;" src="{{item.cover}}">
         </li>
-        <li style="height: 80px;width:30%;border-bottom: 1px #eee solid;">
+        <li style="height: 80px;width:25%;border-bottom: 1px #eee solid;">
             {{item.title}}
+        </li>
+
+        <li style="height: 80px;width:5%;border-bottom: 1px #eee solid;">
+            {{# if (item.type==1) { }}
+            项目报告
+            {{# } }}
+            {{# if (item.type==2) { }}
+            精英视点
+            {{# } }}
+            {{# if (item.type==3) { }}
+            行业政策
+            {{# } }}
         </li>
         <li  style="height: 80px;width:15%;border-bottom: 1px #eee solid;text-align: center;">{{item.updTime==undefined?item.crtTime:item.updTime}}</li>
         <li  style="height: 80px;width:5%;border-bottom: 1px #eee solid;text-align: center;">{{item.pageView}}</li>

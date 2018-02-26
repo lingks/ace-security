@@ -96,7 +96,8 @@ public class ArticleRest {
     @ResponseBody
     public ObjectRestResponse<Article> add(Article entity){
         System.out.println(entity);
-
+        Integer integer = mapper.selectMaxSort();
+        entity.setSort(integer);
         mapper.insertSelective(entity);
         System.out.println(entity);
         return new ObjectRestResponse<Article>().rel(true);

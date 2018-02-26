@@ -12,30 +12,59 @@
 				<input type="text" name="remark" lay-verify="required" autocomplete="off" placeholder="请输入摘要" class="layui-input">
 			</div>
 		</div>
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label">文章类型</label>
+				<div class="layui-input-block">
+					<select name="type" lay-filter="aihao" id="type" lay-verify="type">
+						<option value=""></option>
+						<option value="1">项目报告</option>
+						<option value="2">精英视点</option>
+						<option value="3">行业政策</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label">关键词</label>
+				<div class="layui-input-block">
+					<input type="text" name="tag" class="layui-input"  lay-verify="tag" placeholder="多个关键词请用;隔开">
+				</div>
+			</div>
+		</div>
 		<div class="layui-form-item layui-form-text">
 			<label class="layui-form-label">内容</label>
 			<div class="layui-input-block">
 				<textarea class="layui-textarea layui-hide" name="content"  id="description_editor"></textarea>
 			</div>
 		</div>
-		<div class="layui-upload" style="padding-right: 20px;padding-top:20px;">
 
-			<div class="layui-upload-list">
-				<img class="layui-upload-img" id="demo2" style="    width: 150px;
-    height: 150px;
-    float: right;
-    margin-right: 150px;">
-				<p id="demoText"></p>
+		<div class="layui-form-item">
+			<label class="layui-form-label">浏览量</label>
+			<div class="layui-input-block">
+				<input type="number" name="pageView" lay-verify="required" autocomplete="off" placeholder="请输入数字" value="0" class="layui-input">
 			</div>
-			<button type="button" class="layui-btn" id="test1" style="float: right;
-    /* margin-top: 160px; */
-    margin-right: -120px;
-    margin-top: 160px;">上传头像</button>
 		</div>
-		<div>
+		<!--<div class="layui-upload" style="padding-right: 20px;padding-top:20px;">-->
 
-			<input name="titleImg" id="titleImg" value=""/>
-		</div>
+			<!--<div class="layui-upload-list">-->
+				<!--<img class="layui-upload-img" id="demo2" style="    width: 150px;-->
+    <!--height: 150px;-->
+    <!--float: right;-->
+    <!--margin-right: 150px;">-->
+				<!--<p id="demoText"></p>-->
+			<!--</div>-->
+			<!--<button type="button" class="layui-btn" id="test1" style="float: right;-->
+    <!--/* margin-top: 160px; */-->
+    <!--margin-right: -120px;-->
+    <!--margin-top: 160px;">上传头像</button>-->
+		<!--</div>-->
+		<!--<div>-->
+
+			<input name="titleImg" id="titleImg" value="" type="hidden"/>
+		<input name="cover" id="cover" value="" type="hidden"/>
+
 		<button lay-filter="edit" lay-submit style="display: none;"></button>
 	</form>
 </div>

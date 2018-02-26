@@ -16,9 +16,29 @@ article.columns = function () {
     }, {
         field: 'remark',
         title: '摘要'
+    },{
+        field: 'type',
+        title: '类型',
+        formatter: function(value,row,index){
+
+            if(value == 1){
+                return "项目报告";
+            }
+            if(value == 1){
+                return "精英视点";
+            }
+            if(value == 1){
+                return "行业政策";
+            }
+
+            return value;
+        }
     }, {
         field: 'pageView',
         title: '浏览量'
+    }, {
+        field: 'commentCount',
+        title: '评论数'
     }];
 };
 article.queryParams = function (params) {

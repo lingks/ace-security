@@ -1,30 +1,26 @@
-var ship = {
-    baseUrl: "/blog/ship",
-    entity: "ship",
-    tableId: "shipTable",
+var message = {
+    baseUrl: "/blog/message",
+    entity: "message",
+    tableId: "messageTable",
     toolbarId: "toolbar",
     unique: "id",
     order: "asc",
     currentItem: {}
 };
-ship.columns = function () {
+message.columns = function () {
     return [{
         checkbox: true
     }, {
-        field: 'name',
-        title: '名称',
+        field: 'title',
+        title: '标题',
         width: 150
     }, {
-        field: 'remark',
-        title: '备注',
+        field: 'content',
+        title: '内容',
         width: 200
-    }, {
-        field: 'url',
-        title: '链接',
-        width: 200
-    }];
+    }]
 };
-ship.queryParams = function (params) {
+message.queryParams = function (params) {
     if (!params)
         return {
             title: $("#name").val()
@@ -37,18 +33,18 @@ ship.queryParams = function (params) {
     return temp;
 };
 
-ship.init = function () {
+message.init = function () {
 
-    ship.table = $('#' + ship.tableId).bootstrapTable({
-        url: ship.baseUrl + '/page', //请求后台的URL（*）
+    message.table = $('#' + message.tableId).bootstrapTable({
+        url: message.baseUrl + '/page', //请求后台的URL（*）
         method: 'get', //请求方式（*）
-        toolbar: '#' + ship.toolbarId, //工具按钮用哪个容器
+        toolbar: '#' + message.toolbarId, //工具按钮用哪个容器
         striped: true, //是否显示行间隔色
         cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
         pagination: true, //是否显示分页（*）
         sortable: false, //是否启用排序
-        sortOrder: ship.order, //排序方式
-        queryParams: ship.queryParams,//传递参数（*）
+        sortOrder: message.order, //排序方式
+        queryParams: message.queryParams,//传递参数（*）
         sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1, //初始化加载第一页，默认第一页
         pageSize: 10, //每页的记录行数（*）
@@ -59,17 +55,17 @@ ship.init = function () {
         showRefresh: true, //是否显示刷新按钮
         minimumCountColumns: 2, //最少允许的列数
         clickToSelect: true, //是否启用点击选中行
-        uniqueId: ship.unique, //每一行的唯一标识，一般为主键列
+        uniqueId: message.unique, //每一行的唯一标识，一般为主键列
         showToggle: true, //是否显示详细视图和列表视图的切换按钮
         cardView: false, //是否显示详细视图
         detailView: false, //是否显示父子表
-        columns: ship.columns()
+        columns: message.columns()
     });
 };
-ship.select = function (layerTips) {
-    var rows = ship.table.bootstrapTable('getSelections');
+message.select = function (layerTips) {
+    var rows = message.table.bootstrapTable('getSelections');
     if (rows.length == 1) {
-        ship.currentItem = rows[0];
+        message.currentItem = rows[0];
         return true;
     } else {
         layerTips.msg("请选中一行");
@@ -78,7 +74,7 @@ ship.select = function (layerTips) {
 };
 
 layui.use(['form', 'layedit', 'laydate'], function () {
-    ship.init();
+    message.init();
     var editIndex;
     var layerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
         layer = layui.layer, //获取当前窗口的layer对象
@@ -88,17 +84,17 @@ layui.use(['form', 'layedit', 'laydate'], function () {
     var addBoxIndex = -1;
     //初始化页面上面的按钮事件
     $('#btn_query').on('click', function () {
-        ship.table.bootstrapTable('refresh', ship.queryParams());
+        message.table.bootstrapTable('refresh', message.queryParams());
     });
 
     $('#btn_add').on('click', function () {
         if (addBoxIndex !== -1)
             return;
         //本表单通过ajax加载 --以模板的形式，当然你也可以直接写在页面上读取
-        $.get(ship.entity + '/edit', null, function (form) {
+        $.get(message.entity + '/edit', null, function (form) {
             addBoxIndex = layer.open({
                 type: 1,
-                title: '添加友情链接',
+                title: '添加消息',
                 content: form,
                 btn: ['保存', '取消'],
                 shade: false,
@@ -129,7 +125,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                     form.on('submit(edit)', function (data) {
                         data.field.content =  layedit.getContent(editIndex);
                         $.ajax({
-                            url: ship.baseUrl,
+                            url: message.baseUrl,
                             type: 'post',
                             data: data.field,
                             dataType: "json",
@@ -152,14 +148,14 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         });
     });
     $('#btn_edit').on('click', function () {
-        if (ship.select(layerTips)) {
-            var id = ship.currentItem.id;
-            $.get(ship.baseUrl + '/' + id, null, function (data) {
+        if (message.select(layerTips)) {
+            var id = message.currentItem.id;
+            $.get(message.baseUrl + '/' + id, null, function (data) {
                 var result = data.result;
-                $.get(ship.entity+'/edit', null, function (form) {
+                $.get(message.entity+'/edit', null, function (form) {
                     layer.open({
                         type: 1,
-                        title: '编辑友情链接',
+                        title: '编辑消息',
                         content: form,
                         btn: ['保存', '取消'],
                         shade: false,
@@ -191,7 +187,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                             form.on('submit(edit)', function (data) {
                                 data.field.content =  layedit.getContent(editIndex);
                                 $.ajax({
-                                    url: ship.baseUrl + "/" + result.id,
+                                    url: message.baseUrl + "/" + result.id,
                                     type: 'put',
                                     data: data.field,
                                     dataType: "json",
@@ -212,11 +208,11 @@ layui.use(['form', 'layedit', 'laydate'], function () {
         }
     });
     $('#btn_del').on('click', function () {
-        if (ship.select(layerTips)) {
-            var id = ship.currentItem.id;
+        if (message.select(layerTips)) {
+            var id = message.currentItem.id;
             layer.confirm('确定删除数据吗？', null, function (index) {
                 $.ajax({
-                    url: ship.baseUrl + "/" + id,
+                    url: message.baseUrl + "/" + id,
                     type: "DELETE",
                     success: function (data) {
                         if (data.rel == true) {
