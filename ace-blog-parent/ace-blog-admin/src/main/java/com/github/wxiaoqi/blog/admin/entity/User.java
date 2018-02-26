@@ -58,6 +58,15 @@ public class User {
     }
 
     public void setTirthyStr(String tirthyStr) {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        if(tirthyStr != null && !"".equals(tirthyStr)){
+            try {
+                this.setBirthy(df.parse(tirthyStr));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
         this.tirthyStr = tirthyStr;
     }
 

@@ -26,7 +26,7 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">生日</label>
 			<div class="layui-input-block">
-				<input type="text" name="tirthyStr" lay-verify="required" autocomplete="off" placeholder="请输入地址" class="layui-input">
+				<input type="text" name="tirthyStr" id="tirthyStr"  placeholder="yyyy-mm-dd" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
 			</div>
 		</div>
 		<div class="layui-form-item">
@@ -44,7 +44,7 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">地址</label>
 			<div class="layui-input-block">
-				<input type="text" name="addres" lay-verify="required" autocomplete="off" placeholder="请输入地址" class="layui-input">
+				<input type="text" name="address" lay-verify="required" autocomplete="off" placeholder="请输入地址" class="layui-input">
 			</div>
 		</div>
 		<div class="layui-form-item">

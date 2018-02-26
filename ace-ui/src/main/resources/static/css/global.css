@@ -330,19 +330,23 @@ body .site-demo-nav .layui-nav-item{line-height: 40px}
 .admin-main {margin: 15px;}
 
 .admin-side-toggle,.admin-side-full{
-	position: absolute; cursor: pointer;
+    position: absolute;
+    cursor: pointer;
     z-index: 19940201;
-    left: 200px;
+    left: 185px;
     color: white;
     text-align: center;
-    width: 30px;
-    height: 30px;
-    background-color: #1AA094;
+    width: 20px;
     line-height: 30px;
-    top: 25%;
+    height: 45px;
+    background-color: #223d50;
+    /* line-height: 100%; */
+    top: 15%;
+    font-size: arge;
+    font-size: x-large;
 }
 .admin-side-toggle:hover{
-	background-color: #5FB878;
+	background-color: #1b9f93;
 }
 .admin-side-full{
 	left: 240px;
