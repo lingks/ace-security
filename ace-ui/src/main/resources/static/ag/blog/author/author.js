@@ -160,6 +160,8 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                 },
                 success: function (layero, index) {
                     var form = layui.form();
+                    $("#nanSex").attr("checked","");
+                    $("#no-tuijian").attr("checked","");
                     editIndex = layedit.build('description_editor');
                     form.render();
 
@@ -221,7 +223,22 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                         },
                         success: function (layero, index) {
                             var form = layui.form();
+                            if(result.sex == '男'){
+                                $("#nanSex").attr("checked","");
+                            }
+                            if(result.sex == '女'){
+                                $("#nvSex").attr("checked","");
+                            }
+
+                            if(result.tuijian == 1){
+                                $("#tuijian").attr("checked","");
+                            }
+                            if(result.tuijian == 0){
+                                $("#no-tuijian").attr("checked","");
+                            }
+
                             setFromValues(layero, result);
+
                             layero.find('#description_editor').val(result.content);
                             editIndex = layedit.build('description_editor');
                             form.render();

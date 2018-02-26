@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
     <meta http-equiv="Content-Language" content="zh-CN">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-    <title>链向财经-区块链信息服务平台</title>
+    <title>链算数据-区块链信息服务平台</title>
     <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
     <!--Layui-->
     <link href="../plug/layui/css/layui.css" rel="stylesheet"/>
@@ -23,6 +23,9 @@
     <style type="text/css">
         .layui-carousel-arrow {
             top: 25%;
+        }
+        .layui-carousel{
+            margin:0 auto;
         }
         body{
             min-width: 1150px;
@@ -308,15 +311,20 @@
 
 <div style="width: 100%;min-width:1200px;height:372px;padding-top:80px;background-image:url(../images/head-bg.jpg)">
 
-    <div class="layui-carousel" id="test2" style="margin-top: 15px;height:372px;width:98%;">
+    <div class="layui-carousel" id="test2" style="margin-top: 15px;
+    height: 370px;
+    width: 1305px;
+    position: relative;
+    background: rgba(0, 0, 0, 0);
+    left: 15px;">
         <div carousel-item="">
-            <div id="test2-view-1" style="text-align: center;line-height: 32px;font-size: 18px;font-weight: bold;width:100%;float:left;padding-left:2%;padding-right:2%;background-image: url(../images/head-bg.jpg);">
+            <div id="test2-view-1" style="text-align: center;line-height: 32px;font-size: 18px;font-weight: bold;width:100%;float:left;padding-left:2%;padding-right:2%;    background: rgba(0, 0, 0, 0);">
 
             </div>
-            <div id="test2-view-2" style="text-align: center;line-height: 32px;font-size: 18px;font-weight: bold;width:100%;float:left;padding-left:2%;padding-right:2%;background-image: url(../images/head-bg.jpg);">
+<!--            <div id="test2-view-2" style="text-align: center;line-height: 32px;font-size: 18px;font-weight: bold;width:100%;float:left;padding-left:2%;padding-right:2%;    background: rgba(0, 0, 0, 0);">
 
             </div>
-            <div id="test2-view-3" style="text-align: center;line-height: 32px;font-size: 18px;font-weight: bold;width:100%;float:left;padding-left:2%;padding-right:2%;background-image: url(../images/head-bg.jpg);">
+            <div id="test2-view-3" style="text-align: center;line-height: 32px;font-size: 18px;font-weight: bold;width:100%;float:left;padding-left:2%;padding-right:2%;    background: rgba(0, 0, 0, 0);">-->
 
             </div>
         </div>
@@ -725,16 +733,23 @@
 
     });
     function tagClick(id){
-       type = id;
-
+        type = id;
+        var count = 0;
+        var totalPage = 1;
         $.ajax({
-            url: base.url + '/blog/api/article/page?pageIndex='+currentPage+'&pageSize=10&type=' + type,
+            url: base.url + '/blog/api/article/page?pageIndex=1&pageSize=10&type=' + type,
 
             contentType: "application/json; charset=utf-8",
             dataType: 'jsonp',
             jsonp: 'callback',
             success: function (data, status, xhr) {
-
+                count = data.count;
+                if(count%10 > 0){
+                    totalPage = Math.floor(count/10) + 1;
+                }else{
+                    totalPage = count/10;
+                }
+                currentPage = 2;
                 if(data.result.length == 0){
                     $("#paging").html("没有找到数据");
                     $("#articles").html("");
@@ -912,19 +927,19 @@
         //改变下时间间隔、动画类型、高度
         carousel.render({
             elem: '#test2'
-            ,interval: 1800
+            ,interval: 3000
             ,anim: 'fade'
             ,height: '370px'
-            ,width: '100%'
+            ,width: '1300px;'
         });
 
         //改变下时间间隔、动画类型、高度
         carousel.render({
             elem: '#pj_carousel'
-            , interval: 1800
+            , interval: 3000
             , anim: 'fade'
             , height: '250px'
-            , width: '100%'
+            , width: '1240px'
         });
 
         var $ = layui.$, active = {
