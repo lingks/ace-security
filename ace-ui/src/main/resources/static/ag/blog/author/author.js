@@ -244,6 +244,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                             form.render();
                             form.on('submit(edit)', function (data) {
                                 data.field.content =  layedit.getContent(editIndex);
+                                console.log(data.field);
                                 $.ajax({
                                     url: author.baseUrl + "/" + result.id,
                                     type: 'put',
