@@ -7,6 +7,7 @@ import com.github.wxiaoqi.blog.admin.biz.FriendshipBiz;
 import com.github.wxiaoqi.blog.admin.biz.ProjectBiz;
 import com.github.wxiaoqi.blog.admin.entity.Friendship;
 import com.github.wxiaoqi.blog.admin.entity.Project;
+import com.github.wxiaoqi.blog.admin.entity.StrategicPartner;
 import com.github.wxiaoqi.security.common.msg.ListRestResponse;
 import com.github.wxiaoqi.security.common.msg.ObjectRestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by ace on 2017/7/16.
  */
 @RestController
-@RequestMapping("api/friendship")
+@RequestMapping("api/ship")
 public class FriendshipRest {
     @Autowired
     private FriendshipBiz articleBiz;
@@ -32,5 +33,13 @@ public class FriendshipRest {
         Page<Friendship> objects = PageHelper.startPage(pageIndex, pageSize);
         articleBiz.selectListAll();
         return new JSONPObject(callback, new ListRestResponse<Friendship>().rel(true).count(objects.getTotal()).result(objects.getResult()));
+    }
+
+    @RequestMapping(value = "/list",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public JSONPObject get(String callback){
+
+
+        return new JSONPObject(callback,
+                new ListRestResponse<Friendship>().rel(true).result(articleBiz.selectListAll()));
     }
 }

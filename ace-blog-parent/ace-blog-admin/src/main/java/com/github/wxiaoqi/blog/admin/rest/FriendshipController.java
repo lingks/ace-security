@@ -21,7 +21,7 @@ import tk.mybatis.mapper.entity.Example;
  * @create 2017-06-08 11:51
  */
 @Controller
-@RequestMapping("friendship")
+@RequestMapping("ship")
 public class FriendshipController extends BaseController<FriendshipBiz,Friendship> {
 
     @RequestMapping(value = "/page",method = RequestMethod.GET)

@@ -333,20 +333,19 @@ body .site-demo-nav .layui-nav-item{line-height: 40px}
     position: absolute;
     cursor: pointer;
     z-index: 19940201;
-    left: 185px;
+    left: 0;
     color: white;
     text-align: center;
     width: 20px;
-    line-height: 30px;
+    line-height: 38px;
     height: 45px;
     background-color: #223d50;
     /* line-height: 100%; */
-    top: 15%;
-    font-size: arge;
-    font-size: x-large;
+    top: 0;
+    font-size: large;
 }
 .admin-side-toggle:hover{
-	background-color: #1b9f93;
+	font-size:x-large;
 }
 .admin-side-full{
 	left: 240px;

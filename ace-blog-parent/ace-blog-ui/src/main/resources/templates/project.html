@@ -246,7 +246,7 @@
 
         </div>
         <div id="login-tag" style="position: absolute;right: 80px;float:left;line-height: 65px;color: #fff;font-size: 14px;">
-            <a href="/login.html"><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a href="/register.html"><span>注&nbsp;&nbsp;册</span></a>
+            <a><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a><span>注&nbsp;&nbsp;册</span></a>
         </div>
         <div id="xiewenzhangn">
             <div class="h-writing" style="width: 100px;height: 48px;">
@@ -491,7 +491,45 @@
     </li>
     {{# }); }}
 </script>
+<script id="friendshipTpl" type="text/html">
+    友情链接： {{# layui.each(d.result, function(index, item){ }}
+    <a href="{{item.url}}" target="_blank">{{item.name}}</a>&nbsp;&nbsp;
+    {{# }); }}
+</script>
 <script>
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        var getTpl = partner.innerHTML,
+            friendshipTemplate = friendshipTpl.innerHTML
+            , view = document.getElementById('partner-view'),
+            shipView = document.getElementById('partner-url');
+
+        $.ajax({
+            url: base.url + '/blog/api/partner/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(getTpl).render(data, function (html) {
+                    view.innerHTML = html;
+                });
+            }
+        })
+
+        $.ajax({
+            url: base.url + '/blog/api/ship/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(friendshipTemplate).render(data, function (html) {
+                    shipView.innerHTML = html;
+                });
+            }
+        })
+    });
     layui.use(['carousel', 'form'], function() {
         var carousel = layui.carousel
             , form = layui.form;
@@ -543,21 +581,21 @@
         });
 
 
-        var parterTpl = partner.innerHTML
-            , parterView = document.getElementById('partner-view');
-
-        $.ajax({
-            url: base.url + '/blog/api/partner/list',
-
-            contentType: "application/json; charset=utf-8",
-            dataType: 'jsonp',
-            jsonp: 'callback',
-            success: function (data, status, xhr) {
-                laytpl(parterTpl).render(data, function (html) {
-                    parterView.innerHTML = html;
-                });
-            }
-        })
+//        var parterTpl = partner.innerHTML
+//            , parterView = document.getElementById('partner-view');
+//
+//        $.ajax({
+//            url: base.url + '/blog/api/partner/list',
+//
+//            contentType: "application/json; charset=utf-8",
+//            dataType: 'jsonp',
+//            jsonp: 'callback',
+//            success: function (data, status, xhr) {
+//                laytpl(parterTpl).render(data, function (html) {
+//                    parterView.innerHTML = html;
+//                });
+//            }
+//        })
 
 
 

@@ -594,6 +594,7 @@ position: relative;margin: auto;top:110px;min-width: 1150px">
     </div>
 </script>
 
+
 <script>
     layui.config({
         base: 'js/'
@@ -863,6 +864,12 @@ position: relative;margin: auto;top:110px;min-width: 1150px">
 
     {{#  }); }}
 </script>
+
+<script id="friendshipTpl" type="text/html">
+    友情链接： {{# layui.each(d.result, function(index, item){ }}
+    <a href="{{item.url}}" target="_blank">{{item.name}}</a>&nbsp;&nbsp;
+    {{# }); }}
+</script>
 <script src="../js/global.js"></script>
 <script>
 
@@ -889,8 +896,10 @@ position: relative;margin: auto;top:110px;min-width: 1150px">
 
     layui.use('laytpl', function() {
         var laytpl = layui.laytpl;
-        var getTpl = partner.innerHTML
-            , view = document.getElementById('partner-view');
+        var getTpl = partner.innerHTML,
+            friendshipTemplate = friendshipTpl.innerHTML
+            , view = document.getElementById('partner-view'),
+            shipView = document.getElementById('partner-url');
 
         $.ajax({
             url: base.url + '/blog/api/partner/list',
@@ -901,6 +910,19 @@ position: relative;margin: auto;top:110px;min-width: 1150px">
             success: function (data, status, xhr) {
                 laytpl(getTpl).render(data, function (html) {
                     view.innerHTML = html;
+                });
+            }
+        })
+
+        $.ajax({
+            url: base.url + '/blog/api/ship/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(friendshipTemplate).render(data, function (html) {
+                    shipView.innerHTML = html;
                 });
             }
         })

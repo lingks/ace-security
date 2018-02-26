@@ -321,7 +321,7 @@
 
         </div>
         <div id="login-tag" style="position: absolute;right: 80px;float:left;line-height: 65px;color: #fff;font-size: 14px;">
-            <a href="/login.html"><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a href="/register.html"><span>注&nbsp;&nbsp;册</span></a>
+            <a><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a><span>注&nbsp;&nbsp;册</span></a>
         </div>
         <div id="xiewenzhangn">
             <div class="h-writing" style="width: 100px;height: 48px;">
@@ -448,30 +448,7 @@
     <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="">Lins</a><span>Design By Mr.Lin</span></p>
     <p><a href="" target="_blank">蜀ICP备160299x4e5号-1</a></p>
 </footer>
-<!--侧边导航-->
-<ul class="layui-nav" lay-filter="nav">
-    <li class="layui-nav-item ">
-        <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
-    </li>
-    <li class="layui-nav-item">
-        <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>
-    </li>
-    <li class="layui-nav-item">
-        <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
-    </li>
-    <li class="layui-nav-item">
-        <a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
-        <!--</li>-->
-        <!--<li class="layui-nav-item">-->
-        <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
-        <!--</li>-->
-    <li class="layui-nav-item layui-this">
-        <a href="/author"><i class="fa fa-info fa-fw"></i>&nbsp;作家</a>
-    </li>
-    <li class="layui-nav-item">
-        <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
-    </li>
-</ul>
+<!---->
 <!--分享窗体-->
 <div class="blog-share layui-hide">
     <div class="blog-share-body">
@@ -619,6 +596,11 @@ overflow: hidden;">{{item.remark}}</div>
     <a href="{{item.url}}"> <img src="{{item.logo}}" style="width:100px;height:40px;margin-left:5px;"></a>
     {{#  }); }}
 </script>
+<script id="friendshipTpl" type="text/html">
+    友情链接： {{# layui.each(d.result, function(index, item){ }}
+    <a href="{{item.url}}" target="_blank">{{item.name}}</a>&nbsp;&nbsp;
+    {{# }); }}
+</script>
 <script id="pjtpl" type="text/html">
     {{# layui.each(d.result, function(index, item){ }}
     <li>
@@ -639,6 +621,42 @@ overflow: hidden;">{{item.remark}}</div>
     var count = 0;
     var totalPage = 1;
     var type = 0;
+
+
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        var getTpl = partner.innerHTML,
+            friendshipTemplate = friendshipTpl.innerHTML
+            , view = document.getElementById('partner-view'),
+            shipView = document.getElementById('partner-url');
+
+        $.ajax({
+            url: base.url + '/blog/api/partner/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(getTpl).render(data, function (html) {
+                    view.innerHTML = html;
+                });
+            }
+        })
+
+        $.ajax({
+            url: base.url + '/blog/api/ship/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(friendshipTemplate).render(data, function (html) {
+                    shipView.innerHTML = html;
+                });
+            }
+        })
+    });
+
     layui.use('laytpl', function() {
         var laytpl = layui.laytpl;
         var getTpl = tpl.innerHTML
@@ -666,22 +684,22 @@ overflow: hidden;">{{item.remark}}</div>
             }
         });
 
-
-        var parterTpl = partner.innerHTML
-            , parterView = document.getElementById('partner-view');
-
-        $.ajax({
-            url: base.url + '/blog/api/partner/list',
-
-            contentType: "application/json; charset=utf-8",
-            dataType: 'jsonp',
-            jsonp: 'callback',
-            success: function (data, status, xhr) {
-                laytpl(parterTpl).render(data, function (html) {
-                    parterView.innerHTML = html;
-                });
-            }
-        })
+//
+//        var parterTpl = partner.innerHTML
+//            , parterView = document.getElementById('partner-view');
+//
+//        $.ajax({
+//            url: base.url + '/blog/api/partner/list',
+//
+//            contentType: "application/json; charset=utf-8",
+//            dataType: 'jsonp',
+//            jsonp: 'callback',
+//            success: function (data, status, xhr) {
+//                laytpl(parterTpl).render(data, function (html) {
+//                    parterView.innerHTML = html;
+//                });
+//            }
+//        })
 
         var writerTemplate = writerTpl.innerHTML
             , writerView = document.getElementById('writerView');

@@ -6,7 +6,7 @@ import javax.persistence.Table;
 /**
  * Created by Administrator on 2018/2/25.
  */
-@Table(name = "friendshop")
+@Table(name = "friendship")
 public class Friendship {
     @Id
     private Integer id;

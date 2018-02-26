@@ -67,7 +67,42 @@ layui.config({
         });
     });
 
+    $('.admin-side-toggle2').on('click', function () {
+        console.log("1111")
+        var sideWidth = $('#admin-side').width();
+        if (sideWidth === 200) {
+            $("#shousuo").attr("class","fa fa-angle-double-right")
+            $('#admin-body').animate({
+                left: '0'
+            }); //admin-footer
+            $('#admin-footer').animate({
+                left: '0'
+            });
+            $('#admin-side').animate({
+                width: '0'
+            });
+
+            // $(this).animate({
+            //     left: '-15px'
+            // });
+        } else {
+            $("#shousuo").attr("class","fa fa-angle-double-left")
+            $('#admin-body').animate({
+                left: '200px'
+            });
+            $('#admin-footer').animate({
+                left: '200px'
+            });
+            $('#admin-side').animate({
+                width: '200px'
+            });
+            // $(this).animate({
+            //     left: '185px'
+            // });
+        }
+    });
     $('.admin-side-toggle').on('click', function () {
+        console.log("1111")
         var sideWidth = $('#admin-side').width();
         if (sideWidth === 200) {
             $("#shousuo").attr("class","fa fa-angle-double-right")
