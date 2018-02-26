@@ -45,16 +45,26 @@
             var c = a("#" + n), f = setInterval(function () {
                 var a;
                 try {
+                    console.log(c)
                     a = c.contents().find("body").text()
+                    console.log(a)
                 } catch (i) {
                     t.msg("上传接口存在跨域", r), clearInterval(f)
                 }
                 if (a) {
-                    console.log(a)
-                    console.log(JSON.parse('{"code":"200","message":"success"}'))
+                    var result;
+                    if(a.indexOf("Tree Chart JSON Input Copy pathCopy Value")> -1){
+                        result = a.split("Tree Chart JSON Input Copy pathCopy Value");
+                        if(result.length > 1){
+                            result = result[1];
+                        }
+                    }else{
+                        result = JSON.parse(a);
+                    }
+
                     clearInterval(f), c.contents().find("body").html("");
                     try {
-                        a = JSON.parse('{"code":0,"title":"图片","src":"http://localhost:8765/admin/images/0.jpg"}')
+                        a = JSON.parse(result)
                     } catch (i) {
                         return a = {}, t.msg("请对上传接口返回JSON字符", r)
                     }

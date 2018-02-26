@@ -30,7 +30,7 @@ public class FileController {
 
 
         System.out.println(uploadPath);
-        return "{\"code\":\"0\",\"title\":\"success\",\"src\":\""+ generateFile(file) +"\"}";
+        return "{\"code\":0,\"title\":\"success\",\"src\":\""+ generateFile(file) +"\"}";
     }
 
 

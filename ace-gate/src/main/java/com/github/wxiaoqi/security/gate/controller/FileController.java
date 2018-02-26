@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -27,12 +28,13 @@ public class FileController {
     private String uploadPath;
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
     @ResponseBody
-    public String upload(MultipartFile file){
+    public Response upload(MultipartFile file, HttpServletResponse response){
 
 
-        System.out.println(uploadPath);
-        return "{\"code\":\"0\",\"title\":\"success\",\"src\":\""+ generateFile(file) +"\"}";
+
+        return new Response(0,"success",generateFile(file));
     }
+
 
 
     @RequestMapping(value = "/uploadImg",method = RequestMethod.POST)
@@ -54,16 +56,56 @@ public class FileController {
 
             System.out.println("写入文件");
             String fileName = new Date().getTime() + "." + Base64Util.getType(file.getContentType());
-            String filePath = "/usr/local/upload/" + fileName;
+            String filePath = "D://upload/" + fileName;
             // 生成地址
             OutputStream out = new FileOutputStream(new File(filePath));
             out.write(b);
             out.flush();
             out.close();
-            return filePath;
+            return uploadPath + fileName;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return "";
+    }
+}
+
+class Response{
+    Integer code;
+    String title;
+    String src;
+
+    public Response() {
+    }
+
+    public Response(Integer code, String title, String src) {
+
+        this.code = code;
+        this.title = title;
+        this.src = src;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSrc() {
+        return src;
+    }
+
+    public void setSrc(String src) {
+        this.src = src;
     }
 }
