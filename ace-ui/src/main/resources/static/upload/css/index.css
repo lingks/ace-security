@@ -35,6 +35,9 @@
 	right: 8px;
 	display: none;
 	z-index: 10;
+	width:25px;
+	height: 25px;
+	background: rgba(0, 0, 0, 0);
 }
 .up-section .up-span{
 	display: block;

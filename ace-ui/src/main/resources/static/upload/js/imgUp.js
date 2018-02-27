@@ -58,7 +58,7 @@ $(function(){
                 if( $("#cover")){
                     $("#cover").val(imgArr[i])
                 }
-                $img0.attr("src","img/a7.png").appendTo($section);
+                $img0.attr("src","/img/a7.jpg").appendTo($section);
                 var $img = $("<img class='up-img up-opcity'>");
                 $img.attr("src",imgArr[i]);
                 $img.appendTo($section);

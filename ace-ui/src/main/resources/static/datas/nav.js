@@ -14,7 +14,7 @@ var navs = [{
     }, {
         "title": "用户组管理",
         "icon": "fa-users",
-        "href": base.url +"/user"
+        "href": "/user"
     }, {
         "title": "数据字典",
         "icon": "fa-book",
