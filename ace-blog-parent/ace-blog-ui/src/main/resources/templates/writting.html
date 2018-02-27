@@ -355,7 +355,7 @@
     </a>
     <!-- 导航菜单 -->
     <ul class="layui-nav" lay-filter="nav">
-        <li class="layui-nav-item layui-this">
+        <li class="layui-nav-item">
             <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
         </li>
         <!--<li class="layui-nav-item">-->
@@ -467,7 +467,7 @@
             console.log($("#crtUser").val())
             console.log($("#type"))
             $.ajax({
-                url: 'http://localhost:8765/blog/api/article',
+                url: base.url + '/blog/api/article',
                 type: 'POST',
 
 

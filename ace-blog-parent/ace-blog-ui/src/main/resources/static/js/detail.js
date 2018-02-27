@@ -35,7 +35,7 @@ layui.use(['form', 'layedit'], function () {
             var content = data.field.editorContent;
 
             $.post({
-                url: 'http://localhost:8765/blog/api/comment',
+                url: base.url + '/blog/api/comment',
                 type: 'POST',
 
 

@@ -1151,3 +1151,8 @@ body {
     color: #323b50;
     background: #f1efef;
 }
+
+#partner-view{
+    text-align: left;
+    padding: 0 100px;
+}
