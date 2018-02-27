@@ -156,26 +156,30 @@ layui.use(['element', 'layer', 'util', 'form'], function () {
     layui.use('laytpl', function() {
 
         var laytpl = layui.laytpl;
-        var
-            uInfotemplate = uInfoTpl.innerHTML
 
-            ,uview =  document.getElementById('uinfo-view');
+        if(header_view != undefined){
+            var  uInfotemplate = header_view.innerHTML
 
-        var localUser = localStorage.getItem("user");
+                ,uview =  document.getElementById('blog-container');
 
-        if(localUser != undefined && localUser != null && localUser != ""&&localUser != 'null'){
-            var user = JSON.parse(localUser);
+            var localUser = localStorage.getItem("user");
             var data = {
-                result:[user]
+                result:[]
             };
+            if(localUser != undefined && localUser != null && localUser != ""&&localUser != 'null'){
+                var user = JSON.parse(localUser);
+                data = {
+                    result:[user]
+                };
 
+
+            }
             laytpl(uInfotemplate).render(data, function (html) {
-
-                uview.innerHTML = html;
-                $("#login-tag").hide();
+                if(uview != undefined){
+                    uview.innerHTML = html;
+                }
+                ///$("#login-tag").hide();
             });
-        }else{
-            $("#login-tag").show();
         }
     });
 

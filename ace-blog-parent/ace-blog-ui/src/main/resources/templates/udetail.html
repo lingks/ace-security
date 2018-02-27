@@ -354,65 +354,8 @@
 <body>
 <!-- 导航 -->
 <nav class="blog-nav layui-header">
-    <div class="blog-container">
-        <!-- QQ互联登陆 -->
-        <div id="uinfo-view">
+    <div class="blog-container" id="blog-container">
 
-        </div>
-        <div id="login-tag" style="position: absolute;right: 80px;float:left;line-height: 65px;color: #fff;font-size: 14px;">
-            <a href="/login.html"><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a href="/register.html"><span>注&nbsp;&nbsp;册</span></a>
-        </div>
-        <div id="xiewenzhangn">
-            <div class="h-writing" style="width: 100px;height: 48px;">
-                <li style="width: 78px;
-    height: 28px;
-    line-height: 28px;
-    text-align: center;
-    margin-top: 5px;
-    margin-left: 24px;
-    border-radius: 15px;
-    background: #393D49">
-                    <button class="layui-btn2" style="
-    /* height: 30px; */
-"><i class="layui-icon"></i>写文章</button>
-                </li>
-            </div>
-        </div>
-        <a href="javascript:;" class="blog-user layui-hide">
-            <img src="../images/Absolutely.jpg" alt="Absolutely" title="Absolutely"/>
-        </a>
-        <!-- 不落阁 -->
-        <a class="blog-logo" href="home.html">
-            <img src="../images/logo.svg">
-        </a>
-        <!-- 导航菜单 -->
-        <ul class="layui-nav" lay-filter="nav">
-            <li class="layui-nav-item ">
-                <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
-            </li>
-            <!--<li class="layui-nav-item">-->
-                <!--<a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>-->
-            <!--</li>-->
-            <li class="layui-nav-item">
-                <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
-                <!--</li>-->
-                <!--<li class="layui-nav-item">-->
-                <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
-                <!--</li>-->
-            <li class="layui-nav-item"  layui-this>
-                <a href="/author"><i class="fa fa-thumbs-up fa-fw"></i>&nbsp;作家</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
-            </li>
-        </ul>
-        <!-- 手机和平板的导航开关 -->
-        <a class="blog-navicon" href="javascript:;">
-            <i class="fa fa-navicon"></i>
-        </a>
     </div>
 </nav>
 
@@ -552,12 +495,12 @@
 
     </ul>
 </script>
-<script id="uInfoTpl" type="text/html">
-    {{# layui.each(d.result,function(index,item){}}
+<script id="header_view" type="text/html">
+    {{# layui.each(d.result, function(index, item){ }}
+    <div id="uinfo-view"">
     <div onmouseover="userLogoin();" onmouseleave="setTimeout('userLogoout()', 3000);" id="ufo" style="margin-top: 15px;width: 35px;height: 35px;float: left;border-radius: 50%;overflow:hidden;">
         <img src="{{item.logo}}" style="width: 100%;">
     </div>
-
     <li class="layui-nav-item" lay-unselect="">
         <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
             <dd><a href="/center">个人中心</a></dd>
@@ -566,8 +509,66 @@
             <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
         </dl>
     </li>
+    </div>
 
-    {{#  }); }}
+    {{# }); }}
+    {{#  if(d.result.length === 0){ }}
+    <div id="login-tag" style="position: absolute;right: 80px;float:left;line-height: 65px;color: #fff;font-size: 14px;">
+        <a href="/login.html"><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a href="/register.html"><span>注&nbsp;&nbsp;册</span></a>
+    </div>
+    {{#  } }}
+    <div id="xiewenzhangn">
+        <div class="h-writing" style="width: 100px;height: 48px;">
+            <li style="width: 78px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 24px;
+    border-radius: 15px;
+    background: #393D49">
+                <button class="layui-btn2" style="
+    /* height: 30px; */
+    "><i class="layui-icon"></i>写文章</button>
+            </li>
+        </div>
+    </div>
+
+    <a href="javascript:;" class="blog-user layui-hide">
+        <img src="../images/Absolutely.jpg" alt="Absolutely" title="Absolutely"/>
+    </a>
+    <!-- 不落阁 -->
+    <a class="blog-logo" href="home.html">
+        <img src="../images/logo.svg">
+    </a>
+    <!-- 导航菜单 -->
+    <ul class="layui-nav" lay-filter="nav">
+        <li class="layui-nav-item layui-this">
+            <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
+        </li>
+        <!--<li class="layui-nav-item">-->
+        <!--<a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>-->
+        <!--</li>-->
+        <li class="layui-nav-item">
+            <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
+            <!--</li>-->
+            <!--<li class="layui-nav-item">-->
+            <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
+            <!--</li>-->
+        <li class="layui-nav-item">
+            <a href="/author"><i class="fa fa-thumbs-up fa-fw"></i>&nbsp;作家</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
+        </li>
+    </ul>
+    <!-- 手机和平板的导航开关 -->
+    <a class="blog-navicon" href="javascript:;">
+        <i class="fa fa-navicon"></i>
+    </a>
 </script>
 <script id="authorTplView" type="text/html">
 

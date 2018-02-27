@@ -10,11 +10,13 @@ spring:
         default-property-inclusion: non_null
     redis:
         database: 1
-        host: localhost
+        #host: localhost
+        host: 192.168.0.11
         pool:
             max-active: 20
-        #password: a1234567@!
-        port: 6379
+        password: a1234567@!
+        #port: 6379
+        port: 6389
 server:
     port: 8765 #启动端口
 #
