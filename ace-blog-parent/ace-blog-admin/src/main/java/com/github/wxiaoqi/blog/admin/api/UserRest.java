@@ -4,9 +4,11 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.wxiaoqi.blog.admin.biz.CommentBiz;
+import com.github.wxiaoqi.blog.admin.biz.MessageBiz;
 import com.github.wxiaoqi.blog.admin.biz.UserBiz;
 import com.github.wxiaoqi.blog.admin.entity.Article;
 import com.github.wxiaoqi.blog.admin.entity.Comment;
+import com.github.wxiaoqi.blog.admin.entity.Message;
 import com.github.wxiaoqi.blog.admin.entity.User;
 import com.github.wxiaoqi.security.common.constant.UserConstant;
 import com.github.wxiaoqi.security.common.msg.ListRestResponse;
@@ -20,6 +22,7 @@ import tk.mybatis.mapper.entity.Example;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,6 +34,9 @@ public class UserRest {
 
     @Autowired
     private UserBiz articleBiz;
+
+    @Autowired
+    private MessageBiz messageBiz;
 
     @RequestMapping(value = "",method = RequestMethod.POST)
     @ResponseBody
@@ -58,6 +64,13 @@ public class UserRest {
 
         example.createCriteria().andEqualTo("password", entity.getPassword());
         users = articleBiz.selectByExample(example);
+
+        Message message = new Message();
+        Date date = new Date();
+        message.setCrtTime(date);
+        message.setStatus(0);
+        message.setTitle("恭喜您！您于"+ date +" 成功注册账号，并成为链算数据的忠实用户，我们将为你提供最专业的区块链信息服务。");
+        messageBiz.insertSelective(message);
 
         return new ObjectRestResponse<Comment>().rel(true).result(users);
 
