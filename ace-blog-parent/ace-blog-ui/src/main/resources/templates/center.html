@@ -106,6 +106,27 @@
             line-height: 35px;
         }
 
+
+        .tb-main3{
+            margin: 0 auto;
+            margin-left: 10px;
+            margin-top: 50px;
+        }
+        .tb-main4{
+            margin: 0 auto;
+            width: 100%;
+        }
+        .tb-main4 ul li{
+            float: left;
+            height: 35px;font-size: 13px;
+            line-height: 35px;
+        }
+        .tb-main3 ul li{
+            float: left;
+            height: 35px;font-size: 13px;
+            line-height: 35px;
+        }
+
         .layui-btn2 {
             display: inline-block;
             height: 28px;
@@ -185,7 +206,7 @@
                     <div class="layui-upload" style="padding-right: 20px;padding-top:20px;">
 
                         <div class="layui-upload-list">
-                            <img class="layui-upload-img" id="demo2" style="    width: 150px;
+                            <img class="layui-upload-img" id="demoview" style="    width: 150px;
     height: 150px;
     float: right;
     margin-right: 150px;">
@@ -201,7 +222,7 @@
     width: 79%;
     margin-left: 50px;
     margin-top: 50px;
-    margin: 0 auto;" id="articleMainView">
+    margin: 0 auto;display: none;" id="articleMainView">
 
                     <div class="tb-main">
                         <ul>
@@ -222,9 +243,32 @@
                         </ul>
                         <div class="tb-main2"></div>
                     </div>
-                </div>
 
-                <div id="demo1" style="padding-left: 45%;"></div>
+                    <div id="demo2" style="padding-left: 45%;"></div>
+                </div>
+                <div style="float: left;
+    width: 79%;
+    margin-left: 50px;
+    margin-top: 50px;
+    margin: 0 auto;display: none;" id="messageMainView">
+
+                    <div class="tb-main3">
+                        <ul>
+                            <li style="background: #eee;
+    color: #666;width:10%;text-align: center;">#</li>
+                            <li style="background: #eee;
+    color: #666;width:25%;text-align: center;">内容</li>
+                            <li style="background: #eee;
+    color: #666;width:25%;text-align: center;">时间</li>
+                            <li style="background: #eee;
+    color: #666;width:10%;text-align: center;">状态</li>
+                            <li style="background: #eee;
+    color: #666;width:25%;text-align: center;">操作</li>
+                        </ul>
+                        <div class="tb-main4"></div>
+                    </div>
+                </div>
+                <div id="demo3" style="padding-left: 45%;"></div>
             </div>
             <div class="clear"></div>
         </div>
@@ -294,7 +338,7 @@
     {{# layui.each(d.result, function(index, item){ }}
     <div id="uinfo-view">
     <div onmouseover="userLogoin();" onmouseleave="setTimeout('userLogoout()', 3000);" id="ufo" style="margin-top: 15px;width: 35px;height: 35px;float: left;border-radius: 50%;overflow:hidden;">
-        <img src="{{item.logo}}" style="width: 100%;">
+        <img src="{{item.logo}}" style="width: 100%;" id="user-logo">
     </div>
     <li class="layui-nav-item" lay-unselect="">
         <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
@@ -511,6 +555,28 @@
 
     {{#  }); }}
 </script>
+
+
+<script id="messageInfoTpl" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <ul>
+        <li style="height: 80px;width:20%;border-bottom: 1px #eee solid;">
+            {{index}}
+        </li>
+        <li style="height: 80px;width:25%;border-bottom: 1px #eee solid;">
+            {{item.title}}
+        </li>
+        <li  style="height: 80px;width:25%;border-bottom: 1px #eee solid;text-align: center;">
+            {{item.crtTime}}
+        </li>
+        <li  style="height: 80px;width:10%;border-bottom: 1px #eee solid;text-align: center;">
+            {{item.status}}
+        </li>
+        <li  style="height: 80px;width:25%;border-bottom: 1px #eee solid;text-align: center;">操作</li>
+    </ul>
+
+    {{#  }); }}
+</script>
 <script id="friendshipTpl" type="text/html">
     友情链接： {{# layui.each(d.result, function(index, item){ }}
     <a href="{{item.url}}" target="_blank">{{item.name}}</a>&nbsp;&nbsp;
@@ -532,7 +598,7 @@
                 ,before: function(obj){
                     //预读本地文件示例，不支持ie8
                     obj.preview(function(index, file, result){
-                        $('#demo2').attr('src', result); //图片链接（base64）
+                        $('#demoview').attr('src', result); //图片链接（base64）
                     });
                 }
                 ,done: function(res){
@@ -687,7 +753,7 @@
                     async:true,
                     success: function (data, status, xhr) {
                         var user = data.result[0];
-                        $("#demo2").attr('src',user.logo);
+                        $("#demoview").attr('src',user.logo);
                         laytpl(uInfotemplate).render(data, function (html) {
                             userInfoview.innerHTML = html;
                         });
@@ -722,9 +788,11 @@
                         laytpl(userTpl).render(users, function (html) {
                             $("#rightMainView").append(html);
                             $("#demo1").hide();
-                            $(".tb-main").hide();
-                            $(".tb-main2").html("");
                             $("#articleMainView").hide();
+                            $("#demo3").hide();
+                            $(".tb-main3").hide()
+                            $(".tb-main4").hide() ;
+                            $("#messageMainView").hide();
                             $("#rightMainView").show();
                         });
                     }else{
@@ -760,11 +828,15 @@
                                 $(".tb-main2").append(html) ;
                                 $("#articleMainView").show();
                                 $("#rightMainView").hide();
+                                $("#demo3").hide();
+                                $(".tb-main3").hide()
+                                $(".tb-main4").hide() ;
+                                $("#messageMainView").hide();
                             });
 
                             //总页数大于页码总数
                             laypage.render({
-                                elem: 'demo1'
+                                elem: 'demo4'
                                 , count: data.count //数据总数
                                 , jump: function (obj) {
                                     console.log("click:" + click)
@@ -795,6 +867,68 @@
                 });
             }
             if($(this)[0].id == "umessage"){
+
+                layui.use(['laypage', 'layer','laytpl'], function() {
+                    var laypage = layui.laypage;
+                    var laytpl = layui.laytpl;
+                    var messageTemplate = messageInfoTpl.innerHTML;
+
+                    $.ajax({
+                        url: base.url + '/blog/api/message/page',
+                        data:{
+                            authorId:authorId,
+                            pageIndex:1,
+                            pageSize:5
+                        },
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'jsonp',
+                        jsonp: 'callback',
+                        success: function (data, status, xhr) {
+                            console.log(data)
+                            laytpl(messageTemplate).render(data, function (html) {
+                                $(".tb-main3").show();
+                                $(".tb-main4").show();
+                                $("#demo3").show();
+                                $(".tb-main3").append(html) ;
+                                $("#messageMainView").show();
+
+                                $(".tb-main").show();
+                                $(".tb-main2").show();
+                                $("#demo2").hide();
+                                $("#rightMainView").hide();
+                            });
+
+                            //总页数大于页码总数
+                            laypage.render({
+                                elem: 'demo4'
+                                , count: data.count //数据总数
+                                , jump: function (obj) {
+                                    console.log("click:" + click)
+                                    if(click != 1){
+                                        $.ajax({
+                                            url: base.url + '/blog/api/message/page',
+                                            data:{
+                                                authorId:authorId,
+                                                pageIndex:obj.curr,
+                                                pageSize:5
+                                            },
+                                            contentType: "application/json; charset=utf-8",
+                                            dataType: 'jsonp',
+                                            jsonp: 'callback',
+                                            success: function (data, status, xhr) {
+                                                laytpl(messageTemplate).render(data, function (html) {
+                                                    $(".tb-main3").html(html) ;
+                                                });
+                                            }
+                                        });
+                                    }
+                                    click ++;
+                                }
+                            });
+                        }
+                    })
+
+                });
 
             }
             $(".blog-main-left-li-active").removeClass("blog-main-left-li-active")
