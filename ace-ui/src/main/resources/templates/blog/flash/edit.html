@@ -13,6 +13,22 @@
 			</div>
 		</div>
 		<div class="layui-form-item layui-form-text">
+			<label class="layui-form-label">封面图片</label>
+
+			<div id="rightMainView">
+
+				<div class="layui-upload">
+
+					<div class="layui-upload-list">
+						<img class="layui-upload-img" id="demo2" style="width: 150px;height: 100px;margin-left: 31px;">
+						<p id="demoText"></p>
+					</div>
+					<button class="layui-btn" id="test1" style="margin-left: 140px;margin-top: 10px;" type="button">上传封面</button>
+					<input class="layui-upload-file" type="file" name="file">
+				</div>
+			</div>
+		</div>
+		<div class="layui-form-item layui-form-text">
 			<label class="layui-form-label">内容</label>
 			<div class="layui-input-block">
 				<textarea class="layui-textarea layui-hide" name="content"  id="description_editor"></textarea>
@@ -32,31 +48,59 @@
 
 </head>
 
-<div class="img-box full">
-	<section class=" img-section">
-		<div class="z_photo upimg-div clear" >
-			<!--<section class="up-section fl">
-                 <span class="up-span"></span>
-                 <img src="img/buyerCenter/a7.png" class="close-upimg">
-                 <img src="img/buyerCenter/3c.png" class="type-upimg" alt="添加标签">
-                 <img src="img/test2.jpg" class="up-img">
-                 <p class="img-namep"></p>
-                 <input id="taglocation" name="taglocation" value="" type="hidden">
-                 <input id="tags" name="tags" value="" type="hidden">
-             </section>-->
-			<section class="z_file fl">
-				<img src="/admin/upload/img/a11.png" class="add-img">
-				<input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple />
-			</section>
-		</div>
-	</section>
-</div>
-<aside class="mask works-mask">
-	<div class="mask-content">
-		<p class="del-p ">您确定要删除作品图片吗？</p>
-		<p class="check-p"><span class="del-com wsdel-ok">确定</span><span class="wsdel-no">取消</span></p>
-	</div>
-</aside>
-
 <script src="/admin/upload/js/jquery-1.8.3.min.js"></script>
 <script src="/admin/upload/js/imgUp.js"></script>
+
+<script src="/admin/upload/js/ajaxfileupload.js"></script>
+<script src="/admin/upload/js/imgUp.js"></script>
+<script type="application/javascript">
+    $(function(){
+        layui.config({
+            base: 'js/'
+        });
+
+        layui.use('upload', function() {
+            var $ = layui.jquery
+                , upload = layui.upload;
+
+
+
+            //普通图片上传
+            var uploadInst = upload.render({
+                elem: '#test1'
+                , url: '/file/upload'
+                , before: function (obj) {
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function (index, file, result) {
+                        $('#demo2').attr('src', result); //图片链接（base64）
+                    });
+                }
+                , done: function (res) {
+                    console.log(res)
+                    console.log("上传上传");
+                    //如果上传失败
+                    if (res.code > 0) {
+                        return layer.msg('上传失败');
+                    }
+                    if ($("#logo")) {
+                        console.log(res)
+
+                        if (res.code == 0) {
+                            $("#logo").val(res.src)
+                        }
+                    }
+                    //上传成功
+                }
+                , error: function () {
+                    console.log("errot")
+                    //演示失败状态，并实现重传
+                    var demoText = $('#demoText');
+                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                    demoText.find('.demo-reload').on('click', function () {
+                        uploadInst.upload();
+                    });
+                }
+            });
+        });
+    });
+</script>

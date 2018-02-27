@@ -70,6 +70,24 @@
 				</div>
 			</div>
 		</div>
+		<div class="layui-form-item layui-form-text">
+			<label class="layui-form-label">头像</label>
+
+			<div id="rightMainView">
+
+				<div class="layui-upload">
+
+					<div class="layui-upload-list">
+						<img class="layui-upload-img" id="demo2" style="width: 150px;height: 150px;margin-left: 31px;">
+						<p id="demoText"></p>
+					</div>
+					<button class="layui-btn" id="test1" style="margin-left: 140px;margin-top: 10px;" type="button">上传头像</button>
+					<input class="layui-upload-file" type="file" name="file">
+				</div>
+			</div>
+		</div>
+		<input name="titleImg" id="titleImg" value="" type="hidden"/>
+		<input name="logo" id="logo" value="" type="hidden"/>
 		<button lay-filter="edit" lay-submit style="display: none;"></button>
 	</form>
 </div>
@@ -109,3 +127,57 @@
 
 <script src="/admin/upload/js/jquery-1.8.3.min.js"></script>
 <script src="/admin/upload/js/imgUp.js"></script>
+
+<script src="/admin/upload/js/ajaxfileupload.js"></script>
+<script src="/admin/upload/js/imgUp.js"></script>
+<script type="application/javascript">
+    $(function(){
+        layui.config({
+            base: 'js/'
+        });
+
+        layui.use('upload', function() {
+            var $ = layui.jquery
+                , upload = layui.upload;
+
+
+
+            //普通图片上传
+            var uploadInst = upload.render({
+                elem: '#test1'
+                , url: '/file/upload'
+                , before: function (obj) {
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function (index, file, result) {
+                        $('#demo2').attr('src', result); //图片链接（base64）
+                    });
+                }
+                , done: function (res) {
+                    console.log(res)
+                    console.log("上传上传");
+                    //如果上传失败
+                    if (res.code > 0) {
+                        return layer.msg('上传失败');
+                    }
+                    if ($("#logo")) {
+                        console.log(res)
+
+                        if (res.code == 0) {
+                            $("#logo").val(res.src)
+                        }
+                    }
+                    //上传成功
+                }
+                , error: function () {
+                    console.log("errot")
+                    //演示失败状态，并实现重传
+                    var demoText = $('#demoText');
+                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                    demoText.find('.demo-reload').on('click', function () {
+                        uploadInst.upload();
+                    });
+                }
+            });
+        });
+    });
+</script>

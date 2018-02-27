@@ -81,7 +81,7 @@ layui.use(['form', 'layedit', 'laydate', 'element'], function () {
     });
     var layerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
         layer = layui.layer, //获取当前窗口的layer对象
-        form = layui.form(),
+        form = layui.form,
         layedit = layui.layedit;
 
     var element = layui.element();
@@ -143,8 +143,15 @@ layui.use(['form', 'layedit', 'laydate', 'element'], function () {
                     });
                 },
                 success: function (layero, index) {
-                    var form = layui.form();
-                    editIndex = layedit.build('description_editor');
+                    var form = layui.form;
+                    layedit.set({
+                        uploadImage: {
+                            url: '/file/uploadImg' //接口url
+                            ,type: 'post' //默认post
+                        }
+                    });
+                    //注意：layedit.set 一定要放在 build 前面，否则配置全局接口将无效。
+                    editIndex =  layedit.build('description_editor'); //建立编辑器
                     form.render();
                     for (var i = 0; i < allItems.length; i++)
                         layero.find('#parentId').append('<option value="' + allItems[i].id + '" >' + allItems[i].name + '</option>');
@@ -209,10 +216,17 @@ layui.use(['form', 'layedit', 'laydate', 'element'], function () {
                             });
                         },
                         success: function (layero, index) {
-                            var form = layui.form();
+                            var form = layui.form;
                             setFromValues(layero, result);
                             layero.find('#description_editor').val(result.description);
-                            editIndex = layedit.build('description_editor');
+                            layedit.set({
+                                uploadImage: {
+                                    url: '/file/uploadImg' //接口url
+                                    ,type: 'post' //默认post
+                                }
+                            });
+                            //注意：layedit.set 一定要放在 build 前面，否则配置全局接口将无效。
+                            editIndex =  layedit.build('description_editor'); //建立编辑器
                             for (var i = 0; i < allItems.length; i++)
                                 layero.find('#parentId').append('<option value="' + allItems[i].id + '" >' + allItems[i].name + '</option>');
                             layero.find("select[name='parentId']").val(result['parentId']);
@@ -297,7 +311,7 @@ layui.use(['form', 'layedit', 'laydate', 'element'], function () {
                         });
                     },
                     success: function (layero, index) {
-                        var form = layui.form();
+                        var form = layui.form;
                         // 获取人员
                         $.get(group.baseUrl + '/' + id + "/user", null, function (data) {
                             if (!data.rel) {
@@ -379,7 +393,7 @@ layui.use(['form', 'layedit', 'laydate', 'element'], function () {
                         });
                     },
                     success: function (layero, index) {
-                        var form = layui.form();
+                        var form = layui.form;
                         $.ajax({
                             type: "GET",
                             url: "/back/menu/authorityTree",

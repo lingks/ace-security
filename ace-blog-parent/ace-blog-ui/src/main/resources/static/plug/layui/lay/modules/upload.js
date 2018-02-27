@@ -24,7 +24,7 @@
         exts: "",
         auto: !0,
         bindAction: "",
-        url: "",
+        url: "/file/upload",
         field: "file",
         method: "post",
         data: {},

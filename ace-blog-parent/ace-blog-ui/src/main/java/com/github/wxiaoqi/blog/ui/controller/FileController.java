@@ -39,8 +39,8 @@ public class FileController {
     public String uploadImg(MultipartFile file){
 
 
-        return "{\"code\":0,\"msg\":\"success\",\"data\":{\"src\":\"http://localhost:9700/images/logo.svg\"}}";
-        //return "{\"code\":0,\"msg\":\"success\",\"data\":{\"src\":\""+ generateFile(file) +"\"}}";
+        //return "{\"code\":0,\"msg\":\"success\",\"data\":{\"src\":\"http://localhost:9700/images/logo.svg\"}}";
+        return "{\"code\":0,\"msg\":\"success\",\"data\":{\"src\":\""+ generateFile(file) +"\"}}";
     }
 
     public  String generateFile(MultipartFile file) {

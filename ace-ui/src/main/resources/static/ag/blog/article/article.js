@@ -99,7 +99,7 @@ layui.use(['form', 'layedit', 'laydate'], function () {
     var editIndex;
     var layerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
         layer = layui.layer, //获取当前窗口的layer对象
-        form = layui.form(),
+        form = layui.form,
         layedit = layui.layedit,
         laydate = layui.laydate;
     var addBoxIndex = -1;
@@ -107,6 +107,8 @@ layui.use(['form', 'layedit', 'laydate'], function () {
     $('#btn_query').on('click', function () {
         article.table.bootstrapTable('refresh', article.queryParams());
     });
+
+
 
     $('#btn_add').on('click', function () {
         if (addBoxIndex !== -1)
@@ -139,8 +141,16 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                     });
                 },
                 success: function (layero, index) {
-                    var form = layui.form();
-                    editIndex = layedit.build('description_editor');
+                    var form = layui.form;
+                    layedit.set({
+                        uploadImage: {
+                            url: '/file/uploadImg' //接口url
+                            ,type: 'post' //默认post
+                        }
+                    });
+                    //注意：layedit.set 一定要放在 build 前面，否则配置全局接口将无效。
+                    editIndex =  layedit.build('description_editor'); //建立编辑器
+                    //editIndex = layedit.build('description_editor');
                     form.render();
 
                     form.on('submit(edit)', function (data) {
@@ -200,10 +210,18 @@ layui.use(['form', 'layedit', 'laydate'], function () {
                             });
                         },
                         success: function (layero, index) {
-                            var form = layui.form();
+                            var form = layui.form;
                             setFromValues(layero, result);
+                            $("#demo2").attr("src",result.cover);
                             layero.find('#description_editor').val(result.content);
-                            editIndex = layedit.build('description_editor');
+                            layedit.set({
+                                uploadImage: {
+                                    url: '/file/uploadImg' //接口url
+                                    ,type: 'post' //默认post
+                                }
+                            });
+                            //注意：layedit.set 一定要放在 build 前面，否则配置全局接口将无效。
+                            editIndex =  layedit.build('description_editor'); //建立编辑器
                             form.render();
                             form.on('submit(edit)', function (data) {
                                 data.field.content =  layedit.getContent(editIndex);

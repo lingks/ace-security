@@ -16,10 +16,14 @@ $(function(){
         //遍历得到的图片文件
         var numUp = imgContainer.find(".up-section").length;
         var totalNum = numUp + fileList.length;  //总的数量
-        if(fileList.length > 1 || totalNum > 1 ){
+        console.log()
+        console.log(totalNum)
+        console.log(numUp)
+        if(fileList.length > 2 || totalNum > 2 ){
             alert("上传图片数目不可以超过1个，请重新选择");  //一次选择上传超过5个 或者是已经上传和这次上传的到的总数也不可以超过5个
         }
-        else if(numUp < 2){
+
+        else if(numUp < 5){
             fileList = validateUp(fileList);
             for(var i = 0;i<fileList.length;i++){
                 var imgUrl = window.URL.createObjectURL(fileList[i]);
@@ -77,21 +81,21 @@ $(function(){
         },450);
         numUp = imgContainer.find(".up-section").length;
         if(numUp >= 1){
-            $(this).parent().hide();
+           // $(this).parent().hide();
         }
     });
 
 
 
-    $(".z_photo").delegate(".close-upimg","click",function(){
-        $(".works-mask").show();
-        delParent = $(this).parent();
-    });
+    // $(".z_photo").delegate(".close-upimg","click",function(){
+    //     $(".works-mask").show();
+    //     delParent = $(this).parent();
+    // });
 
     $(".wsdel-ok").click(function(){
         $(".works-mask").hide();
         var numUp = delParent.siblings().length;
-        if(numUp < 2){
+        if(numUp < 5){
             delParent.parent().find(".z_file").show();
         }
         delParent.remove();
@@ -103,6 +107,7 @@ $(function(){
 
     function validateUp(files){
         var arrFiles = [];//替换的文件数组
+        console.log(files)
         for(var i = 0, file; file = files[i]; i++){
             //获取文件上传的后缀名
             var newStr = file.name.split("").reverse().join("");

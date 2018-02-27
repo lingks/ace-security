@@ -33,29 +33,21 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="layui-form-item layui-form-text">
-			<label class="layui-form-label">封面</label>
-			<div class="img-box full">
-				<section class=" img-section">
-					<div class="z_photo upimg-div clear" >
-						<!--<section class="up-section fl">
-                             <span class="up-span"></span>
-                             <img src="img/buyerCenter/a7.png" class="close-upimg">
-                             <img src="img/buyerCenter/3c.png" class="type-upimg" alt="添加标签">
-                             <img src="img/test2.jpg" class="up-img">
-                             <p class="img-namep"></p>
-                             <input id="taglocation" name="taglocation" value="" type="hidden">
-                             <input id="tags" name="tags" value="" type="hidden">
-                         </section>-->
-						<section class="z_file fl">
-							<img src="/admin/upload/img/a11.png" class="add-img">
-							<input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple />
-						</section>
+			<label class="layui-form-label">封面图片</label>
+
+			<div id="rightMainView">
+
+				<div class="layui-upload">
+
+					<div class="layui-upload-list">
+						<img class="layui-upload-img" id="demo2" style="width: 150px;height: 100px;margin-left: 31px;">
+						<p id="demoText"></p>
 					</div>
-				</section>
-			</div>
+					<button class="layui-btn" id="test1" style="margin-left: 140px;margin-top: 10px;" type="button">上传封面</button>
+					<input class="layui-upload-file" type="file" name="file">
 				</div>
+			</div>
 		</div>
 
 		<div class="layui-form-item layui-form-text">
@@ -64,28 +56,12 @@
 				<textarea class="layui-textarea layui-hide" name="content"  id="description_editor"></textarea>
 			</div>
 		</div>
-
 		<div class="layui-form-item">
 			<label class="layui-form-label">浏览量</label>
 			<div class="layui-input-block">
 				<input type="number" name="pageView" lay-verify="required" autocomplete="off" placeholder="请输入数字" value="0" class="layui-input">
 			</div>
 		</div>
-		<!--<div class="layui-upload" style="padding-right: 20px;padding-top:20px;">-->
-
-			<!--<div class="layui-upload-list">-->
-				<!--<img class="layui-upload-img" id="demo2" style="    width: 150px;-->
-    <!--height: 150px;-->
-    <!--float: right;-->
-    <!--margin-right: 150px;">-->
-				<!--<p id="demoText"></p>-->
-			<!--</div>-->
-			<!--<button type="button" class="layui-btn" id="test1" style="float: right;-->
-    <!--/* margin-top: 160px; */-->
-    <!--margin-right: -120px;-->
-    <!--margin-top: 160px;">上传头像</button>-->
-		<!--</div>-->
-		<!--<div>-->
 
 			<input name="titleImg" id="titleImg" value="" type="hidden"/>
 		<input name="cover" id="cover" value="" type="hidden"/>
@@ -134,6 +110,7 @@
                 }
                 , done: function (res) {
                     console.log(res)
+					console.log("上传上传");
                     //如果上传失败
                     if (res.code > 0) {
                         return layer.msg('上传失败');
