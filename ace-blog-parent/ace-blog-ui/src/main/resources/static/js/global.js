@@ -144,10 +144,10 @@ layui.use(['element', 'layer', 'util', 'form'], function () {
         if(localStorage.getItem("user") != undefined && localStorage.getItem("user") != null && localStorage.getItem("user") != ''&& localStorage.getItem("user") != 'null'){
             var user = JSON.parse(localStorage.getItem("user"));
             if(user.id != null){
-                window.location.href="http://localhost:9700/writting"
+                window.location.href="/writting.html"
             }
         }else{
-            window.location.href="http://localhost:9700/login"
+            window.location.href="/login.html"
         }
 
     })

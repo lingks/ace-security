@@ -38,7 +38,7 @@ $(function(){
 
 
                 $.ajaxFileUpload({
-                    url : base.url +'/file/upload',
+                    url : '/file/upload',
                     type : 'POST',
                     fileElementId : 'file',  //这里对应html中上传file的id
                     contentType:"application/json;charset=UTF-8",
