@@ -195,6 +195,14 @@ if(localUser != undefined && localUser != null && localUser != ""&&localUser != 
     var user = JSON.parse(localUser);
     authorId = user.id;
 }
+
+function writting() {
+    if(localUser != undefined && localUser != null && localUser != ""&&localUser != 'null') {
+        window.location.href="/writting.html";
+    }else{
+        window.location.href="/login.html";
+    }
+}
 function userLogoin() {
 
     $("#menu-view").show();

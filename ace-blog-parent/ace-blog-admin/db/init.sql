@@ -143,8 +143,8 @@ CREATE TABLE `about` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `remark` varchar(255) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
-  `content` varchar(200),
-  `title` int(11) DEFAULT 0,
+  `content`text,
+  `title` varchar(255) DEFAULT NULL,
   `type`  int(11) DEFAULT  0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4;

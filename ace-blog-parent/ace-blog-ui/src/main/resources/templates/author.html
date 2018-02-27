@@ -427,7 +427,7 @@
 <script id="tpl" type="text/html">
     <ul>
         {{# layui.each(d.result, function(index, item){ }}
-        <div class="article shadow ">
+        <div class="article shadow " style="cursor: pointer;" onclick="window.location.href='/udetail/{{item.crtUser}}'">
             <div class="article-div-view">
                 <div class="article-left">
                     <p style="width: 78px;height: 78px;border-radius: 50%;overflow: hidden;">
@@ -437,7 +437,7 @@
 
                 <div class="article-right">
                     <div class="article-title" style="text-align: left;font-size: 18px;">
-                        <a href="" class="article-title-csss">{{item.username}}</a>
+                        <a href="/udetail/{{item.crtUser}}" class="article-title-csss">{{item.username}}</a>
                     </div>
 
                     <div class="article_right" style="display: -webkit-box;
@@ -451,7 +451,7 @@ overflow: hidden;color:#807d7d;font-size: 13px;font:13px PingFangSC-Regular, Mic
                     <div style="color: #4a4949;
     font-size: 18px;margin-top: 30px;">{{item.pageView}}</div>
                     <p>文章总浏览量</p>
-                    <a href="www.baidu.com"><div style="border: 1px #c2c2c2 solid;
+                    <a href="/udetail/{{item.crtUser}}"><div style="border: 1px #c2c2c2 solid;
     width: 40%;
     margin: auto;
     line-height: 18px;
@@ -489,7 +489,7 @@ overflow: hidden;color:#807d7d;font-size: 13px;font:13px PingFangSC-Regular, Mic
         <a href="/login.html"><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a href="/register.html"><span>注&nbsp;&nbsp;册</span></a>
     </div>
     {{#  } }}
-    <div id="xiewenzhangn">
+    <div id="xiewenzhangn"  onclick="writting();">
         <div class="h-writing" style="width: 100px;height: 48px;">
             <li style="width: 78px;
     height: 28px;

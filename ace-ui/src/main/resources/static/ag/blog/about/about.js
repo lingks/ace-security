@@ -19,10 +19,6 @@ about.columns = function () {
         title: '备注',
         width: 200
     }, {
-        field: 'content',
-        title: '内容',
-        width: 200
-    }, {
         field: 'type',
         title: '类型',
         width: 200,

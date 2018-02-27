@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class About {
 
     @Id
-    private String id;
+    private Integer id;
     private String title;
     private String remark;
     private String content;
@@ -33,11 +33,11 @@ public class About {
         this.type = type;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

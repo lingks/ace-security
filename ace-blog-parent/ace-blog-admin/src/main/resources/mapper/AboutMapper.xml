@@ -7,8 +7,8 @@
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="url" jdbcType="INTEGER" property="type" />
-    <result column="title" jdbcType="VARCHAR" property="url" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="type" jdbcType="INTEGER" property="type" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="content" jdbcType="VARCHAR" property="content" />
   </resultMap>

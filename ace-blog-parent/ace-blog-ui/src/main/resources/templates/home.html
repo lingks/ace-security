@@ -24,6 +24,150 @@
         .layui-carousel-arrow {
             top: 35%;
         }
+
+        /*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+        .scrollbar::-webkit-scrollbar{
+            width: 2px;
+            height: 16px;
+            background-color: #f5f5f5;
+        }
+        /*定义滚动条的轨道，内阴影及圆角*/
+        .scrollbar::-webkit-scrollbar-track{
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            border-radius: 10px;
+            background-color: #f5f5f5;
+        }
+        /*定义滑块，内阴影及圆角*/
+        .scrollbar::-webkit-scrollbar-thumb{
+            /*width: 10px;*/
+            height: 20px;
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            background-color: #555;
+        }
+
+
+        .m-hot {
+            background: #fff;
+            padding: 0 19px;
+            border: 1px solid #EBEBEB;
+            border-bottom: none;
+            height: 300px;
+            margin-top: 10px;
+        }
+        .m-hot2 {
+            background: #fff;
+            padding: 0 19px;
+            border-top: none;
+        }
+        .m-hot-tt {
+            font-size: 18px;
+            line-height: 20px;
+            color: #333;
+            padding: 24px 0 15px;
+        }
+        ul, ol, dl, dd, dt {
+            list-style: none;
+        }
+
+        .posImgY {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        .m-hot li {
+            position: relative;
+            padding-bottom: 20px;
+            height: 42px;
+            list-style: none;
+        }
+
+        .m-hot-tt i {
+            padding: 0 10px;
+            margin-right: 6px;
+            background: url(../images/wenzhang.svg) no-repeat center;
+        }
+
+        .m-hot-f .m-hot-pic {
+            width: 100%;
+
+            overflow: hidden;
+        }
+        .m-hot-pic img{
+            cursor: pointer;
+            transition: all 0.6s;
+        }
+        .m-hot-pic img:hover{
+            transform: scale(1.4);
+        }
+        .m-hot-f span {
+            display: none;
+        }
+
+        .m-hot-num {
+            position: relative;
+            top: -70px;
+            left: 5px;
+            width: 14px;
+            height: 14px;
+            font-size: 12px;
+            line-height: 14px;
+            text-align: center;
+            color: #fff;
+            z-index: 10;
+            padding: 0 2px;
+        }
+
+        .m-hot-f .m-hot-text a {
+            font-size: 16px;
+            width: 100%;
+            height: auto;
+            color: #fff;
+            padding: 8px 15px;
+            background: rgba(0, 0, 0, .5);
+            box-sizing: border-box;
+            position: relative;
+            bottom:40px;
+        }
+
+
+        .m-hot-text a {
+            width: 191px;
+            position: relative;
+            bottom: 50px;
+        }
+
+        .m-hot-text a {
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+            width: 211px;
+            height: 42px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .m-hot-f-after {
+            left: 10px;
+        }
+
+        .m-hot-f-after {
+            content: ' ';
+            position: absolute;
+            top: 1px;
+            left: 10px;
+            width: 36px;
+
+            height: 30px;
+            background: url(../images/no.1.svg) no-repeat center;
+        }
+        #hotNewList-ul-id{
+            position: relative;
+            padding-bottom: 180px;
+        }
+
+
         .m-t-news-look {
             padding-left: 24px;
             background: url(../images/liuliang.svg) no-repeat left center;
@@ -41,6 +185,31 @@
         }
         #articles img:hover{
             transform: scale(1.4);
+        }
+        .m-fast-timer {
+            position: relative;
+            font-size: 12px;
+            color: #9B9B9B;
+        }
+        .m-fast-timer:after {
+            content: ' ';
+            position: absolute;
+            top: 3px;
+            left: -13px;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left-color: rgba(64, 112, 255, .48);
+        }
+
+        .m-fast-text {
+            font-size: 14px;
+            color: #333;
+            line-height: 22px;
+            margin: 4px 0 7px;
+            word-break: break-all;
+            transition: all .3s ease;
         }
         #advert-view img{
             cursor: pointer;
@@ -347,20 +516,24 @@ position: relative;margin: auto;top:110px;min-width: 1150px">
 
                 <div></div><!--占位-->
                 <div id="advert-view"></div>
-                <div class="blog-module shadow">
-                    <div class="blog-module-title">热文排行</div>
-                    <ul class="fa-ul blog-module-ul">
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">Web安全之跨站请求伪造CSRF</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">ASP.NET MVC 防范跨站请求伪造（CSRF）</a>
-                        </li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">常用正则表达式</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">EF CodeFirst数据迁移常用指令</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">浅谈.NET Framework基元类型</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">C#基础知识回顾-扩展方法</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（一）（HTML篇）</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（二）（CSS篇）</a></li>
-                    </ul>
+                <div class="shadow">
+
+                <div class="shadow" style="margin-bottom: 10px;
+    padding: 0;
+    background: #fff;">
+                    <div class="blog-module-title" style="
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 25px;
+    margin-bottom: 5px;"><img src="../images/kuaixun.svg">&nbsp;&nbsp;7x24h快讯</div>
+                        <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">-->
+                            <!--<legend>信息流 - 滚动加载</legend>-->
+                        <!--</fieldset>-->
+                        <ul class="flow-default" id="LAY_demo1" style="height: 300px;padding:0 25px;
+    overflow-y: scroll;"></ul>
+                    </div>
                 </div>
+                <div id="hotNewsView"></div>
             </div>
             <div class="clear"></div>
         </div>
@@ -535,7 +708,52 @@ position: relative;margin: auto;top:110px;min-width: 1150px">
         </li>
     </div>
 </script>
+    <script id="hotNewsTpl" type="text/html">
+        {{# if(d.result.length === 0){ }}
+        <div class="m-hot" style="border-bottom: none">
+            <div class="m-hot-tt"><i></i>热门文章</div>
+            <ul id="hotNewList-ul-id">
+                <div class="clear"></div>
+            </ul>
+        </div>
+        {{# } }}
 
+        {{# layui.each(d.result, function(index, item){ }}
+
+        {{# if(index === 0){ }}
+        <div class="m-hot" style="border-bottom: none">
+            <div class="m-hot-tt"><i></i>TA的热门文章</div>
+            <ul id="hotNewList-ul-id">
+                <li class="m-hot-f">
+                    <p class="m-hot-pic">
+                        <img src="{{item.cover}}" alt="" class="posImgY"></p>
+                    <p class="m-hot-text"><a href="/article/{{item.id}}" target="_blank">{{item.title}}</a></p>
+                    <span class="m-hot-num m-hot-num1">1</span>
+                </li>
+                <i class="m-hot-f-after"></i>
+            </ul>
+        </div>
+        {{# } }}
+        {{# if(index > 0){ }}
+        <div  class="m-hot2">
+            <ul>
+                <li>
+                    <div style="height: 70px;">
+                                        <span style="width:25%;float: left;height:80%;">
+                                            <img src="{{item.cover}}" alt="" class="posImgY">
+                                        </span>
+                        <span class="m-hot2-remark"><a href="/article/{{item.id}}" target="_blank">{{item.title}}</a></span>
+                    </div>
+                    <span class="m-hot-num m-hot-num3" style="opacity: 0.7;{{# if(index == 2){}}background:#E58D00;{{#}}} {{# if(index == 2){}}background:#F5CD23;{{#}}}{{# if(index >= 3){}}background:#4A4A4A;{{#}}}">{{index}}</span>
+                </li>
+            </ul>
+        </div>
+        {{# } }}
+
+
+
+        {{# }); }}
+    </script>
 <script id="header_view" type="text/html">
     {{# layui.each(d.result, function(index, item){ }}
     <div id="uinfo-view"">
@@ -558,7 +776,7 @@ position: relative;margin: auto;top:110px;min-width: 1150px">
         <a href="/login.html"><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a href="/register.html"><span>注&nbsp;&nbsp;册</span></a>
     </div>
     {{#  } }}
-    <div id="xiewenzhangn">
+    <div id="xiewenzhangn" onclick="writting();">
         <div class="h-writing" style="width: 100px;height: 48px;">
         <li style="width: 78px;
     height: 28px;
@@ -611,6 +829,7 @@ position: relative;margin: auto;top:110px;min-width: 1150px">
         <i class="fa fa-navicon"></i>
         </a>
 </script>
+
 <script>
     layui.config({
         base: 'js/'
@@ -619,6 +838,29 @@ position: relative;margin: auto;top:110px;min-width: 1150px">
     var count = 0;
     var totalPage = 1;
     var type = 0;
+
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        var hostNesTemplate = hotNewsTpl.innerHTML
+            , hotNewsView = document.getElementById('hotNewsView');
+        $.ajax({
+            url: base.url + '/blog/api/article/page',
+            data:{
+                pageIndex:1,
+                pageSize:5
+            },
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+
+                laytpl(hostNesTemplate).render(data, function (html) {
+                    hotNewsView.innerHTML = html;
+                });
+
+            }
+        });
+    });
     layui.use('laytpl', function() {
         var laytpl = layui.laytpl;
         var getTpl = tpl.innerHTML
@@ -815,9 +1057,97 @@ position: relative;margin: auto;top:110px;min-width: 1150px">
 
     }
 
+    function getDateDiff(dateTimeStamp){
+        var minute = 1000 * 60;
+        var hour = minute * 60;
+        var day = hour * 24;
+        var halfamonth = day * 15;
+        var month = day * 30;
+        var now = new Date().getTime();
+        var diffValue = now - dateTimeStamp;
+        if(diffValue < 0){return;}
+        var monthC =diffValue/month;
+        var weekC =diffValue/(7*day);
+        var dayC =diffValue/day;
+        var hourC =diffValue/hour;
+        var minC =diffValue/minute;
+        if(monthC>=1){
+            result="" + parseInt(monthC) + "月前";
+        }
+        else if(weekC>=1){
+            result="" + parseInt(weekC) + "周前";
+        }
+        else if(dayC>=1){
+            result=""+ parseInt(dayC) +"天前";
+        }
+        else if(hourC>=1){
+            result=""+ parseInt(hourC) +"小时前";
+        }
+        else if(minC>=1){
+            result=""+ parseInt(minC) +"分钟前";
+        }else
+            result="刚刚";
+        return result;
+    }
+
+    function getDateTimeStamp(dateStr){
+        return Date.parse(dateStr.replace(/-/gi,"/"));
+    }
+    layui.use('flow', function() {
+
+        var flow = layui.flow;
+        var totalPage = 0;
+
+        flow.load({
+            elem: '#LAY_demo1' //流加载容器
+            , scrollElem: '#LAY_demo1' //滚动条所在元素，一般不用填，此处只是演示需要。
+            , done: function (page, next) { //执行下一页的回调
+                //模拟数据插入
+                setTimeout(function () {
+                    var lis = [];
+
+                    $.ajax({
+                        url: base.url + '/blog/api/flash/page?pageIndex=1&pageSize=10&type=' + type,
+
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'jsonp',
+                        jsonp: 'callback',
+                        success: function (data, status, xhr) {
+                            count = data.count;
+                            if(count%10 > 0){
+                                totalPage = Math.floor(count/10) + 1;
+                            }else{
+                                totalPage = count/10;
+                            }
+                            //模拟数据插入
+                            setTimeout(function(){
+                            for (var i = 0; i < data.result.length; i++) {
+
+                                var flashnews = data.result[i];
+                                var time = '';
+                                if(flashnews.crtTime != undefined && flashnews.crtTime != null){
+                                    time = getDateDiff(getDateTimeStamp(data.result[i].crtTime))
+                                }
+
+                                lis.push('<li style="padding: 0 15px;"><a><p class="m-fast-timer">'+time+'</p><p class="m-fast-text">'+ data.result[i].title +'</p></a></li>')
+                            }
+                                //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+                                //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+                                next(lis.join(''), page < totalPage); //假设总页数为 10
+                            }, 500);
+
+                        }
+                    })
 
 
 
+                }, 500);
+            }
+        });
+
+
+
+    });
 
 
 </script>
@@ -828,6 +1158,13 @@ position: relative;margin: auto;top:110px;min-width: 1150px">
     {{# layui.each(d.result,function(index,item){}}
     <div class="blog-module shadow" style="width:100%; margin-bottom: 10px;padding: 0px;">
        <a href="{{item.url}}"> <img src="{{item.logo}}" style="width:100%"></a>
+    </div>
+    {{#  }); }}
+</script>
+<script id="flashNews" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <div class="blog-module shadow" style="width:100%; margin-bottom: 10px;padding: 0px;">
+        <a href="{{item.url}}"> <img src="{{item.logo}}" style="width:100%"></a>
     </div>
     {{#  }); }}
 </script>

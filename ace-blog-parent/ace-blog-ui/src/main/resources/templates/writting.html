@@ -329,7 +329,7 @@
         <a href="/login.html"><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a href="/register.html"><span>注&nbsp;&nbsp;册</span></a>
     </div>
     {{#  } }}
-    <div id="xiewenzhangn">
+    <div id="xiewenzhangn"  onclick="writting();">
         <div class="h-writing" style="width: 100px;height: 48px;">
             <li style="width: 78px;
     height: 28px;
@@ -407,6 +407,24 @@
     {{# }); }}
 </script>
 <script>
+
+    $(function(){
+        var cache = localStorage.getItem("user");
+
+        if(cache != undefined && cache != null && cache != "" && cache != "null"){
+            var user = JSON.parse(cache);
+
+            $("#crtUser").val(user.id);
+            $("#crtName").val(user.username);
+
+        }else{
+            window.location.href = "/login.html"
+        }
+
+
+
+
+    })
     layui.config({
         base: 'js/'
     });
@@ -588,86 +606,7 @@
 
 
 
-    $(function(){
-        var user = JSON.parse(localStorage.getItem("user"));
-        if(user != undefined && user != null && user != ""){
 
-
-            layui.use('laytpl', function() {
-                var laytpl = layui.laytpl;
-
-                    uInfotemplate = uInfoTpl.innerHTML
-
-                    ,uview =  document.getElementById('uinfo-view')
-                    ;
-
-                $(".tb-main").hide();
-                $("#demo1").hide();
-                $.ajax({
-                    url: base.url + '/blog/api/user/'+user.id,
-                    type: 'GET',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: 'jsonp',
-                    jsonp: 'callback',
-                    async:true,
-                    data:$("#userInfo-form").serialize(),
-                    success: function (data, status, xhr) {
-                        var user = data.result[0];
-                        console.log(user.id)
-                        $("#crtUser").val(user.id);
-                        $("#crtName").val(user.username);
-                        laytpl(uInfotemplate).render(data, function (html) {
-                            uview.innerHTML = html;
-                        });
-
-                    }
-
-                })
-            });
-
-        }else{
-            alert("未登录，进入登录页面");
-        }
-
-
-        $(".blog-main-left").find("li").on('click',function(){
-
-            console.log($(this)[0].className)
-            if($(this)[0].className == 'blog-main-left-li-active')return;
-            if($(this)[0].id == "uinfo"){
-                layui.use('laytpl', function() {
-                    var laytpl = layui.laytpl;
-                    var userTpl = userInfoTpl.innerHTML,
-                        uInfotemplate = uInfoTpl.innerHTML
-                        ,userInfoview = document.getElementById('rightMainView')
-                        ,uview =  document.getElementById('uinfo-view');
-
-                    var user = JSON.parse(localStorage.getItem("user"));
-                    if(user != undefined && user != null && user != ""){
-                        console.log("......")
-                        var users = [user];
-                        laytpl(userTpl).render(users, function (html) {
-                            $("#rightMainView").html(html);
-                            $("#demo1").hide();
-                            $(".tb-main").hide();
-                            $(".tb-main2").html("");
-                            $("#articleMainView").hide();
-                            $("#rightMainView").show();
-                        });
-
-                        laytpl(uInfotemplate).render(users, function (html) {
-                            uview.innerHTML = html;
-                        });
-                    }else{
-                        alert("未登录，进入登录页面")
-                    }
-                });
-            }
-
-        })
-
-
-    })
 
 </script>
 

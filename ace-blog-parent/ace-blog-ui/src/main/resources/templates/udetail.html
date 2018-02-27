@@ -174,9 +174,9 @@
         }
 
         .m-hot-num {
-            position: absolute;
-            top: 0;
-            left: 0;
+            position: relative;
+            top: -70px;
+            left: 5px;
             width: 14px;
             height: 14px;
             font-size: 12px;
@@ -184,6 +184,7 @@
             text-align: center;
             color: #fff;
             z-index: 10;
+            padding: 0 2px;
         }
 
         .m-hot-f .m-hot-text a {
@@ -517,7 +518,7 @@
         <a href="/login.html"><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a href="/register.html"><span>注&nbsp;&nbsp;册</span></a>
     </div>
     {{#  } }}
-    <div id="xiewenzhangn">
+    <div id="xiewenzhangn"  onclick="writting();">
         <div class="h-writing" style="width: 100px;height: 48px;">
             <li style="width: 78px;
     height: 28px;
@@ -642,6 +643,7 @@
                                         </span>
                             <span class="m-hot2-remark"><a href="/article/{{item.id}}" target="_blank">{{item.title}}</a></span>
                         </div>
+                        <span class="m-hot-num m-hot-num3" style="opacity: 0.7;{{# if(index == 2){}}background:#E58D00;{{#}}} {{# if(index == 2){}}background:#F5CD23;{{#}}}{{# if(index >= 3){}}background:#4A4A4A;{{#}}}">{{index}}</span>
                     </li>
                 </ul>
             </div>

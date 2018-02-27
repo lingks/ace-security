@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
     <meta http-equiv="Content-Language" content="zh-CN">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-    <title>链算数据-区块链信息服务平台</title>
+    <title>链算数据-快讯</title>
     <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
     <!--Layui-->
     <link href="../plug/layui/css/layui.css" rel="stylesheet" />
@@ -23,6 +23,127 @@
         .blog-body{
             margin-top: 64px;
             min-width: 1150px;
+        }
+
+
+        .m-hot {
+            background: #fff;
+            padding: 0 19px;
+            border: 1px solid #EBEBEB;
+            border-bottom: none;
+            height: 300px;
+            margin-top: 10px;
+        }
+        .m-hot2 {
+            background: #fff;
+            padding: 0 19px;
+            border-top: none;
+        }
+        .m-hot-tt {
+            font-size: 18px;
+            line-height: 20px;
+            color: #333;
+            padding: 24px 0 15px;
+        }
+        ul, ol, dl, dd, dt {
+            list-style: none;
+        }
+
+        .posImgY {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        .m-hot li {
+            position: relative;
+            padding-bottom: 20px;
+            height: 220px;
+            list-style: none;
+        }
+
+        .m-hot-tt i {
+            padding: 0 10px;
+            margin-right: 6px;
+            background: url(../images/wenzhang.svg) no-repeat center;
+        }
+
+        .m-hot-f .m-hot-pic {
+            width: 100%;
+
+            overflow: hidden;
+        }
+        .m-hot-pic img{
+            cursor: pointer;
+            transition: all 0.6s;
+        }
+        .m-hot-pic img:hover{
+            transform: scale(1.4);
+        }
+        .m-hot-f span {
+            display: none;
+        }
+
+        .m-hot-num {
+            position: relative;
+            top: -70px;
+            left: 5px;
+            width: 14px;
+            height: 14px;
+            font-size: 12px;
+            line-height: 14px;
+            text-align: center;
+            color: #fff;
+            z-index: 10;
+            padding: 0 2px;
+        }
+
+        .m-hot-f .m-hot-text a {
+            font-size: 16px;
+            width: 100%;
+            height: auto;
+            color: #fff;
+            padding: 8px 15px;
+            background: rgba(0, 0, 0, .5);
+            box-sizing: border-box;
+            position: relative;
+            bottom:40px;
+        }
+
+
+        .m-hot-text a {
+            width: 191px;
+            position: relative;
+            bottom: 50px;
+        }
+
+        .m-hot-text a {
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+            width: 211px;
+            height: 42px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .m-hot-f-after {
+            left: 10px;
+        }
+
+        .m-hot-f-after {
+            content: ' ';
+            position: absolute;
+            top: 1px;
+            left: 10px;
+            width: 36px;
+
+            height: 30px;
+            background: url(../images/no.1.svg) no-repeat center;
+        }
+        #hotNewList-ul-id{
+            position: relative;
+            padding-bottom: 180px;
         }
         .blog-title{
             text-align: left;
@@ -130,64 +251,7 @@
             </div>
             <!--右边小栏目-->
             <div class="blog-main-right">
-                <div class="blog-module shadow">
-                    <div class="blog-module-title">热文排行</div>
-                    <ul class="fa-ul blog-module-ul">
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">Web安全之跨站请求伪造CSRF</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">ASP.NET MVC 防范跨站请求伪造（CSRF）</a>
-                        </li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">常用正则表达式</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">EF CodeFirst数据迁移常用指令</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">浅谈.NET Framework基元类型</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">C#基础知识回顾-扩展方法</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（一）（HTML篇）</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="detail.html">一步步制作时光轴（二）（CSS篇）</a></li>
-                    </ul>
-                </div>
-                <div class="blog-module shadow">
-                    <div class="blog-module-title">最近分享</div>
-                    <ul class="fa-ul blog-module-ul">
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="http://pan.baidu.com/s/1c1BJ6Qc"
-                                                                       target="_blank">Canvas</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="http://pan.baidu.com/s/1kVK8UhT"
-                                                                       target="_blank">pagesize.js</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="https://pan.baidu.com/s/1mit2aiW"
-                                                                       target="_blank">时光轴</a></li>
-                        <li><i class="fa-li fa fa-hand-o-right"></i><a href="https://pan.baidu.com/s/1nuAKF81"
-                                                                       target="_blank">图片轮播</a></li>
-                    </ul>
-                </div>
-                <div class="blog-module shadow">
-                    <div class="blog-module-title">一路走来</div>
-                    <dl class="footprint">
-                        <dt>2017年03月12日</dt>
-                        <dd>新增留言回复功能！人人都可参与回复！</dd>
-                        <dt>2017年03月10日</dt>
-                        <dd>不落阁2.0基本功能完成，正式上线！</dd>
-                        <dt>2017年03月09日</dt>
-                        <dd>新增文章搜索功能！</dd>
-                        <dt>2017年02月25日</dt>
-                        <dd>QQ互联接入网站，可QQ登陆发表评论与留言！</dd>
-                    </dl>
-                </div>
-                <div class="blog-module shadow">
-                    <div class="blog-module-title">后台记录</div>
-                    <dl class="footprint">
-                        <dt>2017年03月16日</dt>
-                        <dd>分页新增页容量控制</dd>
-                        <dt>2017年03月12日</dt>
-                        <dd>新增管家提醒功能</dd>
-                        <dt>2017年03月10日</dt>
-                        <dd>新增Win10快捷菜单</dd>
-                    </dl>
-                </div>
-                <div class="blog-module shadow">
-                    <div class="blog-module-title">友情链接</div>
-                    <ul class="blogroll">
-                        <li><a target="_blank" href="http://www.layui.com/" title="Layui">Layui</a></li>
-                        <li><a target="_blank" href="http://www.pagemark.cn/" title="页签">页签</a></li>
-                    </ul>
-                </div>
+                <div id="hotNewsView"></div>
             </div>
             <div class="clear"></div>
         </div>
@@ -282,7 +346,7 @@
         <a href="/login.html"><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a href="/register.html"><span>注&nbsp;&nbsp;册</span></a>
     </div>
     {{#  } }}
-    <div id="xiewenzhangn">
+    <div id="xiewenzhangn"  onclick="writting();">
         <div class="h-writing" style="width: 100px;height: 48px;">
             <li style="width: 78px;
     height: 28px;
@@ -302,7 +366,8 @@
     <a href="javascript:;" class="blog-user layui-hide">
         <img src="../images/Absolutely.jpg" alt="Absolutely" title="Absolutely"/>
     </a>
-    <!-- 不落阁 -->
+
+
     <a class="blog-logo" href="home.html">
         <img src="../images/logo.svg">
     </a>
@@ -335,45 +400,45 @@
         <i class="fa fa-navicon"></i>
     </a>
 </script>
-<script>
-    var mySwiper = new Swiper('.swiper-container', {
-        pagination: '.pagination',
-        paginationClickable: true,
-        autoplay: 5000,
-        speed: 1,
+<!--<script>-->
+    <!--var mySwiper = new Swiper('.swiper-container', {-->
+        <!--pagination: '.pagination',-->
+        <!--paginationClickable: true,-->
+        <!--autoplay: 5000,-->
+        <!--speed: 1,-->
 
-        //autoplayDisableOnInteraction : false,
+        <!--//autoplayDisableOnInteraction : false,-->
 
-        onInit: function (swiper) { //Swiper2.x的初始化是onFirstInit
-            swiperAnimateCache(swiper); //隐藏动画元素
-            swiperAnimate(swiper); //初始化完成开始动画
-        },
-        onSlideChangeEnd: function (swiper) {
-            swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
-        }
-        //loop:true 第一页面动画出不来 大bug....
-    })
+        <!--onInit: function (swiper) { //Swiper2.x的初始化是onFirstInit-->
+            <!--swiperAnimateCache(swiper); //隐藏动画元素-->
+            <!--swiperAnimate(swiper); //初始化完成开始动画-->
+        <!--},-->
+        <!--onSlideChangeEnd: function (swiper) {-->
+            <!--swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画-->
+        <!--}-->
+        <!--//loop:true 第一页面动画出不来 大bug....-->
+    <!--})-->
 
-    $('.arrow-left').on('click', function (e) {
-        e.preventDefault()
-        mySwiper.swipePrev()
-    })
-    $('.arrow-right').on('click', function (e) {
-        e.preventDefault()
-        mySwiper.swipeNext()
-    })
+    <!--$('.arrow-left').on('click', function (e) {-->
+        <!--e.preventDefault()-->
+        <!--mySwiper.swipePrev()-->
+    <!--})-->
+    <!--$('.arrow-right').on('click', function (e) {-->
+        <!--e.preventDefault()-->
+        <!--mySwiper.swipeNext()-->
+    <!--})-->
 
-    $(function () {
-        var b = $("#solutionList li");
-        b.mouseover(function () {
-            var e = $(this);
-            b.removeClass("active");
-            e.addClass("active")
-        });
-    })
+    <!--$(function () {-->
+        <!--var b = $("#solutionList li");-->
+        <!--b.mouseover(function () {-->
+            <!--var e = $(this);-->
+            <!--b.removeClass("active");-->
+            <!--e.addClass("active")-->
+        <!--});-->
+    <!--})-->
 
 
-</script>
+<!--</script>-->
 <!-- layui.js -->
 <script src="../plug/layui/layui.js"></script>
 <!-- 全局脚本 -->
@@ -417,6 +482,52 @@
     <a href="{{item.url}}" target="_blank">{{item.name}}</a>&nbsp;&nbsp;
     {{# }); }}
 </script>
+<script id="hotNewsTpl" type="text/html">
+    {{# if(d.result.length === 0){ }}
+    <div class="m-hot" style="border-bottom: none">
+        <div class="m-hot-tt"><i></i>热门文章</div>
+        <ul id="hotNewList-ul-id">
+            <div class="clear"></div>
+        </ul>
+    </div>
+    {{# } }}
+
+    {{# layui.each(d.result, function(index, item){ }}
+
+    {{# if(index === 0){ }}
+    <div class="m-hot" style="border-bottom: none">
+        <div class="m-hot-tt"><i></i>TA的热门文章</div>
+        <ul id="hotNewList-ul-id">
+            <li class="m-hot-f">
+                <p class="m-hot-pic">
+                    <img src="{{item.cover}}" alt="" class="posImgY"></p>
+                <p class="m-hot-text"><a href="/article/{{item.id}}" target="_blank">{{item.title}}</a></p>
+                <span class="m-hot-num m-hot-num1">1</span>
+            </li>
+            <i class="m-hot-f-after"></i>
+        </ul>
+    </div>
+    {{# } }}
+    {{# if(index > 0){ }}
+    <div  class="m-hot2">
+        <ul>
+            <li>
+                <div style="height: 70px;">
+                                        <span style="width:25%;float: left;height:80%;">
+                                            <img src="{{item.cover}}" alt="" class="posImgY">
+                                        </span>
+                    <span class="m-hot2-remark"><a href="/article/{{item.id}}" target="_blank">{{item.title}}</a></span>
+                </div>
+                <span class="m-hot-num m-hot-num3" style="opacity: 0.7;{{# if(index == 2){}}background:#E58D00;{{#}}} {{# if(index == 2){}}background:#F5CD23;{{#}}}{{# if(index >= 3){}}background:#4A4A4A;{{#}}}">{{index}}</span>
+            </li>
+        </ul>
+    </div>
+    {{# } }}
+
+
+
+    {{# }); }}
+</script>
 <script>
     layui.config({
         base: 'js/'
@@ -425,6 +536,29 @@
     var count = 0;
     var totalPage = 1;
     var type = 0;
+
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        var hostNesTemplate = hotNewsTpl.innerHTML
+            , hotNewsView = document.getElementById('hotNewsView');
+        $.ajax({
+            url: base.url + '/blog/api/article/page',
+            data:{
+                pageIndex:1,
+                pageSize:5
+            },
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+
+                laytpl(hostNesTemplate).render(data, function (html) {
+                    hotNewsView.innerHTML = html;
+                });
+
+            }
+        });
+    });
     layui.use('laytpl', function() {
         var laytpl = layui.laytpl;
         var getTpl = tpl.innerHTML
