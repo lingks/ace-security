@@ -69,4 +69,4 @@ security:
 #    expiration: 7200
 #    header: access-token
 upload:
-    path: http://localhost:8188/
+    path: http://112.74.180.100:8188/

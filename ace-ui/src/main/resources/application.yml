@@ -37,4 +37,4 @@ hystrix:
           thread:
             timeoutInMilliseconds: 5000
 upload:
-    path: http://localhost:8188/
+    path: http://112.74.180.100:8188/
