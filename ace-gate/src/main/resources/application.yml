@@ -14,6 +14,7 @@ spring:
         host: 112.74.180.100
         pool:
             max-active: 20
+        #password: a1234567@!
         #port: 6379
         port: 6389
 server:
