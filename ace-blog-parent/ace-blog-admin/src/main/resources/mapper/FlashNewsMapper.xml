@@ -7,9 +7,8 @@
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="titleImg" jdbcType="VARCHAR" property="titleImg" />
     <result column="cover" jdbcType="VARCHAR" property="cover" />
-    <result column="type" jdbcType="VARCHAR" property="type" />
+    <!--<result column="type" jdbcType="VARCHAR" property="type" />-->
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="tag" jdbcType="VARCHAR" property="tag" />
@@ -33,4 +32,20 @@
     <result column="attr7" jdbcType="VARCHAR" property="attr7" />
     <result column="attr8" jdbcType="VARCHAR" property="attr8" />
   </resultMap>
+
+
+  <select id="selectByCrtTime" resultMap="BaseResultMap">
+     SELECT
+     id,title,cover,content,remark,tag,page_view pageView,crt_time crtTime,crtUser,comment_count commentCount,hot_value hotValue,crtName,crt_host crtHost,
+      upd_time updTime,upd_user updUser,upd_name updName,upd_host updHost ,attr1,attr2,attr3,attr4,attr5,attr6,attr7,attr8
+     FROM flash_news WHERE (DATE_FORMAT(crt_time,'yyyy-MM-dd')  BETWEEN DATE_FORMAT(#{startTime},'yyyy-MM-dd') AND DATE_FORMAT(#{endTime},'yyyy-MM-dd'))
+     order by crt_time  desc
+  </select>
+
+  <select id="selectCountByCrtTime" resultType="java.lang.Integer">
+    SELECT
+    count(id)
+    FROM flash_news WHERE (DATE_FORMAT(crt_time,'yyyy-MM-dd')  BETWEEN DATE_FORMAT(#{startTime},'yyyy-MM-dd') AND DATE_FORMAT(#{endTime},'yyyy-MM-dd'))
+    order by crt_time  desc
+  </select>
 </mapper>

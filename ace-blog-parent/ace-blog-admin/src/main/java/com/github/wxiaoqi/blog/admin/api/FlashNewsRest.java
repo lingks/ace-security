@@ -7,6 +7,7 @@ import com.github.wxiaoqi.blog.admin.biz.ArticleBiz;
 import com.github.wxiaoqi.blog.admin.biz.FlashNewsBiz;
 import com.github.wxiaoqi.blog.admin.entity.Article;
 import com.github.wxiaoqi.blog.admin.entity.FlashNews;
+import com.github.wxiaoqi.blog.admin.mapper.FlashNewsMapper;
 import com.github.wxiaoqi.security.common.msg.ListRestResponse;
 import com.github.wxiaoqi.security.common.msg.ObjectRestResponse;
 import org.apache.commons.lang.StringUtils;
@@ -30,6 +31,9 @@ import java.util.Date;
 public class FlashNewsRest {
     @Autowired
     private FlashNewsBiz flashNewsBiz;
+
+    @Autowired
+    private FlashNewsMapper flashNewsMapper;
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public JSONPObject get(@PathVariable int id, String callback){
         return new JSONPObject(callback,new ObjectRestResponse<Article>().rel(true).result(flashNewsBiz.selectById(id)));
@@ -38,19 +42,11 @@ public class FlashNewsRest {
     public JSONPObject get(int pageIndex, int pageSize, String title, String callback){
 
 
-        Example example = new Example(Article.class);
-        if(StringUtils.isNotBlank(title)) {
-            example.createCriteria().andLike("title", "%" + title + "%");
-        }
-
-        example.setOrderByClause("crt_time  desc");
-
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        example.createCriteria().andBetween("crt_time", getPastDate(7), df.format(new Date()));
-
-        int count = flashNewsBiz.selectCountByExample(example);
+        int count = flashNewsMapper.selectCountByCrtTime(getPastDate(7),df.format(new Date()),title);
         PageHelper.startPage(pageIndex, pageSize);
-        return new JSONPObject(callback, new ListRestResponse<FlashNews>().rel(true).count(count).result(flashNewsBiz.selectByExample(example)));
+
+        return new JSONPObject(callback, new ListRestResponse<FlashNews>().rel(true).count(count).result( flashNewsMapper.selectByCrtTime(getPastDate(7),df.format(new Date()),title)));
 
     }
 
