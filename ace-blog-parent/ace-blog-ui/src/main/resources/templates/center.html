@@ -560,7 +560,7 @@
 <script id="messageInfoTpl" type="text/html">
     {{# layui.each(d.result,function(index,item){}}
     <ul>
-        <li style="height: 80px;width:20%;border-bottom: 1px #eee solid;">
+        <li style="height: 80px;width:10%;border-bottom: 1px #eee solid;">
             {{index}}
         </li>
         <li style="height: 80px;width:25%;border-bottom: 1px #eee solid;">
@@ -572,7 +572,7 @@
         <li  style="height: 80px;width:10%;border-bottom: 1px #eee solid;text-align: center;">
             {{item.status}}
         </li>
-        <li  style="height: 80px;width:25%;border-bottom: 1px #eee solid;text-align: center;">操作</li>
+        <li  style="height: 80px;width:30%;border-bottom: 1px #eee solid;text-align: center;">操作</li>
     </ul>
 
     {{#  }); }}
@@ -772,7 +772,11 @@
             window.location.href="/login.html"
         }
 
+        var click = 1;
+        var pageClick = 1;
 
+        var click2 = 1;
+        var pageClick2 = 1;
         $(".blog-main-left").find("li").on('click',function(){
 
             console.log($(this)[0].className)
@@ -800,16 +804,12 @@
                     }
                 });
             }
-            var click = 1;
-
 
             if($(this)[0].id == "uarticle"){
-
                 layui.use(['laypage', 'layer','laytpl'], function() {
                     var laypage = layui.laypage;
                     var laytpl = layui.laytpl;
                     var articleInfoTemplate = articleInfoTpl.innerHTML;
-
                     $.ajax({
                         url: base.url + '/blog/api/article/page',
                         data:{
@@ -824,8 +824,8 @@
                             console.log(data)
                             laytpl(articleInfoTemplate).render(data, function (html) {
                                 $(".tb-main").show();
-                                $("#demo1").show();
-                                $(".tb-main2").append(html) ;
+                                $("#demo2").show();
+                                $(".tb-main2").html(html) ;
                                 $("#articleMainView").show();
                                 $("#rightMainView").hide();
                                 $("#demo3").hide();
@@ -833,46 +833,45 @@
                                 $(".tb-main4").hide() ;
                                 $("#messageMainView").hide();
                             });
-
                             //总页数大于页码总数
-                            laypage.render({
-                                elem: 'demo4'
-                                , count: data.count //数据总数
-                                , jump: function (obj) {
-                                    console.log("click:" + click)
-                                    if(click != 1){
-                                    $.ajax({
-                                        url: base.url + '/blog/api/article/page',
-                                        data:{
-                                            authorId:authorId,
-                                            pageIndex:obj.curr,
-                                            pageSize:5
-                                        },
-                                        contentType: "application/json; charset=utf-8",
-                                        dataType: 'jsonp',
-                                        jsonp: 'callback',
-                                        success: function (data, status, xhr) {
-                                            laytpl(articleInfoTemplate).render(data, function (html) {
-                                                $(".tb-main2").html(html) ;
+                            if(pageClick == 1){
+                                laypage.render({
+                                    elem: 'demo2'
+                                    , count: data.count //数据总数
+                                    , jump: function (obj) {
+                                        pageClick ++ ;
+                                        if(pageClick > 2){
+                                            $.ajax({
+                                                url: base.url + '/blog/api/article/page',
+                                                data:{
+                                                    authorId:authorId,
+                                                    pageIndex:obj.curr,
+                                                    pageSize:5
+                                                },
+                                                contentType: "application/json; charset=utf-8",
+                                                dataType: 'jsonp',
+                                                jsonp: 'callback',
+                                                success: function (data, status, xhr) {
+                                                    laytpl(articleInfoTemplate).render(data, function (html) {
+                                                        $(".tb-main2").html(html) ;
+                                                    });
+                                                }
                                             });
                                         }
-                                    });
+                                        click ++;
                                     }
-                                    click ++;
-                                }
-                            });
+                                });
+                            }
                         }
                     })
 
                 });
             }
             if($(this)[0].id == "umessage"){
-
                 layui.use(['laypage', 'layer','laytpl'], function() {
                     var laypage = layui.laypage;
                     var laytpl = layui.laytpl;
                     var messageTemplate = messageInfoTpl.innerHTML;
-
                     $.ajax({
                         url: base.url + '/blog/api/message/page',
                         data:{
@@ -886,45 +885,48 @@
                         success: function (data, status, xhr) {
                             console.log(data)
                             laytpl(messageTemplate).render(data, function (html) {
+                                $(".tb-main").hide();
+                                $(".tb-main2").hide();
+                                $("#demo2").hide();
+                                $("#rightMainView").hide();
                                 $(".tb-main3").show();
                                 $(".tb-main4").show();
                                 $("#demo3").show();
-                                $(".tb-main3").append(html) ;
+                                $(".tb-main3").html(html) ;
                                 $("#messageMainView").show();
-
-                                $(".tb-main").show();
-                                $(".tb-main2").show();
-                                $("#demo2").hide();
-                                $("#rightMainView").hide();
                             });
 
                             //总页数大于页码总数
-                            laypage.render({
-                                elem: 'demo4'
-                                , count: data.count //数据总数
-                                , jump: function (obj) {
-                                    console.log("click:" + click)
-                                    if(click != 1){
-                                        $.ajax({
-                                            url: base.url + '/blog/api/message/page',
-                                            data:{
-                                                authorId:authorId,
-                                                pageIndex:obj.curr,
-                                                pageSize:5
-                                            },
-                                            contentType: "application/json; charset=utf-8",
-                                            dataType: 'jsonp',
-                                            jsonp: 'callback',
-                                            success: function (data, status, xhr) {
-                                                laytpl(messageTemplate).render(data, function (html) {
-                                                    $(".tb-main3").html(html) ;
-                                                });
-                                            }
-                                        });
+                            if(pageClick2 == 1) {
+                                laypage.render({
+                                    elem: 'demo3'
+                                    , count: data.count //数据总数
+                                    , jump: function (obj) {
+                                        console.log("click:" + click)
+                                        pageClick ++ ;
+                                        if(pageClick > 2){
+                                            $.ajax({
+                                                url: base.url + '/blog/api/message/page',
+                                                data: {
+                                                    authorId: authorId,
+                                                    pageIndex: obj.curr,
+                                                    pageSize: 5
+                                                },
+                                                contentType: "application/json; charset=utf-8",
+                                                dataType: 'jsonp',
+                                                jsonp: 'callback',
+                                                success: function (data, status, xhr) {
+                                                    laytpl(messageTemplate).render(data, function (html) {
+                                                        $(".tb-main3").html(html);
+                                                    });
+                                                }
+                                            });
+
+                                        }
+                                        click2++;
                                     }
-                                    click ++;
-                                }
-                            });
+                                });
+                            }
                         }
                     })
 
