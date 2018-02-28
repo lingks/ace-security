@@ -143,7 +143,6 @@
         }
         #hotNewList-ul-id{
             position: relative;
-            padding-bottom: 180px;
         }
         .blog-title{
             text-align: left;
@@ -247,7 +246,7 @@
     background-color: white;
     text-align: center;
     cursor: pointer;
-    color: #3e6d43;">加载更多...</div>
+    color: #454d5f;">加载更多...</div>
             </div>
             <!--右边小栏目-->
             <div class="blog-main-right">
@@ -316,8 +315,8 @@
     <li class="layui-nav-item" lay-unselect="">
         <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
             <dd><a href="/center">个人中心</a></dd>
-            <dd><a href="/center/article">我的文章</a></dd>
-            <dd><a href="/center/message;">消息中心</a></dd>
+            <dd><a href="/center?article">我的文章</a></dd>
+            <dd><a href="/center?message">消息中心</a></dd>
             <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
         </dl>
     </li>
@@ -496,10 +495,10 @@
 
     {{# if(index === 0){ }}
     <div class="m-hot" style="border-bottom: none">
-        <div class="m-hot-tt"><i></i>TA的热门文章</div>
+        <div class="m-hot-tt"><i></i>热门文章</div>
         <ul id="hotNewList-ul-id">
             <li class="m-hot-f">
-                <p class="m-hot-pic">
+                <p class="m-hot-pic" style="cursor: pointer;" onclick="window.location.href='/detail/{{item.id}}'">
                     <img src="{{item.cover}}" alt="" class="posImgY"></p>
                 <p class="m-hot-text"><a href="/article/{{item.id}}" target="_blank">{{item.title}}</a></p>
                 <span class="m-hot-num m-hot-num1">1</span>
@@ -512,7 +511,7 @@
     <div  class="m-hot2">
         <ul>
             <li>
-                <div style="height: 70px;">
+                <div style="height: 70px;cursor: pointer;" onclick="window.location.href='/detail/{{item.id}}'">
                                         <span style="width:25%;float: left;height:80%;">
                                             <img src="{{item.cover}}" alt="" class="posImgY">
                                         </span>

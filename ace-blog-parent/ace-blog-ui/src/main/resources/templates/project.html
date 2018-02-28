@@ -77,7 +77,7 @@
             width: 100%;
         }
         .layui-carousel .layui-this{
-            background-image: url("../images/head-bg.jpg");
+            background: #5f6778;
         }
         .carousel-title{
             font-size: 24px;
@@ -244,10 +244,10 @@
 
     </div>
 </nav>
-<div class="layui-carousel" id="test2" style="margin-top: 60px;    background-image: url(../images/head-bg.jpg);">
+<div class="layui-carousel" id="test2" style="margin-top: 60px;    background:#5f6778;">
     <div carousel-item="">
 
-        <div style="background-image: url(../images/head-bg.jpg);">
+        <div style="background:#5f6778;">
             <div class="carousel-title">-- 优质项目展示 --</div>
             <ul id="first_pj_index_view">
 
@@ -289,7 +289,7 @@
     text-align: center;
     cursor: pointer;
     margin-top:10px;
-    color: #3e6d43;">加载更多...</div>
+    color: #454d5f;">加载更多...</div>
 </div>
 <!-- 底部 -->
 <footer class="blog-footer">
@@ -411,8 +411,8 @@
     <li class="layui-nav-item" lay-unselect="">
         <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
             <dd><a href="/center">个人中心</a></dd>
-            <dd><a href="/center/article">我的文章</a></dd>
-            <dd><a href="/center/message;">消息中心</a></dd>
+            <dd><a href="/center?article">我的文章</a></dd>
+            <dd><a href="/center?message">消息中心</a></dd>
             <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
         </dl>
     </li>
@@ -542,8 +542,7 @@
             , interval: 1800
             , anim: 'fade'
             , height: '370px'
-            , width: '100%',
-            background:"url(../images/head-bg.jpg)"
+            , width: '100%'
         });
     });
     layui.config({

@@ -11,7 +11,7 @@ spring:
     redis:
         database: 1
         #host: localhost
-        host: 112.74.180.100
+        host: 125.94.213.226
         pool:
             max-active: 20
         #password: a1234567@!

@@ -32,6 +32,17 @@ public class ArticleRest {
         return new JSONPObject(callback,new ObjectRestResponse<Article>().rel(true).result(articleBiz.selectById(id)));
     }
 
+    @RequestMapping(value = "/del/{id}",method = RequestMethod.POST)
+    @ResponseBody
+    public ObjectRestResponse<Article> del(@PathVariable Integer id){
+        Article entity = articleBiz.selectById(id);
+        if(entity != null){
+            articleBiz.deleteById(id);
+        }
+
+        return new ObjectRestResponse<Article>().rel(true);
+    }
+
     @RequestMapping(value = "/update/{id}",method = RequestMethod.POST)
     @ResponseBody
     public ObjectRestResponse<Article> update(@PathVariable Integer id){
@@ -66,6 +77,30 @@ public class ArticleRest {
 
     }
 
+
+    @RequestMapping(value = "/find",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public JSONPObject find(int page, int limit,String authorId,String title,Integer type,String orderField,String orderBy,String callback){
+        Example example = new Example(Article.class);
+        if(StringUtils.isNotBlank(title)) {
+            example.createCriteria().andLike("title", "%" + title + "%");
+        }
+        if(type != null){
+            example.createCriteria().andEqualTo("type", type);
+        }
+
+        if(StringUtils.isNotBlank(authorId)){
+            example.createCriteria().andEqualTo("crtUser", authorId);
+        }
+
+        if(StringUtils.isNotBlank(orderField)){
+            example.setOrderByClause(orderField + " " + orderBy==null?"asc":"desc");
+        }
+
+        int count = articleBiz.selectCountByExample(example);
+        PageHelper.startPage(page, limit);
+        return new JSONPObject(callback, new ListRestResponse<Article>().rel(true).count(count).result(articleBiz.selectByExample(example)));
+
+    }
 
     @RequestMapping(value = "/list",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public JSONPObject findList(int page, int limit,String authorId,String title,Integer type,String orderField,String orderBy,String callback){

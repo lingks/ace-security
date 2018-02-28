@@ -64,9 +64,12 @@
             width: 500px;
             margin-right: 10px;
         }
+        #rightMainView{
+            display: none;
+        }
         .btnSubmit{
             width: 390px;
-            background: #6396f3;
+            background: #828386;
             text-align: center;
             color: white;
             font-size: 14px;
@@ -194,7 +197,7 @@
                 <div class="blog-main-left" style="    width: 20%;
     float: left;border: 1px #e6e2e2 solid;
     height: 100%;">
-                    <ul>
+                    <ul id="menu-view">
                         <li class="blog-main-left-li-active" id="uinfo">
                             个人资料
                         </li>
@@ -207,7 +210,7 @@
                     </ul>
                 </div>
                 <!--右边小栏目-->
-                <div style="float: left;width: 79%;" id="rightMainView">
+                <div style="float: left;width: 79%;display: none;" id="rightMainView">
 
                     <div class="layui-upload" style="padding-right: 20px;padding-top:20px;">
 
@@ -237,7 +240,7 @@
                             <li style="background: #eee;
                             color: #666;width:30%;">标题</li>
                             <li style="background: #eee;
-    color: #666;width:20%;text-align: center;">更新时间</li>
+    color: #666;width:15%;text-align: center;">更新时间</li>
                             <li style="background: #eee;
     color: #666;width:5%;text-align: center;">浏览量</li>
                             <li style="background: #eee;
@@ -271,6 +274,7 @@
                             <li style="background: #eee;
     color: #666;width:25%;text-align: center;">操作</li>
                         </ul>
+
                         <div class="tb-main4"></div>
                     </div>
                 </div>
@@ -282,6 +286,8 @@
 </div>
 <!-- 底部 -->
 <footer class="blog-footer">
+
+
     <p id="partner-view" style="text-align: left;padding:0 10px">
 
     </p>
@@ -349,8 +355,8 @@
     <li class="layui-nav-item" lay-unselect="">
         <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
             <dd><a href="/center">个人中心</a></dd>
-            <dd><a href="/center/article">我的文章</a></dd>
-            <dd><a href="/center/message;">消息中心</a></dd>
+            <dd><a href="/center?article">我的文章</a></dd>
+            <dd><a href="/center?message">消息中心</a></dd>
             <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
         </dl>
     </li>
@@ -556,7 +562,11 @@
         <li  style="height: 80px;width:5%;border-bottom: 1px #eee solid;text-align: center;">{{item.pageView}}</li>
         <li  style="height: 80px;width:5%;border-bottom: 1px #eee solid;text-align: center;">{{item.commentCount}}</li>
         <li  style="height: 80px;width:10%;border-bottom: 1px #eee solid;text-align: center;">{{item.status}}</li>
-        <li  style="height: 80px;width:15%;border-bottom: 1px #eee solid;text-align: center;">操作</li>
+        <li  style="height: 80px;width:15%;border-bottom: 1px #eee solid;text-align: center;">
+            <button style="padding: 0.5px 5px;" onclick="del({{item.id}},this)">删除</button>
+            <button style="padding: 0.5px 5px;">提交</button>
+            <button style="padding: 0.5px 5px;">修改</button>
+        </li>
     </ul>
 
     {{#  }); }}
@@ -757,6 +767,12 @@
 
 
     $(function(){
+
+        var click = 1;
+        var pageClick = 1;
+
+        var click2 = 1;
+        var pageClick2 = 1;
         var localUser = localStorage.getItem("user");
         if(localUser != undefined && localUser != null && localUser != ""&&localUser != 'null'){
             var user = JSON.parse(localUser);
@@ -779,7 +795,7 @@
                     async:true,
                     success: function (data, status, xhr) {
                         var user = data.result[0];
-                        $("#demoview").attr('src',user.logo);
+
                         laytpl(uInfotemplate).render(data, function (html) {
                             userInfoview.innerHTML = html;
                         });
@@ -788,21 +804,154 @@
 
                         });
                         document.getElementById("remark").value=user.remark;
+                        if(window.location.href.indexOf("article") == -1 && window.location.href.indexOf("message") == -1){
 
+                            $("#demoview").attr('src',user.logo);
+                            $("#rightMainView").show();
+                        }
                     }
 
                 })
             });
+            if(window.location.href.indexOf("article") > -1){
+                $("#menu-view li").removeClass("blog-main-left-li-active");
+                $("#uarticle").addClass("blog-main-left-li-active");
+                layui.use(['laypage', 'layer','laytpl'], function() {
+                    var laypage = layui.laypage;
+                    var laytpl = layui.laytpl;
+                    var articleInfoTemplate = articleInfoTpl.innerHTML;
+                    $.ajax({
+                        url: base.url + '/blog/api/article/page',
+                        data:{
+                            authorId:authorId,
+                            pageIndex:1,
+                            pageSize:5
+                        },
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'jsonp',
+                        jsonp: 'callback',
+                        success: function (data, status, xhr) {
+                            console.log(data)
+                            laytpl(articleInfoTemplate).render(data, function (html) {
+                                $(".tb-main").show();
+                                $("#demo2").show();
+                                $(".tb-main2").html(html) ;
+                                $(".tb-main2").show();
+                                $("#articleMainView").show();
+                                $("#rightMainView").hide();
+                                $("#demo3").hide();
+                                $(".tb-main3").hide()
+                                $(".tb-main4").hide() ;
+                                $("#messageMainView").hide();
+                            });
+                            //总页数大于页码总数
+                            if(pageClick == 1){
+                                laypage.render({
+                                    elem: 'demo2'
+                                    , count: data.count //数据总数
+                                    , jump: function (obj) {
+                                        pageClick ++ ;
+                                        if(pageClick > 2){
+                                            $.ajax({
+                                                url: base.url + '/blog/api/article/page',
+                                                data:{
+                                                    authorId:authorId,
+                                                    pageIndex:obj.curr,
+                                                    pageSize:5
+                                                },
+                                                contentType: "application/json; charset=utf-8",
+                                                dataType: 'jsonp',
+                                                jsonp: 'callback',
+                                                success: function (data, status, xhr) {
+                                                    laytpl(articleInfoTemplate).render(data, function (html) {
+                                                        $(".tb-main2").html(html) ;
+                                                    });
+                                                }
+                                            });
+                                        }
+                                        click ++;
+                                    }
+                                });
+                            }
+                        }
+                    })
+
+                });
+            }else if(window.location.href.indexOf("message") > -1) {
+                $("#menu-view li").removeClass("blog-main-left-li-active");
+                $("#umessage").addClass("blog-main-left-li-active");
+                layui.use(['laypage', 'layer', 'laytpl'], function () {
+                    var laypage = layui.laypage;
+                    var laytpl = layui.laytpl;
+                    var messageTemplate = messageInfoTpl.innerHTML;
+                    $.ajax({
+                        url: base.url + '/blog/api/message/page',
+                        data: {
+                            authorId: authorId,
+                            pageIndex: 1,
+                            pageSize: 5
+                        },
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'jsonp',
+                        jsonp: 'callback',
+                        success: function (data, status, xhr) {
+                            console.log(data)
+                            laytpl(messageTemplate).render(data, function (html) {
+                                $(".tb-main").hide();
+                                $(".tb-main2").hide();
+                                $("#demo2").hide();
+                                $("#rightMainView").hide();
+                                $(".tb-main3").show();
+                                $(".tb-main4").show();
+                                $("#demo3").show();
+                                $(".tb-main4").html(html);
+                                $("#messageMainView").show();
+                            });
+
+                            //总页数大于页码总数
+                            if (pageClick2 == 1) {
+                                laypage.render({
+                                    elem: 'demo3'
+                                    , count: data.count //数据总数
+                                    , jump: function (obj) {
+                                        console.log("click:" + click)
+                                        pageClick++;
+                                        if (pageClick > 2) {
+                                            $.ajax({
+                                                url: base.url + '/blog/api/message/page',
+                                                data: {
+                                                    authorId: authorId,
+                                                    pageIndex: obj.curr,
+                                                    pageSize: 5
+                                                },
+                                                contentType: "application/json; charset=utf-8",
+                                                dataType: 'jsonp',
+                                                jsonp: 'callback',
+                                                success: function (data, status, xhr) {
+                                                    laytpl(messageTemplate).render(data, function (html) {
+                                                        $(".tb-main4").html(html);
+                                                    });
+                                                }
+                                            });
+
+                                        }
+                                        click2++;
+                                    }
+                                });
+                            }
+                        }
+                    })
+
+                });
+            }
+
+            ////////////////
 
         }else{
             window.location.href="/login.html"
         }
 
-        var click = 1;
-        var pageClick = 1;
 
-        var click2 = 1;
-        var pageClick2 = 1;
         $(".blog-main-left").find("li").on('click',function(){
 
             console.log($(this)[0].className)
@@ -862,11 +1011,18 @@
                             });
                             //总页数大于页码总数
                             if(pageClick == 1){
+                                console.log("render page view")
                                 laypage.render({
                                     elem: 'demo2'
                                     , count: data.count //数据总数
                                     , jump: function (obj) {
+
+                                        console.log("page count" + data.count)
+                                        console.log("curr page" + pageClick);
+
                                         pageClick ++ ;
+
+
                                         if(pageClick > 2){
                                             $.ajax({
                                                 url: base.url + '/blog/api/article/page',
@@ -944,7 +1100,7 @@
                                                 jsonp: 'callback',
                                                 success: function (data, status, xhr) {
                                                     laytpl(messageTemplate).render(data, function (html) {
-                                                        $(".tb-main3").html(html);
+                                                        $(".tb-main4").html(html);
                                                     });
                                                 }
                                             });
@@ -979,6 +1135,78 @@
         }
 
     })
+
+    function del(id,o){
+        $.ajax({
+            url: base.url + '/blog/api/article/del/' + id,
+            type: 'post',
+            dataType: 'json',
+            success: function (data, status, xhr) {
+                if(data.rel = true){
+
+                    layer.msg("删除成功", { icon: 1 });
+                    pageClick = 1;
+                    layui.use(['laypage', 'layer','laytpl'], function() {
+                        var laypage = layui.laypage;
+                        var laytpl = layui.laytpl;
+                        var articleInfoTemplate = articleInfoTpl.innerHTML;
+                        $.ajax({
+                            url: base.url + '/blog/api/article/page',
+                            data:{
+                                authorId:authorId,
+                                pageIndex:1,
+                                pageSize:5
+                            },
+                            contentType: "application/json; charset=utf-8",
+                            dataType: 'jsonp',
+                            jsonp: 'callback',
+                            success: function (data, status, xhr) {
+                                $("#demo2").html("");
+                                laytpl(articleInfoTemplate).render(data, function (html) {
+                                    $(".tb-main2").html(html) ;
+                                });
+                                //总页数大于页码总数
+                                if(pageClick == 1){
+                                    laypage.render({
+                                        elem: 'demo2'
+                                        , count: data.count //数据总数
+                                        , jump: function (obj) {
+                                            pageClick ++ ;
+                                            if(pageClick > 2){
+                                                $.ajax({
+                                                    url: base.url + '/blog/api/article/page',
+                                                    data:{
+                                                        authorId:authorId,
+                                                        pageIndex:obj.curr,
+                                                        pageSize:5
+                                                    },
+                                                    contentType: "application/json; charset=utf-8",
+                                                    dataType: 'jsonp',
+                                                    jsonp: 'callback',
+                                                    success: function (data, status, xhr) {
+                                                        laytpl(articleInfoTemplate).render(data, function (html) {
+                                                            $(".tb-main2").html(html) ;
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                            click ++;
+                                        }
+                                    });
+                                }
+                            }
+                        })
+
+                    });
+                }
+            }
+
+        });
+    }
+
+
+
+
 </script>
 
 </body>

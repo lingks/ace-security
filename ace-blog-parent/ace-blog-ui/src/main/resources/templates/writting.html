@@ -57,9 +57,15 @@
             width: 500px;
             margin-right: 10px;
         }
+        #xiewenzhangn{
+            float: right;
+            width: 100px;
+            padding-top: 14px;
+        }
+
         .btnSubmit{
             width: 390px;
-            background: #6396f3;
+            background: #828386;
             text-align: center;
             color: white;
             font-size: 14px;
@@ -316,8 +322,8 @@
     <li class="layui-nav-item" lay-unselect="">
         <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
             <dd><a href="/center">个人中心</a></dd>
-            <dd><a href="/center/article">我的文章</a></dd>
-            <dd><a href="/center/message;">消息中心</a></dd>
+            <dd><a href="/center?article">我的文章</a></dd>
+            <dd><a href="/center?message">消息中心</a></dd>
             <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
         </dl>
     </li>
