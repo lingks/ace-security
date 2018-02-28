@@ -168,7 +168,7 @@ body {
     height: 64px;
     position: fixed;
     top: 0;
-    background-color: #393D49;
+    background-color: #454e60;
     /*border-bottom: 1px solid #5FB878;*/
 }
 
@@ -225,7 +225,7 @@ body {
         width: 50%;
         text-align: center;
         margin: 0 auto;
-        line-height: 64px;
+        line-height: 54px;
         font-size: 30px;
         color: white;
         font-weight: bold;

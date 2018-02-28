@@ -23,6 +23,13 @@
             margin-top: 64px;
             min-width: 1150px;
         }
+
+        .bg-img-open{
+            background:url(../images/user-infor-close.svg) no-repeat 22px center;
+        }
+        .bg-img-clode{
+            background:url(../images/user-infor-close.svg) no-repeat 22px center;
+        }
         .blog-title{
             text-align: left;
             font-size: 18px;
@@ -118,13 +125,12 @@
         }
         .tb-main4 ul li{
             float: left;
-            height: 35px;font-size: 13px;
-            line-height: 35px;
+            height: 100%;font-size: 13px;
         }
         .tb-main3 ul li{
             float: left;
-            height: 35px;font-size: 13px;
-            line-height: 35px;
+            height: 100%;font-size: 13px;
+
         }
 
         .layui-btn2 {
@@ -378,7 +384,7 @@
     </a>
     <!-- 不落阁 -->
     <a class="blog-logo" href="home.html">
-        <img src="../images/logo.svg">
+        <img src="../images/logo_chain.png">
     </a>
     <!-- 导航菜单 -->
     <ul class="layui-nav" lay-filter="nav">
@@ -563,7 +569,7 @@
         <li style="height: 80px;width:10%;border-bottom: 1px #eee solid;">
             {{index}}
         </li>
-        <li style="height: 80px;width:25%;border-bottom: 1px #eee solid;">
+        <li style="height: 80px;width:25%;border-bottom: 1px #eee solid;" class="msg-title">
             {{item.title}}
         </li>
         <li  style="height: 80px;width:25%;border-bottom: 1px #eee solid;text-align: center;">
@@ -572,7 +578,13 @@
         <li  style="height: 80px;width:10%;border-bottom: 1px #eee solid;text-align: center;">
             {{item.status}}
         </li>
-        <li  style="height: 80px;width:30%;border-bottom: 1px #eee solid;text-align: center;">操作</li>
+        <li  style="height:80px;width:25%;border-bottom: 1px #eee solid;text-align: center;">
+            <span type="open" data-id="0" data-read="1"  style="    color: #5670BF;
+            padding-left: 18px;
+            box-sizing: border-box;
+            cursor: pointer;padding-left: 40px;" onclick="msgOprate(this)" class="bg-img-open">展开</span>
+        </li>
+        <li style="width: 100%;rgba(225, 224, 225, .21);transition: all 0.3s ease;text-align: center" class="msg-content"></li>
     </ul>
 
     {{#  }); }}
@@ -586,6 +598,20 @@
     layui.config({
         base: 'js/'
     });
+
+    function msgOprate(o){
+        var txt =$(o).parent().parent().find(".msg-content").text();
+        console.log(txt.trim() == "")
+        if(txt.trim() == ""){
+            $(o).removeClass("bg-img-open");
+            $(o).addClass("bg-img-close");
+            $(o).parent().parent().find(".msg-content").text($(o).parent().parent().find(".msg-title").text());
+        }else{
+            $(o).removeClass("bg-img-close");
+            $(o).addClass("bg-img-open");
+            $(o).parent().parent().find(".msg-content").text("");
+        }
+    }
 
     layui.use('upload', function() {
             var $ = layui.jquery
@@ -892,7 +918,7 @@
                                 $(".tb-main3").show();
                                 $(".tb-main4").show();
                                 $("#demo3").show();
-                                $(".tb-main3").html(html) ;
+                                $(".tb-main4").html(html) ;
                                 $("#messageMainView").show();
                             });
 
