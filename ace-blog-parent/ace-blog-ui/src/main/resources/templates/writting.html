@@ -224,7 +224,7 @@
                             <div class="layui-inline">
                                 <label class="layui-form-label">关键词</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="tag" class="layui-input"  lay-verify="tag" placeholder="多个关键词请用;隔开">
+                                    <input type="text" name="tag" id="tag" class="layui-input"  lay-verify="tag" placeholder="多个关键词请用;隔开">
                                 </div>
                             </div>
                         </div>
@@ -236,6 +236,7 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" id="cover" name="cover">
                         <input type="hidden" id="crtUser" name="crtUser">
                         <input type="hidden" id="crtName" name="crtName">
                         <div class="layui-form-item">
@@ -422,6 +423,38 @@
 
             $("#crtUser").val(user.id);
             $("#crtName").val(user.username);
+
+
+            var url = window.location.href;
+            var urlArr = url.split("?");
+            console.log(urlArr)
+            console.log(urlArr.length)
+            if(urlArr.length>=2){
+                $.ajax({
+                    url: base.url + '/blog/api/article/' + urlArr[1],
+                    type: 'GET',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'jsonp',
+                    jsonp: 'callback',
+                    async: true,
+                    success: function (data, status, xhr) {
+                        if(data.rel == true){
+                            var article = data.result;
+                            $("#title").val(article.title);
+                            $("#content").text(article.content);
+                            $("#remark").text(article.remark);
+                            $("#tag").val(article.tag);
+                            $("#type").val(article.type);
+                            $("#demo2").attr("src",article.cover);
+                            $("#crtUser").val(article.crtUser);
+                            $("#crtName").val(article.crtName);
+                            $("#cover").val(article.cover);
+                            $("#crtTime").val(article.crtTime);
+
+                        }
+                    }
+                });
+            }
 
         }else{
             window.location.href = "/login.html"
