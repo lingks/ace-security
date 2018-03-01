@@ -54,7 +54,7 @@ public class FileController {
 
             System.out.println("写入文件");
             String fileName = new Date().getTime() + "." + Base64Util.getType(file.getContentType());
-            String filePath = "D://upload/" + fileName;
+            String filePath = "/usr/local/upload/" + fileName;
             // 生成地址
             OutputStream out = new FileOutputStream(new File(filePath));
             out.write(b);

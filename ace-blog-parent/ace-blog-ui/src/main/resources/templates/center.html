@@ -99,7 +99,7 @@
         .tb-main{
             margin: 0 auto;
             margin-left: 10px;
-            margin-top: 50px;
+            margin-top: 10px;
         }
         .tb-main2{
             margin: 0 auto;
@@ -191,7 +191,7 @@
         <div class="blog-main">
             <!--左边文章列表-->
 
-            <div style="height:550px;    background: white;
+            <div style="height:650px;    background: white;
     margin: 20px;border: 1px #e6e2e2 solid;
     margin-top: 80px;">
                 <div class="blog-main-left" style="    width: 20%;
@@ -540,14 +540,14 @@
 <script id="articleInfoTpl" type="text/html">
     {{# layui.each(d.result,function(index,item){}}
     <ul>
-        <li style="line-height: 80px;text-align:center;border-bottom: 1px #eee solid;width:15%;height: 80px;">
+        <li style="line-height: 50px;text-align:center;border-bottom: 1px #eee solid;width:15%;height: 50px;">
             <img style="width:80px;" src="{{item.cover}}">
         </li>
-        <li style="height: 80px;width:25%;border-bottom: 1px #eee solid;">
+        <li style="height: 50px;width:25%;border-bottom: 1px #eee solid;">
             {{item.title}}
         </li>
 
-        <li style="height: 80px;width:5%;border-bottom: 1px #eee solid;">
+        <li style="height: 50px;width:5%;border-bottom: 1px #eee solid;">
             {{# if (item.type==1) { }}
             项目报告
             {{# } }}
@@ -558,11 +558,11 @@
             行业政策
             {{# } }}
         </li>
-        <li  style="height: 80px;width:15%;border-bottom: 1px #eee solid;text-align: center;">{{item.updTime==undefined?item.crtTime:item.updTime}}</li>
-        <li  style="height: 80px;width:5%;border-bottom: 1px #eee solid;text-align: center;">{{item.pageView}}</li>
-        <li  style="height: 80px;width:5%;border-bottom: 1px #eee solid;text-align: center;">{{item.commentCount}}</li>
-        <li  style="height: 80px;width:10%;border-bottom: 1px #eee solid;text-align: center;">{{item.status}}</li>
-        <li  style="height: 80px;width:15%;border-bottom: 1px #eee solid;text-align: center;">
+        <li  style="height: 50px;width:15%;border-bottom: 1px #eee solid;text-align: center;">{{item.updTime==undefined?item.crtTime:item.updTime}}</li>
+        <li  style="height: 50px;width:5%;border-bottom: 1px #eee solid;text-align: center;">{{item.pageView}}</li>
+        <li  style="height: 50px;width:5%;border-bottom: 1px #eee solid;text-align: center;">{{item.commentCount}}</li>
+        <li  style="height: 50px;width:10%;border-bottom: 1px #eee solid;text-align: center;">{{item.status}}</li>
+        <li  style="height: 50px;width:15%;border-bottom: 1px #eee solid;text-align: center;">
             <button style="padding: 0.5px 5px;" onclick="del({{item.id}},this)">删除</button>
             <button style="padding: 0.5px 5px;">提交</button>
             <button style="padding: 0.5px 5px;" onclick="window.location.href='/writting?{{item.id}}'">修改</button>
@@ -576,19 +576,22 @@
 <script id="messageInfoTpl" type="text/html">
     {{# layui.each(d.result,function(index,item){}}
     <ul>
-        <li style="height: 80px;width:10%;border-bottom: 1px #eee solid;">
+        <li style="height: 50px;width:10%;border-bottom: 1px #eee solid;">
             {{index}}
         </li>
-        <li style="height: 80px;width:25%;border-bottom: 1px #eee solid;" class="msg-title">
+        <li style="height: 50px;width:25%;border-bottom: 1px #eee solid;display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;" class="msg-title">
             {{item.title}}
         </li>
-        <li  style="height: 80px;width:25%;border-bottom: 1px #eee solid;text-align: center;">
+        <li  style="height: 50px;width:25%;border-bottom: 1px #eee solid;text-align: center;">
             {{item.crtTime}}
         </li>
-        <li  style="height: 80px;width:10%;border-bottom: 1px #eee solid;text-align: center;">
+        <li  style="height: 50px;width:10%;border-bottom: 1px #eee solid;text-align: center;">
             {{item.status}}
         </li>
-        <li  style="height:80px;width:25%;border-bottom: 1px #eee solid;text-align: center;">
+        <li  style="height:50px;width:25%;border-bottom: 1px #eee solid;text-align: center;">
             <span type="open" data-id="0" data-read="1"  style="    color: #5670BF;
             padding-left: 18px;
             box-sizing: border-box;
@@ -825,7 +828,7 @@
                         data:{
                             authorId:authorId,
                             pageIndex:1,
-                            pageSize:5
+                            pageSize:10
                         },
                         contentType: "application/json; charset=utf-8",
                         dataType: 'jsonp',
@@ -857,7 +860,7 @@
                                                 data:{
                                                     authorId:authorId,
                                                     pageIndex:obj.curr,
-                                                    pageSize:5
+                                                    pageSize:10
                                                 },
                                                 contentType: "application/json; charset=utf-8",
                                                 dataType: 'jsonp',
@@ -889,7 +892,7 @@
                         data: {
                             authorId: authorId,
                             pageIndex: 1,
-                            pageSize: 5
+                            pageSize: 10
                         },
                         contentType: "application/json; charset=utf-8",
                         dataType: 'jsonp',
@@ -922,7 +925,7 @@
                                                 data: {
                                                     authorId: authorId,
                                                     pageIndex: obj.curr,
-                                                    pageSize: 5
+                                                    pageSize: 10
                                                 },
                                                 contentType: "application/json; charset=utf-8",
                                                 dataType: 'jsonp',
@@ -990,7 +993,7 @@
                         data:{
                             authorId:authorId,
                             pageIndex:1,
-                            pageSize:5
+                            pageSize:10
                         },
                         contentType: "application/json; charset=utf-8",
                         dataType: 'jsonp',
@@ -1029,7 +1032,7 @@
                                                 data:{
                                                     authorId:authorId,
                                                     pageIndex:obj.curr,
-                                                    pageSize:5
+                                                    pageSize:10
                                                 },
                                                 contentType: "application/json; charset=utf-8",
                                                 dataType: 'jsonp',
@@ -1060,7 +1063,7 @@
                         data:{
                             authorId:authorId,
                             pageIndex:1,
-                            pageSize:5
+                            pageSize:10
                         },
                         contentType: "application/json; charset=utf-8",
                         dataType: 'jsonp',
@@ -1093,7 +1096,7 @@
                                                 data: {
                                                     authorId: authorId,
                                                     pageIndex: obj.curr,
-                                                    pageSize: 5
+                                                    pageSize: 10
                                                 },
                                                 contentType: "application/json; charset=utf-8",
                                                 dataType: 'jsonp',
@@ -1155,7 +1158,7 @@
                             data:{
                                 authorId:authorId,
                                 pageIndex:1,
-                                pageSize:5
+                                pageSize:10
                             },
                             contentType: "application/json; charset=utf-8",
                             dataType: 'jsonp',
@@ -1178,7 +1181,7 @@
                                                     data:{
                                                         authorId:authorId,
                                                         pageIndex:obj.curr,
-                                                        pageSize:5
+                                                        pageSize:10
                                                     },
                                                     contentType: "application/json; charset=utf-8",
                                                     dataType: 'jsonp',

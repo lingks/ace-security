@@ -46,6 +46,8 @@ eureka:
     instance:
         statusPageUrlPath: /info
         healthCheckUrlPath: /health
+        prefer-ip-address: true
+        instance-id: ${spring.cloud.client.ipAddress}:${server.port}
     client:
         serviceUrl:
             defaultZone: http://localhost:8761/eureka/

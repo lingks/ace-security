@@ -16,6 +16,8 @@ eureka:
     instance:
         statusPageUrlPath: /info
         healthCheckUrlPath: /health
+        prefer-ip-address: true
+        instance-id: ${spring.cloud.client.ipAddress}:${server.port}
         # docker 部署开启
 #        prefer-ip-address: true
 #        ip-address: 127.0.0.1
