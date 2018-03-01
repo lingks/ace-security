@@ -48,7 +48,7 @@ eureka:
         healthCheckUrlPath: /health
     client:
         serviceUrl:
-            defaultZone: http://localhost:8761/eureka/
+            defaultZone: http://112.74.180.100:8761/eureka/
 swagger:
     basepackage: com.github.wxiaoqi.blog.admin
     service:

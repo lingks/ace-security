@@ -45,6 +45,8 @@ public class CommentRest  {
     }
     @RequestMapping(value = "/page",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public JSONPObject get(int pageIndex, int pageSize, String callback){
+
+
         Page<Comment> objects = PageHelper.startPage(pageIndex, pageSize);
         commentBiz.selectListAll();
         return new JSONPObject(callback, new ListRestResponse<Comment>().rel(true).count(objects.getTotal()).result(objects.getResult()));
