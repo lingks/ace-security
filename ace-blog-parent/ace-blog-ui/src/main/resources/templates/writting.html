@@ -442,6 +442,8 @@
                             var article = data.result;
                             $("#title").val(article.title);
                             $("#content").text(article.content);
+                            console.log("====")
+                            console.log(article.content);
                             $("#remark").text(article.remark);
                             $("#tag").val(article.tag);
                             $("#type").val(article.type);

@@ -237,8 +237,9 @@
                         <ul>
                             <li style="background: #eee;
                             color: #666;width:15%;text-align: center;">封面</li>
+                            <li style="background: #eee;color: #666;width:24%;">标题</li>
                             <li style="background: #eee;
-                            color: #666;width:30%;">标题</li>
+                            color: #666;width:6%;">类型</li>
                             <li style="background: #eee;
     color: #666;width:15%;text-align: center;">更新时间</li>
                             <li style="background: #eee;
@@ -540,14 +541,14 @@
 <script id="articleInfoTpl" type="text/html">
     {{# layui.each(d.result,function(index,item){}}
     <ul>
-        <li style="line-height: 50px;text-align:center;border-bottom: 1px #eee solid;width:15%;height: 50px;">
+        <li style="line-height: 50px;    line-height: 25px;text-align:center;border-bottom: 1px #eee solid;width:15%;height: 50px;">
             <img style="width:80px;" src="{{item.cover}}">
         </li>
-        <li style="height: 50px;width:25%;border-bottom: 1px #eee solid;">
+        <li style="height: 50px;    line-height: 25px;width:24%;border-bottom: 1px #eee solid;">
             {{item.title}}
         </li>
 
-        <li style="height: 50px;width:5%;border-bottom: 1px #eee solid;">
+        <li style="height: 50px;    line-height: 25px;width:6%;border-bottom: 1px #eee solid;">
             {{# if (item.type==1) { }}
             项目报告
             {{# } }}
@@ -558,11 +559,11 @@
             行业政策
             {{# } }}
         </li>
-        <li  style="height: 50px;width:15%;border-bottom: 1px #eee solid;text-align: center;">{{item.updTime==undefined?item.crtTime:item.updTime}}</li>
-        <li  style="height: 50px;width:5%;border-bottom: 1px #eee solid;text-align: center;">{{item.pageView}}</li>
-        <li  style="height: 50px;width:5%;border-bottom: 1px #eee solid;text-align: center;">{{item.commentCount}}</li>
+        <li  style="height: 50px;width:15%;    line-height: 25px;border-bottom: 1px #eee solid;text-align: center;">{{item.updTime==undefined?item.crtTime:item.updTime}}</li>
+        <li  style="height: 50px;width:5%;    line-height: 25px;border-bottom: 1px #eee solid;text-align: center;">{{item.pageView}}</li>
+        <li  style="height: 50px;width:5%;    line-height: 25px;    line-height: 25px;border-bottom: 1px #eee solid;text-align: center;">{{item.commentCount}}</li>
         <li  style="height: 50px;width:10%;border-bottom: 1px #eee solid;text-align: center;">{{item.status}}</li>
-        <li  style="height: 50px;width:15%;border-bottom: 1px #eee solid;text-align: center;">
+        <li  style="height: 50px;width:15%;    line-height: 25px; border-bottom: 1px #eee solid;text-align: center;">
             <button style="padding: 0.5px 5px;" onclick="del({{item.id}},this)">删除</button>
             <button style="padding: 0.5px 5px;">提交</button>
             <button style="padding: 0.5px 5px;" onclick="window.location.href='/writting?{{item.id}}'">修改</button>
