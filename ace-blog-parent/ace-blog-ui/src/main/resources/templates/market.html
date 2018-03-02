@@ -1,0 +1,661 @@
+﻿<a href="/login.html"><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a
+        href="/register.html"><span>注&nbsp;&nbsp;册</span></a>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <title>链算数据-行情</title>
+    <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
+    <!--Layui-->
+    <link href="../plug/layui/css/layui.css" rel="stylesheet"/>
+    <!--font-awesome-->
+    <link href="../plug/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <!--全局样式表-->
+    <link href="../css/global.css" rel="stylesheet"/>
+    <!--本页样式表-->
+    <link href="../css/article.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="../slider2/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../slider2/css/index.css">
+    <style>
+        .blog-body {
+            margin-top: 64px;
+            min-width: 1250px;
+        }
+        ::-webkit-scrollbar{
+            width: 4px;
+            height: 4px;
+            background-color: black;
+        }
+
+        /*定义滚动条的轨道，内阴影及圆角*/
+        ::-webkit-scrollbar-track{
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            border-radius: 10px;
+            background-color: white;
+        }
+        /*定义滑块，内阴影及圆角*/
+        ::-webkit-scrollbar-thumb{
+            /*width: 10px;*/
+            height: 15px;
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            background-color: #a09f9f;
+        }
+        #layui-laypage-1 .layui-laypage-count{
+            display: none;
+        }
+        .m-hot {
+            background: #fff;
+            padding: 0 19px;
+            border: 1px solid #EBEBEB;
+            border-bottom: none;
+            height: 300px;
+            margin-top: 0px;
+        }
+
+        .m-hot2 {
+            background: #fff;
+            padding: 0 19px;
+            border-top: none;
+        }
+
+        .m-hot-tt {
+            font-size: 18px;
+            line-height: 20px;
+            color: #333;
+            padding: 24px 0 15px;
+        }
+
+        ul, ol, dl, dd, dt {
+            list-style: none;
+        }
+
+        .posImgY {
+            width: 100%;
+            height: 100%;
+        }
+
+        .m-hot li {
+            position: relative;
+            padding-bottom: 20px;
+            height: 220px;
+            list-style: none;
+        }
+
+        .m-hot-tt i {
+            padding: 0 10px;
+            margin-right: 6px;
+            background: url(../images/wenzhang.svg) no-repeat center;
+        }
+
+        .m-hot-f .m-hot-pic {
+            width: 100%;
+
+            overflow: hidden;
+        }
+
+        .m-hot-pic img {
+            cursor: pointer;
+            transition: all 0.6s;
+        }
+
+        .m-hot-pic img:hover {
+            transform: scale(1.4);
+        }
+
+        .m-hot-f span {
+            display: none;
+        }
+
+        .m-hot-num {
+            position: relative;
+            top: -70px;
+            left: 5px;
+            width: 14px;
+            height: 14px;
+            font-size: 12px;
+            line-height: 14px;
+            text-align: center;
+            color: #fff;
+            z-index: 10;
+            padding: 0 2px;
+        }
+
+        .m-hot-f .m-hot-text a {
+            font-size: 16px;
+            width: 100%;
+            height: auto;
+            color: #fff;
+            padding: 8px 15px;
+            background: rgba(0, 0, 0, .5);
+            box-sizing: border-box;
+            position: relative;
+            bottom: 40px;
+        }
+
+        .m-hot-text a {
+            width: 191px;
+            position: relative;
+            bottom: 50px;
+        }
+
+        .m-hot-text a {
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+            width: 211px;
+            height: 42px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .m-hot-f-after {
+            left: 10px;
+        }
+
+        .m-hot-f-after {
+            content: ' ';
+            position: absolute;
+            top: 1px;
+            left: 10px;
+            width: 36px;
+
+            height: 30px;
+            background: url(../images/no.1.svg) no-repeat center;
+        }
+
+        #hotNewList-ul-id {
+            position: relative;
+        }
+
+        .blog-title {
+            text-align: left;
+            font-size: 18px;
+            height: 60px;
+            line-height: 70px;
+            background: white;
+            margin-bottom: 5px;
+        }
+
+        .layui-btn2 {
+            display: inline-block;
+            height: 28px;
+            border-radius: 15px;
+            /* text-align: left; */
+            line-height: 28px;
+            padding: 0px 20px 0px 10px;
+            background-color: #393D49;
+            color: #fff;
+            white-space: nowrap;
+            text-align: left;
+            font-size: 12px;
+            border: none;
+            /*border: 1px #4c4949 solid;*/
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        #login-tag {
+            font-size: 12px;
+            margin-left: 20px;
+        }
+
+        .layui-btn2 .layui-icon {
+            /* margin-right: 3px; */
+            /* font-size: 18px; */
+            vertical-align: bottom;
+            vertical-align: middle \9;
+
+        }
+
+        #h-writing button:hover {
+            color: #6c9894;
+            cursor: pointer;
+        }
+
+        #login-tag a {
+            cursor: pointer;
+        }
+
+        #uinfo-view {
+            position: absolute;
+            right: 0;
+            width: 65px;
+            margin-right: 50px;
+        }
+
+        #xiewenzhangn {
+            float: right;
+            width: 100px;
+            padding-top: 14px;
+        }
+
+        #login-tag a {
+            cursor: pointer;
+        }
+
+        #login-tag a span {
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .blog-nav .blog-logo {
+            top: 5px;
+        }
+
+
+
+        @media (min-width: 1200px) {
+            .blog-container {
+                width: 1250px;
+            }
+
+            .blog-main > .blog-main-left {
+                width: 72%;
+            }
+
+            .blog-main > .blog-main-right {
+                width: 26%;
+            }
+
+            .blog-main > .blog-main-right > .blog-module {
+                width: auto;
+                float: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 导航 -->
+<nav class="blog-nav layui-header">
+    <div class="blog-container" id="blog-container">
+
+    </div>
+</nav>
+
+<!-- 主体（一般只改变这里的内容） -->
+<div class="blog-body">
+    <!-- 这个一般才是真正的主体内容 -->
+    <div class="blog-container">
+        <div class="blog-main">
+            <!--左边文章列表-->
+
+            <div class="blog-main-left">
+                <div class="demoTable" style="width: 100%;height:40px;line-height:40px;background: white;">
+                    <div style="width: 40%;float: left;">
+                        <form class="layui-form form-view" action="" id="userInfo-form">
+                            <div class="layui-form-item" style="float: left">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">可挖矿</label>
+                                    <div class="layui-input-block">
+                                        <select name="type" lay-filter="aihao" id="type" lay-verify="type">
+                                            <option>全部币种</option>
+                                            <option>货币</option>
+                                            <option>代币</option>
+                                            <option>可挖矿</option>
+                                            <option>不可挖矿</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div style="width: 60%;background: white"></div>
+                </div>
+                <table class="layui-hide" id="LAY_table_user" lay-filter="user" style="width: 100%;"></table>
+
+                <div class="admin-table-page">
+                    <div id="paged" class="page">
+                    </div>
+                </div>
+
+            </div>
+            <!--右边小栏目-->
+            <div class="blog-main-right">
+                <div id="hotNewsView"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!-- 底部 -->
+<footer class="blog-footer">
+    <p id="partner-view" style="text-align: left;padding:0 10px">
+
+    </p>
+
+    <p id="partner-url" style="text-align: left;padding:0 20px">
+        友情链接： 比特时代
+    </p>
+    <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="">Lins</a><span>Design By Mr.Lin</span></p>
+    <p><a href="" target="_blank">蜀ICP备160299x4e5号-1</a></p>
+</footer>
+<!--侧边导航-->
+<ul class="layui-nav layui-nav-tree layui-nav-side blog-nav-left layui-hide" lay-filter="nav">
+    <li class="layui-nav-item layui-this">
+        <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;网站首页</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;文章专栏</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="timeline.html"><i class="fa fa-road fa-fw"></i>&nbsp;点点滴滴</a>
+    </li>
+    <li class="layui-nav-item">
+        <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于本站</a>
+    </li>
+</ul>
+<!--分享窗体-->
+<div class="blog-share layui-hide">
+    <div class="blog-share-body">
+        <div style="width: 200px;height:100%;">
+            <div class="bdsharebuttonbox">
+                <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                <a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--遮罩-->
+<div class="blog-mask animated layui-hide"></div>
+<script src="../slider/js/jquery-1.10.1.min.js"></script>
+<script src="../slider/js/idangerous.swiper2.7.6.min.js"></script>
+<script src="../slider/js/swiper.animate1.0.2.min.js"></script>
+<script id="partner" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <a href="{{item.url}}"> <img src="{{item.logo}}" style="width:100px;height:40px;margin-left:5px;"></a>
+    {{#  }); }}
+</script>
+<script id="uInfoTpl" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <div onmouseover="userLogoin();" onmouseleave="setTimeout('userLogoout()', 3000);" id="ufo"
+         style="margin-top: 15px;width: 35px;height: 35px;float: left;border-radius: 50%;overflow:hidden;">
+        <img src="{{item.logo}}" style="width: 100%;">
+    </div>
+
+    <li class="layui-nav-item" lay-unselect="">
+        <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();">
+            <dd><a href="/center">个人中心</a></dd>
+            <dd><a href="/center?article">我的文章</a></dd>
+            <dd><a href="/center?message">消息中心</a></dd>
+            <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
+        </dl>
+    </li>
+
+    {{#  }); }}
+</script>
+<script id="header_view" type="text/html">
+    {{# layui.each(d.result, function(index, item){ }}
+    <div id="uinfo-view"">
+    <div onmouseover="userLogoin();" onmouseleave="setTimeout('userLogoout()', 3000);" id="ufo"
+         style="margin-top: 15px;width: 35px;height: 35px;float: left;border-radius: 50%;overflow:hidden;">
+        <img src="{{item.logo}}" style="width: 100%;">
+    </div>
+    <li class="layui-nav-item" lay-unselect="">
+        <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();">
+            <dd><a href="/center">个人中心</a></dd>
+            <dd><a href="/center/article">我的文章</a></dd>
+            <dd><a href="/center/message;">消息中心</a></dd>
+            <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
+        </dl>
+    </li>
+    </div>
+
+    {{# }); }}
+    {{#  if(d.result.length === 0){ }}
+    <div id="login-tag"
+         style="position: absolute;right: 80px;float:left;line-height: 65px;color: #fff;font-size: 14px;">
+        <a href="/login.html"><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a
+            href="/register.html"><span>注&nbsp;&nbsp;册</span></a>
+    </div>
+    {{#  } }}
+    <div id="xiewenzhangn" onclick="writting();">
+        <div class="h-writing" style="width: 100px;height: 48px;">
+            <li style="width: 78px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 24px;
+    border-radius: 15px;
+    background: #393D49">
+                <button class="layui-btn2" style="
+    /* height: 30px; */
+    "><i class="layui-icon"></i>写文章
+                </button>
+            </li>
+        </div>
+    </div>
+
+    <a href="javascript:;" class="blog-user layui-hide">
+        <img src="../images/Absolutely.jpg" alt="Absolutely" title="Absolutely"/>
+    </a>
+
+
+    <a class="blog-logo" href="home.html">
+        <img src="../images/logo_chain.png">
+    </a>
+    <!-- 导航菜单 -->
+    <ul class="layui-nav" lay-filter="nav">
+        <li class="layui-nav-item">
+            <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
+        </li>
+        <!--<li class="layui-nav-item">-->
+        <!--<a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>-->
+        <!--</li>-->
+        <li class="layui-nav-item layui-this">
+            <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
+            <!--</li>-->
+            <!--<li class="layui-nav-item">-->
+            <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
+            <!--</li>-->
+        <li class="layui-nav-item">
+            <a href="/author"><i class="fa fa-thumbs-up fa-fw"></i>&nbsp;作家</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
+        </li>
+    </ul>
+    <!-- 手机和平板的导航开关 -->
+    <a class="blog-navicon" href="javascript:;">
+        <i class="fa fa-navicon"></i>
+    </a>
+</script>
+
+<script src="../plug/layui/layui.js"></script>
+<!-- 全局脚本 -->
+<script src="../js/global.js"></script>
+<!-- 本页脚本 -->
+<script src="../js/home.js"></script>
+
+<script id="friendshipTpl" type="text/html">
+    友情链接： {{# layui.each(d.result, function(index, item){ }}
+    <a href="{{item.url}}" target="_blank">{{item.name}}</a>&nbsp;&nbsp;
+    {{# }); }}
+</script>
+<script id="hotNewsTpl" type="text/html">
+    {{# if(d.result.length === 0){ }}
+    <div class="m-hot" style="border-bottom: none">
+        <div class="m-hot-tt"><i></i>热门文章</div>
+        <ul id="hotNewList-ul-id">
+            <div class="clear"></div>
+        </ul>
+    </div>
+    {{# } }}
+
+    {{# layui.each(d.result, function(index, item){ }}
+
+    {{# if(index === 0){ }}
+    <div class="m-hot" style="border-bottom: none">
+        <div class="m-hot-tt"><i></i>热门文章</div>
+        <ul id="hotNewList-ul-id">
+            <li class="m-hot-f">
+                <p class="m-hot-pic" style="cursor: pointer;" onclick="window.location.href='/detail/{{item.id}}'">
+                    <img src="{{item.cover}}" alt="" class="posImgY"></p>
+                <p class="m-hot-text"><a href="/article/{{item.id}}" target="_blank">{{item.title}}</a></p>
+                <span class="m-hot-num m-hot-num1">1</span>
+            </li>
+            <i class="m-hot-f-after"></i>
+        </ul>
+    </div>
+    {{# } }}
+    {{# if(index > 0){ }}
+    <div class="m-hot2">
+        <ul>
+            <li>
+                <div style="height: 70px;cursor: pointer;" onclick="window.location.href='/detail/{{item.id}}'">
+                                        <span style="width:25%;float: left;height:80%;">
+                                            <img src="{{item.cover}}" alt="" class="posImgY">
+                                        </span>
+                    <span class="m-hot2-remark"><a href="/article/{{item.id}}" target="_blank">{{item.title}}</a></span>
+                </div>
+                <span class="m-hot-num m-hot-num3"
+                      style="opacity: 0.7;{{# if(index == 2){}}background:#E58D00;{{#}}} {{# if(index == 2){}}background:#F5CD23;{{#}}}{{# if(index >= 3){}}background:#4A4A4A;{{#}}}">{{index}}</span>
+            </li>
+        </ul>
+    </div>
+    {{# } }}
+
+
+    {{# }); }}
+</script>
+<script type="text/html" id="nameTpl">
+    <div style="width: 200px;">
+       <div style="width: 20px;height: 20px;border-radius: 50%;overflow: hidden;float: left;margin-top:4px;">
+           <img style="width: 100%" src="https://blockchains.oss-cn-shanghai.aliyuncs.com/static/coinInfo/{{d.id}}.png" alt="" onerror="$(this).hide();  "/>
+       </div>
+        <div style=" margin-left:25px;">{{d.name}}</div>
+
+    </div>
+
+</script>
+<script>
+    layui.config({
+        base: 'js/'
+    });
+    layui.use('laytpl', function () {
+        var laytpl = layui.laytpl;
+        var hostNesTemplate = hotNewsTpl.innerHTML
+            , hotNewsView = document.getElementById('hotNewsView');
+        $.ajax({
+            url: base.url + '/blog/api/article/page',
+            data: {
+                pageIndex: 1,
+                pageSize: 5
+            },
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+
+                laytpl(hostNesTemplate).render(data, function (html) {
+                    hotNewsView.innerHTML = html;
+                });
+
+            }
+        });
+    });
+    layui.use('laytpl', function () {
+        var laytpl = layui.laytpl;
+        var getTpl = partner.innerHTML,
+            friendshipTemplate = friendshipTpl.innerHTML
+            , view = document.getElementById('partner-view'),
+            shipView = document.getElementById('partner-url');
+
+        $.ajax({
+            url: base.url + '/blog/api/partner/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(getTpl).render(data, function (html) {
+                    view.innerHTML = html;
+                });
+            }
+        })
+
+        $.ajax({
+            url: base.url + '/blog/api/ship/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(friendshipTemplate).render(data, function (html) {
+                    shipView.innerHTML = html;
+                });
+            }
+        })
+
+
+    });
+
+
+    layui.use('table', function () {
+        var table = layui.table;
+        //方法级渲染
+        table.render({
+            elem: '#LAY_table_user'
+            , url: base.url + '/blog/api/market/page',
+            response: {
+                code: 0,
+                countName: 'count',
+                dataName: 'data'
+            },
+            limit: 50,
+            contentType: "application/json; charset=utf-8"
+            , cols: [[
+//                {checkbox: true, fixed: true}
+//                ,
+                {field: 'sort', title: '#', sort: true, width:50,fixed: true}
+                , {
+                    field: 'name',width:200,
+                    title: '名称',
+                    templet: '#nameTpl'
+                }
+                , {field: 'price', title: '价格'}
+                , {field: 'change1d', title: '涨幅榜'}
+                , {field: 'marketCap', title: '流通数量'}
+            ]]
+            , id: 'testReload'
+            , page: true
+        });
+
+        var $ = layui.$, active = {
+            reload: function () {
+                var demoReload = $('#demoReload');
+
+                //执行重载
+                table.reload('testReload', {
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                    , where: {
+                        key: {
+                            id: demoReload.val()
+                        }
+                    }
+                });
+            }
+        };
+
+        $('.demoTable .layui-btn').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+
+</script>
+
+</body>
+</html>

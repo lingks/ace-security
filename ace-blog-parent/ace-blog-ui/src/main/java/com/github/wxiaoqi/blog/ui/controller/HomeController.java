@@ -78,4 +78,10 @@ public class HomeController {
     public String writting(){
         return "writting";
     }
+
+    @RequestMapping("/market")
+    public String market(){
+        return "market";
+    }
+
 }
