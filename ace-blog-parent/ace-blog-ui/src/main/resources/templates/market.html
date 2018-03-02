@@ -111,6 +111,9 @@
             display: none;
         }
 
+        .layui-form-select .layui-input{
+            border:none;
+        }
         .m-hot-num {
             position: relative;
             top: -70px;
@@ -536,8 +539,11 @@
         <div style=" margin-left:25px;">{{d.name}}</div>
 
     </div>
-
 </script>
+<script type="text/html" id="priceTpl">
+    <div class="price-view">{{d.price}}</div>
+</script>
+
 <script>
     layui.config({
         base: 'js/'
@@ -623,7 +629,7 @@
                     title: '名称',
                     templet: '#nameTpl'
                 }
-                , {field: 'price', title: '价格'}
+                , {field: 'price', title: '价格',templet:'#priceTpl'}
                 , {field: 'change1d', title: '涨幅榜'}
                 , {field: 'marketCap', title: '流通数量'}
             ]]
@@ -655,6 +661,9 @@
         });
     });
 
+    $(function(){
+        console.log($(".price-view").text())
+    })
 </script>
 
 </body>
