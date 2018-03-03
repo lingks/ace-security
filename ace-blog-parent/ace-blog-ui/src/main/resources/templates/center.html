@@ -565,9 +565,25 @@
         <li  style="height: 50px;width:5%;    line-height: 25px;    line-height: 25px;border-bottom: 1px #eee solid;text-align: center;">{{item.commentCount}}</li>
         <li  style="height: 50px;width:10%;border-bottom: 1px #eee solid;text-align: center;">{{item.status}}</li>
         <li  style="height: 50px;width:15%;    line-height: 25px; border-bottom: 1px #eee solid;text-align: center;">
-            <button style="padding: 0.5px 5px;" onclick="del({{item.id}},this)">删除</button>
-            <button style="padding: 0.5px 5px;">提交</button>
-            <button style="padding: 0.5px 5px;" onclick="window.location.href='/writting?{{item.id}}'">修改</button>
+
+            {{# if(item.status == 0){}}
+                <button style="padding: 0.5px 5px;" onclick="del({{item.id}},this)">删除</button>
+                <button style="padding: 0.5px 5px;" class="tijiao" onclick="updateArticle(this,{{item.id}})">提交</button>
+                <button style="padding: 0.5px 5px;" onclick="window.location.href='/writting?{{item.id}}'">修改</button>
+            {{#}}}
+            {{# if(item.status == 1){}}
+                <span>待审核</span>
+            {{#}}}
+            {{# if(item.status == 2){}}
+                <span>已审核</span>
+            {{#}}}
+            {{# if(item.status == -1){}}
+                <span>未通过</span>
+                <button style="padding: 0.5px 5px;" onclick="del({{item.id}},this)">删除</button>
+                <button style="padding: 0.5px 5px;" class="tijiao" onclick="updateArticle(this,{{item.id}})">重新提交</button>
+                <button style="padding: 0.5px 5px;" class="xiugai" onclick="window.location.href='/writting?{{item.id}}'">修改</button>
+
+            {{#}}}
         </li>
     </ul>
 
@@ -615,6 +631,28 @@
         base: 'js/'
     });
 
+    function updateArticle(o,id) {
+        $.ajax({
+            url: base.url + '/blog/api/article/auth',
+            type: 'POST',
+
+            data:{
+                'userId': authorId,
+                'id':id
+            },
+            dataType: 'json',
+
+            success: function (data, status, xhr) {
+                if(data.rel == true){
+                    layer.msg("提交成功", { icon: 1 });
+                    $(o).parent().append("<span>待审核</span>")
+                    $(o).parent().find("button").remove();
+
+
+                }
+            }
+        })
+    }
     function msgOprate(o){
         var txt =$(o).parent().parent().find(".msg-content").text();
         console.log(txt.trim() == "")

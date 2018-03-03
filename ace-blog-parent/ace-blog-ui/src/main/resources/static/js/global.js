@@ -191,9 +191,13 @@ var isOverMenu = 0;
 
 var localUser = localStorage.getItem("user");
 var authorId;
+var userId;
+var username;
 if(localUser != undefined && localUser != null && localUser != ""&&localUser != 'null') {
     var user = JSON.parse(localUser);
     authorId = user.id;
+    userId = user.id;
+    username = user.username;
 }
 
 function writting() {

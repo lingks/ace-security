@@ -39,8 +39,128 @@ article.columns = function () {
     }, {
         field: 'commentCount',
         title: '评论数'
+    },{
+        field:'',
+        title:'操作',
+        formatter:function(value,row,index){
+
+            // <script type="text/html" id="barDemo">
+            //     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+            //     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            //     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            //     </script>
+            var html = "";
+            if(row.status == 1 && row.articleType == 0){
+                html += '<a style="height: 25px;line-height: 25px;" class="layui-btn layui-btn-xs auth-article" lay-event="edit" onclick="auth('+row.id+');">审核</a>';
+            }
+            if(row.status == 1 && row.articleType == 1){
+                html += '<button data-method="notice" class="layui-btn" onclick="publish('+row.id+')">发布</button>';
+            }
+
+            if(row.status == 2){
+                html += '<span  style="height: 25px;line-height: 25px;">已审核发布</span>';
+            }
+            return  html;
+        }
     }];
 };
+
+function auth(id) {
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var editIndex;
+        var layerTips = parent.layer === undefined ? layui.layer : parent.layer,
+        layer = layui.layer, //获取当前窗口的layer对象
+            form = layui.form,
+            layedit = layui.layedit;
+
+        $.get(article.baseUrl + '/' + id, null, function (data) {
+            var result = data.result;
+            $.get(article.entity+'/edit', null, function (form) {
+                layer.open({
+                    type: 1,
+                    title: '审核资讯',
+                    content: form,
+                    btn: ['审核', '驳回','取消'],
+                    shade: false,
+                    offset: ['20px', '20%'],
+                    area: ['750px', '500px'],
+                    maxmin: true,
+                    yes: function (index) {
+                        //触发表单的提交事件
+                        console.log( $('input:radio:checked').val())
+                        layedit.sync(editIndex);
+                        $('form.layui-form').find('button[lay-filter=edit]').click();
+                    },
+                    btn2:function(){
+                        $.ajax({
+                            url: article.baseUrl + "/" + id,
+                            type: 'put',
+                            data: {
+                                status:-1,
+                                suggestion: $("#suggestion").val()
+                            },
+                            dataType: "json",
+                            success: function () {
+                                layerTips.msg('审核成功');
+                                location.reload();
+                            }
+
+                        });
+                    },
+                    full: function (elem) {
+                        console.log("暗暗有")
+                        var win = window.top === window.self ? window : parent.window;
+                        $(win).on('resize', function () {
+                            var $this = $(this);
+                            elem.width($this.width()).height($this.height()).css({
+                                top: 0,
+                                left: 0
+                            });
+                            elem.children('div.layui-layer-content').height($this.height() - 95);
+                        });
+                    },
+                    success: function (layero, index) {
+                        var form = layui.form;
+                        setFromValues(layero, result);
+                        $(".suggestion").show();
+                        console.log($("input"))
+                        $("#demo2").attr("src",result.cover);
+                        layero.find('#description_editor').val(result.content);
+                        layedit.set({
+                            uploadImage: {
+                                url: '/file/uploadImg' //接口url
+                                ,type: 'post' //默认post
+                            }
+                        });
+                        //注意：layedit.set 一定要放在 build 前面，否则配置全局接口将无效。
+                        editIndex =  layedit.build('description_editor'); //建立编辑器
+                        form.render();
+                        form.on('submit(edit)', function (data) {
+                            data.field.content =  layedit.getContent(editIndex);
+                            data.field.status = 2;
+                            $.ajax({
+                                url: article.baseUrl + "/" + result.id,
+                                type: 'put',
+                                data: data.field,
+                                dataType: "json",
+                                success: function () {
+                                    layerTips.msg('审核成功');
+                                    layerTips.close(index);
+                                    location.reload();
+                                }
+
+                            });
+                            //这里可以写ajax方法提交表单
+                            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+                        });
+                    }
+                });
+            });
+        });
+
+    });
+
+}
 article.queryParams = function (params) {
     if (!params)
         return {
@@ -83,6 +203,65 @@ article.init = function () {
         columns: article.columns()
     });
 };
+
+
+function publish(id){
+    layui.use(['form', 'layedit', 'laydate'], function () {
+
+        var layerTips = parent.layer === undefined ? layui.layer : parent.layer; //获取父窗口的layer对象
+
+            layer.confirm('确定发布该条资讯吗？', null, function (index) {
+            $.ajax({
+                url: article.baseUrl + "/" + id,
+                type: 'put',
+                data: {
+                    id:id,
+                    status:2
+                },
+                dataType: "json",
+                success: function () {
+                    layerTips.msg('更新成功');
+                    layerTips.close(index);
+                    location.reload();
+                }
+
+            });
+            layer.close(index);
+        });
+    });
+
+    // layer.open({
+    //     type: 1
+    //     ,
+    //     title: false //不显示标题栏
+    //     ,
+    //     closeBtn: false
+    //     ,
+    //     area: '300px;'
+    //     ,
+    //     shade: 0.8
+    //     ,
+    //     id: 'LAY_layuipro' //设定一个id，防止重复弹出
+    //     ,
+    //     btn: ['火速围观', '残忍拒绝']
+    //     ,
+    //     btnAlign: 'c'
+    //     ,
+    //     moveType: 1 //拖拽模式，0或者1
+    //     ,
+    //     content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">你知道吗？亲！<br>layer ≠ layui<br><br>layer只是作为Layui的一个弹层模块，由于其用户基数较大，所以常常会有人以为layui是layerui<br><br>layer虽然已被 Layui 收编为内置的弹层模块，但仍然会作为一个独立组件全力维护、升级。<br><br>我们此后的征途是星辰大海 ^_^</div>'
+    //     ,
+    //     success: function (layero) {
+    //         var btn = layero.find('.layui-layer-btn');
+    //         btn.find('.layui-layer-btn0').attr({
+    //             href: 'http://www.layui.com/'
+    //             , target: '_blank'
+    //         });
+    //     }
+    // });
+}
+
+
 article.select = function (layerTips) {
     var rows = article.table.bootstrapTable('getSelections');
     if (rows.length == 1) {
@@ -93,6 +272,7 @@ article.select = function (layerTips) {
         return false;
     }
 };
+
 
 layui.use(['form', 'layedit', 'laydate'], function () {
     article.init();
@@ -178,6 +358,8 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             });
         });
     });
+
+
     $('#btn_edit').on('click', function () {
         if (article.select(layerTips)) {
             var id = article.currentItem.id;

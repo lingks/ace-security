@@ -31,16 +31,18 @@ public class ArticleRest {
     private ArticleBiz articleBiz;
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public JSONPObject get(@PathVariable int id, String callback){
+
+        Article article = articleBiz.selectById(id);
+        if(article != null){
+            article.setHotValue(article.getHotValue() + 0.3);
+            articleBiz.updateSelectiveById(article);
+        }
         return new JSONPObject(callback,new ObjectRestResponse<Article>().rel(true).result(articleBiz.selectById(id)));
     }
 
     @RequestMapping(value = "/del/{id}",method = RequestMethod.POST)
     @ResponseBody
     public ObjectRestResponse<Article> del(@PathVariable Integer id){
-        Article entity = articleBiz.selectById(id);
-        if(entity != null){
-            articleBiz.deleteById(id);
-        }
 
         return new ObjectRestResponse<Article>().rel(true);
     }
@@ -77,7 +79,10 @@ public class ArticleRest {
         }
 
         if(StringUtils.isNotBlank(authorId)){
+
             example.createCriteria().andEqualTo("crtUser", authorId);
+        }else{
+            example.createCriteria().andEqualTo("status", 2);
         }
 
         if(StringUtils.isNotBlank(orderField)){
@@ -146,8 +151,20 @@ public class ArticleRest {
         System.out.println(entity);
         Integer integer = mapper.selectMaxSort();
         entity.setSort(integer);
+        entity.setArticleType(0);
         mapper.insertSelective(entity);
         System.out.println(entity);
+        return new ObjectRestResponse<Article>().rel(true);
+    }
+
+    @RequestMapping(value = "/auth",method = RequestMethod.POST)
+    @ResponseBody
+    public ObjectRestResponse<Article> auth(@RequestParam Integer id,@RequestParam Integer userId,Integer status){
+         Article article = articleBiz.selectById(id);
+         if(article != null){
+             article.setStatus(1);
+             articleBiz.updateSelectiveById(article);
+         }
         return new ObjectRestResponse<Article>().rel(true);
     }
 }

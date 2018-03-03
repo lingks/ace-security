@@ -34,7 +34,8 @@ layui.use(['form', 'layedit'], function () {
             layer.close(index);
             var content = data.field.editorContent;
 
-            $.post({
+            console.log(username)
+            $.ajax({
                 url: base.url + '/blog/api/comment',
                 type: 'POST',
 
@@ -42,7 +43,9 @@ layui.use(['form', 'layedit'], function () {
                 dataType: 'json',
                 data:{
                     'content':content,
-                    'pid':64
+                    'pid':64,
+                    'crtUser':authorId,
+                    'crtName':username
                 },
                 success: function (data, status, xhr) {
                     console.log(data);

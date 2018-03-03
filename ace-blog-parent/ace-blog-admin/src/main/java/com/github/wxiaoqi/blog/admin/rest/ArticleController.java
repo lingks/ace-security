@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.List;
+
 /**
  * ${DESCRIPTION}
  *
@@ -35,6 +37,8 @@ public class ArticleController extends BaseController<ArticleBiz,Article> {
         System.out.println(entity);
         Integer integer = mapper.selectMaxSort();
         entity.setSort(integer);
+        entity.setArticleType(1);
+        entity.setStatus(1);
         EntityUtils.setCreatAndUpdatInfo(entity);
         mapper.insertSelective(entity);
         System.out.println(entity);
@@ -50,10 +54,12 @@ public class ArticleController extends BaseController<ArticleBiz,Article> {
         if(type != null){
             example.createCriteria().andEqualTo("type", type);
         }
+        example.createCriteria().andBetween("status", 1, 3);
         example.setOrderByClause("crt_time desc");
         int count = baseBiz.selectCountByExample(example);
         PageHelper.startPage(offset, limit);
-        return new TableResultResponse<Article>(count,baseBiz.selectByExample(example));
+        List<Article> list = baseBiz.selectByExample(example);
+        return new TableResultResponse<Article>(count,list);
     }
 
 }

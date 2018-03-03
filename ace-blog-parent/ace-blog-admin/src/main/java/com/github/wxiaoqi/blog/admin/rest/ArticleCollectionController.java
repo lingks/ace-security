@@ -28,6 +28,7 @@ public class ArticleCollectionController extends BaseController<ArticleCollectio
     @ResponseBody
     public TableResultResponse<ArticleCollection> page(int limit, int offset, String title){
         Example example = new Example(ArticleCollection.class);
+
         if(StringUtils.isNotBlank(title))
             example.createCriteria().andLike("title", "%" + title + "%");
         int count = baseBiz.selectCountByExample(example);

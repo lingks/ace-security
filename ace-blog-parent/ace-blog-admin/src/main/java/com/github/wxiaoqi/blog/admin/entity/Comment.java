@@ -8,6 +8,7 @@ package com.github.wxiaoqi.blog.admin.entity;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Date;
 
 @Table(name = "comment")
@@ -28,6 +29,18 @@ public class Comment {
     private String crtName;
 
     private Integer pid;
+
+
+    @Transient
+    private String logo;
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
 
     public Integer getId() {
         return id;

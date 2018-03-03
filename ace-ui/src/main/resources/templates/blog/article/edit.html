@@ -63,9 +63,19 @@
 			</div>
 		</div>
 
-			<input name="titleImg" id="titleImg" value="" type="hidden"/>
-		<input name="cover" id="cover" value="" type="hidden"/>
+		<div class="layui-form-item" style="display: none;" id=""suggestion"">
+			<label class="layui-form-label">审核意见</label>
+			<div class="layui-input-block">
+				<textarea class="layui-textarea layui-hide" name="suggestion"></textarea>
+			</div>
+		</div>
 
+		<input name="articleType" id="articleType" value="" type="hidden"/>
+		<input name="titleImg" id="titleImg" value="" type="hidden"/>
+		<input name="cover" id="cover" value="" type="hidden"/>
+		<input name="status" id="status" value="" type="hidden"/>
+		<input name="pageView" id="pageView" value="" type="hidden"/>
+		<input name="commentCount" id="commentCount" value="" type="hidden"/>
 		<button lay-filter="edit" lay-submit style="display: none;"></button>
 	</form>
 </div>

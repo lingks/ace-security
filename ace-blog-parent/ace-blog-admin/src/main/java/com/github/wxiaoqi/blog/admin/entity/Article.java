@@ -56,7 +56,7 @@ public class Article {
     @Column(name = "comment_count")
     private Integer commentCount;
     @Column(name = "hot_value")
-    private Integer hotValue;
+    private double hotValue;
 
     private Integer status;
 
@@ -76,7 +76,18 @@ public class Article {
 
     private String attr8;
 
-    private Integer type;
+    private Integer type;//文章类型 1 项目。。2精英。。 3
+
+    @Column(name = "article_type") //0 用户发布， 1后台添加
+    private Integer articleType;
+
+    public Integer getArticleType() {
+        return articleType;
+    }
+
+    public void setArticleType(Integer articleType) {
+        this.articleType = articleType;
+    }
 
     private Integer sort;
 
@@ -96,11 +107,11 @@ public class Article {
         this.status = status;
     }
 
-    public Integer getHotValue() {
+    public double getHotValue() {
         return hotValue;
     }
 
-    public void setHotValue(Integer hotValue) {
+    public void setHotValue(double hotValue) {
         this.hotValue = hotValue;
     }
 
