@@ -372,7 +372,8 @@
             <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
         </li>
         <li class="layui-nav-item">
-            <a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
+            <a href="/market"><i class="fa fa-btc fa-fw"></i>&nbsp;行情</a>
+        </li>
             <!--</li>-->
             <!--<li class="layui-nav-item">-->
             <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
@@ -442,9 +443,11 @@
                             var article = data.result;
                             $("#title").val(article.title);
                             $("#content").text(article.content);
+                            document.getElementById("content").value=article.content;
                             console.log("====")
                             console.log(article.content);
                             $("#remark").text(article.remark);
+                            document.getElementById("remark").value=article.remark;
                             $("#tag").val(article.tag);
                             $("#type").val(article.type);
                             $("#demo2").attr("src",article.cover);

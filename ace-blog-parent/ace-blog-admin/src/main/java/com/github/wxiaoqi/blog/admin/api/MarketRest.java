@@ -5,11 +5,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.wxiaoqi.blog.admin.entity.Market;
 import com.github.wxiaoqi.blog.admin.util.HttpClientUtil;
 import com.github.wxiaoqi.blog.admin.util.MarketResultResponse;
+import com.github.wxiaoqi.blog.admin.util.NumberFormat;
 import org.asynchttpclient.*;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,16 +22,31 @@ public class MarketRest {
 
     @RequestMapping(value = "/page", method = RequestMethod.GET)
     @ResponseBody
-    public MarketResultResponse get(int limit, int page) throws Exception {
-        requestUrl = "https://block.cc/api/v1/coin/list?page="+(page - 1)+"&size="+limit+"&select=volume_ex";
+    public MarketResultResponse get(int limit, int page,Integer coinType) throws Exception {
+        String where = "";
+        if(coinType != null) {
+
+            if (coinType == 1) {
+                where += "coinType=1";
+            }
+            if (coinType == 2) {
+                where += "coinType=2";
+            }
+            if (coinType == 3) {
+                where += "mineable=1";
+            }
+            if (coinType == 4) {
+                where += "mineable=0";
+            }
+        }
+
+        requestUrl = "https://block.cc/api/v1/coin/list?page="+(page - 1)+"&size="+limit+"&select=volume_ex&"+where;
         MarketResultResponse<List<Market>> resultResponse = null;
         try {
             String s = HttpClientUtil.doGet(requestUrl);
             JSONObject json = JSONObject.parseObject(s);
 
             JSONObject data = JSONObject.parseObject(json.getString("data"));
-            System.out.println(json);
-
             List<Market> array = JSONArray.parseArray(data.getString("list"),Market.class);
 
             int i = 1;
@@ -47,6 +60,14 @@ public class MarketRest {
                 if(market.getZhName() != null && !"".equals(market.getZhName())){
                     market.setName(market.getName() +"-"+ market.getZhName());
                 }
+                market.setPrice(NumberFormat.toFied2(market.getPrice()));
+                market.setChange1d(NumberFormat.toFied2(market.getChange1d()));
+                market.setChange7d(NumberFormat.toFied2(market.getChange7d()));
+                market.setMarketCap(NumberFormat.toFied2(market.getMarketCap()/10000));
+
+                market.setVolume_ex(NumberFormat.toFied2(market.getVolume_ex()==null||market.getVolume_ex().equals("")?0:(Double.parseDouble(market.getVolume_ex())/10000)) + "");
+                market.setAvailable_supply(NumberFormat.toFied2((market.getAvailable_supply()==null|| market.getAvailable_supply().equals(""))?0:(Double.parseDouble(market.getAvailable_supply())/10000)) + "");
+
             }
             resultResponse = new MarketResultResponse(json.getInteger("code"),array,"success",data.getInteger("pageCount") * limit);
 
@@ -57,20 +78,51 @@ public class MarketRest {
         return resultResponse;
     }
 
-//    public static void main(String[] args) {
-//        String s = HttpClientUtil.doGet(requestUrl);
-//        JSONObject json = JSONObject.parseObject(s);
-//
-//        JSONObject data = JSONObject.parseObject(json.getString("data"));
-//        System.out.println(json);
-//
-//        JSONArray array = JSONArray.parseArray(data.getString("list"));
-//
-//
-//        MarketResultResponse resultResponse = new MarketResultResponse(json.getInteger("code"),array,"success");
-//        System.out.println(resultResponse);
-//        System.out.println(s);
-//    }
+
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @ResponseBody
+    public MarketResultResponse list(int limitType, int size , String select,@RequestParam(name = "diefu", defaultValue = "0") Integer diefu) throws Exception {
+        requestUrl = "https://block.cc/api/v1/coin/list?size="+size+"&select="+select+"&limitType="+limitType;
+
+        if(diefu == 1){
+            if(limitType == 1) {
+                requestUrl = "https://block.cc/api/v1/coin/list?size=8&orderby=1&select=" + select + "&limitType=1";
+            }else{
+                requestUrl = "https://block.cc/api/v1/coin/list?size=8&orderby=1&select=" + select;
+            }
+        }
+            MarketResultResponse<List<Market>> resultResponse = null;
+        try {
+            String s = HttpClientUtil.doGet(requestUrl);
+            JSONObject json = JSONObject.parseObject(s);
+
+            JSONObject data = JSONObject.parseObject(json.getString("data"));
+            List<Market> array = JSONArray.parseArray(data.getString("list"),Market.class);
+
+            int i = 1;
+            for(Market market : array){
+
+                if(market.getZhName() != null && !"".equals(market.getZhName())){
+                    market.setName(market.getName() +"-"+ market.getZhName());
+                }
+                market.setPrice(NumberFormat.toFied2(market.getPrice()));
+                market.setChange1d(NumberFormat.toFied2(market.getChange1d()));
+                market.setChange7d(NumberFormat.toFied2(market.getChange7d()));
+                market.setMarketCap(NumberFormat.toFied2(market.getMarketCap()/10000));
+
+                market.setVolume_ex(NumberFormat.toFied2(market.getVolume_ex()==null||market.getVolume_ex().equals("")?0:(Double.parseDouble(market.getVolume_ex())/10000)) + "");
+                market.setAvailable_supply(NumberFormat.toFied2((market.getAvailable_supply()==null|| market.getAvailable_supply().equals(""))?0:(Double.parseDouble(market.getAvailable_supply())/10000)) + "");
+
+            }
+            resultResponse = new MarketResultResponse(json.getInteger("code"),array,"success");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return resultResponse;
+    }
 }
 
 

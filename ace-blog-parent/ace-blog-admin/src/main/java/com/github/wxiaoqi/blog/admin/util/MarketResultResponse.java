@@ -14,12 +14,21 @@ public class MarketResultResponse<T> {
     public MarketResultResponse() {
     }
 
+
+
     public MarketResultResponse(int code, T data, String message,int count) {
 
         this.code = code;
         this.data = data;
         this.message = message;
         this.count = count;
+    }
+
+    public MarketResultResponse(int code, T data, String message) {
+
+        this.code = code;
+        this.data = data;
+        this.message = message;
     }
 
     public int getCount() {

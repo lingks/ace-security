@@ -17,8 +17,26 @@ public class Market implements Serializable {
     private String available_supply;
     private String volume_ex;
     private double change7d;
+    private double change1h;
     private Integer sort;
+    private long listingTime;
     private List<SuggestEx> suggest_ex;
+
+    public double getChange1h() {
+        return change1h;
+    }
+
+    public void setChange1h(double change1h) {
+        this.change1h = change1h;
+    }
+
+    public long getListingTime() {
+        return listingTime;
+    }
+
+    public void setListingTime(long listingTime) {
+        this.listingTime = listingTime;
+    }
 
     public Integer getSort() {
         return sort;

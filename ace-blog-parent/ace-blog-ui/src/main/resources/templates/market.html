@@ -53,7 +53,7 @@
             padding: 0 19px;
             border: 1px solid #EBEBEB;
             border-bottom: none;
-            height: 300px;
+            height: 250px;
             margin-top: 0px;
         }
 
@@ -82,7 +82,7 @@
         .m-hot li {
             position: relative;
             padding-bottom: 20px;
-            height: 220px;
+            height: 180px;
             list-style: none;
         }
 
@@ -214,7 +214,9 @@
             vertical-align: middle \9;
 
         }
-
+        .layui-table-box, .layui-table-view{
+            width:100%;
+        }
         #h-writing button:hover {
             color: #6c9894;
             cursor: pointer;
@@ -258,11 +260,11 @@
             }
 
             .blog-main > .blog-main-left {
-                width: 72%;
+                width: 78%;
             }
 
             .blog-main > .blog-main-right {
-                width: 26%;
+                width: 21%;
             }
 
             .blog-main > .blog-main-right > .blog-module {
@@ -290,35 +292,71 @@
             <div class="blog-main-left">
                 <div class="demoTable" style="width: 100%;height:40px;line-height:40px;background: white;">
                     <div style="width: 40%;float: left;">
-                        <form class="layui-form form-view" action="" id="userInfo-form">
-                            <div class="layui-form-item" style="float: left">
-                                <div class="layui-inline">
-                                    <label class="layui-form-label">可挖矿</label>
-                                    <div class="layui-input-block">
-                                        <select name="type" lay-filter="aihao" id="type" lay-verify="type">
-                                            <option>全部币种</option>
-                                            <option>货币</option>
-                                            <option>代币</option>
-                                            <option>可挖矿</option>
-                                            <option>不可挖矿</option>
-                                        </select>
-                                    </div>
-                                </div>
+                        <div class="layui-form-item" style="float: left">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">币种列表</label>
+                                <select  name="type"  id="update_supply_id" style="margin-top: 8px;">
+                                    <option value="" selected>全部币种</option>
+                                    <option value="1">货币</option>
+                                    <option value="2">代币</option>
+                                    <option value="3">可挖矿</option>
+                                    <option value="4">不可挖矿</option>
+                                </select>
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <div style="width: 60%;background: white"></div>
                 </div>
+
                 <table class="layui-hide" id="LAY_table_user" lay-filter="user" style="width: 100%;"></table>
 
-                <div class="admin-table-page">
-                    <div id="paged" class="page">
-                    </div>
-                </div>
+
 
             </div>
             <!--右边小栏目-->
-            <div class="blog-main-right">
+            <div class="blog-main-right" style="background: white;">
+                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin:0">
+                    <div style="width: 100%;background: white;color: #36a0ff;font-size:16px;border-bottom: 1px #ccc solid;height:30px;line-height: 30px;text-align: center;">
+                        涨幅榜
+                    </div>
+                    <ul class="layui-tab-title">
+
+                        <li class="layui-this" style="min-width: 30px;" onclick="tagClick('change1h')">一小时</li>
+                        <li style="min-width: 30px;" onclick="tagClick('change1d')">一天</li>
+                        <li style="min-width: 30px;" onclick="tagClick('change7d')">一周</li>
+                        <li style="min-width: 30px;" onclick="tagClick('all')">全部</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show" id="change1h"></div>
+                        <div class="layui-tab-item" id="change1d"></div>
+                        <div class="layui-tab-item" id="change7d"></div>
+                        <div class="layui-tab-item" id="all"></div>
+                    </div>
+                </div>
+                <div style="width: 100%;background: #EEEEEE;border-bottom: 1px #ccc solid;height:10px;line-height: 10px;text-align: center;">
+
+                </div>
+                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin:0">
+                    <div style="width: 100%;color: #36a0ff;font-size:16px;background: white;border-bottom: 1px #ccc solid;height:30px;line-height: 30px;text-align: center;">
+                        跌幅榜
+                    </div>
+                    <ul class="layui-tab-title">
+
+                        <li class="layui-this" style="min-width: 30px;" onclick="dieClick('change1h',1)">一小时</li>
+                        <li style="min-width: 30px;" onclick="dieClick('change1d',1)">一天</li>
+                        <li style="min-width: 30px;" onclick="dieClick('change7d',1)">一周</li>
+                        <li style="min-width: 30px;" onclick="dieClick('all',0)">全部</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show" id="diechange1h"></div>
+                        <div class="layui-tab-item" id="diechange1d"></div>
+                        <div class="layui-tab-item" id="diechange7d"></div>
+                        <div class="layui-tab-item" id="dieall"></div>
+                    </div>
+                </div>
+                <div style="width: 100%;background: #EEEEEE;border-bottom: 1px #ccc solid;height:10px;line-height: 10px;text-align: center;">
+
+                </div>
                 <div id="hotNewsView"></div>
             </div>
             <div class="clear"></div>
@@ -456,7 +494,8 @@
             <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
         </li>
         <li class="layui-nav-item">
-            <a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>
+            <a href="/market"><i class="fa fa-btc fa-fw"></i>&nbsp;行情</a>
+        </li>
             <!--</li>-->
             <!--<li class="layui-nav-item">-->
             <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
@@ -541,9 +580,96 @@
     </div>
 </script>
 <script type="text/html" id="priceTpl">
-    <div class="price-view">{{d.price}}</div>
+    <div>${{d.price}}</div>
+</script>
+<script type="text/html" id="change1dTpl">
+    {{#  if(d.change1d > 0){ }}
+            <div style="color: green;">{{d.change1d}}%</div>
+    {{#  } }}
+    {{#  if(d.change1d < 0){ }}
+    <div style="color: red;">{{d.change1d}}%</div>
+    {{#  } }}
+</script>
+<script type="text/html" id="availabelTpl">
+    <div>${{d.available_supply}}万</div>
+</script>
+<script type="text/html" id="volumeTpl">
+    <div>${{d.volume_ex}}万</div>
+</script>
+<script type="text/html" id="marketCapTpl">
+    <div>${{d.marketCap}}万</div>
+</script>
+<script type="text/html" id="suggestTpl">
+    {{# layui.each(d.suggest_ex, function(index, item){ }}
+    <a href="{{item.link}}" target="_blank"><span>{{item.zh_name}}</span></a>
+    {{# }); }}
 </script>
 
+<script id="change1hTpl" type="text/html">
+    <ul style="width: 100%;">
+
+        <li style="width: 100%;background: white;border-bottom: 1px #ccc solid;height:30px;line-height: 30px;text-align: center;">
+            <span style="width: 10%;float: left;height: 30px;">排行</span>
+            <span style="height: 30px;width: 35%;float: left;">名称</span>
+            <span style="height: 30px;width: 30%;float: left">价格</span>
+            <span style="height: 30px;width: 25%;float: left;">涨幅</span>
+        </li>
+    {{# layui.each(d, function(index, item){ }}
+        <li style="width: 100%;background: white;border-bottom: 1px #ccc solid;height:40px;text-align: center;">
+            <div style="width: 10%;float:left;line-height: 40px;height: 40px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;">
+                <span style="width: 100%;padding: 3px;height: 10px;line-height: 40px;color: white; {{# if(index == 0){}}background:#ff6149;{{#}}} {{# if(index == 1){}}background:#ff920a;{{#}}} {{# if(index == 2){}}background:#ffc602;{{#}}}{{# if(index >2){}}background:#cacaca;{{#}}}">{{index + 1}}</span>
+            </div>
+            <span style="line-height: 40px;width: 35%;float: left;height: 40px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;">{{item.name}}</span>
+            <span style="line-height: 40px;width: 30%;float: left;height: 40px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;">${{item.price}}</span>
+            <span style="line-height: 40px;width: 25%;float: left;height: 40px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;{{# if(item.change1h > 0){}} color:green;{{#}}}{{# if(item.change1h <= 0){}} color:red;{{#}}}">{{item.change1h}}</span>
+        </li>
+    {{# }); }}
+    </ul>
+</script>
+
+<script id="change1ddTpl" type="text/html">
+
+    <li style="width: 100%;background: white;border-bottom: 1px #ccc solid;height:30px;line-height: 30px;text-align: center;">
+        <span style="width: 10%;float: left;height: 30px;">排行</span>
+        <span style="height: 30px;width: 35%;float: left;">名称</span>
+        <span style="height: 30px;width: 30%;float: left">价格</span>
+        <span style="height: 30px;width: 25%;float: left;">涨幅</span>
+    </li>
+    <ul style="width: 100%;">
+        {{# layui.each(d, function(index, item){ }}
+        <li style="width: 100%;background: white;border-bottom: 1px #ccc solid;height:40px;text-align: center;">
+            <div style="width: 10%;float: left;line-height: 40px;height: 40px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;">
+                <span style="width: 100%;padding: 3px;height: 10px;line-height: 40px;color: white; {{# if(index == 0){}}background:#ff6149;{{#}}} {{# if(index == 1){}}background:#ff920a;{{#}}} {{# if(index == 2){}}background:#ffc602;{{#}}}{{# if(index >2){}}background:#cacaca;{{#}}}">{{index + 1}}</span>
+            </div>
+            <span style="line-height: 40px;width: 35%;float: left;height: 40px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;">{{item.name}}</span>
+            <span style="line-height: 40px;width: 30%;float: left;height: 40px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;">${{item.price}}</span>
+            <span style="line-height: 40px;width: 25%;float: left;height: 40px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;{{# if(item.change1d > 0){}} color:green;{{#}}}{{# if(item.change1d <= 0){}} color:red;{{#}}}">{{item.change1d}}</span>
+        </li>
+        {{# }); }}
+    </ul>
+</script>
+
+<script id="change7dTpl" type="text/html">
+    <ul style="width: 100%;text-align: center;">
+
+        <li style="width: 100%;background: white;border-bottom: 1px #ccc solid;height:30px;line-height: 30px;">
+            <span style="width: 10%;float: left;height: 30px;">排行</span>
+            <span style="height: 30px;width: 35%;float: left;">名称</span>
+            <span style="height: 30px;width: 30%;float: left">价格</span>
+            <span style="height: 30px;width: 25%;float: left;">涨幅</span>
+        </li>
+        {{# layui.each(d, function(index, item){ }}
+        <li style="width: 100%;background: white;border-bottom: 1px #ccc solid;height:40px;text-align: center;">
+            <div> style="width: 10%;float: left;line-height: 40px;height: 40px;">
+                <span style="width: 100%;padding: 3px;height: 10px;line-height: 40px;background: red;">{{index + 1}}</span>
+            </div>
+            <span style="line-height: 40px;width: 35%;float: left;height: 40px;">{{item.name}}</span>
+            <span style="line-height: 40px;width: 30%;float: left;height: 40px;">${{item.price}}</span>
+            <span style="line-height: 40px;width: 25%;float: left;height: 40px;{{# if(item.change7d > 0){}} color:green;{{#}}}{{# if(item.change7d <= 0){}} color:red;{{#}}}">{{item.change7d}}</span>
+        </li>
+        {{# }); }}
+    </ul>
+</script>
 <script>
     layui.config({
         base: 'js/'
@@ -623,15 +749,18 @@
             , cols: [[
 //                {checkbox: true, fixed: true}
 //                ,
-                {field: 'sort', title: '#', sort: true, width:50,fixed: true}
+                {field: 'sort', title: '#', sort: true, width:80,fixed: true}
                 , {
                     field: 'name',width:200,
-                    title: '名称',
+                    title: '名称',sort: true,
                     templet: '#nameTpl'
                 }
-                , {field: 'price', title: '价格',templet:'#priceTpl'}
-                , {field: 'change1d', title: '涨幅榜'}
-                , {field: 'marketCap', title: '流通数量'}
+                , {field: 'price', sort: true,title: '价格'}
+                , {field: 'change1d',sort: true, title: '涨幅榜',templet:'#change1dTpl'}
+                , {field: 'available_supply', sort:true,title: '流通数量', templet:'#availabelTpl'}
+                , {field: 'volume_ex', sort:true,title: '交易量',templet:'#volumeTpl'}
+                , {field: 'marketCap', sort: true,title: '市值', templet:'#marketCapTpl'}
+                , {field: 'suggest_ex', sort: true,title: '推荐交易所', templet:'#suggestTpl'}
             ]]
             , id: 'testReload'
             , page: true
@@ -648,22 +777,208 @@
                     }
                     , where: {
                         key: {
-                            id: demoReload.val()
+                            id:$('#update_supply_id').val()
                         }
                     }
                 });
             }
         };
 
-        $('.demoTable .layui-btn').on('click', function () {
-            var type = $(this).data('type');
-            active[type] ? active[type].call(this) : '';
+
+    });
+
+    $('#update_supply_id').on('change', function () {
+        var coinType = $(this).val();
+        layui.use('table', function () {
+            var table = layui.table;
+            table.reload('testReload', {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                },
+
+                where:{
+                    coinType:coinType
+                }
+            });
         });
     });
 
-    $(function(){
-        console.log($(".price-view").text())
-    })
+
+    $.ajax({
+        url: base.url + '/blog/api/market/list',
+        contentType: "application/json; charset=utf-8",
+        data:{
+            size:8,
+            select:'change1h',
+            limitType:1
+        },
+        dataType: 'json',
+        success: function (data, status, xhr) {
+
+            var laytpl = layui.laytpl,
+            getTpl = change1hTpl.innerHTML;
+            layui.use('laytpl', function() {
+                laytpl(getTpl).render(data.data, function (html) {
+
+                    $("#change1h").html(html);
+                });
+            });
+        }
+    });
+
+    $.ajax({
+        url: base.url + '/blog/api/market/list',
+        contentType: "application/json; charset=utf-8",
+        data:{
+            size:8,
+            select:'change1h',
+
+            diefu:1,
+            limitType:1
+        },
+        dataType: 'json',
+        success: function (data, status, xhr) {
+
+            var laytpl = layui.laytpl,
+                getTpl = change1hTpl.innerHTML;
+            layui.use('laytpl', function() {
+                laytpl(getTpl).render(data.data, function (html) {
+
+                    $("#diechange1h").html(html);
+                });
+            });
+        }
+    });
+    function tagClick(id){
+
+        var laytpl = layui.laytpl;
+        var getTpl;
+        $.ajax({
+            url: base.url + '/blog/api/market/list',
+            contentType: "application/json; charset=utf-8",
+            data:{
+                size:8,
+                select:id,
+                limitType:1
+            },
+            dataType: 'json',
+            success: function (data, status, xhr) {
+
+                layui.use('laytpl', function() {
+
+                        if(id == 'change1h'){
+                            getTpl = change1hTpl.innerHTML;
+                            laytpl(getTpl).render(data.data, function (html) {
+
+                                $("#change1h").html(html);
+                            });
+                        }
+
+                        if(id == 'change1d'){
+                            getTpl = change1ddTpl.innerHTML;
+                            laytpl(getTpl).render(data.data, function (html) {
+                                $("#change1d").html(html);
+                            });
+                        }
+                        if(id == 'change7d'){
+                            getTpl = change7dTpl.innerHTML;
+                            laytpl(getTpl).render(data.data, function (html) {
+                                $("#change7d").html(html);
+                            });
+                        }
+                        if(id == 'all'){
+                            getTpl = change1hTpl.innerHTML;
+                            laytpl(getTpl).render(data.data, function (html) {
+                                $("#all").html(html);
+                            });
+                        }
+                    });
+
+            }
+        })
+    };
+
+
+
+
+    function dieClick(id,limitType){
+
+        var laytpl = layui.laytpl;
+        var getTpl;
+        $.ajax({
+            url: base.url + '/blog/api/market/list',
+            contentType: "application/json; charset=utf-8",
+            data:{
+                size:8,
+                select:id==0?'change7d':id,
+                limitType:limitType,
+                diefu:1,
+            },
+            dataType: 'json',
+            success: function (data, status, xhr) {
+
+                layui.use('laytpl', function() {
+
+                    if(id == 'change1h'){
+                        getTpl = change1hTpl.innerHTML;
+                        laytpl(getTpl).render(data.data, function (html) {
+
+                            $("#diechange1h").html(html);
+                        });
+                    }
+
+                    if(id == 'change1d'){
+                        getTpl = change1ddTpl.innerHTML;
+                        laytpl(getTpl).render(data.data, function (html) {
+                            $("#diechange1d").html(html);
+                        });
+                    }
+                    if(id == 'change7d'){
+                        getTpl = change7dTpl.innerHTML;
+                        laytpl(getTpl).render(data.data, function (html) {
+                            $("#diechange7d").html(html);
+                        });
+                    }
+                    if(id == 'all'){
+                        getTpl = change1hTpl.innerHTML;
+                        laytpl(getTpl).render(data.data, function (html) {
+                            $("#dieall").html(html);
+                        });
+                    }
+                });
+
+            }
+        })
+    };
+//
+//    function  changeFun(o) {
+//        console.log($(o))
+//        layui.use('table', function () {
+//            var table = layui.table;
+//            var $ = layui.$, active = {
+//                reload: function () {
+//                    var demoReload = $('#demoReload');
+//
+//                    //执行重载
+//                    table.reload('testReload', {
+//                        page: {
+//                            curr: 1 //重新从第 1 页开始
+//
+//                        }
+//                        , where: {
+//                            key: {
+//                                id: demoReload.val()
+//                            }
+//                        }
+//                    });
+//                }
+//            };
+//
+//            var type = $(this).data('type');
+//            active[type] ? active[type].call(this) : '';
+//
+//        });
+//    }
 </script>
 
 </body>
