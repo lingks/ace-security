@@ -236,6 +236,7 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" id="id" name="id">
                         <input type="hidden" id="cover" name="cover">
                         <input type="hidden" id="crtUser" name="crtUser">
                         <input type="hidden" id="crtName" name="crtName">
@@ -415,55 +416,35 @@
     {{# }); }}
 </script>
 <script>
+    var cache = localStorage.getItem("user");
 
+    var url = window.location.href;
+    var urlArr = url.split("?");
+    $("#crtUser").val(user.id);
+    $("#crtName").val(user.username);
+    if(cache != undefined && cache != null && cache != "" && cache != "null"){
+        var user = JSON.parse(cache);
+
+
+
+
+    }else{
+        window.location.href = "/login.html"
+    }
     $(function(){
-        var cache = localStorage.getItem("user");
-
-        if(cache != undefined && cache != null && cache != "" && cache != "null"){
-            var user = JSON.parse(cache);
-
-            $("#crtUser").val(user.id);
-            $("#crtName").val(user.username);
 
 
-            var url = window.location.href;
-            var urlArr = url.split("?");
-            console.log(urlArr)
-            console.log(urlArr.length)
-            if(urlArr.length>=2){
-                $.ajax({
-                    url: base.url + '/blog/api/article/' + urlArr[1],
-                    type: 'GET',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: 'jsonp',
-                    jsonp: 'callback',
-                    async: true,
-                    success: function (data, status, xhr) {
-                        if(data.rel == true){
-                            var article = data.result;
-                            $("#title").val(article.title);
-                            $("#content").text(article.content);
-                            document.getElementById("content").value=article.content;
-                            console.log("====")
-                            console.log(article.content);
-                            $("#remark").text(article.remark);
-                            document.getElementById("remark").value=article.remark;
-                            $("#tag").val(article.tag);
-                            $("#type").val(article.type);
-                            $("#demo2").attr("src",article.cover);
-                            $("#crtUser").val(article.crtUser);
-                            $("#crtName").val(article.crtName);
-                            $("#cover").val(article.cover);
-                            $("#crtTime").val(article.crtTime);
+            layui.use(['form', 'layedit', 'laydate'], function () {
+                var layer = layui.layer, //获取当前窗口的layer对象
+                    form = layui.form,
+                    layedit = layui.layedit,
+                content = layedit.build('content');
 
-                        }
-                    }
-                });
-            }
+            });
 
-        }else{
-            window.location.href = "/login.html"
-        }
+
+
+
 
 
 
@@ -475,21 +456,114 @@
 
 
 
-    layui.use(['form', 'layedit', 'laydate'], function() {
+function  btnSubmitFun() {
+    $.ajax({
+        url: base.url + '/blog/api/article/update/'+$("#id").val(),
+        type: 'POST',
 
-        var form = layui.form
-            , layer = layui.layer
-            , layedit = layui.layedit
-            , laydate = layui.laydate;
 
-        layedit.set({
-            uploadImage: {
-                url: '/file/uploadImg' //接口url
-                ,type: 'post' //默认post
-            }
-        });
-        //注意：layedit.set 一定要放在 build 前面，否则配置全局接口将无效。
-        var editIndex =  layedit.build('content'); //建立编辑器
+        dataType: 'json',
+        data:{
+            'id':$("#id").val(),
+            'title':$("#title").val(),
+            'remark':$("#remark").text(),
+            'tag':$("#tag").val(),
+            'content':$("#content").val(),
+            'cover':$("#cover").val(),
+            'type':$("#type").val(),
+            'crtUser':$("#crtUser").val(),
+            'crtName':$("#crtName").val(),
+            'pid':$("#crtUser").val(),
+            'pname':$("#crtName").val()
+        },
+        success: function (data, status, xhr) {
+
+            layui.use('layer', function() {
+
+                var $ = layui.jquery, layer = layui.layer;
+
+                layer.msg("保存成功...")
+            });
+        }
+    })
+
+}
+
+
+        if(urlArr.length>=2){
+            layui.use(['form', 'layedit', 'laydate'], function () {
+
+                var form = layui.form
+                    , layer = layui.layer
+                    , layedit = layui.layedit
+                    , laydate = layui.laydate;
+
+                var content = "";
+                $.ajax({
+                    url: base.url + '/blog/api/article/' + urlArr[1],
+                    type: 'GET',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'jsonp',
+                    jsonp: 'callback',
+                    async: true,
+                    success: function (data, status, xhr) {
+
+
+
+
+                        if (data.rel == true) {
+                            var article = data.result;
+
+                            $("#id").val(article.id);
+                            $("#content").text(article.content);
+                            var editIndex = layedit.build('content'); //建立编辑器
+                            $("#title").val(article.title);
+
+                            $("#remark").text(article.remark);
+                            $("#tag").val(article.tag);
+                            $("#type").val(article.type);
+                            $("#demo2").attr("src", article.cover);
+                            $("#crtUser").val(article.crtUser);
+                            $("#crtName").val(article.crtName);
+                            $("#cover").val(article.cover);
+                            $("#crtTime").val(article.crtTime);
+
+                        }
+                    }
+                });
+
+                layedit.set({
+                    uploadImage: {
+                        url: '/file/uploadImg' //接口url
+                        , type: 'post' //默认post
+                    }
+                });
+                //注意：layedit.set 一定要放在 build 前面，否则配置全局接口将无效。
+
+
+                console.log(content)
+
+            });
+
+
+        }else{
+            layui.use(['form', 'layedit', 'laydate'], function() {
+
+                var form = layui.form
+                    , layer = layui.layer
+                    , layedit = layui.layedit
+                    , laydate = layui.laydate;
+
+                layedit.set({
+                    uploadImage: {
+                        url: '/file/uploadImg' //接口url
+                        ,type: 'post' //默认post
+                    }
+                });
+
+                //注意：layedit.set 一定要放在 build 前面，否则配置全局接口将无效。
+                var editIndex =  layedit.build('content'); //建立编辑器
+                $("#content").val("丝丝丝丝纟");
         //自定义验证规则
         form.verify({
             title: function(value){
@@ -558,7 +632,12 @@
             });
         });
 
+
+
+
     });
+
+            }
     layui.use('upload', function() {
             var $ = layui.jquery
                 ,upload = layui.upload;

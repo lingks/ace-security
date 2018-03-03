@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.Date;
+
 /**
  * Created by ace on 2017/7/16.
  */
@@ -49,6 +51,17 @@ public class ArticleRest {
         Article entity = articleBiz.selectById(id);
         entity.setPageView(entity.getPageView() + 1);
         articleBiz.updateSelectiveById(entity);
+        return new ObjectRestResponse<Article>().rel(true);
+    }
+
+
+    @RequestMapping(value = "/edit/",method = RequestMethod.POST)
+    @ResponseBody
+    public ObjectRestResponse<Article> edit(Article article){
+        Article entity = articleBiz.selectById(article.getId());
+        article.setUpdTime(new Date());
+
+        if(entity != null)articleBiz.updateSelectiveById(article);
         return new ObjectRestResponse<Article>().rel(true);
     }
 
