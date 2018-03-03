@@ -211,8 +211,7 @@
                             <div class="layui-inline">
                                 <label class="layui-form-label">文章类型</label>
                                 <div class="layui-input-block">
-                                    <select name="type" lay-filter="aihao" id="type" lay-verify="type">
-                                        <option value=""></option>
+                                    <select name="type" id="type" lay-verify="type">
                                         <option value="1">项目报告</option>
                                         <option value="2">精英视点</option>
                                         <option value="3">行业政策</option>
@@ -457,8 +456,13 @@
 
 
 function  btnSubmitFun() {
+    var id = $("#id").val();
+    var url = base.url + '/blog/api/article'
+    if(id != ''){
+        url = base.url + '/blog/api/article/edit';
+    }
     $.ajax({
-        url: base.url + '/blog/api/article/update/'+$("#id").val(),
+        url: url,
         type: 'POST',
 
 
@@ -519,15 +523,38 @@ function  btnSubmitFun() {
                             var editIndex = layedit.build('content'); //建立编辑器
                             $("#title").val(article.title);
 
+                            $("#type").val(article.type);
                             $("#remark").text(article.remark);
                             $("#tag").val(article.tag);
-                            $("#type").val(article.type);
                             $("#demo2").attr("src", article.cover);
                             $("#crtUser").val(article.crtUser);
                             $("#crtName").val(article.crtName);
                             $("#cover").val(article.cover);
                             $("#crtTime").val(article.crtTime);
 
+                            var options = $("#type").find("option");
+                            for(var i =0; i< options.length; i ++){
+                                console.log($(options[i]).val())
+                                if($(options[i]).val() == article.type){
+                                    $(options[i]).addClass("layui-this")
+                                }else{
+
+                                    $(options[i]).removeClass("layui-this")
+                                }
+                            }
+
+                            var types = $(".layui-form-item").find("dd");
+                            for(var i =0; i< types.length; i ++){
+                                console.log($(types[i]).val())
+                                if($(types[i]).attr("lay-value") == article.type){
+                                    $(types[i]).addClass("layui-this")
+                                    console.log($(types[i]).parent().parent().find("input"))
+                                    $(types[i]).parent().parent().find("input").val($(types[i]).text())
+                                }else{
+
+                                    $(types[i]).removeClass("layui-this")
+                                }
+                            }
                         }
                     }
                 });
@@ -538,10 +565,6 @@ function  btnSubmitFun() {
                         , type: 'post' //默认post
                     }
                 });
-                //注意：layedit.set 一定要放在 build 前面，否则配置全局接口将无效。
-
-
-                console.log(content)
 
             });
 

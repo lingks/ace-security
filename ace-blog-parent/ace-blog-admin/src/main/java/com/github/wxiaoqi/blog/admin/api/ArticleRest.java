@@ -55,7 +55,7 @@ public class ArticleRest {
     }
 
 
-    @RequestMapping(value = "/edit/",method = RequestMethod.POST)
+    @RequestMapping(value = "/edit",method = RequestMethod.POST)
     @ResponseBody
     public ObjectRestResponse<Article> edit(Article article){
         Article entity = articleBiz.selectById(article.getId());
