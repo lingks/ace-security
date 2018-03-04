@@ -233,7 +233,8 @@ function userLogoout2(){
     $("#menu-view").hide();
 };
 var base = {};
-base.url = "http://localhost:8765";
+base.url = "http://39.108.59.108:8765";
+//base.url = "http://localhost:8765";
 //百度分享插件
 window._bd_share_config = {
     "common": {
