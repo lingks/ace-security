@@ -1139,7 +1139,7 @@ position: relative;margin: auto;min-width: 1200px">
         var count = 0;
         var totalPage = 1;
         $.ajax({
-            url: base.url + '/blog/api/article/page?pageIndex=1&pageSize=10&orderField=hotValue&orderBy=desc',
+            url: base.url + '/blog/api/article/page?pageIndex=1&pageSize=10&type=' + id,
 
             contentType: "application/json; charset=utf-8",
             dataType: 'jsonp',

@@ -188,6 +188,11 @@
         <span>作者：{{ d.crtName }}</span>
         <span id="page-view">浏览量：{{ d.pageView }}</span>
     </div>
+    {{# if(item.cover != undefined && item.cover != null && item.cover != '' && item.cover != 'null'){}}
+    <div style="100%;">
+        <img style="100%;" src="{{item.cover}}">
+    </div>
+    {{#}}}
     <div class="article-detail-content layui-markdown" id="detailContent">
         {{ d.content }}
     </div>
