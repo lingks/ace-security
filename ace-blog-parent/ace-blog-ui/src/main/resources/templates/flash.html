@@ -450,10 +450,12 @@
     <ul>
         {{# layui.each(d.result, function(index, item){ }}
         <div class="article shadow">
+            {{# if(item.cover != undefined && item.cover != null && item.cover != '' && item.cover != 'null'){}}
             <div class="article-left">
                 <img src="{{ item.cover }}" alt="{{ item.title }}"/>
             </div>
-            <div class="article-right">
+            {{#}}}
+            <div class="article-right" {{# if(item.cover != undefined && item.cover != null && item.cover != '' && item.cover != 'null'){}}style="float:left;width:100%;"{{#}}>
                 <div class="article-title">
                     <a href="{{ '/detail/' + item.id }}">{{ item.title }}</a>
                 </div>
