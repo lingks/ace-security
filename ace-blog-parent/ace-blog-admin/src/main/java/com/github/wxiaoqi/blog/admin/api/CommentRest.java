@@ -45,7 +45,7 @@ public class CommentRest  {
     public ObjectRestResponse<Comment> add(Comment entity){
 
         Article article = articleBiz.selectById(entity.getPid());
-        article.setCommentCount(article.getCommentCount() + 1);
+        article.setCommentCount(article.getCommentCount()==null?0:article.getCommentCount() + 1);
         article.setHotValue(article.getHotValue() + 1);
         articleBiz.updateSelectiveById(article);
         entity.setCrtTime(new Date());

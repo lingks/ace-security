@@ -17,17 +17,17 @@ article.columns = function () {
         field: 'remark',
         title: '摘要'
     },{
-        field: 'type',
+        field: 'articleType',
         title: '类型',
         formatter: function(value,row,index){
 
             if(value == 1){
                 return "项目报告";
             }
-            if(value == 1){
+            if(value == 2){
                 return "精英视点";
             }
-            if(value == 1){
+            if(value == 3){
                 return "行业政策";
             }
 

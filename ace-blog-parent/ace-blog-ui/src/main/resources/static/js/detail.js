@@ -52,8 +52,8 @@ layui.use(['form', 'layedit'], function () {
                 }
             })
 
-
-            var html = '<li><div class="comment-parent"><img src="../images/Absolutely.jpg"alt="absolutely"/><div class="info"><span class="username">Absolutely</span><span class="time">2017-03-18 18:46:06</span></div><div class="content">' + content + '</div></div></li>';
+            var img= $("#uinfo-view-img").attr("src");
+            var html = '<li><div class="comment-parent"><img src="'+img+'"alt="用户头像"/><div class="info"><span class="username">'+username+'</span><span class="time">2017-03-18 18:46:06</span></div><div class="content">' + content + '</div></div></li>';
             $('.blog-comment').append(html);
             $('#remarkEditor').val('');
             editIndex = layui.layedit.build('remarkEditor', {

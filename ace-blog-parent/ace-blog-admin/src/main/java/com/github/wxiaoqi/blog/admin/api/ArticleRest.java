@@ -69,7 +69,9 @@ public class ArticleRest {
 
 
     @RequestMapping(value = "/page",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public JSONPObject get(int pageIndex, int pageSize,String authorId,String title,Integer type,String orderField,String orderBy,String callback){
+    public JSONPObject get(int pageIndex, int pageSize,String authorId,String title,
+                           Integer type,String orderField,String orderBy,
+                           @RequestParam(name = "scroller" ,defaultValue = "0") Integer scroller, String callback){
         Example example = new Example(Article.class);
         if(StringUtils.isNotBlank(title)) {
             example.createCriteria().andLike("title", "%" + title + "%");
@@ -78,6 +80,9 @@ public class ArticleRest {
             example.createCriteria().andEqualTo("type", type);
         }
 
+        if(scroller > 0){
+            example.createCriteria().andEqualTo("scroller", scroller);
+        }
         if(StringUtils.isNotBlank(authorId)){
 
             example.createCriteria().andEqualTo("crtUser", authorId);
@@ -86,7 +91,7 @@ public class ArticleRest {
         }
 
         if(StringUtils.isNotBlank(orderField)){
-            example.setOrderByClause(orderField + " " + orderBy==null?"asc":"desc");
+            example.setOrderByClause("hot_value desc");
         }
 
         int count = articleBiz.selectCountByExample(example);

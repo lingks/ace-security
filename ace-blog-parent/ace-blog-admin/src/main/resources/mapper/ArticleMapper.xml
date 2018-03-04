@@ -20,6 +20,7 @@
     <result column="hotValue" jdbcType="DOUBLE" property="hotValue" />
     <result column="crt_time" jdbcType="TIMESTAMP" property="crtTime" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="scroller" jdbcType="INTEGER" property="scroller" />
     <result column="pname" jdbcType="VARCHAR" property="pname" />
     <result column="sort" jdbcType="INTEGER" property="sort" />
     <result column="crtUser" jdbcType="VARCHAR" property="crtUser" />

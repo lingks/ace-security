@@ -78,6 +78,16 @@ public class Article {
 
     private Integer type;//文章类型 1 项目。。2精英。。 3
 
+    private Integer scroller;
+
+    public Integer getScroller() {
+        return scroller;
+    }
+
+    public void setScroller(Integer scroller) {
+        this.scroller = scroller;
+    }
+
     @Column(name = "article_type") //0 用户发布， 1后台添加
     private Integer articleType;
 
