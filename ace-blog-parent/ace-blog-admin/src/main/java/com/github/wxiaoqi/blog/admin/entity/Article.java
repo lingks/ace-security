@@ -55,9 +55,12 @@ public class Article {
     private String updHost;
     @Column(name = "comment_count")
     private Integer commentCount;
+    @Column(name = "is_top")
+    private Integer isTop;
+    @Column(name = "top_sort")
+    private Integer topSort;
     @Column(name = "hot_value")
     private double hotValue;
-
     private Integer status;
 
     private String attr1;
@@ -100,6 +103,22 @@ public class Article {
     }
 
     private Integer sort;
+
+    public Integer getTopSort() {
+        return topSort;
+    }
+
+    public void setTopSort(Integer topSort) {
+        this.topSort = topSort;
+    }
+
+    public Integer getIsTop() {
+        return isTop;
+    }
+
+    public void setIsTop(Integer isTop) {
+        this.isTop = isTop;
+    }
 
     public Integer getSort() {
         return sort;
