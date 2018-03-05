@@ -38,9 +38,20 @@
     <result column="attr6" jdbcType="VARCHAR" property="attr6" />
     <result column="attr7" jdbcType="VARCHAR" property="attr7" />
     <result column="attr8" jdbcType="VARCHAR" property="attr8" />
+
+    <result column="is_top" jdbcType="INTEGER" property="isTop" />
+    <result column="top_sort" jdbcType="INTEGER" property="topSort" />
+
   </resultMap>
+
   <select id="selectMaxSort" resultType="java.lang.Integer">
     select
     max(sort) + 1 from blog_article
   </select>
+
+  <select id="selectMaxTop" resultType="java.lang.Integer">
+    select
+    max(top_sort) + 1 from blog_article
+  </select>
+
 </mapper>

@@ -552,7 +552,7 @@
 
 <!--项目库-->
 
-<div class="layui-carousel" id="btc-view" style="width:1200px;height:100px; background: white;
+<div class="layui-carousel" id="btc-view" style="width:1200px;h background: white;
 position: relative;margin: auto;min-width: 1200px">
     <div >
         <ul id="btc-sub-view">
@@ -748,19 +748,37 @@ position: relative;margin: auto;min-width: 1200px">
 </script>
 <script id="btcTpl" type="text/html">
     {{# layui.each(d, function(index, item){ }}
-    <li>
-        <p style="{{# if(index >= 7 ){}}border-right:none;{{#}}}">
-            <span class="left">{{item.zhName}}</span>
-            <span class="right" style="{{# if(index >= 7 ){}}border-right:none;{{#}}}">
-                {{item.marketCap}}万
-            </span>
-        </p>
-        <p style="{{# if(index >= 7 ){}}border-right:none;{{#}}}">
-            <span class="left">{{item.price}}</span>
-            <span class="right" style="{{# if(item.change1d > 0){}}color:green;{{#}}}{{# if(item.change1d <= 0){}}color:red;{{#}}}">
-                {{item.change1d}}%
-            </span>
-        </p>
+    <li style="background: white;{{# if(index > 0){}}margin-left: 1px;{{#}}}{{# if(index == 0){}}width:150px;{{#}}}">
+
+        <!--<p style="{{# if(index >= 7 ){}}border-right:none;{{#}}}">-->
+            <!--<span class="left">{{item.zhName}}</span>-->
+            <!--<span class="right" style="{{# if(index >= 7 ){}}border-right:none;{{#}}}">-->
+                <!--{{item.marketCap}}万-->
+            <!--</span>-->
+        <!--</p>-->
+        <!--<p style="{{# if(index >= 7 ){}}border-right:none;{{#}}}">-->
+            <!--<span class="left">{{item.price}}</span>-->
+            <!--<span class="right" style="{{# if(item.change1d > 0){}}color:green;{{#}}}{{# if(item.change1d <= 0){}}color:red;{{#}}}">-->
+                <!--{{item.change1d}}%-->
+            <!--</span>-->
+        <!--</p>-->
+        <div style="width: 149px;height:30px; ">
+            <span style="float: left;width: 20px;height: 20px;border-radius: 50%;    margin-left: 10px;">
+                <img style="width: 100%;" src="https://blockchains.oss-cn-shanghai.aliyuncs.com/static/coinInfo/{{item.id}}.png"</img></span>
+            <span style="float: right; width: 100px;text-align: left;">{{item.zhName}}</span>
+        </div>
+        <div  style="width: 149px;height:30px;text-align: left;">
+            <span  style="float: left;width: 49px;">&nbsp;&nbsp;市值</span>
+            <span  style="float: right;width: 100px;">${{item.marketCap}}万</span>
+        </div>
+        <div  style="width: 149px;height:30px; text-align: left;">
+            <span  style="float: left;width: 49px;">&nbsp;&nbsp;价格</span>
+            <span  style="float: right;width: 100px;">${{item.price}}</span>
+        </div>
+        <div  style="width: 149px;height:30px; text-align: left;">
+            <span  style="float: left;width: 49px;">&nbsp;&nbsp;涨幅</span>
+            <span  style="float: right;width: 100px;{{# if(item.change1d > 0){}}color:green;{{#}}}{{# if(item.change1d <= 0){}}color:red;{{#}}}">{{item.change1d}}%</span>
+        </div>
     </li>
     {{# }); }}
 </script>
@@ -1477,7 +1495,8 @@ position: relative;margin: auto;min-width: 1200px">
 
 
     $(document).ready(function () {
-        setInterval("startRequest()",3000);
+       setInterval("startRequest()",3000);
+       // startRequest();
     });
     function startRequest()
     {

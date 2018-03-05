@@ -172,5 +172,16 @@ public class ArticleRest {
          }
         return new ObjectRestResponse<Article>().rel(true);
     }
+
+    @RequestMapping(value = "/top/{id}",method = RequestMethod.PUT)
+    @ResponseBody
+    public ObjectRestResponse<Article> top(Article entity){
+        entity.setIsTop(mapper.selectMaxTop());
+        mapper.updateByPrimaryKey(entity);
+        return new ObjectRestResponse<Article>().rel(true);
+    }
+
+
+
 }
 
