@@ -592,14 +592,7 @@ position: relative;margin: auto;min-width: 1200px">
             <!--左边文章列表-->
             <div class="blog-main-left" style="840px">
 
-                <div id="tab-view-id" class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-                    <ul class="layui-tab-title">
-                        <li class="layui-this" onclick="tagClick(0)">热点新闻</li>
-                        <li onclick="tagClick(1)">项目报告</li>
-                        <li onclick="tagClick(2)">精英视点</li>
-                        <li onclick="tagClick(3)">行业政策</li>
-                    </ul>
-                </div>
+
                 <div id="articles"></div>
                 <div class="admin-table-page">
                     <div id="paged" class="page">
@@ -748,7 +741,7 @@ position: relative;margin: auto;min-width: 1200px">
 </script>
 <script id="btcTpl" type="text/html">
     {{# layui.each(d, function(index, item){ }}
-    <li style="background: white;{{# if(index > 0){}}margin-left: 1px;{{#}}}{{# if(index == 0){}}width:150px;{{#}}}">
+    <li style="background: white;cursor: pointer;{{# if(index > 0){}}margin-left: 1px;{{#}}}{{# if(index == 0){}}width:150px;{{#}}}" onclick="window.location.href=/market/{{item.id}}">
 
         <!--<p style="{{# if(index >= 7 ){}}border-right:none;{{#}}}">-->
             <!--<span class="left">{{item.zhName}}</span>-->

@@ -1,0 +1,697 @@
+﻿
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <title>链算数据</title>
+    <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
+    <!--Layui-->
+    <link href="../plug/layui/css/layui.css" rel="stylesheet" />
+    <!--font-awesome-->
+    <link href="../plug/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!--全局样式表-->
+    <link href="../css/global.css" rel="stylesheet" />
+    <!--本页样式表-->
+    <link href="../css/article.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../slider2/css/base.css">
+    <link rel="stylesheet" type="text/css" href="../slider2/css/index.css">
+
+    <style type="text/css">
+        body{
+            background: #f5f5f5;
+        }
+        #first_pj_index_view{
+            width: 100%;
+            min-width: 1200px;
+        }
+        #first_pj_index_view li{
+            width: 80%;
+            height:280px;
+            margin: 0 auto;
+            background: white;
+        }
+        #first_pj_index_view li a img{
+            width:100%;
+            height: 208px;
+        }
+
+        #second_pj_index_view{
+            width: 100%;
+            min-width: 1200px;
+        }
+        #second_pj_index_view li{
+            width: 80%;
+            height:280px;
+            margin: 0 auto;
+            background: white;
+        }
+        #second_pj_index_view li a img{
+            width:100%;
+            height: 208px;
+        }
+        .ui_li_div{
+            float: left;
+            width: 20%;
+        }
+        .li_div{
+            width: 100%;
+        }
+        .layui-carousel .layui-this{
+            background-image: url("../images/head-bg.jpg");
+        }
+        .carousel-title{
+            font-size: 24px;
+            color: rgba(255, 255, 255, .5);
+            line-height: 24px;
+            text-align: center;
+            margin-bottom: 23px;
+            padding-top: 20px;
+            font: 16px PingFangSC-Regular, Microsoft YaHei;
+        }
+
+
+        #ui_li_span{
+            position: relative;
+            display: block;
+            font-size: 13px;
+            width: 80px;
+            line-height: 13px;
+            text-align: center;
+            color: rgba(255, 255, 255, .7);
+            margin: 0 auto;
+        }
+        #ui_li_span:before{
+            position: absolute;
+            content: " ";
+            top: 0;
+            left: 0;
+            width: 9px;
+            height: 13px;
+            background: url("../images/pro-banner-timer-lf.svg") no-repeat center;
+        }
+        #ui_li_span:after{
+            position: absolute;
+            content: " ";
+            top: 0;
+            right: 0;
+            width: 9px;
+            height: 13px;
+            background: url("../images/pro-banner-timer-rt.svg") no-repeat center;
+        }
+        @media (min-width: 992px) {
+            .blog-main > .blog-main-left {
+                width: 68%;
+            }
+        }
+        .article {
+            padding: 0px;
+            width: 48.5%;
+            float: left;
+            padding-bottom: 0px;
+            height: 140px;
+            margin-bottom: 10px;
+            background: #fff;
+            margin-right: 1.5%;
+            border: none;
+            -moz-transition: all 0.3s linear;
+            -o-transition: all 0.3s linear;
+            -webkit-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+        }
+
+        .article:hover {
+            border-left: 0px solid #009688;
+            -moz-transition: all 0.3s linear;
+            -o-transition: all 0.3s linear;
+            -webkit-transition: all 0.3s linear;
+            transition: all 0.3s linear;
+        }
+
+        .article_right{
+            text-align: left;
+            font-size: 14px;
+            display: block;
+            margin-top: 10px;
+
+        }
+        .article-right{
+            text-indent: 0em;
+        }
+        .article-left {
+            width: 25%;
+            float: left;
+            padding-top: 30px;
+            padding-left: 2%;
+        }
+        .blog-main {
+            width: 100%;
+            position: relative;
+            min-height: 100vh;
+            background: white;
+        }
+        .article-right {
+            width: 43%;
+            float: left;
+            padding-left: 0px;
+            padding-top: 28px;
+        }
+        .article-header{
+            width: 29%;
+            height: 140px;
+            float: right;
+            text-align: center;
+            padding-left: 0px;
+            /* padding-top: 30px; */
+            font-size: 12px;
+            line-height: 25px;
+            color: #afafaf;
+            border-left: 1px solid #ebebeb
+        }
+        /* 大屏幕（大桌面显示器，大于等于 1200px） */
+        @media (min-width: 1200px) {
+            .blog-container {
+                width: 1180px;
+            }
+        }
+        .search-btn{
+            width: 80%;
+            margin: 0 auto;
+            height: 40px;
+            position: relative;
+            background: #5e6db5;
+            bottom: 0px;
+            text-align: center;
+            color: white;
+            line-height: 40px;
+            font-size: 14px;
+        }
+
+
+        .pro-good-data-text {
+            font-size: 12px;
+            color: #666666;
+            text-align: justify;
+            overflow: hidden;
+        }
+        .blog-module2 {
+            margin-bottom: 0px;
+            /* padding: 15px; */
+            background: #fff;
+            height: 100%;
+            text-align: center;
+        }
+        .blog-body{
+            margin-top: 65px;
+            min-width: 1150px;
+        }
+        .article-title-csss{
+            color:#3758bd;
+        }
+        .article-title-csss:hover{
+            color:#3758bd;
+        }
+        .article-left p img{
+            cursor: pointer;
+            transition: all 0.6s;
+        }
+        .article-left p img:hover{
+            transform: scale(1.2);
+        }
+        .blog-module > .blog-module-title {
+            border-bottom: 0px solid #009688;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 0;
+            margin-bottom: 0px;
+        }
+        .blog-module {
+            margin-bottom: 0px;
+            padding: 15px;
+            background: #fff;
+            height: 100%;
+        }
+        @media (min-width: 768px){
+            .blog-main > .blog-main-right > .blog-module {
+
+                margin-bottom: 0px;
+            }
+        }
+        .article-height{
+            height:140px;
+        }
+        .article-div-view{
+            height: 140px;
+        }
+        .article-div-view:hover{
+            box-sizing: border-box;
+            border: 1px solid #ebebeb;
+            transition: box-shadow .3s ease;
+        }
+        .article-header a div:hover{
+            border-color:#5670BF;
+            background:#5670BF;
+            color: #fff;
+        }
+
+
+        .layui-btn2 {
+            display: inline-block;
+            height: 28px;
+            border-radius: 15px;
+            /* text-align: left; */
+            line-height: 28px;
+            padding: 0px 20px 0px 10px;
+            background-color: #393D49;
+            color: #fff;
+            white-space: nowrap;
+            text-align: left;
+            font-size: 12px;
+            border: none;
+            /*border: 1px #4c4949 solid;*/
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        #login-tag{
+            font-size: 12px;
+            margin-left: 20px;
+        }
+        .layui-btn2 .layui-icon {
+            /* margin-right: 3px; */
+            /* font-size: 18px; */
+            vertical-align: bottom;
+            vertical-align: middle\9;
+
+        }
+
+        #h-writing button:hover{
+            color: #6c9894;
+            cursor: pointer;
+        }
+        #login-tag a{
+            cursor: pointer;
+        }
+
+        #uinfo-view {
+            position: absolute;
+            right: 0;
+            width: 65px;
+            margin-right: 50px;
+        }
+        #xiewenzhangn{
+            float: right;
+            width: 100px;
+            padding-top: 14px;
+        }
+
+
+        #login-tag a{
+            cursor: pointer;
+        }
+        #login-tag a span{
+            color: #fff;font-size: 12px;
+        }
+        .blog-nav .layui-nav{
+            left: 450px;
+        }
+
+        .layui-tab-content {
+            padding: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<!-- 导航 -->
+<nav class="blog-nav layui-header">
+    <div class="blog-container" id="blog-container">
+
+    </div>
+</nav>
+
+
+
+
+<!-- 主体（一般只改变这里的内容） -->
+<div class="blog-body">
+    <!-- 这个一般才是真正的主体内容 -->
+    <div class="blog-container">
+        <div class="blog-main" id="main-view">
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 底部 -->
+<footer class="blog-footer">
+    <!--<p id="partner-about" style="text-align: left;padding:0 20px">-->
+    <!--友情链接： 比特时代-->
+    <!--</p>-->
+    <p id="partner-view" class="partner-view">
+
+    </p>
+
+    <p id="partner-url" style="text-align: left;padding:0 20px">
+        友情链接： 比特时代
+    </p>
+    <p><span>Copyright</span><span>&copy;</span><span>2017</span><a href="">Lins</a><span>Design By Mr.Lin</span></p>
+    <p><a href="" target="_blank">蜀ICP备160299x4e5号-1</a></p>
+</footer>
+<!---->
+<!--分享窗体-->
+<div class="blog-share layui-hide">
+    <div class="blog-share-body">
+        <div style="width: 200px;height:100%;">
+            <div class="bdsharebuttonbox">
+                <a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                <a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                <a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                <a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--遮罩-->
+<div class="blog-mask animated layui-hide"></div>
+<script src="../slider/js/jquery-1.10.1.min.js"></script>
+<script src="../slider/js/idangerous.swiper2.7.6.min.js"></script>
+<script src="../slider/js/swiper.animate1.0.2.min.js"></script>
+<!-- layui.js -->
+<script src="../plug/layui/layui.js"></script>
+<!-- 全局脚本 -->
+<script src="../js/global.js"></script>
+<!-- 本页脚本 -->
+<script src="../js/home.js"></script>
+
+
+<script id="header_view" type="text/html">
+    {{# layui.each(d.result, function(index, item){ }}
+    <div id="uinfo-view"">
+    <div onmouseover="userLogoin();" onmouseleave="setTimeout('userLogoout()', 3000);" id="ufo" style="margin-top: 15px;width: 35px;height: 35px;float: left;border-radius: 50%;overflow:hidden;">
+        <img src="{{item.logo}}" style="width: 100%;">
+    </div>
+    <li class="layui-nav-item" lay-unselect="">
+        <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
+            <dd><a href="/center">个人中心</a></dd>
+            <dd><a href="/center?article">我的文章</a></dd>
+            <dd><a href="/center?message">消息中心</a></dd>
+            <dd onclick="logout();" style="cursor: pointer"><a style="cursor: pointer">退出</a></dd>
+        </dl>
+    </li>
+    </div>
+
+    {{# }); }}
+    {{#  if(d.result.length === 0){ }}
+    <div id="login-tag" style="position: absolute;right: 80px;float:left;line-height: 65px;color: #fff;font-size: 14px;">
+        <a href="/login.html"><span>登&nbsp;&nbsp;录</span></a>&nbsp;|&nbsp;<a href="/register.html"><span>注&nbsp;&nbsp;册</span></a>
+    </div>
+    {{#  } }}
+    <div id="xiewenzhangn"  onclick="writting();">
+        <div class="h-writing" style="width: 100px;height: 48px;">
+            <li style="width: 78px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 24px;
+    border-radius: 15px;
+    background: #393D49">
+                <button class="layui-btn2" style="
+    /* height: 30px; */
+    "><i class="layui-icon"></i>写文章</button>
+            </li>
+        </div>
+    </div>
+
+    <a href="javascript:;" class="blog-user layui-hide">
+        <img src="../images/Absolutely.jpg" alt="Absolutely" title="Absolutely"/>
+    </a>
+    <!-- 不落阁 -->
+    <a class="blog-logo" href="home.html">
+        <img src="../images/logo_chain.png">
+    </a>
+    <!-- 导航菜单 -->
+    <ul class="layui-nav" lay-filter="nav">
+        <li class="layui-nav-item">
+            <a href="/home"><i class="fa fa-home fa-fw"></i>&nbsp;首页</a>
+        </li>
+        <!--<li class="layui-nav-item">-->
+        <!--<a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>-->
+        <!--</li>-->
+        <li class="layui-nav-item">
+            <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="/market"><i class="fa fa-btc fa-fw"></i>&nbsp;行情</a>
+        </li>
+        <!--<li class="layui-nav-item">-->
+            <!--<a href="/project"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
+            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+            <!--<li class="layui-nav-item">-->
+            <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
+            <!--</li>-->
+        <li class="layui-nav-item layui-this">
+            <a href="/author"><i class="fa fa-thumbs-up fa-fw"></i>&nbsp;作家</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="about.html"><i class="fa fa-info fa-fw"></i>&nbsp;关于我们</a>
+        </li>
+    </ul>
+    <!-- 手机和平板的导航开关 -->
+    <a class="blog-navicon" href="javascript:;">
+        <i class="fa fa-navicon"></i>
+    </a>
+</script>
+
+<script id="partner" type="text/html">
+    {{# layui.each(d.result,function(index,item){}}
+    <a href="{{item.url}}"> <img src="{{item.logo}}" style="width:100px;height:40px;margin-left:5px;"></a>
+    {{#  }); }}
+</script>
+<script id="friendshipTpl" type="text/html">
+    友情链接： {{# layui.each(d.result, function(index, item){ }}
+    <a href="{{item.url}}" target="_blank">{{item.name}}</a>&nbsp;&nbsp;
+    {{# }); }}
+</script>
+<script id="pjtpl" type="text/html">
+    {{# layui.each(d.result, function(index, item){ }}
+    <li>
+
+        <a href=""><img src="{{item.cover}}" alt=""/>
+            <div>{{item.title}}</div>
+        </a>
+    </li>
+    {{# }); }}
+</script>
+<script id="mainViewTpl" type="text/html">
+    <div style="width:1200px;margin:0 auto;background:white;">
+        <div style="width:100%;padding:40px 10px 0px 20px;font-size: 20px;">
+
+            <img src="https://blockchains.oss-cn-shanghai.aliyuncs.com/static/coinInfo/{{d.id}}.png">
+
+            <span>比特币（BTC）</span></div>
+
+        <div style="width:100%;background:white;">
+            <div style="    width: 350px;float: left;padding: 20px 20px;background: white;">
+                <div style="color: #a9a6a6;font-size: 18px;">
+                    {{d.symbol}}价格
+                </div>
+                <div style="font-size: 26px;">
+                    $ {{d.price}} <span style="font-size: 14px;{{# if(d.change1d > 0){}}color:red;{{# }}}{{# if(d.change1d <= 0){}}color:green;{{#}}}">{{d.change1d}} %</span>
+                </div>
+                <div style="font-size: 14px;">
+                    ￥ {{d.CNY_RATE * d.price}}
+                </div>
+                <!--<div style="font-size: 18px;">-->
+                    <!--{{d.coin_type}}-->
+                <!--</div>-->
+            </div>
+
+            <div style="    width: 340px;height: 100px;float: left;padding: 20px 30px;background: white;">
+                <div style="color: #a9a6a6;font-size: 18px;">
+                    {{d.symbol}}市值 <span style="color: white;background:green;font-size: 14px;padding:2px 10px;">排行：{{d.level}}</span>
+                </div>
+                <div style="font-size: 26px;">
+                    ${{d.marketCap}}
+                </div>
+                <div style="font-size: 14px;color: #C9C5C5;">
+                    ￥{{d.marketCap * d.CNY_RATE}}
+                    <!--<i aria-hidden="true" class="fa fa-btc" data-v-66043cb5=""></i> {{d.available_supply}}-->
+                </div>
+
+                <div style="font-size: 18px;color: #C9C5C5;">
+                    {{d.symbol}} 流通数量 {{d.available_supply}} {{d.symbol}}
+                </div>
+            </div>
+
+            <div style="    width: 340px;height: 100px;float: left;padding: 20px 30px;background: white;">
+                <div style="color: #a9a6a6;font-size: 18px;">
+                    {{d.symbol}}交易量<span style="color: white;background:green;font-size: 14px;padding:2px 10px;">排行：{{d.level}}</span>
+                </div>
+                <div style="font-size: 26px;">
+                    $  {{d.volume_ex}}
+                </div>
+                <div style="font-size: 14px;color: #C9C5C5;">
+                    ￥ {{d.volume_ex * d.CNY_RATE}}
+                </div>
+                <div style="font-size: 18px;color: #C9C5C5;">
+                    {{d.symbol}}发行总量 {{d.supple}} {{d.symbol}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tab-view-id" class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="    width: 1200px;
+    background: white;margin: 140px 0px;">
+        <ul class="layui-tab-title">
+            <li >基本信息</li>
+            <!--<li >价格趋势</li>-->
+            <!--<li >社交信息</li>-->
+        </ul>
+        <div class="layui-tab-content" style="height: 100px;color: #999;">
+            <div class="layui-tab-item layui-show">
+                <div style="width: 66%;">
+                    <div style="width: 50%;float: left;font-size: 14px;height: 90px;">
+                        <p>
+                            官网链接：
+                            {{# layui.each(d.websites, function(index, item){ }}
+                            <a href="{{item}}"><span style="color: #36a0ff;font-size: 12px;">{{item}}</span></a>&nbsp;&nbsp;
+                            {{# }); }}
+
+                        </p>
+                        <p>
+                            论坛:{{# layui.each(d.message, function(index, item){ }}
+                            <a href="{{item}}"><span  style="color: #36a0ff;font-size: 12px;">论坛{{index + 1}}</span></a>&nbsp;&nbsp;
+                            {{# }); }}
+                        </p>
+                        <p>
+                            开源代码仓库：<a href="{{d.github}}"><span style="color: #36a0ff;font-size: 12px;">{{d.github}}</span></a>
+                        </p>
+                        <p>
+                            <!--发行时间：<span style="font-size: 12px;">${{d.publicTime}}</span>-->
+                        </p>
+                    </div>
+                    <div style="width: 50%;float: right;font-size: 14px;height: 90px;">
+                        <p>
+                            区块浏览器：{{# layui.each(d.Explorers, function(index, item){ }}
+                            <a href="{{item}}"><span  style="color: #36a0ff;font-size: 12px;">区块站{{index + 1}}</span></a>&nbsp;&nbsp;
+                            {{# }); }}
+                        </p>
+                        <p style="font-size: 12px;">
+                            上架交易所：{{d.ex_num}}
+                        </p>
+                        <p>
+                            白皮书:<a href="{{d.whitepaper}}"><span style="color: #36a0ff;font-size: 12px;">下载</span></a>
+                        </p>
+                        <p></p>
+                    </div>
+                    <div style="width: 100%;font-size: 12px;color: #555;">
+                        <p>{{d.descriptions.zh}}</p>
+                    </div>
+                </div>
+                <div style="width: 33%;float: left;">
+
+                </div>
+            </div>
+            <!--<div class="layui-tab-item">内容2</div>-->
+            <!--<div class="layui-tab-item">内容3</div>-->
+        </div>
+    </div>
+
+</script>
+<script>
+
+    layui.config({
+        base: 'js/'
+    });
+
+    var currentPage = 2;
+    var count = 0;
+    var totalPage = 1;
+    var type = 0;
+
+
+    layui.use('laytpl', function() {
+        var laytpl = layui.laytpl;
+        var getTpl = partner.innerHTML,
+            friendshipTemplate = friendshipTpl.innerHTML,
+            mainTemplate = mainViewTpl.innerHTML
+            , view = document.getElementById('partner-view'),
+            shipView = document.getElementById('partner-url'),
+
+            mainView = document.getElementById('main-view');
+
+        $.ajax({
+            url: base.url + '/blog/api/partner/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(getTpl).render(data, function (html) {
+                    view.innerHTML = html;
+                });
+            }
+        })
+
+        $.ajax({
+            url: base.url + '/blog/api/ship/list',
+
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                laytpl(friendshipTemplate).render(data, function (html) {
+                    shipView.innerHTML = html;
+                });
+            }
+        })
+
+
+
+
+        var url = window.location.href;
+        var href = "https://block.cc/api/v1/coin/get?coin=" + url.substr(url.lastIndexOf("/")+1, url.length);
+        $.ajax({
+
+            url:href,
+            type:'get',
+            contentType: "application/json; charset=utf-8",
+            success: function (res, status, xhr) {
+                if(res.code == 0) {
+                    var data = res.data;
+                    var datas=[data];
+
+                    console.log(data)
+                    laytpl(mainTemplate).render(data, function (html) {
+
+                        mainView.innerHTML = html;
+                    });
+                }
+            }
+        });
+
+        $.ajax({
+            url:'https://www.reddit.com/r/bitcoin',
+            type:'get',
+            success:function(data){
+                console.log(data)
+            }
+        })
+    });
+
+
+
+
+</script>
+
+<script type="text/javascript" src="../power/images/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../power/js/power-slider.js"></script>
+</body>
+</html>

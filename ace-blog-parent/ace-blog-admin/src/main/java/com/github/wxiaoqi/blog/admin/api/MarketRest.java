@@ -123,7 +123,16 @@ public class MarketRest {
 
         return resultResponse;
     }
+    @RequestMapping(value = "/getById", method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject getById(@RequestParam String id) throws Exception {
+        String url = "https://block.cc/api/v1/coin/get?coin=" + id;
 
+        String s = HttpClientUtil.doGet(url);
+        JSONObject json = JSONObject.parseObject(s);
+
+        return json;
+    }
 
     @RequestMapping(value = "/getByIds", method = RequestMethod.POST)
     @ResponseBody
@@ -153,15 +162,17 @@ public class MarketRest {
         return array;
     }
 
-//
-//    public static void main(String[] args) {
-//        String url = "https://block.cc/api/v1/coin/get?coin=bitcoin";
-//        String s = HttpClientUtil.doGet(url );
-//        JSONObject json = JSONObject.parseObject(s);
-//        System.out.println(json);
-//
-//
-//    }
+
+
+
+    public static void main(String[] args) {
+        String url = "https://block.cc/api/v1/coin/get?coin=bitcoin";
+        String s = HttpClientUtil.doGet(url );
+        JSONObject json = JSONObject.parseObject(s);
+        System.out.println(json);
+
+
+    }
 }
 
 
