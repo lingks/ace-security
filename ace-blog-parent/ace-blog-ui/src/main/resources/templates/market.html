@@ -25,29 +25,33 @@
             margin-top: 64px;
             min-width: 1250px;
         }
-        ::-webkit-scrollbar{
+
+        ::-webkit-scrollbar {
             width: 4px;
             height: 4px;
             background-color: black;
         }
 
         /*定义滚动条的轨道，内阴影及圆角*/
-        ::-webkit-scrollbar-track{
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
             border-radius: 10px;
             background-color: white;
         }
+
         /*定义滑块，内阴影及圆角*/
-        ::-webkit-scrollbar-thumb{
+        ::-webkit-scrollbar-thumb {
             /*width: 10px;*/
             height: 15px;
             border-radius: 10px;
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
             background-color: #a09f9f;
         }
-        #layui-laypage-1 .layui-laypage-count{
+
+        #layui-laypage-1 .layui-laypage-count {
             display: none;
         }
+
         .m-hot {
             background: #fff;
             padding: 0 19px;
@@ -111,9 +115,10 @@
             display: none;
         }
 
-        .layui-form-select .layui-input{
-            border:none;
+        .layui-form-select .layui-input {
+            border: none;
         }
+
         .m-hot-num {
             position: relative;
             top: -70px;
@@ -214,9 +219,11 @@
             vertical-align: middle \9;
 
         }
-        .layui-table-box, .layui-table-view{
-            width:100%;
+
+        .layui-table-box, .layui-table-view {
+            width: 100%;
         }
+
         #h-writing button:hover {
             color: #6c9894;
             cursor: pointer;
@@ -251,8 +258,6 @@
         .blog-nav .blog-logo {
             top: 5px;
         }
-
-
 
         @media (min-width: 1200px) {
             .blog-container {
@@ -295,7 +300,7 @@
                         <div class="layui-form-item" style="float: left">
                             <div class="layui-inline">
                                 <label class="layui-form-label">币种列表</label>
-                                <select  name="type"  id="update_supply_id" style="margin-top: 8px;">
+                                <select name="type" id="update_supply_id" style="margin-top: 8px;">
                                     <option value="" selected>全部币种</option>
                                     <option value="1">货币</option>
                                     <option value="2">代币</option>
@@ -309,7 +314,6 @@
                 </div>
 
                 <table class="layui-hide" id="LAY_table_user" lay-filter="user" style="width: 100%;"></table>
-
 
 
             </div>
@@ -496,10 +500,10 @@
         <li class="layui-nav-item">
             <a href="/market"><i class="fa fa-btc fa-fw"></i>&nbsp;行情</a>
         </li>
-            <!--</li>-->
-            <!--<li class="layui-nav-item">-->
-            <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
-            <!--</li>-->
+        <!--</li>-->
+        <!--<li class="layui-nav-item">-->
+        <!--<a href="timeline.html"><i class="fa fa-hourglass-half fa-fw"></i>&nbsp;项目库</a>-->
+        <!--</li>-->
         <li class="layui-nav-item">
             <a href="/author"><i class="fa fa-thumbs-up fa-fw"></i>&nbsp;作家</a>
         </li>
@@ -572,22 +576,27 @@
 </script>
 <script type="text/html" id="nameTpl">
     <div style="width: 200px;">
-       <div style="width: 20px;height: 20px;border-radius: 50%;overflow: hidden;float: left;margin-top:4px;">
-           <img style="width: 100%" src="https://blockchains.oss-cn-shanghai.aliyuncs.com/static/coinInfo/{{d.id}}.png" alt="" onerror="$(this).hide();  "/>
-       </div>
-        <div style=" margin-left:25px;">{{d.name}}</div>
+        <div style="width: 20px;height: 20px;border-radius: 50%;overflow: hidden;float: left;margin-top:4px;">
+            <img style="width: 100%" src="https://blockchains.oss-cn-shanghai.aliyuncs.com/static/coinInfo/{{d.id}}.png"
+                 alt="" onerror="$(this).hide();  "/>
+        </div>
+        <span style=" margin-left:10px;">{{d.name}}</span>
 
     </div>
 </script>
 <script type="text/html" id="priceTpl">
     <div>${{d.price}}</div>
 </script>
+<script type="text/html" id="sortTpl">
+    <div style="display: none;">{{d.id}}</div><span>{{d.sort}}</span>
+</script>
+
 <script type="text/html" id="change1dTpl">
     {{#  if(d.change1d > 0){ }}
-            <div style="color: green;">{{d.change1d}}%</div>
+    <div style="color: red;">{{d.change1d}}%</div>
     {{#  } }}
     {{#  if(d.change1d < 0){ }}
-    <div style="color: red;">{{d.change1d}}%</div>
+    <div style="color: green;">{{d.change1d}}%</div>
     {{#  } }}
 </script>
 <script type="text/html" id="availabelTpl">
@@ -617,7 +626,7 @@
             <span style="height: 30px;width: 30%;float: left">价格</span>
             <span style="height: 30px;width: 25%;float: left;">涨幅</span>
         </li>
-    {{# layui.each(d, function(index, item){ }}
+        {{# layui.each(d, function(index, item){ }}
         <li style="width: 100%;background: white;border-bottom: 1px #ccc solid;height:40px;text-align: center;">
             <div style="width: 10%;float:left;line-height: 40px;height: 40px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;">
                 <span style="width: 100%;padding: 3px;height: 10px;line-height: 40px;color: white; {{# if(index == 0){}}background:#ff6149;{{#}}} {{# if(index == 1){}}background:#ff920a;{{#}}} {{# if(index == 2){}}background:#ffc602;{{#}}}{{# if(index >2){}}background:#cacaca;{{#}}}">{{index + 1}}</span>
@@ -626,7 +635,7 @@
             <span style="line-height: 40px;width: 30%;float: left;height: 40px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;">${{item.price}}</span>
             <span style="line-height: 40px;width: 25%;float: left;height: 40px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;{{# if(item.change1h > 0){}} color:green;{{#}}}{{# if(item.change1h <= 0){}} color:red;{{#}}}">{{item.change1h}}</span>
         </li>
-    {{# }); }}
+        {{# }); }}
     </ul>
 </script>
 
@@ -752,21 +761,128 @@
             , cols: [[
 //                {checkbox: true, fixed: true}
 //                ,
-                {field: 'sort', title: '#', sort: true, width:80,fixed: true}
-                , {
-                    field: 'name',width:200,
-                    title: '名称',sort: true,
+                {
+                    field:'id',title:'#',width:0, fixed: true,templet:'#sortTpl'
+                },
+                {
+                    field: 'name', width: 200,
+                    title: '名称', sort: true,
                     templet: '#nameTpl'
                 }
-                , {field: 'price', sort: true,title: '价格', templet:'#priceTpl'}
-                , {field: 'change1d',sort: true, title: '涨幅榜',templet:'#change1dTpl'}
-                , {field: 'available_supply', sort:true,title: '流通数量', templet:'#availabelTpl'}
-                , {field: 'volume_ex', sort:true,title: '交易量',templet:'#volumeTpl'}
-                , {field: 'marketCap', sort: true,title: '市值', templet:'#marketCapTpl'}
-                , {field: 'suggest_ex', sort: true,title: '推荐交易所', templet:'#suggestTpl'}
+                , {field: 'price', sort: true, title: '价格', templet: '#priceTpl'}
+                , {field: 'change1d', sort: true, title: '涨幅榜', templet: '#change1dTpl'}
+                , {field: 'available_supply', sort: true, title: '流通数量', templet: '#availabelTpl'}
+                , {field: 'volume_ex', sort: true, title: '交易量', templet: '#volumeTpl'}
+                , {field: 'marketCap', sort: true, title: '市值', templet: '#marketCapTpl'}
+                , {field: 'suggest_ex', sort: true, title: '推荐交易所', templet: '#suggestTpl'}
             ]]
             , id: 'testReload'
-            , page: true
+            , page: true,
+            done: function (res, curr, count) {
+
+                console.log($('#LAY_table_user').parent().find('table').find('tbody')[0])
+                console.log($($('#LAY_table_user').parent().find('table').find('tbody')[0]).find('tr')[0]);
+                var trs = $($('#LAY_table_user').parent().find('table').find('tbody')[0]).find('tr');
+
+                function getIds() {
+                    var ids = "";
+                    for (var i = 0; i < trs.length; i++) {
+                        var cur = trs[i];
+                        var tds = $(cur).find('td');
+                        var id = $(tds[0]).attr('data-content');
+                        ids = ids + id + ",";
+                    }
+                    console.log(ids)
+                    return ids;
+                }
+
+                setInterval(function () {
+
+                    $.ajax({
+                        url: "/api/market/getByIds",
+                        type: 'POST',
+                        data: {
+                            ids: getIds()
+                        },
+                        contentType: "application/json; charset=utf-8",
+
+
+                        success: function (res) {
+                            var datas = res;
+                            for (var i = 0; i < trs.length; i++) {
+                                var cur = trs[i];
+                                var tds = $(cur).find('td');
+
+                                var currentName = "";
+                                var currentData = "";
+                                for (var j = 0; j < tds.length; j++) {
+                                    var td = tds[j];
+                                    for(var m = 0; m < datas.length; m++){
+                                        var data = datas[m];
+                                        if(data.name == $(td).attr('data-content') ){
+                                            currentData = data;
+                                        }
+                                    }
+                                }
+
+                                for(var x=0; x < tds.length; x ++){
+                                    var td = tds[x];
+
+                                    if ($(td).attr('data-field') == 'price') {
+                                        if(currentData.price != undefined){
+
+                                            var price = parseFloat(currentData.price).toFixed(2);
+                                            var oldPrice = $(td).find("div").text().split("$")[1];
+                                            console.log(currentData.price + "---------" + oldPrice + "/n")
+                                            if (currentData.price > oldPrice) {
+                                                $(td).find("div").css('color', 'red');
+                                                $(td).find("div").css('font-weight', 'bold');
+                                                $(td).find("div").text("$"+currentData.price + "↑");
+                                            }
+                                            if (currentData.price < oldPrice) {
+                                                $(td).find("div").css('color', 'green');
+                                                $(td).find("div").css('font-weight', '100');
+                                                $(td).find("div").text("$"+currentData.price + "↓");
+                                            }
+                                        }
+                                    }
+                                    if ($(td).attr('data-field') == 'change1d') {
+                                        if(currentData.change1d != undefined){
+                                            var change1d = (parseFloat(currentData.change1d).toFixed(2));
+                                            var oldChange1d = $(td).find("div").text().split("%")[0];
+
+                                            if (oldChange1d != change1d) {
+                                                if (change1d > 0) {
+                                                    $(td).find("div").css('font-weight', 'bold');
+                                                    $(td).find("div").css('color', 'red');
+                                                }
+                                                if (change1d < 0) {
+                                                    $(td).find("div").css('color', 'green');
+                                                    $(td).find("div").css('font-weight', '100');
+                                                }
+                                                $(td).find("div").text(change1d + "%");
+                                            }
+                                        }
+                                    }
+
+                                    if ($(td).attr('data-field') == 'volume_ex') {
+                                        if(currentData.volume_ex != undefined){
+                                            var volume_ex = "$" + (parseFloat(currentData.volume_ex).toFixed(2)) + "万";
+                                            if ($(td).find("div").text() != volume_ex) {
+                                                $(td).find("div").text(volume_ex);
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    });
+                }, 10000);
+
+
+            }
+
         });
 
         var $ = layui.$, active = {
@@ -780,7 +896,7 @@
                     }
                     , where: {
                         key: {
-                            id:$('#update_supply_id').val()
+                            id: $('#update_supply_id').val()
                         }
                     }
                 });
@@ -799,8 +915,8 @@
                     curr: 1 //重新从第 1 页开始
                 },
 
-                where:{
-                    coinType:coinType
+                where: {
+                    coinType: coinType
                 }
             });
 
@@ -812,17 +928,17 @@
     $.ajax({
         url: base.url + '/blog/api/market/list',
         contentType: "application/json; charset=utf-8",
-        data:{
-            size:8,
-            select:'change1h',
-            limitType:1
+        data: {
+            size: 8,
+            select: 'change1h',
+            limitType: 1
         },
         dataType: 'json',
         success: function (data, status, xhr) {
 
             var laytpl = layui.laytpl,
-            getTpl = change1hTpl.innerHTML;
-            layui.use('laytpl', function() {
+                getTpl = change1hTpl.innerHTML;
+            layui.use('laytpl', function () {
                 laytpl(getTpl).render(data.data, function (html) {
 
                     $("#change1h").html(html);
@@ -834,19 +950,19 @@
     $.ajax({
         url: base.url + '/blog/api/market/list',
         contentType: "application/json; charset=utf-8",
-        data:{
-            size:8,
-            select:'change1h',
+        data: {
+            size: 8,
+            select: 'change1h',
 
-            diefu:1,
-            limitType:1
+            diefu: 1,
+            limitType: 1
         },
         dataType: 'json',
         success: function (data, status, xhr) {
 
             var laytpl = layui.laytpl,
                 getTpl = change1hTpl.innerHTML;
-            layui.use('laytpl', function() {
+            layui.use('laytpl', function () {
                 laytpl(getTpl).render(data.data, function (html) {
 
                     $("#diechange1h").html(html);
@@ -854,77 +970,75 @@
             });
         }
     });
-    function tagClick(id){
+    function tagClick(id) {
 
         var laytpl = layui.laytpl;
         var getTpl;
         $.ajax({
             url: base.url + '/blog/api/market/list',
             contentType: "application/json; charset=utf-8",
-            data:{
-                size:8,
-                select:id,
-                limitType:1
+            data: {
+                size: 8,
+                select: id,
+                limitType: 1
             },
             dataType: 'json',
             success: function (data, status, xhr) {
 
-                layui.use('laytpl', function() {
+                layui.use('laytpl', function () {
 
-                        if(id == 'change1h'){
-                            getTpl = change1hTpl.innerHTML;
-                            laytpl(getTpl).render(data.data, function (html) {
+                    if (id == 'change1h') {
+                        getTpl = change1hTpl.innerHTML;
+                        laytpl(getTpl).render(data.data, function (html) {
 
-                                $("#change1h").html(html);
-                            });
-                        }
+                            $("#change1h").html(html);
+                        });
+                    }
 
-                        if(id == 'change1d'){
-                            getTpl = change1ddTpl.innerHTML;
-                            laytpl(getTpl).render(data.data, function (html) {
-                                $("#change1d").html(html);
-                            });
-                        }
-                        if(id == 'change7d'){
-                            getTpl = change7dTpl.innerHTML;
-                            laytpl(getTpl).render(data.data, function (html) {
-                                $("#change7d").html(html);
-                            });
-                        }
-                        if(id == 'all'){
-                            getTpl = change1hTpl.innerHTML;
-                            laytpl(getTpl).render(data.data, function (html) {
-                                $("#all").html(html);
-                            });
-                        }
-                    });
+                    if (id == 'change1d') {
+                        getTpl = change1ddTpl.innerHTML;
+                        laytpl(getTpl).render(data.data, function (html) {
+                            $("#change1d").html(html);
+                        });
+                    }
+                    if (id == 'change7d') {
+                        getTpl = change7dTpl.innerHTML;
+                        laytpl(getTpl).render(data.data, function (html) {
+                            $("#change7d").html(html);
+                        });
+                    }
+                    if (id == 'all') {
+                        getTpl = change1hTpl.innerHTML;
+                        laytpl(getTpl).render(data.data, function (html) {
+                            $("#all").html(html);
+                        });
+                    }
+                });
 
             }
         })
     };
 
 
-
-
-    function dieClick(id,limitType){
+    function dieClick(id, limitType) {
 
         var laytpl = layui.laytpl;
         var getTpl;
         $.ajax({
             url: base.url + '/blog/api/market/list',
             contentType: "application/json; charset=utf-8",
-            data:{
-                size:8,
-                select:id==0?'change7d':id,
-                limitType:limitType,
-                diefu:1,
+            data: {
+                size: 8,
+                select: id == 0 ? 'change7d' : id,
+                limitType: limitType,
+                diefu: 1,
             },
             dataType: 'json',
             success: function (data, status, xhr) {
 
-                layui.use('laytpl', function() {
+                layui.use('laytpl', function () {
 
-                    if(id == 'change1h'){
+                    if (id == 'change1h') {
                         getTpl = change1hTpl.innerHTML;
                         laytpl(getTpl).render(data.data, function (html) {
 
@@ -932,19 +1046,19 @@
                         });
                     }
 
-                    if(id == 'change1d'){
+                    if (id == 'change1d') {
                         getTpl = change1ddTpl.innerHTML;
                         laytpl(getTpl).render(data.data, function (html) {
                             $("#diechange1d").html(html);
                         });
                     }
-                    if(id == 'change7d'){
+                    if (id == 'change7d') {
                         getTpl = change7dTpl.innerHTML;
                         laytpl(getTpl).render(data.data, function (html) {
                             $("#diechange7d").html(html);
                         });
                     }
-                    if(id == 'all'){
+                    if (id == 'all') {
                         getTpl = change1hTpl.innerHTML;
                         laytpl(getTpl).render(data.data, function (html) {
                             $("#dieall").html(html);
@@ -955,37 +1069,37 @@
             }
         })
     };
-//
-//    function  changeFun(o) {
-//        console.log($(o))
-//        layui.use('table', function () {
-//            var table = layui.table;
-//            var $ = layui.$, active = {
-//                reload: function () {
-//                    var demoReload = $('#demoReload');
-//
-//                    //执行重载
-//                    table.reload('testReload', {
-//                        page: {
-//                            curr: 1 //重新从第 1 页开始
-//
-//                        }
-//                        , where: {
-//                            key: {
-//                                id: demoReload.val()
-//                            }
-//                        }
-//                    });
-//                }
-//            };
-//
-//            var type = $(this).data('type');
-//            active[type] ? active[type].call(this) : '';
-//
-//        });
-//    }
+    //
+    //    function  changeFun(o) {
+    //        console.log($(o))
+    //        layui.use('table', function () {
+    //            var table = layui.table;
+    //            var $ = layui.$, active = {
+    //                reload: function () {
+    //                    var demoReload = $('#demoReload');
+    //
+    //                    //执行重载
+    //                    table.reload('testReload', {
+    //                        page: {
+    //                            curr: 1 //重新从第 1 页开始
+    //
+    //                        }
+    //                        , where: {
+    //                            key: {
+    //                                id: demoReload.val()
+    //                            }
+    //                        }
+    //                    });
+    //                }
+    //            };
+    //
+    //            var type = $(this).data('type');
+    //            active[type] ? active[type].call(this) : '';
+    //
+    //        });
+    //    }
 
-    $(function(){
+    $(function () {
         layui.use('table', function () {
             var table = layui.table;
             console.log(table.cache)

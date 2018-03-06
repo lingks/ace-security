@@ -11,12 +11,12 @@ spring:
     redis:
         database: 1
         #host: localhost
-        host: localhost
+        host: 39.108.59.108
         pool:
             max-active: 20
         #password: a1234567@!
         #port: 6379
-        port: 6379
+        port: 6389
 server:
     port: 8765 #启动端口
 #
@@ -51,7 +51,8 @@ eureka:
 #        ip-address: 127.0.0.1
     client:
         serviceUrl:
-            defaultZone: http://localhost:8761/eureka/
+            #defaultZone: http://localhost:8761/eureka/
+            defaultZone: http://39.108.59.108:8761/eureka/
                     # docker 部署开启
 #            defaultZone: http://center:8761/eureka/
 security:

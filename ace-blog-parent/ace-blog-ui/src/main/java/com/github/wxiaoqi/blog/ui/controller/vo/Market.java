@@ -1,4 +1,4 @@
-package com.github.wxiaoqi.blog.admin.entity;
+package com.github.wxiaoqi.blog.ui.controller.vo;
 
 import java.io.Serializable;
 import java.util.List;
@@ -20,7 +20,6 @@ public class Market implements Serializable {
     private double change1h;
     private Integer sort;
     private long listingTime;
-    private List<SuggestEx> suggest_ex;
 
     public double getChange1h() {
         return change1h;
@@ -126,14 +125,6 @@ public class Market implements Serializable {
         this.change7d = change7d;
     }
 
-    public List<SuggestEx> getSuggest_ex() {
-        return suggest_ex;
-    }
-
-    public void setSuggest_ex(List<SuggestEx> suggest_ex) {
-        this.suggest_ex = suggest_ex;
-    }
-
     @Override
     public String toString() {
         return "Market{" +
@@ -150,46 +141,7 @@ public class Market implements Serializable {
                 ", change1h=" + change1h +
                 ", sort=" + sort +
                 ", listingTime=" + listingTime +
-                ", suggest_ex=" + suggest_ex +
+                ", suggest_ex="  +
                 '}';
-    }
-}
-
-class SuggestEx{
-    private String zh_name;
-    private String link;
-    private String name;
-    private String display_name;
-
-    public String getZh_name() {
-        return zh_name;
-    }
-
-    public void setZh_name(String zh_name) {
-        this.zh_name = zh_name;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDisplay_name() {
-        return display_name;
-    }
-
-    public void setDisplay_name(String display_name) {
-        this.display_name = display_name;
     }
 }

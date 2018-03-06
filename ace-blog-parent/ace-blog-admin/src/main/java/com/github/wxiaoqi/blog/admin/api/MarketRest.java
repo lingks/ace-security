@@ -60,7 +60,7 @@ public class MarketRest {
                 if(market.getZhName() != null && !"".equals(market.getZhName())){
                     market.setName(market.getName() +"-"+ market.getZhName());
                 }
-                market.setPrice(NumberFormat.toFied2(market.getPrice()));
+               // market.setPrice(NumberFormat.toFied2(market.getPrice()));
                 market.setChange1d(NumberFormat.toFied2(market.getChange1d()));
                 market.setChange7d(NumberFormat.toFied2(market.getChange7d()));
                 market.setMarketCap(NumberFormat.toFied2(market.getMarketCap()/10000));
@@ -123,6 +123,45 @@ public class MarketRest {
 
         return resultResponse;
     }
+
+
+    @RequestMapping(value = "/getByIds", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONArray getByIds(@RequestBody String ids) throws Exception {
+
+        String url = "https://block.cc/api/v1/coin/get?coin=";
+        System.out.println(ids );
+
+        String idss = "";
+        if(ids != null && !"".equals(ids)){
+            idss = ids.replace("%2C",",");
+        }
+        idss = idss.replace("ids=","");
+        System.out.println(idss);
+        JSONArray array = new JSONArray();
+        for(String id :idss.split(",")){
+            if(!"".equals(id)){
+                System.out.println(url + id);
+                String s = HttpClientUtil.doGet(url + id);
+                JSONObject json = JSONObject.parseObject(s);
+                System.out.println(json);
+
+                array.add(json);
+            }
+        }
+
+        return array;
+    }
+
+//
+//    public static void main(String[] args) {
+//        String url = "https://block.cc/api/v1/coin/get?coin=bitcoin";
+//        String s = HttpClientUtil.doGet(url );
+//        JSONObject json = JSONObject.parseObject(s);
+//        System.out.println(json);
+//
+//
+//    }
 }
 
 
