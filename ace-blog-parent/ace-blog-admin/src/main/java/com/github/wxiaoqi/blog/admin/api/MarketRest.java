@@ -165,14 +165,14 @@ public class MarketRest {
 
 
 
-    public static void main(String[] args) {
-        String url = "https://block.cc/api/v1/coin/get?coin=bitcoin";
-        String s = HttpClientUtil.doGet(url );
-        JSONObject json = JSONObject.parseObject(s);
-        System.out.println(json);
-
-
-    }
+//    public static void main(String[] args) {
+//        String url = "https://block.cc/api/v1/coin/get?coin=bitcoin";
+//        String s = HttpClientUtil.doGet(url );
+//        JSONObject json = JSONObject.parseObject(s);
+//        System.out.println(json);
+//
+//
+//    }
 }
 
 

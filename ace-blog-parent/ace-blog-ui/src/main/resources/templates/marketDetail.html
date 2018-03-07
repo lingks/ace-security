@@ -21,12 +21,23 @@
     <link rel="stylesheet" type="text/css" href="../slider2/css/index.css">
 
     <style type="text/css">
+
+        #main2{
+            position: absolute;
+            width: 220px;
+            float: right;
+            right: 0px;
+            top: 300px;
+            height: 220px;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
         body{
             background: #f5f5f5;
         }
         #first_pj_index_view{
             width: 100%;
-            min-width: 1200px;
+            min-width: 1160px;
         }
         #first_pj_index_view li{
             width: 80%;
@@ -41,7 +52,7 @@
 
         #second_pj_index_view{
             width: 100%;
-            min-width: 1200px;
+            min-width: 1160px;
         }
         #second_pj_index_view li{
             width: 80%;
@@ -172,9 +183,9 @@
             border-left: 1px solid #ebebeb
         }
         /* 大屏幕（大桌面显示器，大于等于 1200px） */
-        @media (min-width: 1200px) {
+        @media (min-width: 1160px) {
             .blog-container {
-                width: 1180px;
+                width: 1160px;
             }
         }
         .search-btn{
@@ -344,7 +355,11 @@
 
             <div class="clear"></div>
         </div>
+        <div id="main" style="width: 500px;height:500px;"></div>
+        <div id="main2" style="width: 220px;height: 220px;"></div>
     </div>
+
+
 </div>
 
 
@@ -382,6 +397,7 @@
 <script src="../slider/js/jquery-1.10.1.min.js"></script>
 <script src="../slider/js/idangerous.swiper2.7.6.min.js"></script>
 <script src="../slider/js/swiper.animate1.0.2.min.js"></script>
+
 <!-- layui.js -->
 <script src="../plug/layui/layui.js"></script>
 <!-- 全局脚本 -->
@@ -389,7 +405,7 @@
 <!-- 本页脚本 -->
 <script src="../js/home.js"></script>
 
-
+<script src="../js/echarts.min.js"></script>
 <script id="header_view" type="text/html">
     {{# layui.each(d.result, function(index, item){ }}
     <div id="uinfo-view"">
@@ -490,7 +506,7 @@
     {{# }); }}
 </script>
 <script id="mainViewTpl" type="text/html">
-    <div style="width:1200px;margin:0 auto;background:white;">
+    <div style="width:1160px;margin:0 auto;background:white;">
         <div style="width:100%;padding:40px 10px 0px 20px;font-size: 20px;">
 
             <img src="https://blockchains.oss-cn-shanghai.aliyuncs.com/static/coinInfo/{{d.id}}.png">
@@ -498,7 +514,7 @@
             <span>比特币（BTC）</span></div>
 
         <div style="width:100%;background:white;">
-            <div style="    width: 350px;float: left;padding: 20px 20px;background: white;">
+            <div style="    width: 330px;float: left;padding: 20px 20px;background: white;">
                 <div style="color: #a9a6a6;font-size: 18px;">
                     {{d.symbol}}价格
                 </div>
@@ -513,7 +529,7 @@
                 <!--</div>-->
             </div>
 
-            <div style="    width: 340px;height: 100px;float: left;padding: 20px 30px;background: white;">
+            <div style="    width: 330px;float: left;padding: 20px 30px;background: white;">
                 <div style="color: #a9a6a6;font-size: 18px;">
                     {{d.symbol}}市值 <span style="color: white;background:green;font-size: 14px;padding:2px 10px;">排行：{{d.level}}</span>
                 </div>
@@ -547,8 +563,8 @@
         </div>
     </div>
 
-    <div id="tab-view-id" class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="    width: 1200px;
-    background: white;margin: 140px 0px;">
+    <div id="tab-view-id" class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="    width: 1160px;
+    background: white;margin: 160px 0px;">
         <ul class="layui-tab-title">
             <li >基本信息</li>
             <!--<li >价格趋势</li>-->
@@ -556,49 +572,60 @@
         </ul>
         <div class="layui-tab-content" style="height: 100px;color: #999;">
             <div class="layui-tab-item layui-show">
-                <div style="width: 66%;">
-                    <div style="width: 50%;float: left;font-size: 14px;height: 90px;">
-                        <p>
-                            官网链接：
-                            {{# layui.each(d.websites, function(index, item){ }}
-                            <a href="{{item}}"><span style="color: #36a0ff;font-size: 12px;">{{item}}</span></a>&nbsp;&nbsp;
-                            {{# }); }}
+                <div style="width: 100%;">
+                    <div style="width: 56%;">
+                        <div style="width: 50%;float: left;font-size: 14px;height: 90px;">
+                            <p>
+                                官网链接：
+                                {{# layui.each(d.websites, function(index, item){ }}
+                                <a href="{{item}}"><span style="color: #36a0ff;font-size: 12px;">{{item}}</span></a>&nbsp;&nbsp;
+                                {{# }); }}
 
-                        </p>
-                        <p>
-                            论坛:{{# layui.each(d.message, function(index, item){ }}
-                            <a href="{{item}}"><span  style="color: #36a0ff;font-size: 12px;">论坛{{index + 1}}</span></a>&nbsp;&nbsp;
-                            {{# }); }}
-                        </p>
-                        <p>
-                            开源代码仓库：<a href="{{d.github}}"><span style="color: #36a0ff;font-size: 12px;">{{d.github}}</span></a>
-                        </p>
-                        <p>
-                            <!--发行时间：<span style="font-size: 12px;">${{d.publicTime}}</span>-->
-                        </p>
+                            </p>
+                            <p>
+                                论坛:{{# layui.each(d.message, function(index, item){ }}
+                                <a href="{{item}}"><span  style="color: #36a0ff;font-size: 12px;">论坛{{index + 1}}</span></a>&nbsp;&nbsp;
+                                {{# }); }}
+                            </p>
+                            <p>
+                                开源代码仓库：<a href="{{d.github}}"><span style="color: #36a0ff;font-size: 12px;">{{d.github}}</span></a>
+                            </p>
+                            <p>
+                                <!--发行时间：<span style="font-size: 12px;">${{d.publicTime}}</span>-->
+                            </p>
+                        </div>
+                        <div style="width: 50%;float: right;font-size: 14px;height: 90px;">
+                            <p>
+                                区块浏览器：{{# layui.each(d.Explorers, function(index, item){ }}
+                                <a href="{{item}}"><span  style="color: #36a0ff;font-size: 12px;">区块站{{index + 1}}</span></a>&nbsp;&nbsp;
+                                {{# }); }}
+                            </p>
+                            <p style="font-size: 12px;">
+                                上架交易所：{{d.ex_num}}
+                            </p>
+                            <p>
+                                白皮书:<a href="{{d.whitepaper}}"><span style="color: #36a0ff;font-size: 12px;">下载</span></a>
+                            </p>
+                            <p></p>
+                        </div>
+
                     </div>
-                    <div style="width: 50%;float: right;font-size: 14px;height: 90px;">
-                        <p>
-                            区块浏览器：{{# layui.each(d.Explorers, function(index, item){ }}
-                            <a href="{{item}}"><span  style="color: #36a0ff;font-size: 12px;">区块站{{index + 1}}</span></a>&nbsp;&nbsp;
-                            {{# }); }}
-                        </p>
-                        <p style="font-size: 12px;">
-                            上架交易所：{{d.ex_num}}
-                        </p>
-                        <p>
-                            白皮书:<a href="{{d.whitepaper}}"><span style="color: #36a0ff;font-size: 12px;">下载</span></a>
-                        </p>
-                        <p></p>
-                    </div>
-                    <div style="width: 100%;font-size: 12px;color: #555;">
-                        <p>{{d.descriptions.zh}}</p>
+                    <div style="width: 40%;float: left;" >
+
                     </div>
                 </div>
-                <div style="width: 33%;float: left;">
 
+                <div style="width: 100%;background: white;">
+                    <div style="width: 56%;background: white;">
+
+                        <div style="width: 100%;font-size: 12px;color: #555;background: white;">
+                            <p>{{d.descriptions.zh}}</p>
+                        </div>
+                    </div>
+                    <div style="width: 34%;"></div>
                 </div>
             </div>
+
             <!--<div class="layui-tab-item">内容2</div>-->
             <!--<div class="layui-tab-item">内容3</div>-->
         </div>
@@ -666,24 +693,105 @@
             success: function (res, status, xhr) {
                 if(res.code == 0) {
                     var data = res.data;
-                    var datas=[data];
 
-                    console.log(data)
                     laytpl(mainTemplate).render(data, function (html) {
 
                         mainView.innerHTML = html;
                     });
+
+                    var data = res.data;
+                    var pairData = data.pairData
+                    var datas = [];
+                    var names = [];
+                    for(var i =0 ; i < pairData.length; i++){
+
+                        var dd = {
+                            value:pairData[i].y,
+                            name:pairData[i].name
+                        };
+                        datas.push(dd);
+                        names.push(pairData[i].name);
+                    }
+
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('main'));
+
+                    // 指定图表的配置项和数据
+                    option = {
+                        title : {
+                            text: '交易所成效量正比',
+                            x:'center'
+                        },
+                        tooltip : {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b} : {c} ({d}%)"
+                        },
+                        legend: {
+                            orient: 'horizontal',
+                            left: 'left',
+                            data: names
+                        },
+                        series : [
+                            {
+                                name: '访问来源',
+                                type: 'pie',
+                                radius : '55%',
+                                center: ['50%', '60%'],
+                                data:datas,
+                                itemStyle: {
+                                    emphasis: {
+                                        shadowBlur: 10,
+                                        shadowOffsetX: 0,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                    }
+                                }
+                            }
+                        ]
+                    };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+
+
+
+                    var exData = data.exData;
+                    var exDatas = [];
+                    for(var i =0 ; i < exData.length; i++){
+
+                        var dd = {
+                            value:exData[i].y,
+                            name:exData[i].name
+                        };
+                        exDatas.push(dd);
+                    }
+
+
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart2 = echarts.init(document.getElementById('main2'));
+
+                    // 指定图表的配置项和数据
+                    option2 = {
+                        series : [
+                            {
+                                name: '访问来源',
+                                type: 'pie',
+                                radius: '55%',
+                                data:exDatas
+                            }
+                        ]
+                    };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart2.setOption(option2);
                 }
             }
         });
 
-        $.ajax({
-            url:'https://www.reddit.com/r/bitcoin',
-            type:'get',
-            success:function(data){
-                console.log(data)
-            }
-        })
+//        $.ajax({
+//            url:'https://www.reddit.com/r/bitcoin',
+//            type:'get',
+//            success:function(data){
+//                console.log(data)
+//            }
+//        })
     });
 
 
