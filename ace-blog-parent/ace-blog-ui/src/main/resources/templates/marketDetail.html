@@ -152,6 +152,7 @@
         .blog-main {
             width: 100%;
             position: relative;
+            height: 530px;
             min-height: 65vh;
             background: white;
         }
@@ -351,10 +352,10 @@
     position: absolute;background: white;
 }">
 
-            <div id="main" style="width: 450px;height:450px;  top:-100px;  float: left;">
+            <div id="main" style="width: 450px;height:450px;  top:-10px;  float: left;">
 
             </div>
-            <div id="main2" style="width: 450px;height:450px;  top:-100px;  float: right;"></div>
+            <div id="main2" style="width: 450px;height:450px;  top:-10px;  float: right;"></div>
         </div>
 
 
@@ -515,7 +516,7 @@
 
             <img src="https://blockchains.oss-cn-shanghai.aliyuncs.com/static/coinInfo/{{d.id}}.png">
 
-            <span>比特币（BTC）</span></div>
+            <span>{{d.zhName}}（{{d.symbol}}）</span></div>
         <div id="tab-view-id" class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="    width: 1160px;
     background: white;
     ">
