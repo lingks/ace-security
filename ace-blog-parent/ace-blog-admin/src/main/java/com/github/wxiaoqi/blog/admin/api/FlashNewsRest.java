@@ -71,7 +71,7 @@ public class FlashNewsRest {
     public JSONPObject list(long timestamp, String callback){
         String url = "http://www.bishijie.com/api/news/?size=100";
         if(timestamp > 0){
-            url += "&"+ timestamp;
+            url += "&timestamp="+ timestamp/1000;
         }
         String s = HttpClientUtil.doGet(url);
         JSONObject jsonObject = JSONObject.parseObject(s);
