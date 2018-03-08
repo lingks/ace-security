@@ -17,7 +17,7 @@ import tk.mybatis.mapper.entity.Example;
 /**
  * ${DESCRIPTION}
  *
- * @author 快讯
+ * @author 一线
  * @create 2017-06-08 11:51
  */
 @Controller

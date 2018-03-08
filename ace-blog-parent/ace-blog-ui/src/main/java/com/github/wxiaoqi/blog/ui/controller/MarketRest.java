@@ -59,6 +59,15 @@ public class MarketRest {
         return markets;
     }
 
+    @RequestMapping(value = "/getNews", method = RequestMethod.GET)
+    public String getNews(){
+        String url = "https://www.reddit.com/r/bitcoin.embed?limit=9";
+        String s = HttpClientUtil.doGet(url);
+        String ss = s.replace("/**/document.write(","");
+        String sss =ss.replace(")","");
+        System.out.println(sss);
+        return sss;
+    }
 }
 
 

@@ -1,13 +1,20 @@
 package com.github.wxiaoqi.blog.admin.api;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.wxiaoqi.blog.admin.api.vo.Buttom;
+import com.github.wxiaoqi.blog.admin.api.vo.FlashData;
+import com.github.wxiaoqi.blog.admin.api.vo.FlashVO;
 import com.github.wxiaoqi.blog.admin.biz.ArticleBiz;
 import com.github.wxiaoqi.blog.admin.biz.FlashNewsBiz;
 import com.github.wxiaoqi.blog.admin.entity.Article;
 import com.github.wxiaoqi.blog.admin.entity.FlashNews;
 import com.github.wxiaoqi.blog.admin.mapper.FlashNewsMapper;
+import com.github.wxiaoqi.blog.admin.util.HttpClientUtil;
 import com.github.wxiaoqi.security.common.msg.ListRestResponse;
 import com.github.wxiaoqi.security.common.msg.ObjectRestResponse;
 import org.apache.commons.lang.StringUtils;
@@ -20,8 +27,7 @@ import tk.mybatis.mapper.entity.Example;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Created by ace on 2017/7/16.
@@ -60,4 +66,36 @@ public class FlashNewsRest {
 
         return result;
     }
+
+    @RequestMapping(value = "/list",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public JSONPObject list(long timestamp, String callback){
+        String url = "http://www.bishijie.com/api/news/?size=100";
+        if(timestamp > 0){
+            url += "&"+ timestamp;
+        }
+        String s = HttpClientUtil.doGet(url);
+        JSONObject jsonObject = JSONObject.parseObject(s);
+        List<FlashVO> result = new ArrayList<FlashVO>();
+        if(jsonObject.getInteger("error") == 0){
+            for(Map.Entry<String, Object> entry : jsonObject.getJSONObject("data").entrySet()){
+
+                FlashVO flashVO = new FlashVO();
+                flashVO.setDate(entry.getKey());
+                List<FlashData> data = new ArrayList<FlashData>();
+                JSONObject js = JSONObject.parseObject(entry.getValue().toString());
+                List<Buttom> buttoms = JSONArray.parseArray(js.getString("buttom"),Buttom.class);
+                FlashData vo = new FlashData();
+                vo.setButtom(buttoms);
+                vo.setDate(js.getString("date"));
+                vo.setTop(JSONArray.parseArray(js.get("top").toString(),String.class));
+                data.add(vo);
+                flashVO.setData(data);
+                result.add(flashVO);
+            }
+
+        }
+        return new JSONPObject(callback, new ListRestResponse<FlashNews>().rel(true).result(result));
+
+    }
+
 }

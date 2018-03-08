@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; Charset=gb2312">
     <meta http-equiv="Content-Language" content="zh-CN">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-    <title>链算数据-快讯</title>
+    <title>链算数据-一线</title>
     <link rel="shortcut icon" href="../images/Logo_40.png" type="image/x-icon">
     <!--Layui-->
     <link href="../plug/layui/css/layui.css" rel="stylesheet" />
@@ -232,7 +232,7 @@
             <div class="blog-main-left">
                <div id="articles" style="border: 1px #e2e2e2 solid;">
 
-                   <div class="blog-title">&nbsp;&nbsp;&nbsp;&nbsp;<img src="../images/kuaixun.svg">7x24h快讯</div>
+                   <div class="blog-title">&nbsp;&nbsp;&nbsp;&nbsp;<img src="../images/kuaixun.svg">7x24h一线</div>
 
                </div>
                 <div class="admin-table-page">
@@ -379,7 +379,7 @@
         <!--<a href="/article"><i class="fa fa-file-text fa-fw"></i>&nbsp;资讯</a>-->
         <!--</li>-->
         <li class="layui-nav-item layui-this">
-            <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;快讯</a>
+            <a href="/flash"><i class="fa fa-file-text fa-fw"></i>&nbsp;一线</a>
         </li>
         <li class="layui-nav-item">
             <a href="/market"><i class="fa fa-btc fa-fw"></i>&nbsp;行情</a>
@@ -445,38 +445,48 @@
 <script src="../js/global.js"></script>
 <!-- 本页脚本 -->
 <script src="../js/home.js"></script>
-
+<script>
+    function timestampToTime(timestamp) {
+        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        D = date.getDate() + ' ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = date.getSeconds();
+        return Y+M+D+h+m+s;
+    }
+</script>
 <script id="tpl" type="text/html">
     <ul>
-        {{# layui.each(d.result, function(index, item){ }}
+        {{# layui.each(d, function(index, item){ }}
         <div class="article shadow">
-            {{# if(item.cover != undefined && item.cover != null && item.cover != '' && item.cover != 'null'){}}
-            <div class="article-left">
-                <img src="{{ item.cover }}" alt="{{ item.title }}"/>
-            </div>
-            {{#}}}
-            <div class="article-right" {{# if(item.cover != undefined && item.cover != null && item.cover != '' && item.cover != 'null'){}}style="float:left;width:100%;"{{#}}}>
+            <!--{{# if(item.cover != undefined && item.cover != null && item.cover != '' && item.cover != 'null'){}}-->
+            <!--<div class="article-left">-->
+                <!--<img src="{{ item.cover }}" alt="{{ item.title }}"/>-->
+            <!--</div>-->
+            <!--{{#}}}-->
+            <div class="article-left" style="width: 100%;">
+                <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ timestampToTime(item.issue_time) }}</span>
                 <div class="article-title">
-                    <a href="{{ '/detail/' + item.id }}">{{ item.title }}</a>
+                    <a href="{{ '/detail/' + item.id }}">{{ item.content }}</a>
                 </div>
-                <div class="article-abstract">
-                    {{ item.remark }}
-                </div>
+                <!--<div class="article-abstract">-->
+                    <!--{{ item.remark }}-->
+                <!--</div>-->
             </div>
             <div class="clear"></div>
-            <div class="article-footer">
-                <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ item.crtTime }}</span>
-                <span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ item.crtName}}</span>
-                <span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">{{ item.tag }}</a></span>
-                <span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;{{ item.pageView }}</span>
-                <span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;{{ item.commentCount}}</span>
-            </div>
+            <!--<div class="article-footer">-->
+                <!--<span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ item.issue_time }}</span>-->
+                <!--<span class="article-author"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ item.crtName}}</span>-->
+                <!--<span><i class="fa fa-tag"></i>&nbsp;&nbsp;<a href="#">{{ item.tag }}</a></span>-->
+                <!--<span class="article-viewinfo"><i class="fa fa-eye"></i>&nbsp;{{ item.pageView }}</span>-->
+                <!--<span class="article-viewinfo"><i class="fa fa-commenting"></i>&nbsp;{{ item.commentCount}}</span>-->
+            <!--</div>-->
         </div>
         {{# }); }}
 
-        {{# if(d.result.length === 0){ }}
-        无数据
-        {{# } }}
+
     </ul>
 </script>
 <script id="friendshipTpl" type="text/html">
@@ -567,22 +577,15 @@
             , view = document.getElementById('articles');
 
         $.ajax({
-            url: base.url + '/blog/api/flash/page?pageIndex=1&pageSize=10&type=' + type,
+            url: base.url + '/blog/api/flash/list?timestamp=0' + type,
 
             contentType: "application/json; charset=utf-8",
             dataType: 'jsonp',
             jsonp: 'callback',
             success: function (data, status, xhr) {
-                count = data.count;
-                if(count%10 > 0){
-                    totalPage = Math.floor(count/10) + 1;
-                }else{
-                    totalPage = count/10;
-                }
-                if((currentPage - totalPage) == 1){
-                    $("#paging").html("没有更多数据了");
-                }
-                laytpl(getTpl).render(data, function (html) {
+                var datas = data.result[0].data[0].buttom;
+
+                laytpl(getTpl).render(datas, function (html) {
                     $("#articles").append(html);
                 });
             }
@@ -623,32 +626,28 @@
         })
     });
 
+    var timestamp=0;
+    var clicked = 1;
     $("#paging").on('click',function(){
+        var date = new Date();//获取当前时间
+        date.setDate(date.getDate()-clicked);//设置天数 -1 天
+        var laytpl = layui.laytpl;
+        var getTpl = tpl.innerHTML;
+        var timestamp = Date.parse(date);
+        $.ajax({
+            url: base.url + '/blog/api/flash/list?timestamp='+ timestamp,
+            contentType: "application/json; charset=utf-8",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: function (data, status, xhr) {
+                var datas = data.result[0].data[0].buttom;
 
-        if(currentPage <= totalPage){
-            $.ajax({
-                url: base.url + '/blog/api/flash/page?pageIndex='+currentPage+'&pageSize=10&type=' + type,
-
-                contentType: "application/json; charset=utf-8",
-                dataType: 'jsonp',
-                jsonp: 'callback',
-                success: function (data, status, xhr) {
-                    currentPage ++;
-                    if(currentPage > totalPage){
-                        $("#paging").html("没有更多数据了");
-                    }
-                    layui.use('laytpl', function() {
-                        var laytpl = layui.laytpl;
-                        var getTpl = tpl.innerHTML;
-                        laytpl(getTpl).render(data, function (html) {
-                            //view.innerHTML = html;
-                            $("#articles").append(html);
-                        });
-                    });
-
-                }
-            })
-        }
+                laytpl(getTpl).render(datas, function (html) {
+                    $("#articles").append(html);
+                });
+                clicked ++ ;
+            }
+        });
 
     });
 </script>
