@@ -356,7 +356,9 @@
             </div>
             <div id="main2" style="width: 450px;height:450px;  top:-100px;  float: right;"></div>
         </div>
-        <div style="width: 100%;">
+
+
+        <div style="width: 100%;" id="news-view">
 
         </div>
     </div>
@@ -811,13 +813,15 @@
             }
         });
 
+//        var href = "/api/market/getNews";
 //        $.ajax({
-//            url:'https://www.reddit.com/r/bitcoin',
+//
+//            url:href,
 //            type:'get',
-//            success:function(data){
-//                console.log(data)
+//            success: function (res) {
+//                $("#news-view").html(res);
 //            }
-//        })
+//        });
     });
 
 
