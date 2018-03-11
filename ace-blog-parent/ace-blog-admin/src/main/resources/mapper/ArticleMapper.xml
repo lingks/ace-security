@@ -7,6 +7,7 @@
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
     <result column="titleImg" jdbcType="VARCHAR" property="titleImg" />
     <result column="cover" jdbcType="VARCHAR" property="cover" />
     <result column="content" jdbcType="VARCHAR" property="content" />

@@ -39,6 +39,7 @@ public class Article {
     private Integer pid;
     private String pname;
 
+    private String source;
     @Column(name = "crt_host")
     private String crtHost;
 
@@ -62,6 +63,14 @@ public class Article {
     @Column(name = "hot_value")
     private double hotValue;
     private Integer status;
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 
     private String attr1;
 

@@ -40,49 +40,144 @@ public class ArticleSchedutor {
         System.out.println("我每隔5秒冒泡一次：" + new Date());
     }
 
-    @Scheduled(cron = "0/5 * * * * ?")
+    @Scheduled(cron = "0/35 * * * * ?")
     public void cron() throws Exception{
 
-//        String url = "https://ihuoqiu.com/Home/Index?data=W9F3j2vgufgdWZmdtGFOlg$_2C$$_2C$&pageIndex=1";
-//
-//        System.out.println("定时任务");
-//        String s = HttpClientUtil.doPost(url);
-//        JSONObject object = JSONObject.parseObject(s);
-//        if(object.getString("code").equals("200") && object.getBoolean("success") == true){
-//            String msg = object.getString("msg");
-//            List<ArticleData> list = JSONArray.parseArray(msg, ArticleData.class);
-//
-//            for(ArticleData data : list){
-//
-//                if(check(data.getArticleInfo().getTitle())){
-//                    ArticleInfo info = data.getArticleInfo();
-//                    Article article = new Article();
-//                    article.setCrtTime(new Date());
-//                    article.setUpdTime(new Date());
-//                    article.setStatus(2);
-//                    article.setArticleType(1);
-//                    article.setCover(info.getImgUrl());
-//                    article.setTitle(info.getTitle());
-//                    article.setTag(info.getTag());
-//                    article.setPageView(info.getViewCount());
-//                    article.setRemark(info.getShortDescription());
-//                    article.setHotValue(new Random().nextInt(100));
-//                    String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
-//                    Document doc = Jsoup.connect(url2).get();
-//                    Elements divs = doc.select("div .article");
-//                    for (Element element : divs) {
-//                        System.out.println(element.toString());
-//                        article.setContent(element.toString());
-//                    }
-//
-//                    articleMapper.insert(article);
-//
-//                }
-//            }
-//        }
+        for(int i = 1 ; i < 15; i ++){
+
+            String url = "https://ihuoqiu.com/Home/Index?data=W9F3j2vgufgdWZmdtGFOlg$_2C$$_2C$&pageIndex=" + i;
+            //String url = "https://ihuoqiu.com/Home/information?data=W83Lysi$__2B$bHQTpVifRa$__2B$HDg$_2C$$_2C$&pageIndex=" + i;
+            System.out.println("定时任务");
+            String s = HttpClientUtil.doPost(url);
+            JSONObject object = JSONObject.parseObject(s);
+            if(object.getString("code").equals("200") && object.getBoolean("success") == true){
+                String msg = object.getString("msg");
+                List<ArticleData> list = JSONArray.parseArray(msg, ArticleData.class);
+
+                for(ArticleData data : list){
+
+                    if(check(data.getArticleInfo().getTitle())){
+                        ArticleInfo info = data.getArticleInfo();
+                        Article article = new Article();
+                        article.setCrtTime(new Date());
+                        article.setUpdTime(new Date());
+                        article.setStatus(2);
+                        article.setType(1);
+                        article.setArticleType(1);
+                        article.setCover(info.getImgUrl());
+                        article.setTitle(info.getTitle());
+                        article.setTag(info.getTag());
+                        article.setPageView(info.getViewCount());
+                        article.setRemark(info.getShortDescription());
+                        article.setHotValue(new Random().nextInt(100));
+                        String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
+                        Document doc = Jsoup.connect(url2).get();
+                        Elements divs = doc.select("div .article");
+                        for (Element element : divs) {
+                            System.out.println(element.toString());
+                            article.setContent(element.toString());
+                        }
+
+                        articleMapper.insert(article);
+
+                    }
+                }
+            }
+        }
     }
 
 
+    @Scheduled(cron = "0/45 * * * * ?")
+    public void cron3() throws Exception{
+
+        for(int i = 1 ; i < 15; i ++){
+
+            //String url = "https://ihuoqiu.com/Home/Index?data=W9F3j2vgufgdWZmdtGFOlg$_2C$$_2C$&pageIndex=" + i;
+            String url = "https://ihuoqiu.com/Home/information?data=W83Lysi$__2B$bHQTpVifRa$__2B$HDg$_2C$$_2C$&pageIndex=" + i;
+            System.out.println("定时任务");
+            String s = HttpClientUtil.doPost(url);
+            JSONObject object = JSONObject.parseObject(s);
+            if(object.getString("code").equals("200") && object.getBoolean("success") == true){
+                String msg = object.getString("msg");
+                List<ArticleData> list = JSONArray.parseArray(msg, ArticleData.class);
+
+                for(ArticleData data : list){
+
+                    if(check(data.getArticleInfo().getTitle())){
+                        ArticleInfo info = data.getArticleInfo();
+                        Article article = new Article();
+                        article.setCrtTime(new Date());
+                        article.setUpdTime(new Date());
+                        article.setStatus(2);
+                        article.setType(3);
+                        article.setArticleType(3);
+                        article.setCover(info.getImgUrl());
+                        article.setTitle(info.getTitle());
+                        article.setTag(info.getTag());
+                        article.setPageView(info.getViewCount());
+                        article.setRemark(info.getShortDescription());
+                        article.setHotValue(new Random().nextInt(100));
+                        String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
+                        Document doc = Jsoup.connect(url2).get();
+                        Elements divs = doc.select("div .article");
+                        for (Element element : divs) {
+                            System.out.println(element.toString());
+                            article.setContent(element.toString());
+                        }
+
+                        articleMapper.insert(article);
+
+                    }
+                }
+            }
+        }
+    }
+
+    @Scheduled(cron = "0/55 * * * * ?")
+    public void cron2() throws Exception{
+
+        for(int i = 1 ; i < 15; i ++){
+
+            //String url = "https://ihuoqiu.com/Home/Index?data=W9F3j2vgufgdWZmdtGFOlg$_2C$$_2C$&pageIndex=" + i;
+            String url = "https://ihuoqiu.com/Home/information?data=W83Lysi$__2B$bHQTpVifRa$__2B$HDg$_2C$$_2C$&pageIndex=" + i;
+            System.out.println("定时任务");
+            String s = HttpClientUtil.doPost(url);
+            JSONObject object = JSONObject.parseObject(s);
+            if(object.getString("code").equals("200") && object.getBoolean("success") == true){
+                String msg = object.getString("msg");
+                List<ArticleData> list = JSONArray.parseArray(msg, ArticleData.class);
+
+                for(ArticleData data : list){
+
+                    if(check(data.getArticleInfo().getTitle())){
+                        ArticleInfo info = data.getArticleInfo();
+                        Article article = new Article();
+                        article.setCrtTime(new Date());
+                        article.setUpdTime(new Date());
+                        article.setStatus(2);
+                        article.setType(2);
+                        article.setArticleType(2);
+                        article.setCover(info.getImgUrl());
+                        article.setTitle(info.getTitle());
+                        article.setTag(info.getTag());
+                        article.setPageView(info.getViewCount());
+                        article.setRemark(info.getShortDescription());
+                        article.setHotValue(new Random().nextInt(100));
+                        String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
+                        Document doc = Jsoup.connect(url2).get();
+                        Elements divs = doc.select("div .article");
+                        for (Element element : divs) {
+                            System.out.println(element.toString());
+                            article.setContent(element.toString());
+                        }
+
+                        articleMapper.insert(article);
+
+                    }
+                }
+            }
+        }
+    }
     public boolean check(String title){
         Example example = new Example(Article.class);
         if(StringUtils.isNotBlank(title)) {

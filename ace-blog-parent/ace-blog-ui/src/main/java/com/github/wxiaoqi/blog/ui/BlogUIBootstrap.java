@@ -1,7 +1,7 @@
 package com.github.wxiaoqi.blog.ui;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Created by ace on 2017/7/15.
