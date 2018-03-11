@@ -89,7 +89,7 @@ public class ArticleRest {
         if(StringUtils.isNotBlank(title)) {
             example.createCriteria().andLike("title", "%" + title + "%");
         }
-        if(type != null){
+        if(type != null && type > 0){
             example.createCriteria().andEqualTo("type", type);
         }
 

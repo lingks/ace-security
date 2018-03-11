@@ -1131,7 +1131,8 @@ position: relative;margin: auto;min-width: 1200px">
                 url: base.url + '/blog/api/article/page',
                 data:{
                     pageIndex:currentPage,
-                    pageSize: 10
+                    pageSize: 10,
+                    type:type
                 },
                 contentType: "application/json; charset=utf-8",
                 dataType: 'jsonp',
@@ -1161,8 +1162,12 @@ position: relative;margin: auto;min-width: 1200px">
         var count = 0;
 
         $.ajax({
-            url: base.url + '/blog/api/article/page?pageIndex=1&pageSize=10&type=' + type,
-
+            url: base.url + '/blog/api/article/page',
+            data:{
+                pageIndex:1,
+                pageSize:10,
+                type:type
+            },
             contentType: "application/json; charset=utf-8",
             dataType: 'jsonp',
             jsonp: 'callback',
