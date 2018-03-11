@@ -1,22 +1,34 @@
 package com.github.wxiaoqi.blog.admin.api;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.wxiaoqi.blog.admin.api.vo.ArticleData;
+import com.github.wxiaoqi.blog.admin.api.vo.ArticleInfo;
 import com.github.wxiaoqi.blog.admin.biz.ArticleBiz;
 import com.github.wxiaoqi.blog.admin.entity.Article;
 import com.github.wxiaoqi.blog.admin.entity.Comment;
 import com.github.wxiaoqi.blog.admin.mapper.AdvertMapper;
 import com.github.wxiaoqi.blog.admin.mapper.ArticleMapper;
+import com.github.wxiaoqi.blog.admin.util.HttpClientUtil;
 import com.github.wxiaoqi.security.common.msg.ListRestResponse;
 import com.github.wxiaoqi.security.common.msg.ObjectRestResponse;
 import com.github.wxiaoqi.security.common.msg.TableResultResponse;
 import org.apache.commons.lang.StringUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Example;
 
+import java.io.IOException;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by ace on 2017/7/16.
@@ -69,7 +81,8 @@ public class ArticleRest {
 
 
     @RequestMapping(value = "/page",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public JSONPObject get(int pageIndex, int pageSize,String authorId,String title,
+    public JSONPObject get(@RequestParam(name = "pageIndex") Integer pageIndex,
+                           @RequestParam(name = "pageSize") Integer pageSize,String authorId,String title,
                            Integer type,String orderField,String orderBy,
                            @RequestParam(name = "scroller" ,defaultValue = "0") Integer scroller, String callback){
         Example example = new Example(Article.class);
@@ -95,8 +108,10 @@ public class ArticleRest {
         }
 
         int count = articleBiz.selectCountByExample(example);
+
         PageHelper.startPage(pageIndex, pageSize);
-        return new JSONPObject(callback, new ListRestResponse<Article>().rel(true).count(count).result(articleBiz.selectByExample(example)));
+        List<Article> list = articleBiz.selectByExample(example);
+        return new JSONPObject(callback, new ListRestResponse<Article>().rel(true).count(count).result(list));
 
     }
 
@@ -181,7 +196,64 @@ public class ArticleRest {
         return new ObjectRestResponse<Article>().rel(true);
     }
 
+    @RequestMapping(value = "/insert",method = RequestMethod.GET)
+    @ResponseBody
+    public String insert() throws IOException{
+        for(int i = 1 ; i < 100; i ++){
 
+            //String url = "https://ihuoqiu.com/Home/Index?data=W9F3j2vgufgdWZmdtGFOlg$_2C$$_2C$&pageIndex=" + i;
+String url = "https://ihuoqiu.com/Home/information?data=W83Lysi$__2B$bHQTpVifRa$__2B$HDg$_2C$$_2C$&pageIndex=" + i;
+            System.out.println("定时任务");
+            String s = HttpClientUtil.doPost(url);
+            JSONObject object = JSONObject.parseObject(s);
+            if(object.getString("code").equals("200") && object.getBoolean("success") == true){
+                String msg = object.getString("msg");
+                List<ArticleData> list = JSONArray.parseArray(msg, ArticleData.class);
+
+                for(ArticleData data : list){
+
+                    if(check(data.getArticleInfo().getTitle())){
+                        ArticleInfo info = data.getArticleInfo();
+                        Article article = new Article();
+                        article.setCrtTime(new Date());
+                        article.setUpdTime(new Date());
+                        article.setStatus(2);
+                        article.setArticleType(3);
+                        article.setCover(info.getImgUrl());
+                        article.setTitle(info.getTitle());
+                        article.setTag(info.getTag());
+                        article.setPageView(info.getViewCount());
+                        article.setRemark(info.getShortDescription());
+                        article.setHotValue(new Random().nextInt(100));
+                        String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
+                        Document doc = Jsoup.connect(url2).get();
+                        Elements divs = doc.select("div .article");
+                        for (Element element : divs) {
+                            System.out.println(element.toString());
+                            article.setContent(element.toString());
+                        }
+
+                        mapper.insert(article);
+
+                    }
+                }
+            }
+        }
+
+        return "";
+    }
+    public boolean check(String title){
+        Example example = new Example(Article.class);
+        if(StringUtils.isNotBlank(title)) {
+            example.createCriteria().andLike("title", "%" + title + "%");
+        }
+
+        int count = mapper.selectCountByExample(example);
+        if(count > 0){
+            return false;
+        }
+        return true;
+    }
 
 }
 

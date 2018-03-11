@@ -6,6 +6,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.wxiaoqi.blog.admin.api.vo.ArticleData;
 import com.github.wxiaoqi.blog.admin.api.vo.Buttom;
 import com.github.wxiaoqi.blog.admin.api.vo.FlashData;
 import com.github.wxiaoqi.blog.admin.api.vo.FlashVO;
@@ -18,13 +19,15 @@ import com.github.wxiaoqi.blog.admin.util.HttpClientUtil;
 import com.github.wxiaoqi.security.common.msg.ListRestResponse;
 import com.github.wxiaoqi.security.common.msg.ObjectRestResponse;
 import org.apache.commons.lang.StringUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Example;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -68,34 +71,72 @@ public class FlashNewsRest {
     }
 
     @RequestMapping(value = "/list",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public JSONPObject list(long timestamp, String callback){
-        String url = "http://www.bishijie.com/api/news/?size=100";
+    public JSONPObject list(long timestamp, @RequestParam(name = "pageSize", defaultValue = "50") Integer pageSize, String callback){
+        String url = "http://www.bishijie.com/api/news/?size=" + pageSize;
         if(timestamp > 0){
             url += "&timestamp="+ timestamp/1000;
+        }else{
+            url += "";
         }
+
+        System.out.println(url);
         String s = HttpClientUtil.doGet(url);
         JSONObject jsonObject = JSONObject.parseObject(s);
         List<FlashVO> result = new ArrayList<FlashVO>();
         if(jsonObject.getInteger("error") == 0){
+            List<FlashData> data = new ArrayList<FlashData>();
+            FlashVO flashVO = new FlashVO();
+            List<Buttom> buttomsList = new ArrayList<Buttom>();
+            FlashData vo = new FlashData();
             for(Map.Entry<String, Object> entry : jsonObject.getJSONObject("data").entrySet()){
 
-                FlashVO flashVO = new FlashVO();
                 flashVO.setDate(entry.getKey());
-                List<FlashData> data = new ArrayList<FlashData>();
+
                 JSONObject js = JSONObject.parseObject(entry.getValue().toString());
                 List<Buttom> buttoms = JSONArray.parseArray(js.getString("buttom"),Buttom.class);
-                FlashData vo = new FlashData();
-                vo.setButtom(buttoms);
+
+                buttomsList.addAll(buttoms);
+
                 vo.setDate(js.getString("date"));
                 vo.setTop(JSONArray.parseArray(js.get("top").toString(),String.class));
-                data.add(vo);
-                flashVO.setData(data);
-                result.add(flashVO);
-            }
 
+
+
+            }
+            data.add(vo);
+            flashVO.setData(data);
+            vo.setButtom(buttomsList);
+            result.add(flashVO);
         }
         return new JSONPObject(callback, new ListRestResponse<FlashNews>().rel(true).result(result));
 
     }
+
+//
+//    public static void main(String[] args) throws IOException{
+//        String url = "https://ihuoqiu.com/Home/Index?data=W9F3j2vgufgdWZmdtGFOlg$_2C$$_2C$&pageIndex=1";
+//
+//        String s = HttpClientUtil.doPost(url);
+//        JSONObject object = JSONObject.parseObject(s);
+//        if(object.getString("code").equals("200") && object.getBoolean("success") == true){
+//            String msg = object.getString("msg");
+//            List<ArticleData> list = JSONArray.parseArray(msg, ArticleData.class);
+//
+//            for(ArticleData data : list){
+//
+//
+//                String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
+//                Document doc = Jsoup.connect(url2).get();
+//                Elements divs = doc.select("div .article");
+//                for (Element element : divs) {
+//                    System.out.println(element);
+//                }
+//            }
+//        }
+//
+//
+//
+//
+//    }
 
 }

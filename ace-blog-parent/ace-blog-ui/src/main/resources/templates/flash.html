@@ -469,7 +469,7 @@
             <div class="article-left" style="width: 100%;">
                 <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ timestampToTime(item.issue_time) }}</span>
                 <div class="article-title">
-                    <a href="{{ '/detail/' + item.id }}">{{ item.content }}</a>
+                    <a href="javascript(0)">{{ item.content }}</a>
                 </div>
                 <!--<div class="article-abstract">-->
                     <!--{{ item.remark }}-->
@@ -571,6 +571,14 @@
             }
         });
     });
+
+    function compare(property){
+        return function(a,b){
+            var value1 = a[property];
+            var value2 = b[property];
+            return value2 - value1;
+        }
+    }
     layui.use('laytpl', function() {
         var laytpl = layui.laytpl;
         var getTpl = tpl.innerHTML
@@ -584,7 +592,7 @@
             jsonp: 'callback',
             success: function (data, status, xhr) {
                 var datas = data.result[0].data[0].buttom;
-
+                datas = datas.sort(compare('issue_time'))
                 laytpl(getTpl).render(datas, function (html) {
                     $("#articles").append(html);
                 });
@@ -635,13 +643,14 @@
         var getTpl = tpl.innerHTML;
         var timestamp = Date.parse(date);
         $.ajax({
-            url: base.url + '/blog/api/flash/list?timestamp='+ timestamp,
+            url: base.url + '/blog/api/flash/list?pageSize=100&timestamp='+ timestamp,
             contentType: "application/json; charset=utf-8",
             dataType: 'jsonp',
             jsonp: 'callback',
             success: function (data, status, xhr) {
-                var datas = data.result[0].data[0].buttom;
 
+                var datas = data.result[0].data[0].buttom;
+                datas = datas.sort(compare('issue_time'))
                 laytpl(getTpl).render(datas, function (html) {
                     $("#articles").append(html);
                 });

@@ -592,7 +592,14 @@ position: relative;margin: auto;min-width: 1200px">
             <!--左边文章列表-->
             <div class="blog-main-left" style="840px">
 
-
+                <div id="tab-view-id" class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this" onclick="tagClick(0)">热点新闻</li>
+                        <li onclick="tagClick(1)">项目报告</li>
+                        <li onclick="tagClick(2)">精英视点</li>
+                        <li onclick="tagClick(3)">行业政策</li>
+                    </ul>
+                </div>
                 <div id="articles" style="margin-top:20px;"></div>
                 <div class="admin-table-page">
                     <div id="paged" class="page">
@@ -730,10 +737,10 @@ position: relative;margin: auto;min-width: 1200px">
             <div class="clear"></div>
             <div class="article-footer">
                 <span style="cursor: pointer;"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ item.crtTime }}</span>
-                <a href="/udetail/{{item.crtUser}}"><span class="article-author" style="cursor: pointer;"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ item.crtName}}</span></a>
+                <a href="/udetail/{{item.crtUser}}"><span class="article-author" style="cursor: pointer;"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ item.crtName== undefined? '链算作家': item.crtName}}</span></a>
                 <span style="cursor: pointer;"><i class="fa fa-tag"></i>&nbsp;&nbsp;{{ item.tag }}</span>
                 <span class="article-viewinfo" style="cursor: pointer;"><i class="fa fa-eye"></i>&nbsp;{{ item.pageView }}</span>
-                <span class="article-viewinfo" style="cursor: pointer;"><i class="fa fa-commenting"></i>&nbsp;{{ item.commentCount}}</span>
+                <span class="article-viewinfo" style="cursor: pointer;"><i class="fa fa-commenting"></i>&nbsp;{{ item.commentCount == undefined? 0:item.commentCount}}</span>
             </div>
         </div>
         {{# }); }}
@@ -1118,11 +1125,14 @@ position: relative;margin: auto;min-width: 1200px">
 
 
     $("#paging").on('click',function(){
-
+        console.log(currentPage + "--" + totalPage)
         if(currentPage <= totalPage){
             $.ajax({
-                url: base.url + '/blog/api/article/page?pageIndex='+currentPage+'&pageSize=10&type=' + type,
-
+                url: base.url + '/blog/api/article/page',
+                data:{
+                    pageIndex:currentPage,
+                    pageSize: 10
+                },
                 contentType: "application/json; charset=utf-8",
                 dataType: 'jsonp',
                 jsonp: 'callback',
@@ -1145,12 +1155,13 @@ position: relative;margin: auto;min-width: 1200px">
         }
 
     });
+
     function tagClick(id){
         type = id;
         var count = 0;
-        var totalPage = 1;
+
         $.ajax({
-            url: base.url + '/blog/api/article/page?pageIndex=1&pageSize=10&type=' + id,
+            url: base.url + '/blog/api/article/page?pageIndex=1&pageSize=10&type=' + type,
 
             contentType: "application/json; charset=utf-8",
             dataType: 'jsonp',
@@ -1163,10 +1174,14 @@ position: relative;margin: auto;min-width: 1200px">
                     totalPage = count/10;
                 }
                 currentPage = 2;
+
                 if(data.result.length == 0){
                     $("#paging").html("没有找到数据");
                     $("#articles").html("");
                 }else{
+                    if((currentPage - totalPage) == 1){
+                        $("#paging").html("没有更多数据了");
+                    }
                     layui.use('laytpl', function() {
                         var laytpl = layui.laytpl;
                         var getTpl = tpl.innerHTML;
@@ -1250,20 +1265,34 @@ position: relative;margin: auto;min-width: 1200px">
 
 
     $(function(){
+
+        function compare(property){
+            return function(a,b){
+                var value1 = a[property];
+                var value2 = b[property];
+                return value2 - value1;
+            }
+        }
+        var date = new Date();//获取当前时间
+        date.setDate(date.getDate());//设置天数 -1 天
+        var laytpl = layui.laytpl;
+        var getTpl = tpl.innerHTML;
+        var timestamp = Date.parse(date);
         $.ajax({
-            //url: base.url + '/blog/api/flash/page?pageIndex=1&pageSize=10&type=' + type,
-            url: base.url + "/blog/api/flash/list?timestamp=0",
+            url: base.url + '/blog/api/flash/list?timestamp='+ timestamp,
             contentType: "application/json; charset=utf-8",
             dataType: 'jsonp',
             jsonp: 'callback',
             success: function (data, status, xhr) {
                 var datas = data.result[0].data[0].buttom;
+                datas = datas.sort(compare('issue_time'));
                 var lis = [];
                 for (var i = 0; i < datas.length; i++) {
                     var flashnews = datas[i];
+
                     var time = '';
                     if (flashnews.newsflash_id != undefined && flashnews.newsflash_id != null) {
-                        time = getDateDiff(getDateTimeStamp(timestampToTime(flashnews.newsflash_id)))
+                        time = getDateDiff(getDateTimeStamp(timestampToTime(flashnews.issue_time)))
                     }
 
                     console.log(flashnews)
@@ -1398,31 +1427,7 @@ position: relative;margin: auto;min-width: 1200px">
         })
     });
 
-//    layui.use('laytpl', function() {
-//        var laytpl = layui.laytpl;
-//        var getTpl = projecttpl.innerHTML
-//            , view = document.getElementById('mr_fu');
-//
-//        $.ajax({
-//            url: base.url + '/blog/api/project/page?pageIndex=1&pageSize=5',
-//
-//            contentType: "application/json; charset=utf-8",
-//            dataType: 'jsonp',
-//            jsonp: 'callback',
-//            success: function (data, status, xhr) {
-//
-//                laytpl(getTpl).render(data, function (html) {
-//                    view.innerHTML = html;
-//                });
-//            }
-//        })
-//    });
 
-
-
-    $(function(){
-
-    });
 </script>
 
 <script>
@@ -1512,32 +1517,6 @@ position: relative;margin: auto;min-width: 1200px">
     }
 
 
-    $(function(){
-        var winHeight = $(document).scrollTop();
-
-        $(window).scroll(function() {
-//            var scrollY = $(document).scrollTop();// 获取垂直滚动的距离，即滚动了多少
-//
-//            if (scrollY > 0){ //如果滚动距离大于550px则隐藏，否则删除隐藏类
-//                $('.top-title').addClass('hiddened');
-//                $('#blog-nav').css('top','0');
-//                $('#scroll-view-id').removeClass('pd-top-open');
-//                $('#scroll-view-id').addClass('pd-top-close')
-//            }
-//            else {
-//                $('.top-title').removeClass('hiddened');
-//                $('#blog-nav').css('top','20px');
-//            }
-//
-//            if (scrollY > winHeight){ //如果没滚动到顶部，删除显示类，否则添加显示类
-//                $('.top-title').removeClass('showed');
-//            }
-//            else {
-//                $('.top-title').addClass('showed');
-//            }
-
-        });
-    });
 
 </script>
 

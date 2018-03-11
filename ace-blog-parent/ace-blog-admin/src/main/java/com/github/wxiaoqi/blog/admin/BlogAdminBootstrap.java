@@ -4,6 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * ${DESCRIPTION}
@@ -13,6 +15,8 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
  */
 @EnableEurekaClient
 @EnableHystrix
+@EnableScheduling
+@ComponentScan
 @SpringBootApplication
 public class BlogAdminBootstrap {
     public static void main(String[] args) {
