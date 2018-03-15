@@ -14,9 +14,9 @@ spring:
         #host: 192.168.0.11
         pool:
             max-active: 20
-        #password: a1234567@!
-        port: 6379
-        #port: 6389
+        password: a1234567@!
+        #port: 6379
+        port: 6389
 server:
     port: 8765 #启动端口
 #
@@ -51,7 +51,8 @@ eureka:
 #        ip-address: 127.0.0.1
     client:
         serviceUrl:
-            defaultZone: http://localhost:8761/eureka/
+            defaultZone: http://120.79.249.57:8761/eureka/
+            #defaultZone: http://localhost:8761/eureka/
             #defaultZone: http://39.108.59.108:8761/eureka/
                     # docker 部署开启
 #            defaultZone: http://center:8761/eureka/
@@ -73,4 +74,4 @@ security:
 #    expiration: 7200
 #    header: access-token
 upload:
-    path: http://112.74.180.100:8188/
+    path: http://120.79.249.57:8188/

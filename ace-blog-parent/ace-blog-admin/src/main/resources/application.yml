@@ -16,9 +16,9 @@ spring:
 #             url: http://localhost:8764
     datasource:
         name: test
-        url: jdbc:mysql://112.74.180.100:3306/ag_blog?useUnicode=true&characterEncoding=UTF8
+        url: jdbc:mysql://localhost:3306/ag_blog?useUnicode=true&characterEncoding=UTF8
         username: root
-        password: root
+        password: 123456
         # 使用druid数据源
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
@@ -50,7 +50,8 @@ eureka:
         instance-id: ${spring.cloud.client.ipAddress}:${server.port}
     client:
         serviceUrl:
-            defaultZone: http://localhost:8761/eureka/
+            defaultZone: http://120.79.249.57:8761/eureka/
+            #defaultZone: http://localhost:8761/eureka/
             #defaultZone: http://39.108.59.108:8761/eureka/
 swagger:
     basepackage: com.github.wxiaoqi.blog.admin

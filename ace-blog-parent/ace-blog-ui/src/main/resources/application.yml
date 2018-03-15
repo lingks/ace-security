@@ -9,7 +9,7 @@ server:
     port: 9700
 
 upload:
-    path: http://112.74.180.100:8188/
+    path: http://120.79.249.57:8188/
 #eureka:
 #    instance:
 #        statusPageUrlPath: /info
