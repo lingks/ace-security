@@ -42,12 +42,14 @@ public class CommentRest  {
     private CommentMapper commentMapper;
     @RequestMapping(value = "",method = RequestMethod.POST)
     @ResponseBody
-    public ObjectRestResponse<Comment> add(Comment entity){
+    public ObjectRestResponse<Comment> add(@RequestBody Comment entity){
 
-        Article article = articleBiz.selectById(entity.getPid());
-        article.setCommentCount(article.getCommentCount()==null?0:article.getCommentCount() + 1);
-        article.setHotValue(article.getHotValue() + 1);
-        articleBiz.updateSelectiveById(article);
+        if(entity.getPid()!= null) {
+            Article article = articleBiz.selectById(entity.getPid());
+            article.setCommentCount(article.getCommentCount() == null ? 0 : article.getCommentCount() + 1);
+            article.setHotValue(article.getHotValue() + 1);
+            articleBiz.updateSelectiveById(article);
+        }
         entity.setCrtTime(new Date());
         commentMapper.insertSelective(entity);
         return new ObjectRestResponse<Comment>().rel(true);
