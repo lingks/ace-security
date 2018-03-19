@@ -68,11 +68,11 @@ public class MarketRest {
         System.out.println(sss);
         return sss;
     }
-
-    public static void main(String[] args) {
-        String url = "http://www.chainau.com/";
-        System.out.println(HttpClientUtil.doGet(url));
-    }
+//
+//    public static void main(String[] args) {
+//        String url = "http://www.chainau.com/";
+//        System.out.println(HttpClientUtil.doGet(url));
+//    }
 }
 
 
