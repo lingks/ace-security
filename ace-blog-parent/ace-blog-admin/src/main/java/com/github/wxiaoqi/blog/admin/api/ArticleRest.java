@@ -107,6 +107,7 @@ public class ArticleRest {
             example.setOrderByClause("hot_value desc");
         }
 
+        example.setOrderByClause("create_time desc");
         int count = articleBiz.selectCountByExample(example);
 
         PageHelper.startPage(pageIndex, pageSize);
