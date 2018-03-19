@@ -762,19 +762,19 @@
 //                {checkbox: true, fixed: true}
 //                ,
                 {
-                    field:'id',title:'#',width:80, fixed: true,templet:'#sortTpl'
+                    field:'id',title:'#',width:50, fixed: true,templet:'#sortTpl'
                 },
                 {
                     field: 'name', width: 200,
-                    title: '名称', sort: true,
+                    title: '名称',
                     templet: '#nameTpl'
                 }
-                , {field: 'price', sort: true, title: '价格', templet: '#priceTpl'}
-                , {field: 'change1d', sort: true, title: '涨幅榜', templet: '#change1dTpl'}
-                , {field: 'available_supply', sort: true, title: '流通数量', templet: '#availabelTpl'}
-                , {field: 'volume_ex', sort: true, title: '交易量', templet: '#volumeTpl'}
-                , {field: 'marketCap', sort: true, title: '市值', templet: '#marketCapTpl'}
-                , {field: 'suggest_ex', sort: true, title: '推荐交易所', templet: '#suggestTpl'}
+                , {field: 'price',  title: '价格', templet: '#priceTpl', width: 200,}
+                , {field: 'change1d',  title: '涨幅榜', templet: '#change1dTpl'}
+                , {field: 'available_supply',title: '流通数量', templet: '#availabelTpl', width: 150,}
+                , {field: 'volume_ex',  title: '交易量', templet: '#volumeTpl', width: 150,}
+                , {field: 'marketCap', title: '市值', templet: '#marketCapTpl', width: 150,}
+                , {field: 'suggest_ex',  title: '推荐交易所', templet: '#suggestTpl'}
             ]]
             , id: 'testReload'
             , page: true,
