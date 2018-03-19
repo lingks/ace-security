@@ -1125,7 +1125,6 @@ position: relative;margin: auto;min-width: 1200px">
 
 
     $("#paging").on('click',function(){
-        console.log(currentPage + "--" + totalPage)
         if(currentPage <= totalPage){
             $.ajax({
                 url: base.url + '/blog/api/article/page',
@@ -1300,7 +1299,7 @@ position: relative;margin: auto;min-width: 1200px">
                         time = getDateDiff(getDateTimeStamp(timestampToTime(flashnews.issue_time)))
                     }
 
-                    console.log(flashnews)
+
                     lis.push('<li style="padding: 0 15px;"><a><p class="m-fast-timer">' + time + '</p><p class="m-fast-text">' + flashnews.content + '</p></a></li>')
                 }
 
@@ -1494,7 +1493,7 @@ position: relative;margin: auto;min-width: 1200px">
             contentType: "application/json; charset=utf-8",
             dataType: 'json',
             success: function (data, status, xhr) {
-                console.log(data)
+
                 if(data.code == 0){
                     layui.use('laytpl', function() {
                         var laytpl = layui.laytpl;
@@ -1509,7 +1508,7 @@ position: relative;margin: auto;min-width: 1200px">
                             datas.push(d);
 
                         }
-                        console.log(datas)
+
                         var btcView = document.getElementById('btc-sub-view');
                         laytpl(btcTemplate).render(datas, function (html) {
                             $("#btc-sub-view").html(html);

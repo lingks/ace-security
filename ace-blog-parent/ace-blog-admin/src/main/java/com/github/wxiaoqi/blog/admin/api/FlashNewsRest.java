@@ -79,7 +79,7 @@ public class FlashNewsRest {
             url += "";
         }
 
-        System.out.println(url);
+        //System.out.println(url);
         String s = HttpClientUtil.doGet(url);
         JSONObject jsonObject = JSONObject.parseObject(s);
         List<FlashVO> result = new ArrayList<FlashVO>();

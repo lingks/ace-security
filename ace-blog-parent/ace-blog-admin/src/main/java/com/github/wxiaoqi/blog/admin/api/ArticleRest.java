@@ -169,7 +169,7 @@ public class ArticleRest {
     @RequestMapping(value = "",method = RequestMethod.POST)
     @ResponseBody
     public ObjectRestResponse<Article> add(Article entity){
-        System.out.println(entity);
+       // System.out.println(entity);
         Integer integer = mapper.selectMaxSort();
         entity.setSort(integer);
         entity.setArticleType(0);
@@ -230,7 +230,7 @@ String url = "https://ihuoqiu.com/Home/information?data=W83Lysi$__2B$bHQTpVifRa$
                         Document doc = Jsoup.connect(url2).get();
                         Elements divs = doc.select("div .article");
                         for (Element element : divs) {
-                            System.out.println(element.toString());
+                           // System.out.println(element.toString());
                             article.setContent(element.toString());
                         }
 
