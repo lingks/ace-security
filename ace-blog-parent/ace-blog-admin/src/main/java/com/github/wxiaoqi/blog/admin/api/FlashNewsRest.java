@@ -154,6 +154,16 @@ public class FlashNewsRest {
     @ResponseBody
     public ObjectRestResponse<FlashNews> add(FlashNews entity){
 
+        Example example = new Example(FlashNews.class);
+        if(entity.getTitle() != null){
+            example.createCriteria().andEqualTo("title", entity.getTitle());
+        }
+
+        List<FlashNews> list = flashNewsBiz.selectByExample(example);
+
+        if(list.size() > 0){
+            return new ObjectRestResponse<FlashNews>().rel(true);
+        }
         flashNewsMapper.insertSelective(entity);
         return new ObjectRestResponse<FlashNews>().rel(true);
     }
