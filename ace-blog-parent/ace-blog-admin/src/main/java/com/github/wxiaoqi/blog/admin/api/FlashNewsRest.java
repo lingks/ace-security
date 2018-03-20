@@ -150,6 +150,8 @@ public class FlashNewsRest {
         List<FlashNews> list = flashNewsBiz.selectByExample(example);
         if(list!= null && list.size() >0){
             return new ObjectRestResponse<FlashNews>().rel(true).result(list.get(0));
+        }else{
+            return new ObjectRestResponse<FlashNews>().rel(true).result(new FlashNews());
         }
     }
     @RequestMapping(value = "",method = RequestMethod.POST)
