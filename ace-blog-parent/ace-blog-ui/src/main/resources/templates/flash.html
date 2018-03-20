@@ -217,6 +217,47 @@
         .blog-nav .blog-logo{
             top:5px;
         }
+
+
+
+
+
+        .triangle{
+            display: none;
+            font-size: 13px;
+        }
+        .triangle:before{
+            box-sizing: content-box;
+            width: 0px;
+            height: 0px;
+            position: absolute;
+            top: -15px;;
+            left:51px;
+            padding:0;
+            border-bottom:8px solid #FFFFFF;
+            border-top:8px solid transparent;
+            border-left:8px solid transparent;
+            border-right:8px solid transparent;
+            display: block;
+            content:'';
+            z-index: 12;
+        }
+        .triangle:after{
+            box-sizing: content-box;
+            width: 0px;
+            height: 0px;
+            position: absolute;
+            top: -18px;;
+            left:50px;
+            padding:0;
+            border-bottom:9px solid #cccccc;
+            border-top:9px solid transparent;
+            border-left:9px solid transparent;
+            border-right:9px solid transparent;
+            display: block;
+            content:'';
+            z-index:10
+        }
     </style>
 </head>
 <body>
@@ -476,6 +517,28 @@
                 <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ timestampToTime(item.issue_time) }}</span>
                 <div class="article-title">
                     <a href="#" >{{ item.content }}</a>
+                    <div class="fast-section-share-box hide-phone">
+                        <span class="share-title">分享至&nbsp;&nbsp; </span>
+
+                        <i class="fa fa-weixin" aria-hidden="true" onmouseover="showQCode(this,'{{item.newsflash_id}}','{{item.content}}');" onmouseleave="hideQCode(this);"></i>
+                        <a class="item-weixin hide-phone"><span class="icon-weixin "></span>
+                            <div class="triangle" style="width: 300px;margin-top:10px;/* height: 0px; */position: relative;"> <section class="weixin-section" style="
+    width: 220px;
+    padding: 5px;
+    height: 70px;
+    border: 1px #ccc solid;
+"><div style="
+    float: left;
+"><div class="qcode"></div> </div> <div style="
+    font-size: 12px;
+    width: 130px;
+    float: left;
+    padding-top: 10px;
+    padding-left: 10px;
+">打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</div> </section> </div>
+                        </a>
+
+                    </div>
                 </div>
                 <!--<div class="article-abstract">-->
                     <!--{{ item.remark }}-->
@@ -665,6 +728,38 @@
         });
 
     });
+
+    function showQCode(o,id,content){
+        $(o).parent().find(".triangle").fadeIn("slow");
+        localStorage.setItem("shateQCode",content);
+        $(o).parent().find(".triangle").find(".qcode").qrcode({
+            width:70,
+            height:70,
+            text:"http://192.168.0.179:9700/share?id="+id
+        });
+
+        $.ajax({
+            url:base.url + "/api/flash",
+            type: 'POST',
+
+
+            dataType: 'json',
+            data:{
+                'title':id,
+
+                'content':content
+            },
+            success: function (data, status, xhr) {
+                console.log(data);
+            }
+        })
+    }
+    function hideQCode(o){
+        $(o).parent().find(".triangle").fadeOut(5000);
+        $(o).parent().find(".triangle").find(".qcode").html("");
+       // localStorage.setItem("shateQCode",'');
+    }
+
 </script>
 
 </body>

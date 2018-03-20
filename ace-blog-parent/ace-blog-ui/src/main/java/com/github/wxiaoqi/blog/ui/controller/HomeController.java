@@ -88,4 +88,9 @@ public class HomeController {
     public String marketDetail(@PathVariable String id){
         return "marketDetail";
     }
+
+    @RequestMapping("/share")
+    public String share(){
+        return "share";
+    }
 }
