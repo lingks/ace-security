@@ -755,8 +755,10 @@
         })
     }
     function hideQCode(o){
-        $(o).parent().find(".triangle").fadeOut(5000);
-        $(o).parent().find(".triangle").find(".qcode").html("");
+        $(o).parent().find(".triangle").fadeOut(8000);
+        setTimeout(function(){
+            $(o).parent().find(".triangle").find(".qcode").html("");
+        },8000)
        // localStorage.setItem("shateQCode",'');
     }
 
