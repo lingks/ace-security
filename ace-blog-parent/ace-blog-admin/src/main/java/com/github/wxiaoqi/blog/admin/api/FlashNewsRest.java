@@ -141,18 +141,14 @@ public class FlashNewsRest {
 
 
     @RequestMapping(value = "/get",method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public ObjectRestResponse get(long timestamp, @RequestParam(name = "id") String id, String callback) {
+    public JSONPObject get(long timestamp, @RequestParam(name = "id") String id, String callback) {
         Example example = new Example(FlashNews.class);
         if(id != null){
             example.createCriteria().andEqualTo("title", id);
         }
 
         List<FlashNews> list = flashNewsBiz.selectByExample(example);
-        if(list!= null && list.size() >0){
-            return new ObjectRestResponse<FlashNews>().rel(true).result(list.get(0));
-        }else{
-            return new ObjectRestResponse<FlashNews>().rel(true).result(new FlashNews());
-        }
+        return new JSONPObject(callback, new ListRestResponse<FlashNews>().rel(true).result(list));
     }
     @RequestMapping(value = "",method = RequestMethod.POST)
     @ResponseBody

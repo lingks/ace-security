@@ -13,20 +13,25 @@
     <link href="../plug/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <!--全局样式表-->
     <link href="../css/global.css" rel="stylesheet" />
-    <script src="../plug/layui/layui.js"></script>
+
     <script src="../slider/js/jquery-1.10.1.min.js"></script>
+    <script src="../plug/layui/layui.js"></script>
+    <script src="../js/global.js"></script>
     <script>
         $(function(){
             var url = window.location.href;
             var urlArr = url.split("?");
+            var param = urlArr[1] + "&timestamp=" + new Date().getTime();
+            console.log(param)
             $.ajax({
-                url:base.url + "/api/flash/get?" + url[1],
+                type:'GET',
+                url:base.url + "/blog/api/flash/get?" + param ,
                 contentType: "application/json; charset=utf-8",
                 dataType: 'jsonp',
                 jsonp: 'callback',
                 success: function (data, status, xhr) {
-                    $("body").html('<div style="width: 96%;height: 100%;font-size: 1.5em;padding: 2%;text-align: center;">'+data.result.content
-                        +'</div>');
+                    console.log(data.result.content)
+                    $("#content").html(data.result.content);
 
                 }
             });
@@ -36,6 +41,7 @@
     </script>
 </head>
 <body>
-
+<div style="width: 96%;height: 100%;font-size: 1.5em;padding: 2%;text-align: center;" id="content">
+</div>
 </body>
 </html>
