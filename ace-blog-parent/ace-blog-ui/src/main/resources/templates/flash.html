@@ -731,35 +731,35 @@
 
     function showQCode(o,id,content){
         $(o).parent().find(".triangle").fadeIn("slow");
-        localStorage.setItem("shateQCode",content);
-        $(o).parent().find(".triangle").find(".qcode").qrcode({
-            width:70,
-            height:70,
-            text:"http://192.168.0.179:9700/share?id="+id
-        });
+        if($(o).parent().find(".triangle").find(".qcode").children().length == 0){
+            $(o).parent().find(".triangle").find(".qcode").qrcode({
+                width:70,
+                height:70,
+                text:"http://192.168.0.179:9700/share?id="+id
+            });
 
-        $.ajax({
-            url:base.url + "/blog/api/flash",
-            type: 'POST',
+            $.ajax({
+                url:base.url + "/blog/api/flash",
+                type: 'POST',
 
 
-            dataType: 'json',
-            data:{
-                'title':id,
+                dataType: 'json',
+                data:{
+                    'title':id,
 
-                'content':content
-            },
-            success: function (data, status, xhr) {
-                console.log(data);
-            }
-        })
+                    'content':content
+                },
+                success: function (data, status, xhr) {
+                    console.log(data);
+                }
+            })
+        }
     }
     function hideQCode(o){
         $(o).parent().find(".triangle").fadeOut(8000);
-        setTimeout(function(){
-            $(o).parent().find(".triangle").find(".qcode").html("");
-        },8000)
-       // localStorage.setItem("shateQCode",'');
+//        setTimeout(function(){
+//            $(o).parent().find(".triangle").find(".qcode").html("");
+//        },8000)
     }
 
 </script>
