@@ -993,7 +993,7 @@ position: relative;margin: auto;min-width: 1200px">
             url: base.url + '/blog/api/article/page',
             data:{
                 pageIndex:1,
-                pageSize:5
+                pageSize:10
             },
             contentType: "application/json; charset=utf-8",
             dataType: 'jsonp',
@@ -1382,7 +1382,7 @@ position: relative;margin: auto;min-width: 1200px">
             , view = document.getElementById('advert-view');
 
         $.ajax({
-            url: base.url + '/blog/api/advert/page?pageIndex=1&pageSize=3',
+            url: base.url + '/blog/api/advert/page?pageIndex=1&pageSize=5',
 
             contentType: "application/json; charset=utf-8",
             dataType: 'jsonp',

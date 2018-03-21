@@ -516,11 +516,11 @@
             <div class="article-left" style="width: 100%;">
                 <span><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ timestampToTime(item.issue_time) }}</span>
                 <div class="article-title">
-                    <a href="#" >{{ item.content }}</a>
+                    <a href="#" class="content-a">{{ item.content }}</a>
                     <div class="fast-section-share-box hide-phone">
                         <span class="share-title">分享至&nbsp;&nbsp; </span>
 
-                        <i class="fa fa-weixin" aria-hidden="true" onmouseover="showQCode(this,'{{item.newsflash_id}}','{{item.content}}');" onmouseleave="hideQCode(this);"></i>
+                        <i class="fa fa-weixin" aria-hidden="true" onmouseover="showQCode(this,'{{item.newsflash_id}}');" onmouseleave="hideQCode(this);"></i>
                         <a class="item-weixin hide-phone"><span class="icon-weixin "></span>
                             <div class="triangle" style="width: 300px;margin-top:10px;/* height: 0px; */position: relative;"> <section class="weixin-section" style="
     width: 220px;
@@ -626,7 +626,7 @@
             url: base.url + '/blog/api/article/page',
             data:{
                 pageIndex:1,
-                pageSize:5
+                pageSize:10
             },
             contentType: "application/json; charset=utf-8",
             dataType: 'jsonp',
@@ -729,7 +729,7 @@
 
     });
 
-    function showQCode(o,id,content){
+    function showQCode(o,id){
         $(o).parent().find(".triangle").fadeIn("slow");
         if($(o).parent().find(".triangle").find(".qcode").children().length == 0){
             $(o).parent().find(".triangle").find(".qcode").qrcode({
@@ -747,7 +747,7 @@
                 data:{
                     'title':id,
 
-                    'content':content
+                    'content':$(o).parent().parent().find(".content-a").text()
                 },
                 success: function (data, status, xhr) {
                     console.log(data);
@@ -756,7 +756,7 @@
         }
     }
     function hideQCode(o){
-        $(o).parent().find(".triangle").fadeOut(8000);
+        $(o).parent().find(".triangle").fadeOut(5000);
 //        setTimeout(function(){
 //            $(o).parent().find(".triangle").find(".qcode").html("");
 //        },8000)
