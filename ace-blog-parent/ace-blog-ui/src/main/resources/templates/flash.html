@@ -108,11 +108,12 @@
             width: 100%;
             height: auto;
             color: #fff;
-            padding: 8px 15px;
+            padding: 5px;
             background: rgba(0, 0, 0, .5);
             box-sizing: border-box;
             position: relative;
-            bottom:60px;
+            bottom: 80px;
+            line-height: 35px;
         }
 
 
@@ -355,7 +356,7 @@
 <script id="uInfoTpl" type="text/html">
     {{# layui.each(d.result,function(index,item){}}
     <div onmouseover="userLogoin();" onmouseleave="setTimeout('userLogoout()', 3000);" id="ufo" style="margin-top: 15px;width: 35px;height: 35px;float: left;border-radius: 50%;overflow:hidden;">
-        <img src="{{item.logo}}" style="width: 100%;">
+        <img src="{{item.logo}}">
     </div>
 
     <li class="layui-nav-item" lay-unselect="">
@@ -373,7 +374,7 @@
     {{# layui.each(d.result, function(index, item){ }}
     <div id="uinfo-view"">
     <div onmouseover="userLogoin();" onmouseleave="setTimeout('userLogoout()', 3000);" id="ufo" style="margin-top: 15px;width: 35px;height: 35px;float: left;border-radius: 50%;overflow:hidden;">
-        <img src="{{item.logo}}" style="width: 100%;">
+        <img src="{{item.logo}}">
     </div>
     <li class="layui-nav-item" lay-unselect="">
         <dl class="layui-nav-child" id="menu-view" onmouseover="userLogoin2();" onmouseleave="userLogoout2();" >
@@ -597,7 +598,7 @@
                                         <span style="width:25%;float: left;height:80%;">
                                             <img src="{{item.cover}}" alt="" class="posImgY">
                                         </span>
-                    <span class="m-hot2-remark" style="font-size: 13px;"><a href="/article/{{item.id}}" target="_blank">{{item.title}}</a></span>
+                    <span class="m-hot2-remark" style="font-size: 14px;"><a href="/article/{{item.id}}" target="_blank">{{item.title}}</a></span>
                 </div>
                 <span class="m-hot-num m-hot-num3" style="opacity: 0.7;{{# if(index == 2){}}background:#E58D00;{{#}}} {{# if(index == 2){}}background:#F5CD23;{{#}}}{{# if(index >= 3){}}background:#4A4A4A;{{#}}}">{{index}}</span>
             </li>
