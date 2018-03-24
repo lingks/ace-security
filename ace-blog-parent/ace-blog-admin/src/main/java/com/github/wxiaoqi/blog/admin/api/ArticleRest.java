@@ -226,16 +226,43 @@ String url = "https://ihuoqiu.com/Home/information?data=W83Lysi$__2B$bHQTpVifRa$
                         article.setPageView(info.getViewCount());
                         article.setRemark(info.getShortDescription());
                         article.setHotValue(new Random().nextInt(100));
-                        String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
-                        Document doc = Jsoup.connect(url2).get();
-                        Elements divs = doc.select("div .article");
-                        for (Element element : divs) {
-                           // System.out.println(element.toString());
-                            article.setContent(element.toString());
+                        if(data.getData1() != null && !"".equals(data.getData1())){
+                            String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
+                            Document doc = Jsoup.connect(url2).get();
+                            Elements divs = doc.select("div .article");
+                            if(divs.size() > 0) {
+                                for (Element element : divs) {
+                                    // System.out.println(element.toString());
+                                    article.setContent(element.toString());
+                                }
+                            }else{
+                                divs = doc.select("div .hq_information_content");
+                                for (Element element : divs) {
+                                    // System.out.println(element.toString());
+                                    article.setContent(element.toString());
+                                }
+                            }
+
+                            mapper.insert(article);
+                        }else{
+                            String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData2();
+                            Document doc = Jsoup.connect(url2).get();
+                            Elements divs = doc.select("div .article");
+                            if(divs.size() > 0) {
+                                for (Element element : divs) {
+                                    // System.out.println(element.toString());
+                                    article.setContent(element.toString());
+                                }
+                            }else{
+                                divs = doc.select("div .hq_information_content");
+                                for (Element element : divs) {
+                                    // System.out.println(element.toString());
+                                    article.setContent(element.toString());
+                                }
+                            }
+
+                            mapper.insert(article);
                         }
-
-                        mapper.insert(article);
-
                     }
                 }
             }
