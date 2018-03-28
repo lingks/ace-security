@@ -220,14 +220,14 @@ public class ArticleSchedutor {
                         if(data.getData1() != null && !"".equals(data.getData1())){
                             String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
                             Document doc = Jsoup.connect(url2).get();
-                            Elements divs = doc.select("div .aticle");
+                            Elements divs = doc.select("div .hq_information_info");
                             if(divs.size() > 0) {
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
                                     article.setContent(element.toString());
                                 }
                             }else{
-                                divs = doc.select("div .hq_information_content");
+                                divs = doc.select("div .hq_information_info");
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
                                     article.setContent(element.toString());
