@@ -16,7 +16,7 @@
     <result column="page_view" jdbcType="INTEGER" property="pageView" />
     <result column="commentCount" jdbcType="INTEGER" property="commentCount" />
     <result column="type" jdbcType="INTEGER" property="type" />
-    <result column="articleType" jdbcType="INTEGER" property="articleType" />
+    <result column="article_type" jdbcType="INTEGER" property="articleType" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="hotValue" jdbcType="DOUBLE" property="hotValue" />
     <result column="crt_time" jdbcType="TIMESTAMP" property="crtTime" />

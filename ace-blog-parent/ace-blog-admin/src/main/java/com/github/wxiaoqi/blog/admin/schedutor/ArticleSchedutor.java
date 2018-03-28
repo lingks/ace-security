@@ -39,14 +39,14 @@ public class ArticleSchedutor {
 
         System.out.println("我每隔5秒冒泡一次：" + new Date());
     }
-
+////
 //    public static void main(String[] args) throws Exception{
-//        String url = "https://ihuoqiu.com/Home/Index?data=W9F3j2vgufgdWZmdtGFOlg$_2C$$_2C$&pageIndex=10";
+//        String url = "https://ihuoqiu.com/Home/information?data=GSw__2BNreotKJB2cXvF11nHQ__2C__2C&pageIndex=1";
 //        String s = HttpClientUtil.doPost(url);
 //        JSONObject object = JSONObject.parseObject(s);
 //        System.out.println(object);
 //        //data1 =
-//        String url2 = "https://ihuoqiu.com/Content/information?data=V30M__2F0P3bMkxR__2BatItrulw__2C__2C";
+//        String url2 = "https://ihuoqiu.com/Content/information?data=mOwTWQnaXdw9nhoV7aWtlA__2C__2C";
 //        Document doc = Jsoup.connect(url2).get();
 //        System.out.println(doc);
 //        Elements divs = doc.select("div .hq_information_content");
@@ -77,7 +77,7 @@ public class ArticleSchedutor {
                             article.setCrtTime(new Date());
                             article.setUpdTime(new Date());
                             article.setStatus(2);
-                            article.setArticleType(1);
+                            article.setType(1);
                             article.setCover(info.getImgUrl());
                             article.setTitle(info.getTitle());
                             article.setTag(info.getTag());
@@ -88,7 +88,7 @@ public class ArticleSchedutor {
                             if(data.getData1() != null && !"".equals(data.getData1())){
                                 String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
                                 Document doc = Jsoup.connect(url2).get();
-                                Elements divs = doc.select("div .aticle");
+                                Elements divs = doc.select("div .hq_information_content");
                                 if(divs.size() > 0) {
                                     for (Element element : divs) {
                                         // System.out.println(element.toString());
@@ -96,7 +96,7 @@ public class ArticleSchedutor {
                                         System.out.println(element.toString());
                                     }
                                 }else{
-                                    divs = doc.select("div .hq_information_content");
+                                    divs = doc.select("div .article");
                                     for (Element element : divs) {
                                         // System.out.println(element.toString());
                                         article.setContent(element.toString());
@@ -107,42 +107,42 @@ public class ArticleSchedutor {
 
                                 articleMapper.insert(article);
                             }
-                        }/*else{
-                            ArticleInfo info = articleMapper.selectByTitle(data.getArticleInfo().getTitle());
-                            Article article = new Article();
-                            article.setId(Integer.parseInt(info.getID()));
-                            article.setCrtTime(new Date());
-                            article.setUpdTime(new Date());
-                            article.setStatus(2);
-                            article.setArticleType(1);
-                            article.setCover(data.getArticleInfo().getImgUrl());
-                            article.setTitle(data.getArticleInfo().getTitle());
-                            article.setCover(data.getArticleInfo().getImgUrl());
-                            article.setTag(data.getArticleInfo().getTag());
-                            article.setPageView(info.getViewCount());
-                            article.setRemark(data.getArticleInfo().getShortDescription());
-                            article.setHotValue(new Random().nextInt(100));
-                            article.setSource(data.getArticleInfo().getSouce());
-                            if(data.getData1() != null && !"".equals(data.getData1())){
-                                String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
-                                Document doc = Jsoup.connect(url2).get();
-                                Elements divs = doc.select("div .aticle");
-                                if(divs.size() > 0) {
-                                    for (Element element : divs) {
-                                        // System.out.println(element.toString());
-                                        article.setContent(element.toString());
-                                    }
-                                }else{
-                                    divs = doc.select("div .hq_information_content");
-                                    for (Element element : divs) {
-                                        // System.out.println(element.toString());
-                                        article.setContent(element.toString());
-
-                                    }
-                                }
-                                articleMapper.updateByPrimaryKey(article);
-                            }
-                        }*/
+//                        }else{
+//                            ArticleInfo info = articleMapper.selectByTitle(data.getArticleInfo().getTitle());
+//                            Article article = new Article();
+//                            article.setId(Integer.parseInt(info.getID()));
+//                            article.setCrtTime(new Date());
+//                            article.setUpdTime(new Date());
+//                            article.setStatus(2);
+//                            article.setType(1);
+//                            article.setCover(data.getArticleInfo().getImgUrl());
+//                            article.setTitle(data.getArticleInfo().getTitle());
+//                            article.setCover(data.getArticleInfo().getImgUrl());
+//                            article.setTag(data.getArticleInfo().getTag());
+//                            article.setPageView(info.getViewCount());
+//                            article.setRemark(data.getArticleInfo().getShortDescription());
+//                            article.setHotValue(new Random().nextInt(100));
+//                            article.setSource(data.getArticleInfo().getSouce());
+//                            if(data.getData1() != null && !"".equals(data.getData1())){
+//                                String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
+//                                Document doc = Jsoup.connect(url2).get();
+//                                Elements divs = doc.select("div .hq_information_content");
+//                                if(divs.size() > 0) {
+//                                    for (Element element : divs) {
+//                                        // System.out.println(element.toString());
+//                                        article.setContent(element.toString());
+//                                    }
+//                                }else{
+//                                    divs = doc.select("div .hq_information_info");
+//                                    for (Element element : divs) {
+//                                        // System.out.println(element.toString());
+//                                        article.setContent(element.toString());
+//
+//                                    }
+//                                }
+//                                articleMapper.updateByPrimaryKey(article);
+//                            }
+                        }
                     }
                 }
             }
@@ -171,11 +171,11 @@ public class ArticleSchedutor {
                         article.setCrtTime(new Date());
                         article.setUpdTime(new Date());
                         article.setStatus(2);
-                        article.setArticleType(2);
+                        article.setType(2);
                         article.setCover(info.getImgUrl());
                         article.setTitle(info.getTitle());
                         article.setTag(info.getTag());
-                        article.setPageView(new Random().nextInt(100));
+                        article.setPageView(info.getViewCount());
                         article.setRemark(info.getShortDescription());
                         article.setHotValue(new Random().nextInt(100));
                         article.setSource(info.getSouce());
@@ -208,7 +208,7 @@ public class ArticleSchedutor {
 //                        article.setCrtTime(new Date());
 //                        article.setUpdTime(new Date());
 //                        article.setStatus(2);
-//                        article.setArticleType(2);
+//                        article.setType(2);
 //                        article.setCover(data.getArticleInfo().getImgUrl());
 //                        article.setTitle(data.getArticleInfo().getTitle());
 //                        article.setCover(data.getArticleInfo().getImgUrl());
@@ -245,7 +245,7 @@ public class ArticleSchedutor {
     @Scheduled(cron = "0/55 * * * * ?")
     public void cron2() throws Exception{
 
-        for(int i = 1 ; i < 100; i ++){
+        for(int i = 1 ; i < 10000; i ++){
 
             //String url = "https://ihuoqiu.com/Home/Index?data=W9F3j2vgufgdWZmdtGFOlg$_2C$$_2C$&pageIndex=" + i;
             String url = "https://ihuoqiu.com/Home/information?data=GSw__2BNreotKJB2cXvF11nHQ__2C__2C&pageIndex=" + i;
@@ -263,18 +263,18 @@ public class ArticleSchedutor {
                         article.setCrtTime(new Date());
                         article.setUpdTime(new Date());
                         article.setStatus(2);
-                        article.setArticleType(3);
+                        article.setType(3);
                         article.setCover(info.getImgUrl());
                         article.setTitle(info.getTitle());
                         article.setTag(info.getTag());
-                        article.setPageView(new Random().nextInt(100));
+                        article.setPageView(info.getViewCount());
                         article.setRemark(info.getShortDescription());
                         article.setHotValue(new Random().nextInt(100));
                         article.setSource(info.getSouce());
                         if(data.getData1() != null && !"".equals(data.getData1())){
                             String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
                             Document doc = Jsoup.connect(url2).get();
-                            Elements divs = doc.select("div .hq_information_info");
+                            Elements divs = doc.select("div .hq_information_content");
                             if(divs.size() > 0) {
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
@@ -282,7 +282,7 @@ public class ArticleSchedutor {
                                     System.out.println(element.toString());
                                 }
                             }else{
-                                divs = doc.select("div .hq_information_content");
+                                divs = doc.select("div .hq_information_info");
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
                                     article.setContent(element.toString());
@@ -300,7 +300,7 @@ public class ArticleSchedutor {
 //                        article.setCrtTime(new Date());
 //                        article.setUpdTime(new Date());
 //                        article.setStatus(2);
-//                        article.setArticleType(3);
+//                        article.setType(3);
 //                        article.setCover(data.getArticleInfo().getImgUrl());
 //                        article.setTitle(data.getArticleInfo().getTitle());
 //                        article.setCover(data.getArticleInfo().getImgUrl());
@@ -312,14 +312,14 @@ public class ArticleSchedutor {
 //                        if(data.getData1() != null && !"".equals(data.getData1())){
 //                            String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
 //                            Document doc = Jsoup.connect(url2).get();
-//                            Elements divs = doc.select("div .aticle");
+//                            Elements divs = doc.select("div .hq_information_content");
 //                            if(divs.size() > 0) {
 //                                for (Element element : divs) {
 //                                    // System.out.println(element.toString());
 //                                    article.setContent(element.toString());
 //                                }
 //                            }else{
-//                                divs = doc.select("div .hq_information_content");
+//                                divs = doc.select("div .hq_information_info");
 //                                for (Element element : divs) {
 //                                    // System.out.println(element.toString());
 //                                    article.setContent(element.toString());
