@@ -238,7 +238,7 @@ public class ArticleRest {
                                     System.out.println(element.toString());
                                 }
                             }else{
-                                divs = doc.select("div .hq_information_info");
+                                divs = doc.select("div .hq_information_content");
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
                                     article.setContent(element.toString());
@@ -257,18 +257,18 @@ public class ArticleRest {
                         article.setUpdTime(new Date());
                         article.setStatus(2);
                         article.setArticleType(1);
-                        article.setCover(info.getImgUrl());
-                        article.setTitle(info.getTitle());
                         article.setCover(data.getArticleInfo().getImgUrl());
-                        article.setTag(info.getTag());
+                        article.setTitle(data.getArticleInfo().getTitle());
+                        article.setCover(data.getArticleInfo().getImgUrl());
+                        article.setTag(data.getArticleInfo().getTag());
                         article.setPageView(info.getViewCount());
-                        article.setRemark(info.getShortDescription());
+                        article.setRemark(data.getArticleInfo().getShortDescription());
                         article.setHotValue(new Random().nextInt(100));
                         article.setSource(data.getArticleInfo().getSouce());
                         if(data.getData1() != null && !"".equals(data.getData1())){
                             String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
                             Document doc = Jsoup.connect(url2).get();
-                            Elements divs = doc.select("div .aticle");
+                            Elements divs = doc.select("div .hq_information_info");
                             if(divs.size() > 0) {
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
@@ -320,7 +320,7 @@ public class ArticleRest {
                         if (data.getData1() != null && !"".equals(data.getData1())) {
                             String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
                             Document doc = Jsoup.connect(url2).get();
-                            Elements divs = doc.select("div .aticle");
+                            Elements divs = doc.select("div .hq_information_info");
                             if (divs.size() > 0) {
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
@@ -347,18 +347,18 @@ public class ArticleRest {
                         article.setUpdTime(new Date());
                         article.setStatus(2);
                         article.setArticleType(2);
-                        article.setCover(info.getImgUrl());
-                        article.setTitle(info.getTitle());
                         article.setCover(data.getArticleInfo().getImgUrl());
-                        article.setTag(info.getTag());
+                        article.setTitle(data.getArticleInfo().getTitle());
+                        article.setCover(data.getArticleInfo().getImgUrl());
+                        article.setTag(data.getArticleInfo().getTag());
                         article.setPageView(info.getViewCount());
-                        article.setRemark(info.getShortDescription());
+                        article.setRemark(data.getArticleInfo().getShortDescription());
                         article.setHotValue(new Random().nextInt(100));
                         article.setSource(data.getArticleInfo().getSouce());
                         if (data.getData1() != null && !"".equals(data.getData1())) {
                             String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
                             Document doc = Jsoup.connect(url2).get();
-                            Elements divs = doc.select("div .aticle");
+                            Elements divs = doc.select("div .hq_information_info");
                             if (divs.size() > 0) {
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
@@ -409,7 +409,7 @@ public class ArticleRest {
                         if(data.getData1() != null && !"".equals(data.getData1())){
                             String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
                             Document doc = Jsoup.connect(url2).get();
-                            Elements divs = doc.select("div .aticle");
+                            Elements divs = doc.select("div .hq_information_content");
                             if(divs.size() > 0) {
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
@@ -436,12 +436,12 @@ public class ArticleRest {
                         article.setUpdTime(new Date());
                         article.setStatus(2);
                         article.setArticleType(3);
-                        article.setCover(info.getImgUrl());
-                        article.setTitle(info.getTitle());
                         article.setCover(data.getArticleInfo().getImgUrl());
-                        article.setTag(info.getTag());
+                        article.setTitle(data.getArticleInfo().getTitle());
+                        article.setCover(data.getArticleInfo().getImgUrl());
+                        article.setTag(data.getArticleInfo().getTag());
                         article.setPageView(info.getViewCount());
-                        article.setRemark(info.getShortDescription());
+                        article.setRemark(data.getArticleInfo().getShortDescription());
                         article.setHotValue(new Random().nextInt(100));
                         article.setSource(data.getArticleInfo().getSouce());
                         if(data.getData1() != null && !"".equals(data.getData1())){

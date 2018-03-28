@@ -752,7 +752,7 @@ position: relative;margin: auto;min-width: 1200px">
                 <span style="cursor: pointer;"><i class="fa fa-tag"></i>&nbsp;&nbsp;{{ item.tag }}</span>
                 <span class="article-viewinfo" style="cursor: pointer;"><i class="fa fa-eye"></i>&nbsp;{{ item.pageView }}</span>
                 <span class="article-viewinfo" style="cursor: pointer;"><i class="fa fa-commenting"></i>&nbsp;{{ item.commentCount == undefined? 0:item.commentCount}}</span>
-                <span>来源：{{ d.source == undefined?'链算数据':d.source}}</span>
+                <span>来源：{{ item.source == undefined?'链算数据':item.source}}</span>
             </div>
         </div>
         {{# }); }}
