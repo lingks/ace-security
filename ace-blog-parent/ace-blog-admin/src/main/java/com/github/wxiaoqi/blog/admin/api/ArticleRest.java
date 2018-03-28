@@ -261,7 +261,7 @@ public class ArticleRest {
                         article.setTitle(data.getArticleInfo().getTitle());
                         article.setCover(data.getArticleInfo().getImgUrl());
                         article.setTag(data.getArticleInfo().getTag());
-                        article.setPageView(info.getViewCount());
+                        article.setPageView(new Random().nextInt(1000));
                         article.setRemark(data.getArticleInfo().getShortDescription());
                         article.setHotValue(new Random().nextInt(100));
                         article.setSource(data.getArticleInfo().getSouce());
@@ -315,7 +315,7 @@ public class ArticleRest {
                         article.setTag(info.getTag());
                         article.setPageView(info.getViewCount());
                         article.setRemark(info.getShortDescription());
-                        article.setHotValue(new Random().nextInt(100));
+                        article.setHotValue(new Random().nextInt(1000));
                         article.setSource(info.getSouce());
                         if (data.getData1() != null && !"".equals(data.getData1())) {
                             String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
@@ -351,7 +351,7 @@ public class ArticleRest {
                         article.setTitle(data.getArticleInfo().getTitle());
                         article.setCover(data.getArticleInfo().getImgUrl());
                         article.setTag(data.getArticleInfo().getTag());
-                        article.setPageView(info.getViewCount());
+                        article.setPageView(new Random().nextInt(1000));
                         article.setRemark(data.getArticleInfo().getShortDescription());
                         article.setHotValue(new Random().nextInt(100));
                         article.setSource(data.getArticleInfo().getSouce());
@@ -404,12 +404,12 @@ public class ArticleRest {
                         article.setTag(info.getTag());
                         article.setPageView(info.getViewCount());
                         article.setRemark(info.getShortDescription());
-                        article.setHotValue(new Random().nextInt(100));
+                        article.setHotValue(new Random().nextInt(1000));
                         article.setSource(info.getSouce());
                         if(data.getData1() != null && !"".equals(data.getData1())){
                             String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
                             Document doc = Jsoup.connect(url2).get();
-                            Elements divs = doc.select("div .hq_information_content");
+                            Elements divs = doc.select("div .hq_information_info");
                             if(divs.size() > 0) {
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
@@ -440,14 +440,14 @@ public class ArticleRest {
                         article.setTitle(data.getArticleInfo().getTitle());
                         article.setCover(data.getArticleInfo().getImgUrl());
                         article.setTag(data.getArticleInfo().getTag());
-                        article.setPageView(info.getViewCount());
+                        article.setPageView(new Random().nextInt(1000));
                         article.setRemark(data.getArticleInfo().getShortDescription());
                         article.setHotValue(new Random().nextInt(100));
                         article.setSource(data.getArticleInfo().getSouce());
                         if(data.getData1() != null && !"".equals(data.getData1())){
                             String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
                             Document doc = Jsoup.connect(url2).get();
-                            Elements divs = doc.select("div .aticle");
+                            Elements divs = doc.select("div .hq_information_info");
                             if(divs.size() > 0) {
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
