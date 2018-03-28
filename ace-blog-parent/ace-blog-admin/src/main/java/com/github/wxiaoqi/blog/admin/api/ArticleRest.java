@@ -200,11 +200,190 @@ public class ArticleRest {
     @RequestMapping(value = "/insert",method = RequestMethod.GET)
     @ResponseBody
     public String insert() throws IOException{
-        for(int i = 1 ; i < 100; i ++){
+        for(int i = 1 ; i < 10000; i ++){
 
             //String url = "https://ihuoqiu.com/Home/Index?data=W9F3j2vgufgdWZmdtGFOlg$_2C$$_2C$&pageIndex=" + i;
-String url = "https://ihuoqiu.com/Home/information?data=W83Lysi$__2B$bHQTpVifRa$__2B$HDg$_2C$$_2C$&pageIndex=" + i;
-            System.out.println("定时任务");
+            String url = "https://ihuoqiu.com/Home/information?data=W83Lysi$__2B$bHQTpVifRa$__2B$HDg$_2C$$_2C$&pageIndex=" + i;
+
+            String s = HttpClientUtil.doPost(url);
+            JSONObject object = JSONObject.parseObject(s);
+            if(object.getString("code").equals("200") && object.getBoolean("success") == true){
+                String msg = object.getString("msg");
+                List<ArticleData> list = JSONArray.parseArray(msg, ArticleData.class);
+
+                for(ArticleData data : list){
+
+                    if(check(data.getArticleInfo().getTitle())){
+                        ArticleInfo info = data.getArticleInfo();
+                        Article article = new Article();
+                        article.setCrtTime(new Date());
+                        article.setUpdTime(new Date());
+                        article.setStatus(2);
+                        article.setArticleType(1);
+                        article.setCover(info.getImgUrl());
+                        article.setTitle(info.getTitle());
+                        article.setTag(info.getTag());
+                        article.setPageView(info.getViewCount());
+                        article.setRemark(info.getShortDescription());
+                        article.setHotValue(new Random().nextInt(100));
+                        article.setSource(info.getSouce());
+                        if(data.getData1() != null && !"".equals(data.getData1())){
+                            String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
+                            Document doc = Jsoup.connect(url2).get();
+                            Elements divs = doc.select("div .hq_information_info");
+                            if(divs.size() > 0) {
+                                for (Element element : divs) {
+                                    // System.out.println(element.toString());
+                                    article.setContent(element.toString());
+                                    System.out.println(element.toString());
+                                }
+                            }else{
+                                divs = doc.select("div .hq_information_info");
+                                for (Element element : divs) {
+                                    // System.out.println(element.toString());
+                                    article.setContent(element.toString());
+                                    System.out.println(element.toString());
+
+                                }
+                            }
+
+                            mapper.insert(article);
+                        }
+                    }else{
+                        ArticleInfo info = articleBiz.selectByTitle(data.getArticleInfo().getTitle());
+                        Article article = new Article();
+                        article.setId(Integer.parseInt(info.getID()));
+                        article.setCrtTime(new Date());
+                        article.setUpdTime(new Date());
+                        article.setStatus(2);
+                        article.setArticleType(1);
+                        article.setCover(info.getImgUrl());
+                        article.setTitle(info.getTitle());
+                        article.setCover(data.getArticleInfo().getImgUrl());
+                        article.setTag(info.getTag());
+                        article.setPageView(info.getViewCount());
+                        article.setRemark(info.getShortDescription());
+                        article.setHotValue(new Random().nextInt(100));
+                        article.setSource(data.getArticleInfo().getSouce());
+                        if(data.getData1() != null && !"".equals(data.getData1())){
+                            String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
+                            Document doc = Jsoup.connect(url2).get();
+                            Elements divs = doc.select("div .aticle");
+                            if(divs.size() > 0) {
+                                for (Element element : divs) {
+                                    // System.out.println(element.toString());
+                                    article.setContent(element.toString());
+                                }
+                            }else{
+                                divs = doc.select("div .hq_information_content");
+                                for (Element element : divs) {
+                                    // System.out.println(element.toString());
+                                    article.setContent(element.toString());
+
+                                }
+                            }
+                             mapper.updateByPrimaryKey(article);
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        for(int i = 1 ; i < 2000; i ++) {
+
+            //String url = "https://ihuoqiu.com/Home/Index?data=W9F3j2vgufgdWZmdtGFOlg$_2C$$_2C$&pageIndex=" + i;
+            String url = "https://ihuoqiu.com/Home/information?data=BgZLXDwZ8H336uMaxH6fIA__2C__2C&pageIndex=" + i;
+            String s = HttpClientUtil.doPost(url);
+            JSONObject object = JSONObject.parseObject(s);
+            if (object.getString("code").equals("200") && object.getBoolean("success") == true) {
+                String msg = object.getString("msg");
+                List<ArticleData> list = JSONArray.parseArray(msg, ArticleData.class);
+
+                for (ArticleData data : list) {
+
+                    if (check(data.getArticleInfo().getTitle())) {
+                        ArticleInfo info = data.getArticleInfo();
+                        Article article = new Article();
+                        article.setCrtTime(new Date());
+                        article.setUpdTime(new Date());
+                        article.setStatus(2);
+                        article.setArticleType(2);
+                        article.setCover(info.getImgUrl());
+                        article.setTitle(info.getTitle());
+                        article.setTag(info.getTag());
+                        article.setPageView(info.getViewCount());
+                        article.setRemark(info.getShortDescription());
+                        article.setHotValue(new Random().nextInt(100));
+                        article.setSource(info.getSouce());
+                        if (data.getData1() != null && !"".equals(data.getData1())) {
+                            String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
+                            Document doc = Jsoup.connect(url2).get();
+                            Elements divs = doc.select("div .aticle");
+                            if (divs.size() > 0) {
+                                for (Element element : divs) {
+                                    // System.out.println(element.toString());
+                                    article.setContent(element.toString());
+                                    System.out.println(element.toString());
+                                }
+                            } else {
+                                divs = doc.select("div .hq_information_content");
+                                for (Element element : divs) {
+                                    // System.out.println(element.toString());
+                                    article.setContent(element.toString());
+                                    System.out.println(element.toString());
+
+                                }
+                            }
+
+                            mapper.insert(article);
+                        }
+                    } else {
+                        ArticleInfo info = mapper.selectByTitle(data.getArticleInfo().getTitle());
+                        Article article = new Article();
+                        article.setId(Integer.parseInt(info.getID()));
+                        article.setCrtTime(new Date());
+                        article.setUpdTime(new Date());
+                        article.setStatus(2);
+                        article.setArticleType(2);
+                        article.setCover(info.getImgUrl());
+                        article.setTitle(info.getTitle());
+                        article.setCover(data.getArticleInfo().getImgUrl());
+                        article.setTag(info.getTag());
+                        article.setPageView(info.getViewCount());
+                        article.setRemark(info.getShortDescription());
+                        article.setHotValue(new Random().nextInt(100));
+                        article.setSource(data.getArticleInfo().getSouce());
+                        if (data.getData1() != null && !"".equals(data.getData1())) {
+                            String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
+                            Document doc = Jsoup.connect(url2).get();
+                            Elements divs = doc.select("div .aticle");
+                            if (divs.size() > 0) {
+                                for (Element element : divs) {
+                                    // System.out.println(element.toString());
+                                    article.setContent(element.toString());
+                                }
+                            } else {
+                                divs = doc.select("div .hq_information_content");
+                                for (Element element : divs) {
+                                    // System.out.println(element.toString());
+                                    article.setContent(element.toString());
+
+                                }
+                            }
+                            mapper.updateByPrimaryKey(article);
+                        }
+                    }
+                }
+            }
+
+        }
+
+        for(int i = 1 ; i < 1000; i ++){
+
+            //String url = "https://ihuoqiu.com/Home/Index?data=W9F3j2vgufgdWZmdtGFOlg$_2C$$_2C$&pageIndex=" + i;
+            String url = "https://ihuoqiu.com/Home/information?data=GSw__2BNreotKJB2cXvF11nHQ__2C__2C&pageIndex=" + i;
             String s = HttpClientUtil.doPost(url);
             JSONObject object = JSONObject.parseObject(s);
             if(object.getString("code").equals("200") && object.getBoolean("success") == true){
@@ -226,28 +405,49 @@ String url = "https://ihuoqiu.com/Home/information?data=W83Lysi$__2B$bHQTpVifRa$
                         article.setPageView(info.getViewCount());
                         article.setRemark(info.getShortDescription());
                         article.setHotValue(new Random().nextInt(100));
+                        article.setSource(info.getSouce());
                         if(data.getData1() != null && !"".equals(data.getData1())){
                             String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
                             Document doc = Jsoup.connect(url2).get();
-                            Elements divs = doc.select("div .article");
+                            Elements divs = doc.select("div .aticle");
                             if(divs.size() > 0) {
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
                                     article.setContent(element.toString());
+                                    System.out.println(element.toString());
                                 }
                             }else{
                                 divs = doc.select("div .hq_information_content");
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
                                     article.setContent(element.toString());
+                                    System.out.println(element.toString());
+
                                 }
                             }
 
                             mapper.insert(article);
-                        }else{
-                            String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData2();
+                        }
+                    }else{
+                        ArticleInfo info = mapper.selectByTitle(data.getArticleInfo().getTitle());
+                        Article article = new Article();
+                        article.setId(Integer.parseInt(info.getID()));
+                        article.setCrtTime(new Date());
+                        article.setUpdTime(new Date());
+                        article.setStatus(2);
+                        article.setArticleType(3);
+                        article.setCover(info.getImgUrl());
+                        article.setTitle(info.getTitle());
+                        article.setCover(data.getArticleInfo().getImgUrl());
+                        article.setTag(info.getTag());
+                        article.setPageView(info.getViewCount());
+                        article.setRemark(info.getShortDescription());
+                        article.setHotValue(new Random().nextInt(100));
+                        article.setSource(data.getArticleInfo().getSouce());
+                        if(data.getData1() != null && !"".equals(data.getData1())){
+                            String url2 = "https://ihuoqiu.com/Content/information?data=" + data.getData1();
                             Document doc = Jsoup.connect(url2).get();
-                            Elements divs = doc.select("div .article");
+                            Elements divs = doc.select("div .aticle");
                             if(divs.size() > 0) {
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
@@ -258,10 +458,10 @@ String url = "https://ihuoqiu.com/Home/information?data=W83Lysi$__2B$bHQTpVifRa$
                                 for (Element element : divs) {
                                     // System.out.println(element.toString());
                                     article.setContent(element.toString());
+
                                 }
                             }
-
-                            mapper.insert(article);
+                            mapper.updateByPrimaryKey(article);
                         }
                     }
                 }

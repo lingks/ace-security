@@ -44,6 +44,12 @@
     <result column="top_sort" jdbcType="INTEGER" property="topSort" />
 
   </resultMap>
+  <select id="selectByTitle" resultType="com.github.wxiaoqi.blog.admin.api.vo.ArticleInfo">
+    select
+    id ID,title Title
+    from blog_article
+    WHERE title = #{title}
+  </select>
 
   <select id="selectMaxSort" resultType="java.lang.Integer">
     select
