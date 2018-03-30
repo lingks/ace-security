@@ -134,6 +134,9 @@
     <p id="partner-view" style="text-align: left;padding:0 10px">
 
     </p>
+    <p id="partner-url" style="text-align: left;padding:0 20px">
+        友情链接： 比特时代
+    </p>
     <p><span>Copyright</span><span>&copy;</span><span>2018</span><a href=""></a><span>链算数据</span></p>
     <p><a href="" target="_blank">粤ICP备18031555号</a></p>
 </footer>
@@ -189,9 +192,13 @@
         <span>编辑时间：{{ d.updTime }}</span>
     </div>
     {{# if(d.cover != undefined && d.cover != null && d.cover != '' && d.cover != 'null'){}}
+
+        {{# if(d.content.indexOf('img') == -1){}}
     <div style="100%;text-align: center;">
-        <img style="100%;" src="{{d.cover}}">
+    <img style="100%;" src="{{d.cover}}">
     </div>
+        {{#}}}
+
     {{#}}}
     <div class="article-detail-content layui-markdown" id="detailContent">
         {{ d.content }}
@@ -361,9 +368,6 @@
                     data.result.content = marked(content);
                     laytpl(getTpl).render(data.result, function (html) {
                         articleDetail.innerHTML = html;
-
-
-                        console.log(authorId)
                         //添加阅读文章
                         if(authorId !=undefined && authorId!=null &&　authorId!='' && authorId!='null'){
                             console.log($("#title-view").text())
@@ -423,7 +427,9 @@
             dataType: 'jsonp',
             jsonp: 'callback',
             success: function (data, status, xhr) {
+
                 laytpl(friendshipTemplate).render(data, function (html) {
+
                     shipView.innerHTML = html;
                 });
             }

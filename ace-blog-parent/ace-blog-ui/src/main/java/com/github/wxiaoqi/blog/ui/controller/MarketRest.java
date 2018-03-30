@@ -25,7 +25,7 @@ public class MarketRest {
 
         long start = System.currentTimeMillis();
         String url = "https://block.cc/api/v1/coin/get?coin=";
-        System.out.println(ids );
+       // System.out.println(ids );
 
         String idss = "";
         if(ids != null && !"".equals(ids)){
@@ -38,7 +38,7 @@ public class MarketRest {
             if(!"".equals(id)){
                 String s = HttpClientUtil.doGet(url + id);
                 JSONObject json = JSONObject.parseObject(s);
-                System.out.println(json);
+                //System.out.println(json);
                 if(json != null && !"".equals(json)){
                     if(json.getInteger("code") == 0){
                         if(json.getString("data") != null && !"".equals(json.getString("data"))){
@@ -46,7 +46,7 @@ public class MarketRest {
                             if(market.getZhName() != null && !"".equals(market.getZhName())){
                                 market.setName(market.getName() +"-"+ market.getZhName());
                             }
-                            System.out.println(market.getId());
+                            //System.out.println(market.getId());
                             markets.add(market);
                         }
                     }
@@ -65,7 +65,7 @@ public class MarketRest {
         String s = HttpClientUtil.doGet(url);
         String ss = s.replace("/**/document.write(","");
         String sss =ss.replace(")","");
-        System.out.println(sss);
+     //   System.out.println(sss);
         return sss;
     }
 //

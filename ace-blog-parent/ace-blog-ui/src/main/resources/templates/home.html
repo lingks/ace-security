@@ -236,20 +236,20 @@ var _hmt = _hmt || [];
             overflow: hidden;
         }
 
-        #first_pj_index_view{
-            width: 100%;
-            min-width: 1200px;
-        }
-        #first_pj_index_view li{
-            width: 85%;
-            height:220px;
-            margin: 0 auto;
-            background: white;
-        }
-        #first_pj_index_view li a img{
-            width:100%;
-            height: 160px;
-        }
+        /*#first_pj_index_view{*/
+            /*width: 100%;*/
+            /*min-width: 1200px;*/
+        /*}*/
+        /*#first_pj_index_view li{*/
+            /*width: 85%;*/
+            /*height:220px;*/
+            /*margin: 0 auto;*/
+            /*background: white;*/
+        /*}*/
+        /*#first_pj_index_view li a img{*/
+            /*width:100%;*/
+            /*height: 160px;*/
+        /*}*/
 
         #second_pj_index_view{
             width: 100%;
@@ -1096,43 +1096,43 @@ position: relative;margin: auto;min-width: 1200px">
         })
         //轮播第一页
 
-        var first_pj_index_viewTpl = scroll_view.innerHTML
-            , scrollView = document.getElementById('first_pj_index_view');
-
-        $.ajax({
-            url: base.url + '/blog/api/project/page?pageIndex=1&pageSize=5',
-
-            contentType: "application/json; charset=utf-8",
-            dataType: 'jsonp',
-            jsonp: 'callback',
-            success: function (data, status, xhr) {
-
-                laytpl(first_pj_index_viewTpl).render(data, function (html) {
-                    scrollView.innerHTML = html;
-                });
-            }
-        })
-
-
-        //轮播第2页
-
-        var second_pj_index_viewTpl = second_scroll_view.innerHTML
-            , secondView = document.getElementById('second_pj_index_view');
-
-        $.ajax({
-            url: base.url + '/blog/api/project/page?pageIndex=2&pageSize=4',
-
-            contentType: "application/json; charset=utf-8",
-            dataType: 'jsonp',
-            jsonp: 'callback',
-            success: function (data, status, xhr) {
-
-                laytpl(second_pj_index_viewTpl).render(data, function (html) {
-                    secondView.innerHTML = html;
-                });
-            }
-        })
-
+//        var first_pj_index_viewTpl = scroll_view.innerHTML
+//            , scrollView = document.getElementById('first_pj_index_view');
+//
+//        $.ajax({
+//            url: base.url + '/blog/api/project/page?pageIndex=1&pageSize=5',
+//
+//            contentType: "application/json; charset=utf-8",
+//            dataType: 'jsonp',
+//            jsonp: 'callback',
+//            success: function (data, status, xhr) {
+//
+//                laytpl(first_pj_index_viewTpl).render(data, function (html) {
+//                    scrollView.innerHTML = html;
+//                });
+//            }
+//        })
+//
+//
+//        //轮播第2页
+//
+//        var second_pj_index_viewTpl = second_scroll_view.innerHTML
+//            , secondView = document.getElementById('second_pj_index_view');
+//
+//        $.ajax({
+//            url: base.url + '/blog/api/project/page?pageIndex=2&pageSize=4',
+//
+//            contentType: "application/json; charset=utf-8",
+//            dataType: 'jsonp',
+//            jsonp: 'callback',
+//            success: function (data, status, xhr) {
+//
+//                laytpl(second_pj_index_viewTpl).render(data, function (html) {
+//                    secondView.innerHTML = html;
+//                });
+//            }
+//        })
+//
     });
 
 
